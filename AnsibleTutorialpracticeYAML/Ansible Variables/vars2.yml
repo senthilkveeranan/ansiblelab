@@ -1,0 +1,9 @@
+---
+ - hosts: web
+   vars:
+       username: saba
+
+   tasks:
+     - name: Creating user by variable in playbook
+       debug:
+          msg: "{{ username }}"

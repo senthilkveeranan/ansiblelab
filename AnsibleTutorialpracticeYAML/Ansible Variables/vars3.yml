@@ -1,0 +1,17 @@
+---
+ - hosts: web
+   become: True
+   vars:
+       username: saba
+
+   tasks:
+     - name: Creating user by variable in playbook
+       debug:
+          msg: "{{ username }}"
+
+
+
+     - name: Creating user
+       user:
+         name: "{{ username }}"
+         state: present
