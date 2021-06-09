@@ -1,0 +1,7 @@
+---
+ - hosts: web 
+   become: true
+   tasks: 
+       - name: Displaying facts variable 
+         debug:
+            msg: "{{ ansible_facts }}"
