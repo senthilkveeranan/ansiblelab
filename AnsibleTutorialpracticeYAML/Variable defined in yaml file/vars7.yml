@@ -1,0 +1,10 @@
+---
+ - hosts: web
+   gather_facts: False 
+   vars_files: 
+           - vars_files.yml
+
+   tasks: 
+      - name: Displaying Variables 
+         debug:
+            msg: "{{ users }}"
