@@ -1,0 +1,14 @@
+---
+ - hosts: web
+   become: True
+   gather_facts: False
+   vars:
+        dict:
+            key1: value1
+            key2: value2
+
+   tasks:
+      - name: Displaying variables
+        debug:
+           msg: "{{dict}}"
+        
