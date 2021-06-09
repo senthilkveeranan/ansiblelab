@@ -1,0 +1,6 @@
+---
+ - hosts: web
+   tasks:
+      - name: Disply hostname name
+        debug:
+          msg: "{{ ansible_nodename }}"
