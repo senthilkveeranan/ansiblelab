@@ -1,0 +1,6 @@
+---
+ - hosts: web
+   tasks:
+      - name: disply disk space size
+        debug:
+          msg: "{{ ansible_devices.xvda.partitions.xvda1.size }}"
