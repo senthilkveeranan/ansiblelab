@@ -1,0 +1,9 @@
+---
+ - hosts: web
+   become: True
+   tasks: 
+   - name: Installing httpd 
+     yum:
+       name: httpd
+       state: present
+       enabled: yes
