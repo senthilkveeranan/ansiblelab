@@ -1,0 +1,12 @@
+---
+ - hosts: web
+   gather_facts: False
+   vars_prompt:
+           - name: var
+             prompt: Enter Variable
+             private: no
+
+   tasks:
+      - name: Displaying Variable
+        debug:
+          msg: "{{ var }}"

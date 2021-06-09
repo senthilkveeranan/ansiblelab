@@ -1,0 +1,13 @@
+---
+ - hosts: web
+   gather_facts: False
+   vars_prompt:
+           - name: username
+             prompt: Enter username
+             private: no
+
+   tasks:
+      - name: Create User
+        user:
+          name: "{{ username }}"
+          state: present
