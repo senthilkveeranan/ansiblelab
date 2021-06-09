@@ -1,0 +1,33 @@
+---
+ - hosts: web
+   become: True
+   gather_facts: False
+   vars:
+        dict:
+            key1: value1
+            key2: value2
+
+   tasks:
+      - name: Displaying variables
+        debug:
+           msg: "{{dict}}"
+
+
+## This is for next example
+
+
+
+#
+      - name: Displaying particulat key value
+        debug:
+           msg: "{{ dict.key1}}"
+
+
+      - name: Displaying the above value in different syntax
+        debug:
+           msg: "{{ dict['key1'] }}"
+
+
+      - name: Simillar way displaying the key2 value
+        debug:
+          msg: "{{ dict['key2'] }}"
