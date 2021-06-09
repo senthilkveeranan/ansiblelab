@@ -1,0 +1,10 @@
+---
+ - hosts: web
+   vars:
+          key: "Welcome to Ansible Automation World"
+   tasks:
+     - name: Displaying variables
+       debug:
+         msg: "{{ key }}"
+
+---            
