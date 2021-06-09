@@ -1,0 +1,7 @@
+---
+ - hosts: web
+   gather_facts: True
+   tasks:
+     - name: Displaying facts variable
+       debug:
+         msg: "{{ ansible_all_ipv4_addresses }}"
