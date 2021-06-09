@@ -1,0 +1,24 @@
+---
+ - hosts: web
+   gather_facts: False
+   vars:
+          users:
+               - name: saba
+                 age: 35
+
+               - name: mary
+                 age: 30
+
+   tasks:
+   - name: Displaying Name
+     debug:
+       msg: "{{ users }}"
+
+
+   - name: Display ony the firest list name value
+     debug:
+        msg: "{{ users[0] }}"
+
+   - name: Display secound list values
+     debug:
+       msg: "{{ users[1] }}"

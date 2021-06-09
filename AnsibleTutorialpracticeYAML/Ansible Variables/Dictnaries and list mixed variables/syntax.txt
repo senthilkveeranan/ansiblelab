@@ -1,0 +1,14 @@
+ vars:
+     users: 
+          - name: mark
+            age: 40
+
+          - name: mari
+            age: 35 
+
+
+
+ "{{ users }}
+ "{{ users[0] }}" - to dsplay the first item of the list
+"{{  users[0].name}}"
+"{{  users[0]['name'] }}"
