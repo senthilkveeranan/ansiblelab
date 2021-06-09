@@ -1,0 +1,18 @@
+---
+   - hosts: web
+     gather_facts: False
+     vars:
+          list:
+              - item1
+              - item2
+              - item3
+              - item4
+     tasks:
+        - name: Displaying Named List varaible
+          debug:
+             msg: "{{ list }}"
+##
+
+        - name: To pring FIrst item in the List
+          debug:
+             msg: "{{ list[0] }}"
