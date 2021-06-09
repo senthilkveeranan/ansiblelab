@@ -1,0 +1,12 @@
+vars:
+   list:
+       - item1
+       - item2
+       - item3
+       - item4
+
+
+
+ "{{ list  }}"
+ "{{ list[0] }} 
+ "{{ list[1] }}     
