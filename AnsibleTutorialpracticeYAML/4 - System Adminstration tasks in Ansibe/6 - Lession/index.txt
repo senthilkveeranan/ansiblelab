@@ -1,0 +1,5 @@
+playbook to conigure firewall 
+=============================
+Create playbook "firewall.yml" to conigure firewall on all "webservers" nodes.
+Inbound for the http service should be accepted 
+settings should be persistance and reload firewall to enforce his 

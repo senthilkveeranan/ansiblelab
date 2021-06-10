@@ -1,0 +1,6 @@
+senario:
+=======
+Create a playbook user.yml to create user on all managed hosts with the below information 
+username: mark
+set password as : Password 
+password must be encrepted with Sha512
