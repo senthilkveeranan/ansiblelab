@@ -15,3 +15,26 @@ Excute the below command as root user:
 # ansible all -m user -a "name=ansadmin state=present password="{{ 'password' | password_hash('sha256') }}" -u root 
 # ansible all -m authorized_keys -a "user='ansadmin' state='present' key={{ lookup ('file','/homeansadmin/.ssh/id_rsa.pub') }}'
 path ='/home/adsadmin/.ssh/authorized_keys'" -u root 
+
+Configure previllage escalation on on all Managed ndes:
+======================================================
+
+# ansible web -m lineinfile -a "path=/etc/sudoers state=present line='ansible ALL =(ALL) NOPASSWD:ALL' 
+backup=yes validate='/usr/bin/visudo -cf %s'" -u root 
+ 
+
+ add contend in MOTD file :
+ =========================
+ansible web -m copy -a "content='Welcome to Ansible Managed hosts' dest=/etc/motd" --become 
+
+
+
+
+
+
+
+
+
+
+
+

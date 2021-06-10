@@ -1,0 +1,14 @@
+System Administration Taks:
+======================================
+Sotware packages and respositories
+Services
+Firewall rules
+File system
+Storage devices
+File content
+Archiving 
+Scheduled tasks
+Security
+Users and Groups
+======================================
+

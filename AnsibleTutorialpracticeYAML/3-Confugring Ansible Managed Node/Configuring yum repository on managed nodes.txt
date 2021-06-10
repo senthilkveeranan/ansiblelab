@@ -1,0 +1,3 @@
+Use ansible ad-hoc commands to configure all managed nodes to use 'BaseOS' and 'AppStream' repos with the 
+following information.
+

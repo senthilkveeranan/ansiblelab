@@ -1,0 +1,7 @@
+Create a playbook named 'services.yml' under tasks directory to perform below tasks
+  Install httpd service on webservers nodes
+  install mariadb service on prod nodes.
+  Make sure services are stareted and enabled 
+
+
+  
