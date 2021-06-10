@@ -1,6 +1,7 @@
-Senario:
-========
+Senario: Creat a file and setting ownership :
+=============================================
 Create a playbook named "file.yml" to create file '/root/senthil_file' on all managed nodes
 User and group ownership must set to be senthil
 Configure full permisstion for user, read/write for group , and no permission for others on this file
 set GID bit 
+

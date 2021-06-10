@@ -1,0 +1,8 @@
+senario: Creating file and setting permissions & copying content
+=================================================================
+Using ad-hoc commands, create a file '/root/file1.txt' on all managed nodes
+File should contain text This text file is created using ansible
+Remove all permissions for others on this file 
+
+# ansible all -m file -a "path=/root/file1.txt  mode=o-rwx state=touch " --become
+# ansible all -m copy -a "content='This text file is created using Ansible' dest=/root/file1.txt" --become
