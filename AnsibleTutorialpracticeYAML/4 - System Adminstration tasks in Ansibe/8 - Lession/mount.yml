@@ -1,0 +1,15 @@
+---
+   - hosts: all
+     become: True
+     gather_facts: False
+     tasks: 
+        - name: Creating file system 
+          filesystem: 
+              dev: /dev/sda5 
+              tstype: ext4 
+        - name: Mounting File system 
+          mount:  
+             src: /dev/sda5 
+             path: /mnt/partition
+             fstype: ext4
+             state: mounted 
