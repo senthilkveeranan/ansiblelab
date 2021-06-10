@@ -1,0 +1,17 @@
+Excute Command as root:
+=======================
+
+ansible web -m lineinfile -a "path=/etc/ssh/sshd_config regexp='^#Port' line='Port22" -u root  
+ansible web -m lineinfile -a "path=/etc/ssh/sshd_config insertafter='^Port' line='Port22" -u root 
+
+
+Generate SSH key gen:
+====================
+
+ssh-keygen 
+
+Excute the below command as root user:
+
+# ansible all -m user -a "name=ansadmin state=present password="{{ 'password' | password_hash('sha256') }}" -u root 
+# ansible all -m authorized_keys -a "user='ansadmin' state='present' key={{ lookup ('file','/homeansadmin/.ssh/id_rsa.pub') }}'
+path ='/home/adsadmin/.ssh/authorized_keys'" -u root 
