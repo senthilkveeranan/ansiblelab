@@ -1,0 +1,5 @@
+Taks: Create a playbook 'context.yml' to setlinux context type 'httpd_sys_content' on '/web/html/' directory 
+on on the webservers nodes 
+Setting should be persistant, and context should be restored
+Verify the context type using ansible ad-hoc command
+
