@@ -1,0 +1,15 @@
+---
+ - hosts: all
+   become: True
+   gather_facts: False
+   tasks:
+      - name: Create a file and setting permissions 
+        file:
+          path: /root/senthil_file
+          owner: senthil
+          group: senthil
+          mode: 2760
+          state: touch 
+
+
+  

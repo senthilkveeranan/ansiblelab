@@ -1,0 +1,10 @@
+---
+   - hosts: prod
+     become: True
+     gather_facts: False
+     tasks:
+        - name: Creating user
+          user:
+             name: senthil
+             password: "{{ 'password' | password_hash('sha512') }}"
+             state: present
