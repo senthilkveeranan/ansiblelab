@@ -1,0 +1,5 @@
+Archiving Directory using playbook:
+====================================
+Using ansible playbook 'archive.yml' archive content of '/etc' into 'etc.tar' file under '/root' directory
+Playbook should be executed on webservers nodes
+Compress the archive using bzip2 

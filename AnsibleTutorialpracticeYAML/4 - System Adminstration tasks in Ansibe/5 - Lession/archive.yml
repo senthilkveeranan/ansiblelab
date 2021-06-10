@@ -1,0 +1,10 @@
+---
+   - hosts: webservers
+     become: True
+     gather_facts: False
+     tasks:
+          - name: Archiving /etc directory
+            archive:
+                 path: /etc
+                 dest: /root/etc.tar.bz2
+                 format: bz2

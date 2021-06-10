@@ -1,0 +1,6 @@
+Requirement: 
+============
+Create a playbook group.yml to perform the below tasks
+
+Create a directory path /web/html on webservers nodes
+Create a group testing on webservers nodes and group networks on prod nodes

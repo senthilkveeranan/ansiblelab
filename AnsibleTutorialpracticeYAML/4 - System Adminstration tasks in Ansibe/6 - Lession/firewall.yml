@@ -1,0 +1,18 @@
+---
+  - hosts: webservers
+    become: true
+    gather_facts: False 
+    tasks: 
+        - name: Configure firewall on webwervers nodes
+          firewalld: 
+                name: httpd
+                state: permanent
+                permanent: yes 
+          notify: Reload_Firewall
+    handlers: 
+          - name: Reload_Firewall            
+            service: 
+                 name: firewalld
+                 state: reloaded
+ 
+syntax error :
