@@ -1,0 +1,6 @@
+Create a script "file.sh" to run Ansible ad-hoc command for the following tasks:
+===============================================================================1
+1.Create One file /root/redhat/ex294/results on prod nodes
+2.Configure full permission at group level and read/excution for others
+3.set ansadmin as user and group owner 
+4.Create a symbolic link in /root derectory with default name
