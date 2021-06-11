@@ -1,0 +1,9 @@
+Belwo are the topics we are going to cover in this topic 
+========================================================
+1. Know how to work with comanly used modules
+2. Use Variable to retrive the results of running a command 
+3. Use conditionals to control play execution 
+4.Configure error handling 
+5.Create playbook to configure system to a specified state.
+
+

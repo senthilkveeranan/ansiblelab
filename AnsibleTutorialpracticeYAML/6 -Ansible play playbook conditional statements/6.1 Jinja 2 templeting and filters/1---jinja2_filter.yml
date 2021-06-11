@@ -1,0 +1,9 @@
+  ---
+  - hosts: webservers
+    become: True
+    gather_facts: True
+    tasks:
+        - name: Displaying facts
+          debug:
+            msg: "{{ ansible_facts}}"
+            

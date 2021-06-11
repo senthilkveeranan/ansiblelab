@@ -1,0 +1,15 @@
+---
+ - hosts: webservers
+   become: True
+   gather_facts: True
+   tasks:
+      - name: Displaying disk details 
+        debug:
+           msg: "{{ ansible_facts ['devices'] ['sda'] ['partitions']['sda12'] ['size'] | default('Block device not exits') }}"
+
+ 
+           
+  Note: In this play book first remove | default('Block device not exits') }}" and execute gives error 
+
+  in the next play book include this | default('Block device not exits') }}" and execute give some 
+  msg: Block device not exits ---error handling method insteaf giving error giving some messages 

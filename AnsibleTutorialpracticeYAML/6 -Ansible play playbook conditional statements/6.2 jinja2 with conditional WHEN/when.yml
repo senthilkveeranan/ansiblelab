@@ -1,0 +1,9 @@
+---
+ - hosts: all
+   gather_facts: True
+   tasks:
+      - name: Displaying variable
+        debug:
+           msg: "{{ ansible_facts['fqdn'], 'The hosname node1 exits since i am showing this message' }}"
+
+        when: ansible_facts['hostname'] == "node1"

@@ -1,0 +1,7 @@
+---
+ - hosts: prod
+   gather_facts: False 
+   tasks:
+       - name: Displying minumum list item value 
+         debug:
+            msg: "{{ [1, 2, 2, 3, 3, 4, 5] | min }}"
