@@ -1,0 +1,4 @@
+Loops are used to repeat some tasks multiple times based on some conditions , important example of loop 
+to create multiple users with details defined as list items in some dictionary.
+
+Ansible offers two key words to create loop : loop and with_<llokup>

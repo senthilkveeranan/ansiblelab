@@ -1,0 +1,17 @@
+---
+ - hosts: all
+   gather_facts: False
+   tasks:
+       - name: j2 if statement
+         debug:
+            msg: >
+               {#commentline -#}
+               {% if inventory_hostname in groups['web'] -%}
+                  This is web node
+               {% elif inventory_hostname in groups['prod'] -%}
+                  This is prod node
+               {% else -%}
+                   This is dev node
+               {% endif -%}
+
+               

@@ -1,0 +1,14 @@
+Other then the default fact if we want to fetch any configuration information about the managed
+nodes is called custome fact .
+Ex: I need to find the git version, http version, weblogic version, db version etc for all 
+my managed nodes.
+Ex 2: if we want to identify prod/dev/test servers is the requirement 
+we need to write a playbook to get the information 
+
+
+How to create customer facts:
+=============================
+1) First we need to create /etc/anisble/facts.d directory on managed nodes 
+2) inside facts.d directory place one or more custome facts files with extention as .fact 
+3) The output of custome fact file should be JSON fomat file  
+4) The fact file should have execution permission .

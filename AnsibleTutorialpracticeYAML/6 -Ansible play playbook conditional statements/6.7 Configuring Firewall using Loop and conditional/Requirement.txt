@@ -1,0 +1,4 @@
+Create a playbook with the name "firewall_config.yml" to execute below tasks
+1) Configure web nodes to accept inbount traffic for ntp and https service 
+2) Configure prod nodes to accept traffic on port range 400-404/tcp.
+Firewall config should be persistent.Reload firewall to make changes effective .

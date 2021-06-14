@@ -1,0 +1,11 @@
+---
+users: 
+    - username: senthil 
+      department: testing
+      age: 41 
+    - username: saba
+      department: ops
+      sage: 41 
+    - username: deepan
+      deparment: HR
+      age: 36

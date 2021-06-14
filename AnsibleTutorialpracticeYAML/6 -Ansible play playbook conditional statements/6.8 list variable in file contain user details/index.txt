@@ -1,0 +1,10 @@
+Create a playbook 'create_users.yml' with below conditions:
+==========================================================
+Create uer on web nodes when user's department is HR and assign supplementary group testing to user
+Create user on prod nodes when user's department is testing and assign supplementary group is network
+to suer.
+Create user on all managed nodes When user's department is ops.
+set password for different users as defined in password.yml file and password must be encrepted. 
+
+
+incomplete INCOMPLETE ...NEED TO CONCENTRATE LATER:

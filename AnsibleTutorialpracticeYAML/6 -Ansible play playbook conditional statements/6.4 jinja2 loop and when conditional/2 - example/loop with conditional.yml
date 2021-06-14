@@ -1,0 +1,13 @@
+---
+ - hosts: web
+   become: True
+   vars_files: details.yml
+   tasks:
+       - name: Adding users
+         user:
+            name: "{{ item.name }}"
+            state: present
+
+         loop: "{{ users }}"
+         when: item.native == "madurai"
+

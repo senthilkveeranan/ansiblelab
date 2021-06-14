@@ -1,0 +1,11 @@
+---
+ - hosts: web
+   become: True
+   vars_files: details.yml
+   tasks:
+      - name: Adding user
+        user: 
+          name: "{{item.username}}"
+          state: present
+
+        loop: "{{ users }}"  

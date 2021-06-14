@@ -1,0 +1,16 @@
+What is LAMP 
+l = linux
+A = Apache 
+M = Mariadb/Mysql
+p = PHP 
+We are going to deploy application which is written in PHP Language.
+
+1) Installing Apache
+2) Start and Enable services
+3) Install PHP and MariaDB Server
+4) Create a database called inventory 
+5) Create table called servers with six coloumns 
+6) Deploy PHP application will fetch records from mariadb in web page
+
+
+

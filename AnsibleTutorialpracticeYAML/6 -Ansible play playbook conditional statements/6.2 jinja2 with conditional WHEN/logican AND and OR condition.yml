@@ -1,0 +1,9 @@
+---
+ - hosts: all
+   gather_facts: True
+   tasks:
+       - name: Displaying Variables
+         debug:
+            msg: "{{ ansible_facts['fqdn'] }}"
+         when: (ansible_facts['hostname'] == "node1" and ansible_facts['distribution_major_version'] == "8") or
+          (ansible_facts['hostname'] == "node2" and ansible_facts['distribution_major_version'] == "7")

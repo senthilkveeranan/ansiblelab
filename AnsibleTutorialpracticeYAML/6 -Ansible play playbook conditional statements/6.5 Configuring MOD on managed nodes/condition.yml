@@ -1,0 +1,18 @@
+---
+   - hosts:
+         - web
+         - prod
+     become: True
+     gather_facts: True
+     tasks:
+         - name: Configure MOTD on weserver nodes
+           copy:
+             content: "Welcome to webeserver node\n"
+             dest: /etc/motd
+           when: inventory_hostname in groups ['web']
+
+         - name: "Configure motd on node1 server"
+           copy:
+             content: "Welcoem to node1 server\n"
+             dest: /etc/motd
+           when: ansible_facts['hostname'] == 'node1'

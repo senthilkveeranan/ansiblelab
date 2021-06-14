@@ -1,0 +1,12 @@
+---
+ - hosts: all 
+   become: True
+   gather_facts: True 
+   vars_files: 
+           - userdetails.yml
+           - password.yml
+   taks: 
+      - name: Creating User on web nodes
+        user: "{{ userdetails.yml }}"
+        password: "{{ senthil_pass | password_hash('sha512') }}"
+        group: testing           

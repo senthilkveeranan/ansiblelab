@@ -1,0 +1,7 @@
+Create a script "uesr.sh"  to run ansible ad-hoc commands for the following tasks:
+==================================================================================
+1. Create a user with username deepan on all managed nodes and set password as redhat_pass (use encreption sha512)
+2.Create a croup with the name ex294 and assign this gorup to this use 
+3.Use userID as 2021 
+
+

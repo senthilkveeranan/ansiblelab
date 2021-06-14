@@ -1,2 +1,49 @@
 Jinja2 templating language and Jinja2 filters:
 ==============================================
+Whie accessing about Ansible variables , we already used jinja2 templating language to form dynamic expression
+and access variables in playbook.
+
+We used jinja2 expression "{{ variable_name }}" mutiple times to access and reference varaibles and ansible facts
+Also we used jinja2 fileter e.g..password_hash('sha512') to encrept password
+
+Jinja2 Filters:
+===============
+Jinja2 Filters to format data:
+==============================
+Using jinja2 filter we can format data from one data structure to other eg..JSON TO YAML
+"{{ ansible_facts | to_yml }}"
+
+For human readable output :
+
+"{{ ansible_facts | to_nice_yaml }}"  
+
+List Filter:
+============
+
+To get minimum value of filter  
+"{{list | min}}"
+
+Example: "{{ 1,2,2,3,3,4,5,6, | min}}"
+
+In the same way to get the maximum value 
+
+Example: "{{ 1,2,2,3,3,4,5,6, | max}}"
+
+To get uniqu set from a list :
+
+Example: "{{ 1,2,2,3,3,4,5,6, | unique}}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

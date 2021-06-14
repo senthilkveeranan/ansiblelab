@@ -1,0 +1,31 @@
+---
+ - hosts: all
+   become: True
+   gather_facts: False
+   tasks:
+      - name: Configuring firewall on webservers node
+        firewalld:
+            service: "{{ item }}"
+            state: enabled
+            permanent: yes
+        loop:
+          - ntp
+          - https
+        when: inventory_hostname in groups['web']
+        notify: reload firewall
+
+      - name: Configuring firewall on prod node
+        firewalld:
+            port: 400-404/tcp
+            state: enabled
+            permanent: yes
+
+        when: inventory_hostname in groups
+        notify: reload firewall
+
+   handlers:
+         - name: reload firewall
+           service:
+                name: firewalld
+                state: reloaded
+

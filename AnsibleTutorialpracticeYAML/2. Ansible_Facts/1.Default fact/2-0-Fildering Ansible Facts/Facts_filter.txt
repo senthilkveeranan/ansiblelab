@@ -1,0 +1,13 @@
+gather_subnet directive:
+========================
+# ansible web -m setup -a "gather_subset=network"  --become
+# ansible web -m setup -a "gather_subset=hardware"  --become
+
+Filder directive:
+==================
+
+# ansible web -m setup -a "filter=ansible_mounts" --become
+# ansible web -m setup -a "filter=ansible_lvm" --become
+# ansible web -m setup -a "filter=ansible_*name" --become
+# ansible prod -m setup -a "filter=ansible_eth0" --become
+# ansible prod -m setup -a "filter=ansible_architecture" --become

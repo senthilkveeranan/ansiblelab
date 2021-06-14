@@ -1,2 +1,0 @@
-We can display ansible facts using setup module using ansible ad-hoc command
-# ansible web -m setup 

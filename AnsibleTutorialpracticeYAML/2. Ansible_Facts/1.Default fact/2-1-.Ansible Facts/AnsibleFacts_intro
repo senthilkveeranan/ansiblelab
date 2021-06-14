@@ -1,0 +1,18 @@
+What is ansible facts: 
+======================
+Ansible facts are nothing but information about managed nodes like: os, distrubution,
+release, processor, python, etc....!!!
+
+This task of collecting this remote system i
+nformation is called as Gathering facts , Gatherd 
+informatio is called facts or Variables.
+
+We can gather/Collect facts using setup module in Ad-hoc commands`
+
+Note: 
+====
+Ansible playbooks call this setup module by DEFAULT to perform Gathering Facts task. 
+
+
+We can display ansible facts using setup module using ansible ad-hoc command
+# ansible web -m setup 

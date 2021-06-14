@@ -1,0 +1,13 @@
+---
+ - hosts: all
+   become: True
+   tasks:
+      - name: Adding Users
+        user:
+            name: "{{ item }}"
+            state: present
+
+        loop: 
+            - user1
+            - user2   
+
