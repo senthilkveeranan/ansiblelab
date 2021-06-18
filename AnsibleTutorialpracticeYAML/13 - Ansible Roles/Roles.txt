@@ -1,0 +1,31 @@
+Ansible has two ways to reuse playbook
+======================================
+1) Include 
+2) Roles
+
+Using Roles
+The roles struture 
+How to create roles with ansible Galaxy
+
+what is ansible role?
+Roles in ansible is a pre-defined directory structure that is utilized to put the indivitual piecies of
+playbook in to , to make it easier to re-use and share .
+
+In Ansible , the role is the primary mechanishm for breaking a playbook into multiple files , This 
+simplifies writing complex paybooks and it make them easier to reuse.
+
+Roles are not playbook , Roles are small functionality which can be independently used but have to be 
+used within playbooks.
+
+
+What is the advantage of ansible rols?
+Ansible roles are independent with each other , to that the execution of one role doesn't depend on other role 
+And Hence they can be resued .
+
+How to create ansible rols?
+To create a role , a tool called Anaible-Galaxy Comes bundle with ansible . we can use the below syntax 
+
+# ansible-galaxy init rolename 
+# ansible-galaxy init samplerolename 
+
+

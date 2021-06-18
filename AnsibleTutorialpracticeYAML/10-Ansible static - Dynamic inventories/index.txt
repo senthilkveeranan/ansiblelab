@@ -1,0 +1,12 @@
+1. Colletion of hosts in knon as "Ansible inventory"
+3 There are two types of inventory 
+Static inventory 
+Dynamic inventory 
+
+Cloud Environment is Dynamic - while we use cloud if any one bounce the server , puplic ip got changed since we 
+couldn't connect the server since Dynamic iventory is required .
+
+Generally Dynaic inventories are scripts like shell/python for Dynamic environment 
+
+Suppose if we want to work with AWS , we need to download the below 
+ec2.py and ec2.ini --> need to download from ansible official repo 
