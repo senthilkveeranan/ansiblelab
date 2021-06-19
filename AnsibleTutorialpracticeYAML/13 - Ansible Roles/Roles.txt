@@ -28,4 +28,25 @@ To create a role , a tool called Anaible-Galaxy Comes bundle with ansible . we c
 # ansible-galaxy init rolename 
 # ansible-galaxy init samplerolename 
 
+What are the components of role?
+
+1. Defaults: Data about the role/Application , default variables
+2.files: put the sttic files here , Files will then be copied on remote machines 
+3.handlers: Task which based on some actions. Triggers 
+Example: in case my httpd.conf changes , it should trigger service restart .
+4. Meta: Information about the Role   like author, support platform like that ..Dependencies if any ...
+5.Tasks: Actual actions will be stored inside ...core Logic or code . Installting package , coping files ..etc.
+6.Template: its simillar to files exept the tempates support dynamic files . jinja2 - tempate language 
+7.vars= Both vars and defaults stores variables.variables store under "vars" has higher priority and 
+difficult to override.
+
+
+
+
+
+
+
+
+
+
 
