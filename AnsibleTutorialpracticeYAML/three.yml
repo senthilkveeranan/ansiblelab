@@ -1,0 +1,10 @@
+---
+ - hosts: web
+   become: True
+   become_user: root
+   tasks:
+      - name: Installing packages
+        yum: 
+          name: httpd
+          state: present
+          
