@@ -1,0 +1,953 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <script type="text/javascript" src="https://www.redhat.com/dtm.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta class="swiftype" name="published_at" data-type="date" content="2019-03-26" /> 
+  <meta class="swiftype" name="version" data-type="string" content="3.4.3">
+
+
+   <!-- this ^ ^ is for the original publishing date only, never for minor pushes that aren't actual version bumps of the docs (this helps us keep our search rank weighting in swiftype, our search server, prioritized based on the dates of the releases themselves) -->
+
+  <script>
+  var url = window.location.href;
+  if(url.indexOf("latest") == -1){
+   var version = url.replace("http://docs.ansible.com/ansible-tower/","");
+   version = version.substring(0,url.indexOf("/"));
+   url = url.replace(version,"latest");
+  }
+  var canon = document.createElement('link');
+  canon.rel = "canonical";
+  canon.href = url;
+  document.head.appendChild(canon);
+  </script>
+
+  <!-- Google Tag Manager Data Layer -->
+  <script>
+   dataLayer = [];
+  </script>
+  <!-- End Google Tag Manager Data Layer -->
+
+  
+  <title>15. Token-Based Authentication &mdash; Ansible Tower Administration Guide v3.4.3</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'./',
+        VERSION:'Ansible Tower 3.4.3',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript" src="underscore.js"></script>
+      <script type="text/javascript" src="doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="theme.min.css" type="text/css" />
+    <script type="text/javascript" src="theme.js"></script>
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Ansible Tower Administration Guide v3.4.3" href="index.html"/>
+        <link rel="next" title="16. Setting up Social Authentication" href="social_auth.html"/>
+        <link rel="prev" title="14. Bubblewrap functionality and variables" href="proot_func_variables.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+  <style>
+    .search-reset-start {
+        color: #463E3F;
+        float: right;
+        position: relative;
+        top: -25px;
+        left: -10px;
+        z-index: 10;
+     }
+     .search-reset-start:hover {
+        cursor: pointer;
+        color: #2980B9;
+     }
+     #search-box-id {
+        padding-right: 25px;
+     }
+  </style>
+
+  <!-- Google Code for Remarketing Tag
+  <script type="text/javascript">
+  /* <![CDATA[ */
+  var google_conversion_id = 972577926;
+  var google_custom_params = window.google_tag_params;
+  var google_remarketing_only = true;
+  /* ]]> */
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+  </script>
+  <noscript>
+    <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt=""
+              src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/972577926/?value=0&amp;guid=ON&amp;script=0"/>
+    </div>
+  </noscript>
+  End of Google Code for Remarketing Tag -->
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300'
+      rel='stylesheet' type='text/css'>
+
+  <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+
+  <script type='text/javascript'>
+    googletag.cmd.push(function() {
+      googletag.defineSlot('/1171614047/towerleft', [300, 250], 'div-gpt-ad-1453398530439-0').addService(googletag.pubads());
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
+  </script>
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+  <div class="DocSite-globalNav ansibleNav">
+        <ul>
+            <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+            <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+            <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+            <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+            <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+        </ul>
+    </div>
+
+<a class="DocSite-nav" href="http://docs.ansible.com/">
+  <img class="DocSiteNav-logo"
+    src="logo_invert.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">
+    Documentation
+  </div>
+</a> 
+
+
+
+
+<div class="wy-grid-for-nav">
+
+  
+ <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+        <a class="DocSiteProduct-header DocSiteProduct-header--tower"
+            href="http://docs.ansible.com/ansible-tower/">
+            <div class="DocSiteProduct-productName">
+                <div class="DocSiteProduct-logoText">
+                    ANSIBLE TOWER 
+                    <div class="DocSiteProduct-CurrentVersion" align="right">
+                      v3.4.3
+                  </div>
+                </div>
+            </div>
+        </a>
+        
+
+        <div class="DocSiteProduct-CheckVersionPara">
+          Are you using the latest and greatest version of Ansible Tower? Find the <a class="DocSiteProduct-versionheader" href="http://docs.ansible.com/ansible-tower/">Ansible Tower documentation</a> set which best matches your version of Tower.
+            </div>
+    </div>
+    <div class="wy-side-nav-search" style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+      <!-- <a href="index.html" class="icon icon-home"> Ansible Tower Administration Guide</a> -->
+      <!-- <form class="wy-form" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form> -->
+
+<!-- 
+<script>
+  (function() {
+    var cx = '004731659079655444432:zgjlf-tkhya';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script> -->
+
+<!-- <gcse:searchresults-only></gcse:searchresults-only> -->
+
+<!-- swiftype search script -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','Vcn_rXrPfye6ziaZJZRt','2.0.0');
+</script>
+
+<!-- <form id="search-form-id" action="">
+  <input type="text" class="st-default-search-input" name="query" placeholder="Search Tower Docs" id="search-box-id" /> 
+  <a class="search-reset-start" id="search-reset"><i class="fa fa-times"></i></a>
+  <a class="search-reset-start" id="search-start"><i class="fa fa-search"></i></a> 
+ </form> -->
+
+          
+
+
+<!-- <script type="text/javascript" src="http://www.google.com/cse/brand?form=search-form-id&inputbox=search-box-id"></script> -->
+
+<!-- 
+<script>
+  function executeQuery() {
+      var input = document.getElementById('search-box-id');
+      var element = google.search.cse.element.getElement('searchresults-only0');
+      element.resultsUrl = '/htmlout/search.html'
+      if (input.value == '') {
+          element.clearAllResults();
+          $('#page-content, .rst-footer-buttons, #search-start').show();
+          $('#search-results, #search-reset').hide();
+      } else {
+          $('#page-content, .rst-footer-buttons, #search-start').hide();
+          $('#search-results, #search-reset').show();
+          element.execute(input.value);
+      }
+      return false;
+      }
+
+  $('#search-reset').hide();
+
+  $('#search-box-id').css('background-position', '1em center');
+
+  $('#search-box-id').on('blur', function() {
+    $('#search-box-id').css('background-position', '1em center');
+  });
+
+  $('#search-start').click(function(e) { executeQuery(); });
+  $('#search-reset').click(function(e) { $('#search-box-id').val(''); executeQuery(); });
+
+  $('#search-form-id').submit(function(e) {
+      console.log('submitting!');
+      executeQuery();
+      e.preventDefault();
+      });
+</script>
+-->
+    </div>
+
+      <div id="menu-id" class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Ansible Tower Administration Guide v3.4.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license-support.html">1. Tower Licensing, Updates, and Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#support">1.1. Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#trial-evaluation">1.2. Trial / Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#subscription-types">1.3. Subscription Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#node-counting-in-licenses">1.4. Node Counting in Licenses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#license-features">1.5. License Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#tower-component-licenses">1.6. Tower Component Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="init_script.html">2. Starting, Stopping, and Restarting Tower</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_inventory_script.html">3. Custom Inventory Scripts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="custom_inventory_script.html#writing-inventory-scripts">3.1. Writing Inventory Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scm-inv-source.html">4. Inventory File Importing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scm-inv-source.html#custom-dynamic-inventory-scripts">4.1. Custom Dynamic Inventory Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scm-inv-source.html#scm-inventory-source-fields">4.2. SCM Inventory Source Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-creds-assignment.html">5. Multi-Credential Assignment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#background">5.1. Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#important-changes">5.2. Important Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#launch-time-considerations">5.3. Launch Time Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#backwards-compatibility-concerns">5.4. Backwards Compatibility Concerns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#multi-vault-credentials">5.5. Multi-Vault Credentials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="management_jobs.html">6. Management Jobs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="management_jobs.html#removing-old-activity-stream-data">6.1. Removing Old Activity Stream Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management_jobs.html#removing-old-fact-system-tracking-data">6.2. Removing Old Fact (System Tracking) Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management_jobs.html#removing-old-job-history">6.3. Removing Old Job History</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">7. Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#setup-considerations">7.1. Setup Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#install-and-configure">7.2. Install and Configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#configuring-instances-and-instance-groups-from-the-api">7.3. Configuring Instances and Instance Groups from the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#instance-group-policies">7.4. Instance group policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#isolated-instance-groups">7.5. Isolated Instance Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#status-and-monitoring-via-browser-api">7.6. Status and Monitoring via Browser API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#instance-services-and-failure-behavior">7.7. Instance Services and Failure Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#job-runtime-behavior">7.8. Job Runtime Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#deprovision-instances-and-instance-groups">7.9. Deprovision Instances and Instance Groups</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="openshift_configuration.html">8. OpenShift Deployment and Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#tower-and-openshift-basics">8.1. Tower and OpenShift Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#configuration-options">8.2. Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#basic-configuration">8.3. Basic Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#resource-requests-and-request-planning">8.4. Resource Requests and Request Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#database-configuration-and-usage">8.5. Database Configuration and Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#backup-and-restore">8.6. Backup and Restore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#upgrading">8.7. Upgrading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#migrating">8.8. Migrating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#build-custom-virtual-environments">8.9. Build custom virtual environments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="proxy-support.html">9. Proxy Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="proxy-support.html#configure-known-proxies">9.1. Configure Known Proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxy-support.html#reverse-proxy">9.2. Reverse Proxy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="logfiles.html">10. Tower Logfiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">11. Tower Logging and Aggregation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="logging.html#loggers">11.1. Loggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html#set-up-logging-with-tower">11.2. Set Up Logging with Tower</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tower-manage.html">12. The <em>awx-manage</em> Utility</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#inventory-import">12.1. Inventory Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#cleanup-of-old-data">12.2. Cleanup of old data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#cluster-management">12.3. Cluster management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#token-and-session-management">12.4. Token and session management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configure_tower_in_tower.html">13. Tower Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#authentication">13.1. Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#jobs">13.2. Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#system">13.3. System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#user-interface">13.4. User Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#license">13.5. License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="proot_func_variables.html">14. Bubblewrap functionality and variables</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="oauth2_token_auth.html#">15. Token-Based Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#managing-oauth-2-applications-and-tokens">15.1. Managing OAuth 2 Applications and Tokens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#using-oauth-2-token-system-for-personal-access-tokens-pat">15.2. Using OAuth 2 Token System for Personal Access Tokens (PAT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#application-functions">15.3. Application Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#application-token-functions">15.4. Application Token Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="social_auth.html">16. Setting up Social Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="social_auth.html#google-oauth2-settings">16.1. Google OAuth2 Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="social_auth.html#github-oauth2-settings">16.2. GitHub OAuth2 Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="social_auth.html#organization-and-team-mapping">16.3. Organization and Team Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ent_auth.html">17. Setting up Enterprise Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#azure-active-directory-ad">17.1. Azure Active Directory (AD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#saml-authentication-settings">17.2. SAML Authentication Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#radius-authentication-settings">17.3. RADIUS Authentication Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#tacacs-authentication-settings">17.4. TACACS+ Authentication Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ldap_auth.html">18. Setting up LDAP Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ldap_auth.html#referrals">18.1. Referrals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ldap_auth.html#enabling-logging-for-ldap">18.2. Enabling Logging for LDAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ldap_auth.html#ldap-organization-and-team-mapping">18.3. LDAP Organization and Team Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentication_timeout.html">19. Changing the Default Timeout for Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kerberos_auth.html">20. User Authentication with Kerberos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kerberos_auth.html#ad-and-kerberos-credentials">20.1. AD and Kerberos Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kerberos_auth.html#working-with-kerberos-tickets">20.2. Working with Kerberos Tickets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="session_limits.html">21. Working with Session Limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backup_restore.html">22. Backing Up and Restoring Tower</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="backup_restore.html#backup-restore-playbooks">22.1. Backup/Restore Playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup_restore.html#backup-and-restoration-considerations">22.2. Backup and Restoration Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup_restore.html#backup-and-restore-for-clustered-environments">22.3. Backup and Restore for Clustered Environments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="custom_rebranding.html">23. Using Custom Logos in Ansible Tower</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">24. Troubleshooting Tower</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#error-logs">24.1. Error logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problems-connecting-to-your-host">24.2. Problems connecting to your host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#unable-to-login-to-tower-via-http">24.3. Unable to login to Tower via HTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#websockets-port-for-live-events-not-working">24.4. WebSockets port for live events not working</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problems-running-a-playbook">24.5. Problems running a playbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problems-when-running-a-job">24.6. Problems when running a job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#playbooks-aren-t-showing-up-in-the-job-template-drop-down">24.7. Playbooks aren&#8217;t showing up in the &#8220;Job Template&#8221; drop-down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#playbook-stays-in-pending">24.8. Playbook stays in pending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#cancel-a-tower-job">24.9. Cancel a Tower job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#reusing-an-external-database-causes-installations-to-fail">24.10. Reusing an external database causes installations to fail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#private-ec2-vpc-instances-in-tower-inventory">24.11. Private EC2 VPC Instances in Tower Inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#troubleshooting-error-provided-hosts-list-is-empty">24.12. Troubleshooting &#8220;Error: provided hosts list is empty&#8221;</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tipsandtricks.html">25. Tower Tips and Tricks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-the-tower-cli-tool">25.1. Using the Tower CLI Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#launching-a-job-template-via-the-api">25.2. Launching a Job Template via the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#tower-cli-job-template-launching">25.3. <code class="docutils literal"><span class="pre">tower-cli</span></code> Job Template Launching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#changing-the-tower-admin-password">25.4. Changing the Tower Admin Password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#creating-a-tower-admin-from-the-commandline">25.5. Creating a Tower Admin from the commandline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#setting-up-a-jump-host-to-use-with-tower">25.6. Setting up a jump host to use with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#view-ansible-outputs-for-json-commands-when-using-tower">25.7. View Ansible outputs for JSON commands when using Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#locate-and-configure-the-ansible-configuration-file">25.8. Locate and configure the Ansible configuration file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#view-a-listing-of-all-ansible-variables">25.9. View a listing of all ansible_ variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-virtualenv-with-at">25.10. Using virtualenv with Ansible Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#configuring-the-towerhost-hostname-for-notifications">25.11. Configuring the <code class="docutils literal"><span class="pre">towerhost</span></code> hostname for notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#launching-jobs-with-curl">25.12. Launching Jobs with curl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#dynamic-inventory-and-private-ip-addresses">25.13. Dynamic Inventory and private IP addresses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#filtering-instances-returned-by-the-dynamic-inventory-sources-in-tower">25.14. Filtering instances returned by the dynamic inventory sources in Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-an-unreleased-module-from-ansible-source-with-tower">25.15. Using an unreleased module from Ansible source with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-callback-plugins-with-tower">25.16. Using callback plugins with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#connecting-to-windows-with-winrm">25.17. Connecting to Windows with winrm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#importing-existing-inventory-files-and-host-group-vars-into-tower">25.18. Importing existing inventory files and host/group vars into Tower</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="towercli.html">26. Introduction to <strong>tower-cli</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#license">26.1. License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#capabilities">26.2. Capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#installation">26.3. Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#configuration">26.4. Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usability_data_collection.html">27. Usability Analytics and Data Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postface.html">28. Postface</a></li>
+</ul>
+
+        
+
+<div class="DocSite-sideNav ansibleNav">
+    <ul class="">
+    <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+    <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+    <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+    <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    </ul>
+</div>
+
+    <!-- changeable widget -->
+    <div id="sideBanner">
+    <br/>
+    <a href="http://www.ansible.com/tower-docs-left?utm_source=docs">
+<img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-left-rail.png" />
+    </a>
+</div>
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="https://docs.ansible.com/">Ansible Tower Administration Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+
+    <!--        <div class="DocSiteBanner">
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-left.png">
+                </a>
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-right.png">
+                </a>
+            </div> -->
+
+          <ul class="wy-breadcrumbs">
+    <li><a href="http://docs.ansible.com/" <title>Ansible Docs Home</title></a>&raquo;</li>
+    <li><a href="http://docs.ansible.com/ansible-tower/" <title>Ansible Tower Docs</title></a>&raquo;</li>
+    <li><a href="index.html" <title> &mdash; Ansible Tower Administration Guide v3.4.3</title></a> &raquo;</li>
+    <!--  <li><a href="">15. Token-Based Authentication</a></li> -->
+</ul>
+<hr/>
+          <div id="page-content">
+          
+  <div class="section" id="token-based-authentication">
+<span id="ag-oauth2-token-auth"></span><h1>15. Token-Based Authentication<a class="headerlink" href="oauth2_token_auth.html#token-based-authentication" title="Permalink to this headline">¶</a></h1>
+<p id="index-0">Starting with Ansible Tower 3.3, OAuth 2 is used for token-based authentication. You can manage OAuth tokens as well as applications, a server-side representation of API clients used to generate tokens. By including an OAuth token as part of the HTTP authentication header, you can authenticate yourself and adjust the degree of restrictive permissions in addition to the base RBAC permissions. Refer to <a class="reference external" href="https://tools.ietf.org/html/rfc6749">RFC 6749</a> for more details of OAuth 2 specification.</p>
+<blockquote>
+<div></div></blockquote>
+<div class="section" id="managing-oauth-2-applications-and-tokens">
+<h2>15.1. Managing OAuth 2 Applications and Tokens<a class="headerlink" href="oauth2_token_auth.html#managing-oauth-2-applications-and-tokens" title="Permalink to this headline">¶</a></h2>
+<p>Applications and tokens can be managed as a top-level resource at <code class="docutils literal"><span class="pre">/api/&lt;version&gt;/applications</span></code> and <code class="docutils literal"><span class="pre">/api/&lt;version&gt;/tokens</span></code>. These resources can also be accessed respective to the user at <code class="docutils literal"><span class="pre">/api/&lt;version&gt;/users/N/&lt;resource&gt;</span></code>. Applications can be created by making a <strong>POST</strong> to either <code class="docutils literal"><span class="pre">api/&lt;version&gt;/applications</span></code> or <code class="docutils literal"><span class="pre">/api/&lt;version&gt;/users/N/applications</span></code>.</p>
+<p>Each OAuth 2 application represents a specific API client on the server side. For an API client to use the API via an application token, it must first have an application and issue an access token. Individual applications are accessible via their primary keys: <code class="docutils literal"><span class="pre">/api/&lt;version&gt;/applications/&lt;pk&gt;/</span></code>. Here is a typical application:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;o_auth2_application&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v2/applications/2/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;related&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;tokens&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v2/applications/2/tokens/&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;summary_fields&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;organization&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;user_capabilities&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;delete&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;tokens&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;results&quot;</span><span class="p">:</span> <span class="p">[]</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-07-02T21:16:45.824400Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;modified&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-07-02T21:16:45.824514Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My Application&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Ecmc6RjjhKUOWJzDYEP8TZ35P3dvsKt0AKdIjgHV&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;client_secret&quot;</span><span class="p">:</span> <span class="s2">&quot;7Ft7ym8MpE54yWGUNvxxg6KqGwPFsyhYn9QQfYHlgBxai74Qp1GE4zsvJduOfSFkTfWFnPzYpxqcRsy1KacD0HH0vOAQUDJDCidByMiUIH4YQKtGFM1zE1dACYbpN44E&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;client_type&quot;</span><span class="p">:</span> <span class="s2">&quot;confidential&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;redirect_uris&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;authorization_grant_type&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;skip_authorization&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;organization&quot;</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As shown in the example above, <code class="docutils literal"><span class="pre">name</span></code> is the human-readable identifier of the application. The rest of the other fields, like <code class="docutils literal"><span class="pre">client_id</span></code> and <code class="docutils literal"><span class="pre">redirect_uris</span></code>, are mainly used for OAuth2 authorization, which is covered later in <a class="reference internal" href="oauth2_token_auth.html#ag-use-oauth-pat"><span class="std std-ref">Using OAuth 2 Token System for Personal Access Tokens (PAT)</span></a>.</p>
+<p>The values for the <code class="docutils literal"><span class="pre">client_id</span></code> and <code class="docutils literal"><span class="pre">client_secret</span></code> fields are generated during creation and are non-editable identifiers of applications, while <code class="docutils literal"><span class="pre">organization</span></code> and <code class="docutils literal"><span class="pre">authorization_grant_type</span></code> are required upon creation and become non-editable.</p>
+<div class="section" id="access-rules-for-applications">
+<h3>15.1.1. Access Rules for Applications<a class="headerlink" href="oauth2_token_auth.html#access-rules-for-applications" title="Permalink to this headline">¶</a></h3>
+<p>Access rules for applications are as follows:</p>
+<ul class="simple">
+<li>System administrators can view and manipulate all applications in the system</li>
+<li>Organization administrators can view and manipulate all applications belonging to Organization members</li>
+<li>Other users can only view, update, and delete their own applications, but cannot create any new applications</li>
+</ul>
+<p>Tokens, on the other hand, are resources used to actually authenticate incoming requests and mask the permissions of the underlying user. There are two ways of creating a token:</p>
+<ul class="simple">
+<li>POSTing to the <code class="docutils literal"><span class="pre">/api/v2/tokens/</span></code> endpoint by providing <code class="docutils literal"><span class="pre">application</span></code> and <code class="docutils literal"><span class="pre">scope</span></code> fields to point to the related application and specify token scope</li>
+<li>POSTing to <code class="docutils literal"><span class="pre">/api/v2/applications/&lt;pk&gt;/tokens/</span></code> by providing only <code class="docutils literal"><span class="pre">scope</span></code>, while the parent application will be automatically linked</li>
+</ul>
+<p>Individual tokens will be accessible via their primary keys: <code class="docutils literal"><span class="pre">/api/&lt;version&gt;/tokens/&lt;pk&gt;/</span></code>. Here is an example of a typical token:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;o_auth2_access_token&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v2/tokens/4/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;related&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v2/users/1/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v2/applications/1/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;activity_stream&quot;</span><span class="p">:</span> <span class="s2">&quot;/api/v2/tokens/4/activity_stream/&quot;</span>
+<span class="p">},</span>
+    <span class="s2">&quot;summary_fields&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Default application for root&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;mcU5J5uGQcEQMgAZyr5JUnM3BqBJpgbgL9fLOVch&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-02-23T14:39:32.618932Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;modified&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-02-23T14:39:32.643626Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;App Token Test&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;*************&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;refresh_token&quot;</span><span class="p">:</span> <span class="s2">&quot;*************&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;expires&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-02-24T00:39:32.618279Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;read&quot;</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>For an OAuth 2 token, the only fully editable fields are <code class="docutils literal"><span class="pre">scope</span></code> and <code class="docutils literal"><span class="pre">description</span></code>. The <code class="docutils literal"><span class="pre">application</span></code> field is non-editable on update, and all other fields are entirely non-editable, and are auto-populated during creation, as follows:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">user</span></code> field corresponds to the user the token is created for, and in this case, is also the user creating the token</li>
+<li><code class="docutils literal"><span class="pre">expires</span></code> is generated according to the Tower configuration setting <code class="docutils literal"><span class="pre">OAUTH2_PROVIDER</span></code></li>
+<li><code class="docutils literal"><span class="pre">token</span></code> and <code class="docutils literal"><span class="pre">refresh_token</span></code> are auto-generated to be non-clashing random strings</li>
+</ul>
+<p>Both application tokens and personal access tokens are shown at the <code class="docutils literal"><span class="pre">/api/v2/tokens/</span></code> endpoint. The <code class="docutils literal"><span class="pre">application</span></code> field in the personal access tokens is always <strong>null</strong>. This is a good way to differentiate the two types of tokens.</p>
+</div>
+<div class="section" id="access-rules-for-tokens">
+<h3>15.1.2. Access rules for tokens<a class="headerlink" href="oauth2_token_auth.html#access-rules-for-tokens" title="Permalink to this headline">¶</a></h3>
+<p>Access rules for tokens are as follows:</p>
+<ul class="simple">
+<li>Users can create a token if they are able to view the related application; and are also able to create a personal token for themselves</li>
+<li>System administrators are able to view and manipulate every token in the system</li>
+<li>Organization administrators are able to view and manipulate all tokens belonging to Organization members</li>
+<li>System Auditors can view all tokens and applications</li>
+<li>Other normal users are only able to view and manipulate their own tokens</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Users can only view the token or refresh the token value at the time of creation only.</p>
+</div>
+</div>
+</div>
+<div class="section" id="using-oauth-2-token-system-for-personal-access-tokens-pat">
+<span id="ag-use-oauth-pat"></span><h2>15.2. Using OAuth 2 Token System for Personal Access Tokens (PAT)<a class="headerlink" href="oauth2_token_auth.html#using-oauth-2-token-system-for-personal-access-tokens-pat" title="Permalink to this headline">¶</a></h2>
+<p>The most common use of OAuth 2 is authenticating users. The <code class="docutils literal"><span class="pre">token</span></code> field of a token is used as part of HTTP authentication header, in the format of <code class="docutils literal"><span class="pre">Authorization:</span> <span class="pre">Bearer</span> <span class="pre">&lt;token</span> <span class="pre">field</span> <span class="pre">value&gt;</span></code>. The <em>Bearer</em> token can be obtained by issuing a curl command at the <code class="docutils literal"><span class="pre">/api/o/token/</span></code> endpoint, as shown in this example below:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">ku</span> <span class="o">&lt;</span><span class="n">user</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">password</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> \
+<span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{&quot;description&quot;:&quot;Tower CLI&quot;, &quot;application&quot;:null, &quot;scope&quot;:&quot;write&quot;}&#39;</span> \
+<span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">tower</span><span class="o">&gt;/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">personal_tokens</span><span class="o">/</span> <span class="o">|</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">json</span><span class="o">.</span><span class="n">tool</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The special OAuth 2 endpoints only support using the <code class="docutils literal"><span class="pre">x-www-form-urlencoded</span></code> <strong>Content-type</strong>, so as a result, none of the <code class="docutils literal"><span class="pre">api/o/*</span></code> endpoints accept <code class="docutils literal"><span class="pre">application/json</span></code>.</p>
+</div>
+<p>Following is an example of using the personal token to access an API endpoint using curl:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">k</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Authorization: Bearer &lt;token&gt;&quot;</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span>  <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">tower</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">job_templates</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="n">launch</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>According to OAuth 2 specification, users can acquire, revoke, and refresh an access token.  In Ansible Tower, the equivalent, and most efficient way to refresh a token, is create a token, delete a token, and then quickly followed by creating a new one. To revoke a token, simply delete it in the Applications configuration of the user interface, or at the token&#8217;s detail page in the API.</p>
+<p>In Ansible Tower, the OAuth 2 system is built on top of the <a class="reference external" href="https://django-oauth-toolkit.readthedocs.io/en/latest/">Django Oauth Toolkit</a>, which provides dedicated endpoints for authorizing, revoking, and refreshing tokens. Tower implements them and puts related endpoints under the <code class="docutils literal"><span class="pre">/api/o/</span></code> endpoint, which also provides detailed examples on some typical usage of those endpoints.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">/api/o/</span></code> endpoints can only be used for application tokens, and are not valid for personal access tokens.</p>
+</div>
+<div class="section" id="token-scope-mask-over-rbac-system">
+<h3>15.2.1. Token scope mask over RBAC system<a class="headerlink" href="oauth2_token_auth.html#token-scope-mask-over-rbac-system" title="Permalink to this headline">¶</a></h3>
+<p>The scope of an OAuth 2 token is a space-separated string composed of valid scope keywords, &#8216;read&#8217; and &#8216;write&#8217;. These keywords are configurable and used to specify permission level of the authenticated API client. Read and write scopes provide a mask layer over the Role-Based Access Control (RBAC) permission system of Ansible Tower. Specifically, a &#8216;write&#8217; scope gives the authenticated user the full permissions the RBAC system provides, while a &#8216;read&#8217; scope gives the authenticated user only read permissions the RBAC system provides. Note that &#8216;write&#8217; implies &#8216;read&#8217; as well.</p>
+<p>For example, if you have administrative permissions to a job template, you can view, modify, launch, and delete the job template if authenticated via session or basic authentication. In contrast, if you are authenticated using OAuth 2 token, and the related token scope is &#8216;read&#8217;, you can only view, but not manipulate or launch the job template, despite being an administrator. If the token scope is &#8216;write&#8217; or &#8216;read write&#8217;, you can take full advantage of the job template as its administrator.</p>
+<p>To acquire and use a token, first create an application token:</p>
+<ol class="arabic simple">
+<li>Make an application with <code class="docutils literal"><span class="pre">authorization_grant_type</span></code> set to <code class="docutils literal"><span class="pre">password</span></code>. HTTP POST the following to the <code class="docutils literal"><span class="pre">/api/v2/applications/</span></code> endpoint (supplying your own organization ID):</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Admin Internal Application&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;For use by secure services &amp; clients. &quot;</span><span class="p">,</span>
+    <span class="s2">&quot;client_type&quot;</span><span class="p">:</span> <span class="s2">&quot;confidential&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;redirect_uris&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;authorization_grant_type&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;skip_authorization&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;organization&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">organization</span><span class="o">-</span><span class="nb">id</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Make a token and POST to the <code class="docutils literal"><span class="pre">/api/v2/tokens/</span></code> endpoint:</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;My Access Token&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">application</span><span class="o">-</span><span class="nb">id</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;write&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This returns a &lt;token-value&gt; that you can use to authenticate with for future requests (this will not be shown again).</p>
+<ol class="arabic simple" start="3">
+<li>Use the token to access a resource. The following uses curl as an example:</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Authorization: Bearer &lt;token-value&gt;&quot;</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="o">-</span><span class="n">X</span> <span class="n">GET</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">tower</span><span class="o">&gt;/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">users</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">-k</span></code> flag may be needed if you have not set up a CA yet and are using SSL.</p>
+<p>To revoke a token, you can make a DELETE on the detail page for that token, using that token&#8217;s ID. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">ku</span> <span class="o">&lt;</span><span class="n">user</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">password</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">X</span> <span class="n">DELETE</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">tower</span><span class="o">&gt;/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">tokens</span><span class="o">/&lt;</span><span class="n">pk</span><span class="o">&gt;/</span>
+</pre></div>
+</div>
+<p>Similarly, using a token:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Authorization: Bearer &lt;token-value&gt;&quot;</span> <span class="o">-</span><span class="n">X</span> <span class="n">DELETE</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">tower</span><span class="o">&gt;/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">tokens</span><span class="o">/&lt;</span><span class="n">pk</span><span class="o">&gt;/</span> <span class="o">-</span><span class="n">k</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="application-functions">
+<span id="ag-oauth2-token-auth-grant-types"></span><h2>15.3. Application Functions<a class="headerlink" href="oauth2_token_auth.html#application-functions" title="Permalink to this headline">¶</a></h2>
+<p>This page lists OAuth 2 utility endpoints used for authorization, token refresh, and revoke. Endpoints other than <code class="docutils literal"><span class="pre">/api/o/authorize/</span></code> are not meant to be used in browsers and do not support HTTP GET. The endpoints prescribed here strictly follow RFC specifications for OAuth 2, so use that for detailed reference. The <code class="docutils literal"><span class="pre">implicit</span></code> grant type can only be used to acquire an access token if you are already logged in via session authentication, as that confirms that you are authorized to create an access token. The following is an example of the typical usage of these endpoints in Tower, in particular, when creating an application using various grant types:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Authorization Code</li>
+<li>Implicit</li>
+<li>Password</li>
+</ul>
+</div></blockquote>
+<div class="section" id="application-using-authorization-code-grant-type">
+<h3>15.3.1. Application using <code class="docutils literal"><span class="pre">authorization</span> <span class="pre">code</span></code> grant type<a class="headerlink" href="oauth2_token_auth.html#application-using-authorization-code-grant-type" title="Permalink to this headline">¶</a></h3>
+<p>The application <code class="docutils literal"><span class="pre">authorization</span> <span class="pre">code</span></code> grant type is intended to be used when the application is executing on the server. To create an application named <em>AuthCodeApp</em> with the <code class="docutils literal"><span class="pre">authorization-code</span></code> grant type, perform a POST to the <code class="docutils literal"><span class="pre">/api/v2/applications/</span></code> endpoint:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;AuthCodeApp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;client_type&quot;</span><span class="p">:</span> <span class="s2">&quot;confidential&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;redirect_uris&quot;</span><span class="p">:</span> <span class="s2">&quot;http://&lt;tower&gt;/api/v2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;authorization_grant_type&quot;</span><span class="p">:</span> <span class="s2">&quot;authorization-code&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;skip_authorization&quot;</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The workflow that occurs when you issue a <strong>GET</strong> to the <code class="docutils literal"><span class="pre">authorize</span></code> endpoint from the client application with the <code class="docutils literal"><span class="pre">response_type</span></code>, <code class="docutils literal"><span class="pre">client_id</span></code>, <code class="docutils literal"><span class="pre">redirect_uris</span></code>, and <code class="docutils literal"><span class="pre">scope</span></code>:</p>
+<ol class="arabic simple">
+<li>Tower responds with the authorization code and status to the <code class="docutils literal"><span class="pre">redirect_uri</span></code> specified in the application.</li>
+<li>The client application then makes a <strong>POST</strong> to the <code class="docutils literal"><span class="pre">api/o/token/</span></code> endpoint on Tower with the <code class="docutils literal"><span class="pre">code</span></code>, <code class="docutils literal"><span class="pre">client_id</span></code>, <code class="docutils literal"><span class="pre">client_secret</span></code>, <code class="docutils literal"><span class="pre">grant_type</span></code>, and <code class="docutils literal"><span class="pre">redirect_uri</span></code>.</li>
+<li>Tower responds with the <code class="docutils literal"><span class="pre">access_token</span></code>, <code class="docutils literal"><span class="pre">token_type</span></code>, <code class="docutils literal"><span class="pre">refresh_token</span></code>, and <code class="docutils literal"><span class="pre">expires_in</span></code>.</li>
+</ol>
+<p>Refer to <a class="reference external" href="http://django-oauth-toolkit.readthedocs.io/en/latest/tutorial/tutorial_01.html#test-your-authorization-server">Django&#8217;s Test Your Authorization Server</a> toolkit to test this flow.</p>
+<blockquote>
+<div></div></blockquote>
+</div>
+<div class="section" id="application-using-implicit-grant-type">
+<h3>15.3.2. Application using <code class="docutils literal"><span class="pre">implicit</span></code> grant type<a class="headerlink" href="oauth2_token_auth.html#application-using-implicit-grant-type" title="Permalink to this headline">¶</a></h3>
+<p>An <code class="docutils literal"><span class="pre">implicit</span></code> grant type is used when a single page web application can&#8217;t keep a <code class="docutils literal"><span class="pre">client_secret</span></code> secure. This method skips the authorization code part of the flow and just returns an access token. The following supposes the application administrator&#8217;s app of grant type is <code class="docutils literal"><span class="pre">implicit</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;related&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&#39;s app&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;L0uQQWW8pKX51hoqIRQGsuqmIdPi2AcXZ9EJRGmj&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;client_secret&quot;</span><span class="p">:</span> <span class="s2">&quot;9Wp4dUrUsigI8J15fQYJ3jn0MJHLkAjyw7ikBsABeWTNJbZwy7eB2Xro9ykYuuygerTPQ2gIF2DCTtN3kurkt0Me3AhanEw6peRNvNLs1NNfI4f53mhX8zo5JQX0BKy5&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;client_type&quot;</span><span class="p">:</span> <span class="s2">&quot;confidential&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;redirect_uris&quot;</span><span class="p">:</span> <span class="s2">&quot;http://&lt;tower&gt;/api/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;authorization_grant_type&quot;</span><span class="p">:</span> <span class="s2">&quot;implicit&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;skip_authorization&quot;</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the API browser, first make sure you are logged in via session auth, then visit the authorization endpoint with the given parameters:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>http://localhost:8013/api/o/authorize/?response_type=token&amp;client_id=L0uQQWW8pKX51hoqIRQGsuqmIdPi2AcXZ9EJRGmj&amp;scope=read
+</pre></div>
+</div>
+<p>This is case, the <code class="docutils literal"><span class="pre">client_id</span></code> must be the same as the <code class="docutils literal"><span class="pre">client_id</span></code> field of the underlying application. On success, an authorization page displays with a prompt, asking you to grant or deny the access token. After you click <strong>grant</strong>, the API browser will POST to the same endpoint with the same parameters in the POST body, on success, a &#8220;302 redirect&#8221; will be returned:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">302</span> <span class="n">Found</span>
+<span class="n">Connection</span><span class="p">:</span><span class="n">keep</span><span class="o">-</span><span class="n">alive</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Language</span><span class="p">:</span><span class="n">en</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span><span class="mi">0</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span><span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">Date</span><span class="p">:</span><span class="n">Tue</span><span class="p">,</span> <span class="mi">05</span> <span class="n">Dec</span> <span class="mi">2017</span> <span class="mi">20</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">19</span> <span class="n">GMT</span>
+<span class="n">Location</span><span class="p">:</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8013</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="c1">#access_token=0lVJJkolFTwYawHyGkk7NTmSKdzBen&amp;token_type=Bearer&amp;state=&amp;expires_in=315360000000&amp;scope=read</span>
+<span class="n">Server</span><span class="p">:</span><span class="n">nginx</span><span class="o">/</span><span class="mf">1.12</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">Strict</span><span class="o">-</span><span class="n">Transport</span><span class="o">-</span><span class="n">Security</span><span class="p">:</span><span class="nb">max</span><span class="o">-</span><span class="n">age</span><span class="o">=</span><span class="mi">15768000</span>
+<span class="n">Vary</span><span class="p">:</span><span class="n">Accept</span><span class="o">-</span><span class="n">Language</span><span class="p">,</span> <span class="n">Cookie</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Tokens created with implicit applications do not have a refresh token.</p>
+</div>
+</div>
+<div class="section" id="application-using-password-grant-type">
+<h3>15.3.3. Application using <code class="docutils literal"><span class="pre">password</span></code> grant type<a class="headerlink" href="oauth2_token_auth.html#application-using-password-grant-type" title="Permalink to this headline">¶</a></h3>
+<p>This type is also called the <code class="docutils literal"><span class="pre">resource</span> <span class="pre">owner</span> <span class="pre">credentials</span> <span class="pre">grant</span></code>. This is ideal for users who have native access to the web app and should be used when the client is the Resource owner. The following supposes an application, &#8216;Default Application&#8217; with grant type <code class="docutils literal"><span class="pre">password</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;application&quot;</span><span class="p">,</span>
+    <span class="o">...</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Default Application&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;gwSPoasWSdNkMDtBN3Hu2WYQpPWCO9SwUEsKK22l&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;client_secret&quot;</span><span class="p">:</span> <span class="s2">&quot;fI6ZpfocHYBGfm1tP92r0yIgCyfRdDQt0Tos9L8a4fNsJjQQMwp9569eIaUBsaVDgt2eiwOGe0bg5m5vCSstClZmtdy359RVx2rQK5YlIWyPlrolpt2LEpVeKXWaiybo&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;client_type&quot;</span><span class="p">:</span> <span class="s2">&quot;confidential&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;redirect_uris&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;authorization_grant_type&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;skip_authorization&quot;</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Logging in is not required for <code class="docutils literal"><span class="pre">password</span></code> grant type, so you can simply use curl to acquire a personal access token through the <code class="docutils literal"><span class="pre">/api/o/token/</span></code> endpoint:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> \
+<span class="o">-</span><span class="n">d</span> <span class="s2">&quot;grant_type=password&amp;username=&lt;username&gt;&amp;password=&lt;password&gt;&amp;scope=read&quot;</span> \
+<span class="o">-</span><span class="n">u</span> <span class="s2">&quot;gwSPoasWSdNkMDtBN3Hu2WYQpPWCO9SwUEsKK22l:fI6ZpfocHYBGfm1tP92r0yIgCyfRdDQt0Tos9L8a4fNsJjQQMwp9569e</span>
+<span class="n">IaUBsaVDgt2eiwOGe0bg5m5vCSstClZmtdy359RVx2rQK5YlIWyPlrolpt2LEpVeKXWaiybo</span><span class="s2">&quot; </span><span class="se">\</span>
+<span class="s2">http://&lt;tower&gt;/api/o/token/ -i</span>
+</pre></div>
+</div>
+<p>In the above POST request, parameters, <code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> are the username and password of the related Tower user of the underlying application, and the authentication information is of format <code class="docutils literal"><span class="pre">&lt;client_id&gt;:&lt;client_secret&gt;</span></code>, where <code class="docutils literal"><span class="pre">client_id</span></code> and <code class="docutils literal"><span class="pre">client_secret</span></code> are the corresponding fields of the underlying application.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The special OAuth 2 endpoints only support using the <code class="docutils literal"><span class="pre">x-www-form-urlencoded</span></code> <strong>Content-type</strong>, so as a result, none of the <code class="docutils literal"><span class="pre">api/o/*</span></code> endpoints accept <code class="docutils literal"><span class="pre">application/json</span></code>.</p>
+</div>
+<p>Upon success, a response displays in JSON format containing the access token, refresh token and other information:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
+<span class="n">Server</span><span class="p">:</span> <span class="n">nginx</span><span class="o">/</span><span class="mf">1.12</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">05</span> <span class="n">Dec</span> <span class="mi">2017</span> <span class="mi">16</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">09</span> <span class="n">GMT</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">163</span>
+<span class="n">Connection</span><span class="p">:</span> <span class="n">keep</span><span class="o">-</span><span class="n">alive</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Language</span><span class="p">:</span> <span class="n">en</span>
+<span class="n">Vary</span><span class="p">:</span> <span class="n">Accept</span><span class="o">-</span><span class="n">Language</span><span class="p">,</span> <span class="n">Cookie</span>
+<span class="n">Pragma</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">cache</span>
+<span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">store</span>
+<span class="n">Strict</span><span class="o">-</span><span class="n">Transport</span><span class="o">-</span><span class="n">Security</span><span class="p">:</span> <span class="nb">max</span><span class="o">-</span><span class="n">age</span><span class="o">=</span><span class="mi">15768000</span>
+
+<span class="p">{</span><span class="s2">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;9epHOqHhnXUcgYK8QanOmUQPSgX92g&quot;</span><span class="p">,</span> <span class="s2">&quot;token_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer&quot;</span><span class="p">,</span> <span class="s2">&quot;expires_in&quot;</span><span class="p">:</span> <span class="mi">315360000000</span><span class="p">,</span> <span class="s2">&quot;refresh_token&quot;</span><span class="p">:</span> <span class="s2">&quot;jMRX6QvzOTf046KHee3TU5mT3nyXsz&quot;</span><span class="p">,</span> <span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;read&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="application-token-functions">
+<h2>15.4. Application Token Functions<a class="headerlink" href="oauth2_token_auth.html#application-token-functions" title="Permalink to this headline">¶</a></h2>
+<p>This section describes the refresh and revoke functions associated with tokens. Everything that follows (Refreshing and revoking tokens at the /api/o/ endpoints) can currently only be done with application tokens. However, tokens created with implicit applications do not have a refresh token.</p>
+<div class="section" id="refresh-an-existing-access-token">
+<h3>15.4.1. Refresh an existing access token<a class="headerlink" href="oauth2_token_auth.html#refresh-an-existing-access-token" title="Permalink to this headline">¶</a></h3>
+<p>The following example shows an existing access token with a refresh token provided:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;access_token&quot;</span><span class="p">,</span>
+    <span class="o">...</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="s2">&quot;omMFLk7UKpB36WN2Qma9H3gbwEBSOc&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;refresh_token&quot;</span><span class="p">:</span> <span class="s2">&quot;AL0NK9TTpv0qp54dGbC4VUZtsZ9r8z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="s2">&quot;expires&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-12-06T03:46:17.087022Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;read write&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">/api/o/token/</span></code> endpoint is used for refreshing the access token:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> \
+    <span class="o">-</span><span class="n">d</span> <span class="s2">&quot;grant_type=refresh_token&amp;refresh_token=AL0NK9TTpv0qp54dGbC4VUZtsZ9r8z&quot;</span> \
+    <span class="o">-</span><span class="n">u</span> <span class="s2">&quot;gwSPoasWSdNkMDtBN3Hu2WYQpPWCO9SwUEsKK22l:fI6ZpfocHYBGfm1tP92r0yIgCyfRdDQt0Tos9L8a4fNsJjQQMwp9569eIaUBsaVDgt2eiwOGe0bg5m5vCSstClZmtdy359RVx2rQK5YlIWyPlrolpt2LEpVeKXWaiybo&quot;</span> \
+    <span class="n">http</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">tower</span><span class="o">&gt;/</span><span class="n">api</span><span class="o">/</span><span class="n">o</span><span class="o">/</span><span class="n">token</span><span class="o">/</span> <span class="o">-</span><span class="n">i</span>
+</pre></div>
+</div>
+<p>In the above POST request, <code class="docutils literal"><span class="pre">refresh_token</span></code> is provided by <code class="docutils literal"><span class="pre">refresh_token</span></code> field of the access token above that. The authentication information is of format <code class="docutils literal"><span class="pre">&lt;client_id&gt;:&lt;client_secret&gt;</span></code>, where <code class="docutils literal"><span class="pre">client_id</span></code> and <code class="docutils literal"><span class="pre">client_secret</span></code> are the corresponding fields of the underlying related application of the access token.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The special OAuth 2 endpoints only support using the <code class="docutils literal"><span class="pre">x-www-form-urlencoded</span></code> <strong>Content-type</strong>, so as a result, none of the <code class="docutils literal"><span class="pre">api/o/*</span></code> endpoints accept <code class="docutils literal"><span class="pre">application/json</span></code>.</p>
+</div>
+<p>Upon success, a response displays in JSON format containing the new (refreshed) access token with the same scope information as the previous one:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
+<span class="n">Server</span><span class="p">:</span> <span class="n">nginx</span><span class="o">/</span><span class="mf">1.12</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">05</span> <span class="n">Dec</span> <span class="mi">2017</span> <span class="mi">17</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">06</span> <span class="n">GMT</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">169</span>
+<span class="n">Connection</span><span class="p">:</span> <span class="n">keep</span><span class="o">-</span><span class="n">alive</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Language</span><span class="p">:</span> <span class="n">en</span>
+<span class="n">Vary</span><span class="p">:</span> <span class="n">Accept</span><span class="o">-</span><span class="n">Language</span><span class="p">,</span> <span class="n">Cookie</span>
+<span class="n">Pragma</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">cache</span>
+<span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">store</span>
+<span class="n">Strict</span><span class="o">-</span><span class="n">Transport</span><span class="o">-</span><span class="n">Security</span><span class="p">:</span> <span class="nb">max</span><span class="o">-</span><span class="n">age</span><span class="o">=</span><span class="mi">15768000</span>
+
+<span class="p">{</span><span class="s2">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;NDInWxGJI4iZgqpsreujjbvzCfJqgR&quot;</span><span class="p">,</span> <span class="s2">&quot;token_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer&quot;</span><span class="p">,</span> <span class="s2">&quot;expires_in&quot;</span><span class="p">:</span> <span class="mi">315360000000</span><span class="p">,</span> <span class="s2">&quot;refresh_token&quot;</span><span class="p">:</span> <span class="s2">&quot;DqOrmz8bx3srlHkZNKmDpqA86bnQkT&quot;</span><span class="p">,</span> <span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;read write&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Essentially, the refresh operation replaces the existing token by deleting the original and then immediately creating a new token with the same scope and related application as the original one. Verify that new token is present and the old one is deleted in the <code class="docutils literal"><span class="pre">/api/v2/tokens/</span></code> endpoint.</p>
+</div>
+<div class="section" id="revoke-an-access-token">
+<h3>15.4.2. Revoke an access token<a class="headerlink" href="oauth2_token_auth.html#revoke-an-access-token" title="Permalink to this headline">¶</a></h3>
+<p>Similarly, you can revoke an access token by using the <code class="docutils literal"><span class="pre">/api/o/revoke-token/</span></code> endpoint.</p>
+<p>Revoking an access token by this method is the same as deleting the token resource object, but it allows you to delete a token by providing its token value, and the associated <code class="docutils literal"><span class="pre">client_id</span></code> (and <code class="docutils literal"><span class="pre">client_secret</span></code> if the application is <code class="docutils literal"><span class="pre">confidential</span></code>). For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">-</span><span class="n">d</span> <span class="s2">&quot;token=rQONsve372fQwuc2pn76k3IHDCYpi7&quot;</span> \
+<span class="o">-</span><span class="n">u</span> <span class="s2">&quot;gwSPoasWSdNkMDtBN3Hu2WYQpPWCO9SwUEsKK22l:fI6ZpfocHYBGfm1tP92r0yIgCyfRdDQt0Tos9L8a4fNsJjQQMwp9569eIaUBsaVDgt2eiwOGe0bg5m5vCSstClZmtdy359RVx2rQK5YlIWyPlrolpt2LEpVeKXWaiybo&quot;</span> \
+<span class="n">http</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">tower</span><span class="o">&gt;/</span><span class="n">api</span><span class="o">/</span><span class="n">o</span><span class="o">/</span><span class="n">revoke_token</span><span class="o">/</span> <span class="o">-</span><span class="n">i</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The special OAuth 2 endpoints only support using the <code class="docutils literal"><span class="pre">x-www-form-urlencoded</span></code> <strong>Content-type</strong>, so as a result, none of the <code class="docutils literal"><span class="pre">api/o/*</span></code> endpoints accept <code class="docutils literal"><span class="pre">application/json</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <strong>Allow External Users to Create Oauth2 Tokens</strong> (<code class="docutils literal"><span class="pre">ALLOW_OAUTH2_FOR_EXTERNAL_USERS</span></code> in the API) setting is disabled by default. External users refer to users authenticated externally with a service like LDAP, or any of the other SSO services. This setting ensures external users cannot <em>create</em> their own tokens. If you enable then disable it, any tokens created by external users in the meantime will still exist, and are not automatically revoked.</p>
+</div>
+<p>This setting can be configured at the system-level in the Ansible Tower User Interface:</p>
+<img alt="_images/configure-tower-system-oauth2-tokens-toggle.png" src="configure-tower-system-oauth2-tokens-toggle.png" />
+<p>Upon success, a response of <code class="docutils literal"><span class="pre">200</span> <span class="pre">OK</span></code> displays. Verify the deletion by checking whether the token is present in the <code class="docutils literal"><span class="pre">/api/v2/tokens/</span></code> endpoint.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div id="search-results"><gcse:searchresults-only></gcse:searchresults-only></div>
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+        <a href="social_auth.html" class="btn btn-neutral float-right" title="16. Setting up Social Authentication"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="proot_func_variables.html" class="btn btn-neutral" title="14. Bubblewrap functionality and variables"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <p>
+    Copyright © 2019 Red Hat, Inc. 
+    <br>
+  </p>
+
+<p>
+  Red Hat Ansible Tower docs are generated using <A HREF="http://sphinx-doc.org/">Sphinx</A> using a theme provided by <a href="http://readthedocs.org">Read the Docs</a>.
+</p>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+<!-- begin analytics -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+        (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+        n.id=i;n.src = '//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+        e.parentNode.insertBefore(n, e);
+        })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+_satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

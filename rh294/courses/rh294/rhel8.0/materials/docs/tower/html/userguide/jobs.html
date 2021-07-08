@@ -1,0 +1,882 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <script type="text/javascript" src="https://www.redhat.com/dtm.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta class="swiftype" name="published_at" data-type="date" content="2019-03-26" /> 
+  <meta class="swiftype" name="version" data-type="string" content="3.4.3">
+
+
+  <!-- this ^ ^ is for the original publishing date only, never for minor pushes that aren't actual version bumps of the docs (this helps us keep our search rank weighting in swiftype, our search server, prioritized based on the dates of the releases themselves) -->
+
+  <script>
+  var url = window.location.href;
+  if(url.indexOf("latest") == -1){
+   var version = url.replace("http://docs.ansible.com/ansible-tower/","");
+   version = version.substring(0,url.indexOf("/"));
+   url = url.replace(version,"latest");
+  }
+  var canon = document.createElement('link');
+  canon.rel = "canonical";
+  canon.href = url;
+  document.head.appendChild(canon);
+  </script>
+
+  <!-- Google Tag Manager Data Layer -->
+  <script>
+   dataLayer = [];
+  </script>
+  <!-- End Google Tag Manager Data Layer -->
+
+  
+  <title>20. Jobs &mdash; Ansible Tower User Guide v3.4.3</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'./',
+        VERSION:'Ansible Tower 3.4.3',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript" src="underscore.js"></script>
+      <script type="text/javascript" src="doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="theme.min.css" type="text/css" />
+    <script type="text/javascript" src="theme.js"></script>
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Ansible Tower User Guide v3.4.3" href="index.html"/>
+        <link rel="next" title="21. Notifications" href="notifications.html"/>
+        <link rel="prev" title="19. Instance Groups" href="instance_groups.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+  <style>
+    .search-reset-start {
+        color: #463E3F;
+        float: right;
+        position: relative;
+        top: -25px;
+        left: -10px;
+        z-index: 10;
+     }
+     .search-reset-start:hover {
+        cursor: pointer;
+        color: #2980B9;
+     }
+     #search-box-id {
+        padding-right: 25px;
+     }
+  </style>
+
+  <!-- Google Code for Remarketing Tag
+  <script type="text/javascript">
+  /* <![CDATA[ */
+  var google_conversion_id = 972577926;
+  var google_custom_params = window.google_tag_params;
+  var google_remarketing_only = true;
+  /* ]]> */
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+  </script>
+  <noscript>
+    <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt=""
+              src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/972577926/?value=0&amp;guid=ON&amp;script=0"/>
+    </div>
+  </noscript>
+  End of Google Code for Remarketing Tag -->
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300'
+      rel='stylesheet' type='text/css'>
+
+  <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+
+  <script type='text/javascript'>
+    googletag.cmd.push(function() {
+      googletag.defineSlot('/1171614047/towerleft', [300, 250], 'div-gpt-ad-1453398530439-0').addService(googletag.pubads());
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
+  </script>
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+  <div class="DocSite-globalNav ansibleNav">
+        <ul>
+            <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+            <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+            <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+            <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+            <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+        </ul>
+    </div>
+
+<a class="DocSite-nav" href="http://docs.ansible.com/">
+  <img class="DocSiteNav-logo"
+    src="logo_invert.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">
+    Documentation
+  </div>
+</a> 
+
+
+
+
+<div class="wy-grid-for-nav">
+
+  
+ <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+        <a class="DocSiteProduct-header DocSiteProduct-header--tower"
+            href="http://docs.ansible.com/ansible-tower/">
+            <div class="DocSiteProduct-productName">
+                <div class="DocSiteProduct-logoText">
+                    ANSIBLE TOWER 
+                    <div class="DocSiteProduct-CurrentVersion" align="right">
+                      v3.4.3
+                  </div>
+                </div>
+            </div>
+        </a>
+        
+
+        <div class="DocSiteProduct-CheckVersionPara">
+          Are you using the latest and greatest version of Ansible Tower? Find the <a class="DocSiteProduct-versionheader" href="http://docs.ansible.com/ansible-tower/">Ansible Tower documentation</a> set which best matches your version of Tower.
+            </div>
+    </div>
+    <div class="wy-side-nav-search" style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+      <!-- <a href="index.html" class="icon icon-home"> Ansible Tower User Guide</a> -->
+      <!-- <form class="wy-form" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form> -->
+
+<!-- 
+<script>
+  (function() {
+    var cx = '004731659079655444432:zgjlf-tkhya';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script> -->
+
+<!-- <gcse:searchresults-only></gcse:searchresults-only> -->
+
+<!-- swiftype search script -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','Vcn_rXrPfye6ziaZJZRt','2.0.0');
+</script>
+
+<!-- <form id="search-form-id" action="">
+  <input type="text" class="st-default-search-input" name="query" placeholder="Search Tower Docs" id="search-box-id" /> 
+  <a class="search-reset-start" id="search-reset"><i class="fa fa-times"></i></a>
+  <a class="search-reset-start" id="search-start"><i class="fa fa-search"></i></a> 
+ </form> -->
+
+          
+
+
+<!-- <script type="text/javascript" src="http://www.google.com/cse/brand?form=search-form-id&inputbox=search-box-id"></script> -->
+
+<!-- 
+<script>
+  function executeQuery() {
+      var input = document.getElementById('search-box-id');
+      var element = google.search.cse.element.getElement('searchresults-only0');
+      element.resultsUrl = '/htmlout/search.html'
+      if (input.value == '') {
+          element.clearAllResults();
+          $('#page-content, .rst-footer-buttons, #search-start').show();
+          $('#search-results, #search-reset').hide();
+      } else {
+          $('#page-content, .rst-footer-buttons, #search-start').hide();
+          $('#search-results, #search-reset').show();
+          element.execute(input.value);
+      }
+      return false;
+      }
+
+  $('#search-reset').hide();
+
+  $('#search-box-id').css('background-position', '1em center');
+
+  $('#search-box-id').on('blur', function() {
+    $('#search-box-id').css('background-position', '1em center');
+  });
+
+  $('#search-start').click(function(e) { executeQuery(); });
+  $('#search-reset').click(function(e) { $('#search-box-id').val(''); executeQuery(); });
+
+  $('#search-form-id').submit(function(e) {
+      console.log('submitting!');
+      executeQuery();
+      e.preventDefault();
+      });
+</script>
+-->
+    </div>
+
+      <div id="menu-id" class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Ansible Tower User Guide v3.4.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">1. Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#real-time-playbook-output-and-exploration">1.1. Real-time Playbook Output and Exploration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#push-button-automation">1.2. &#8220;Push Button&#8221; Automation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#enhanced-and-simplified-role-based-access-control-and-auditing">1.3. Enhanced and Simplified Role-Based Access Control and Auditing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#cloud-autoscaling-flexibility">1.4. Cloud &amp; Autoscaling Flexibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#the-ideal-restful-api">1.5. The Ideal RESTful API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#backup-and-restore">1.6. Backup and Restore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#ansible-galaxy-integration">1.7. Ansible Galaxy Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#inventory-support-for-openstack">1.8. Inventory Support for OpenStack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#remote-command-execution">1.9. Remote Command Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#system-tracking">1.10. System Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#integrated-notifications">1.11. Integrated Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#satellite-and-cloudforms-integration">1.12. Satellite and CloudForms Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#run-time-job-customization">1.13. Run-time Job Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#red-hat-insights-integration">1.14. Red Hat Insights Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#enhanced-tower-user-interface">1.15. Enhanced Tower User Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#custom-virtual-environments">1.16. Custom Virtual Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#authentication-enhancements">1.17. Authentication Enhancements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#cluster-management">1.18. Cluster Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#container-platform-support">1.19. Container Platform Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#workflow-enhancements">1.20. Workflow Enhancements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#job-distribution">1.21. Job Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#support-for-deployment-in-a-fips-enabled-environment">1.22. Support for deployment in a FIPS-enabled environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license-support.html">2. Tower Licensing, Updates, and Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#support">2.1. Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#trial-evaluation">2.2. Trial / Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#subscription-types">2.3. Subscription Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#node-counting-in-licenses">2.4. Node Counting in Licenses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#license-features">2.5. License Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#tower-component-licenses">2.6. Tower Component Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="logging_in.html">3. Logging In</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_license.html">4. Import a License</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="import_license.html#adding-a-tower-license-manually">4.1. Adding a Tower License Manually</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main_menu.html">5. The Tower User Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="main_menu.html#activity-streams">5.1. Activity Streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main_menu.html#views">5.2. Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main_menu.html#resources-and-access">5.3. Resources and Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main_menu.html#tower-administration-menu">5.4. Tower Administration Menu</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="search_sort.html">6. Search</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="search_sort.html#searching-tips">6.1. Searching Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search_sort.html#sort">6.2. Sort</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="organizations.html">7. Organizations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="organizations.html#creating-a-new-organization">7.1. Creating a New Organization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">8. Users</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="users.html#create-a-user">8.1. Create a User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#user-types-quick-view">8.2. User Types - Quick View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#users-organizations">8.3. Users - Organizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#users-teams">8.4. Users - Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#users-permissions">8.5. Users - Permissions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="teams.html">9. Teams</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="teams.html#create-a-team">9.1. Create a Team</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="credentials.html">10. Credentials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="credentials.html#understanding-how-credentials-work">10.1. Understanding How Credentials Work</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credentials.html#getting-started-with-credentials">10.2. Getting Started with Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credentials.html#add-a-new-credential">10.3. Add a New Credential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credentials.html#credential-types">10.4. Credential Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="credential_types.html">11. Custom Credential Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="credential_types.html#backwards-compatible-api-considerations">11.1. Backwards-Compatible API Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential_types.html#getting-started-with-credential-types">11.2. Getting Started with Credential Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential_types.html#create-a-new-credential-type">11.3. Create a New Credential Type</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="applications_auth.html">12. Applications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="applications_auth.html#getting-started-with-applications">12.1. Getting Started with Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="applications_auth.html#create-a-new-application">12.2. Create a new application</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">13. Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#add-a-new-project">13.1. Add a new project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#work-with-permissions">13.2. Work with Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#work-with-notifications">13.3. Work with Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#work-with-job-templates">13.4. Work with Job Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#work-with-schedules">13.5. Work with Schedules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inventories.html">14. Inventories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inventories.html#smart-inventories">14.1. Smart Inventories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inventories.html#add-a-new-inventory">14.2. Add a new inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inventories.html#running-ad-hoc-commands">14.3. Running Ad Hoc Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="job_templates.html">15. Job Templates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#create-a-job-template">15.1. Create a Job Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#add-permissions">15.2. Add Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#work-with-notifications">15.3. Work with Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#view-completed-jobs">15.4. View Completed Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#scheduling">15.5. Scheduling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#surveys">15.6. Surveys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#launch-a-job-template">15.7. Launch a Job Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#copy-a-job-template">15.8. Copy a Job Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#scan-job-templates">15.9. Scan Job Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#fact-caching">15.10. Fact Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#utilizing-cloud-credentials">15.11. Utilizing Cloud Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#provisioning-callbacks">15.12. Provisioning Callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#extra-variables">15.13. Extra Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="job_slices.html">16. Job Slicing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="job_slices.html#job-slice-considerations">16.1. Job slice considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_slices.html#job-slice-execution-behavior">16.2. Job slice execution behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_slices.html#search-job-slices">16.3. Search job slices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="workflows.html">17. Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="workflows.html#workflow-scenarios-and-considerations">17.1. Workflow scenarios and considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflows.html#extra-variables">17.2. Extra Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflows.html#workflow-states">17.3. Workflow States</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflows.html#role-based-access-controls">17.4. Role-Based Access Controls</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_templates.html">18. Workflow Job Templates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#create-a-workflow-template">18.1. Create a Workflow Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#work-with-permissions">18.2. Work with Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#work-with-notifications">18.3. Work with Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#view-completed-jobs">18.4. View Completed Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#work-with-schedules">18.5. Work with Schedules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#surveys">18.6. Surveys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#workflow-visualizer">18.7. Workflow Visualizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#launch-a-workflow-template">18.8. Launch a Workflow Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#copy-a-workflow-template">18.9. Copy a Workflow Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#extra-variables">18.10. Extra Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="instance_groups.html">19. Instance Groups</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="instance_groups.html#create-an-instance-group">19.1. Create an instance group</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="jobs.html#">20. Jobs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html#job-details-inventory-sync">20.1. Job Details - Inventory Sync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html#job-details-scm">20.2. Job Details - SCM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html#job-details-playbook-run">20.3. Job Details - Playbook Run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html#at-capacity-determination-and-job-impact">20.4. Ansible Tower Capacity Determination and Job Impact</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">21. Notifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#notifier-hierarchy">21.1. Notifier Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#workflow">21.2. Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#create-a-notification-template">21.3. Create a Notification Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#notification-types">21.4. Notification Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#configuring-the-towerhost-hostname">21.5. Configuring the <code class="docutils literal"><span class="pre">towerhost</span></code> hostname</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="insights.html">22. Setting up an Insights Project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="insights.html#create-insights-credential">22.1. Create Insights Credential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insights.html#create-an-insights-project">22.2. Create an Insights Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insights.html#create-insights-inventory">22.3. Create Insights Inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insights.html#create-a-scan-project">22.4. Create a Scan Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insights.html#create-a-scan-job-template">22.5. Create a Scan Job Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insights.html#remediate-insights-inventory">22.6. Remediate Insights Inventory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="best_practices.html">23. Best Practices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="best_practices.html#use-source-control">23.1. Use Source Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best_practices.html#ansible-file-and-directory-structure">23.2. Ansible file and directory structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best_practices.html#use-dynamic-inventory-sources">23.3. Use Dynamic Inventory Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best_practices.html#variable-management-for-inventory">23.4. Variable Management for Inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best_practices.html#autoscaling">23.5. Autoscaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best_practices.html#larger-host-counts">23.6. Larger Host Counts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best_practices.html#continuous-integration-continuous-deployment">23.7. Continuous integration / Continuous Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">24. Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security.html#playbook-access-and-information-sharing">24.1. Playbook Access and Information Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#role-based-access-controls">24.2. Role-Based Access Controls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#function-of-roles-editing-and-creating">24.3. Function of roles: editing and creating</a></li>
+</ul>
+</li>
+</ul>
+
+        
+
+<div class="DocSite-sideNav ansibleNav">
+    <ul class="">
+    <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+    <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+    <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+    <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    </ul>
+</div>
+
+    <!-- changeable widget -->
+    <div id="sideBanner">
+    <br/>
+    <a href="http://www.ansible.com/tower-docs-left?utm_source=docs">
+<img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-left-rail.png" />
+    </a>
+</div>
+
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="https://docs.ansible.com/">Ansible Tower User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+
+    <!--        <div class="DocSiteBanner">
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-left.png">
+                </a>
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-right.png">
+                </a>
+            </div> -->
+
+          <ul class="wy-breadcrumbs">
+    <li><a href="http://docs.ansible.com/" <title>Ansible Docs Home</title></a>&raquo;</li>
+    <li><a href="http://docs.ansible.com/ansible-tower/" <title>Ansible Tower Docs</title></a>&raquo;</li>
+    <li><a href="index.html" <title> &mdash; Ansible Tower User Guide v3.4.3</title></a> &raquo;</li>
+    <!--  <li><a href="">20. Jobs</a></li> -->
+</ul>
+<hr/>
+
+          <div id="page-content">
+          
+  <div class="section" id="jobs">
+<span id="ug-jobs"></span><h1>20. Jobs<a class="headerlink" href="jobs.html#jobs" title="Permalink to this headline">¶</a></h1>
+<p id="index-0">A <a class="reference external" href="http://docs.ansible.com/ansible-tower/3.4.3/html/installandreference/glossary.html#term-job" title="(in Ansible Tower Installation and Reference Guide v3.4.3)"><span class="xref std std-term">job</span></a> is an instance of Tower launching an Ansible playbook against an inventory of hosts.</p>
+<p>The Jobs link displays a list of jobs and their status&#8211;shown as completed successfully or failed, or as an active (running) job. Actions you can take from this screen include viewing the details and standard output of a particular job, relaunching jobs, or removing jobs.</p>
+<p><img alt="Jobs - home with example job" src="jobs-home-with-example-job.png" /></p>
+<p>Starting with Ansible Tower 3.3, from the list view, you can re-launch the most recent job. You can re-run on all hosts in the specified inventory, even though some of them already had a successful run. This allows you to re-run the job without running the Playbook on them again. You can also re-run the job on all failed hosts. This will help lower the load on the Ansible Tower nodes as it does not need to process the successful hosts again.</p>
+<p>The relaunch operation only applies to relaunches of playbook runs and does not apply to project/inventory updates, system jobs, workflow jobs, etc.</p>
+<p><img alt="Jobs - home with relaunch menu" src="jobs-home-with-relaunch-menu.png" /></p>
+<ul class="simple">
+<li>Selecting <strong>All</strong> relaunches all the hosts.</li>
+<li>Selecting <strong>Failed</strong> relaunches all failed and unreachable hosts.</li>
+</ul>
+<p>When it relaunches, you remain on the same page.</p>
+<p>Use the Tower Search feature to look up jobs by various criteria. For details about using the Tower Search, refer to the <a class="reference internal" href="search_sort.html#ug-search"><span class="std std-ref">Search</span></a> chapter.</p>
+<span class="target" id="ug-job-results"></span><p id="index-1">Clicking on any type of job takes you to the Job Details View for that job, which consists of two sections:</p>
+<ul class="simple">
+<li>The <strong>Details</strong> pane provides information and status about the job</li>
+<li>The <strong>Standard Out</strong> pane displays the job processes and output</li>
+</ul>
+<img alt="_images/job-details-view.png" src="job-details-view.png" />
+<div class="section" id="job-details-inventory-sync">
+<h2>20.1. Job Details - Inventory Sync<a class="headerlink" href="jobs.html#job-details-inventory-sync" title="Permalink to this headline">¶</a></h2>
+<p id="index-2"><img alt="job details example of inventory sync" src="jobs-show-job-results-for-inv-sync.png" /></p>
+<div class="section" id="details">
+<h3>20.1.1. Details<a class="headerlink" href="jobs.html#details" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>Details</strong> pane shows the basic status of the job and its start time. The icons at the top right corner of the <strong>Details</strong> pane allow you to relaunch (<img alt="launch" src="launch-button1.png" />) or delete (<img alt="delete" src="delete-button.png" />) the job.</p>
+<p>The <strong>Details</strong> pane also provides details on the job execution:</p>
+<ul>
+<li><p class="first"><strong>Name</strong>: The name of the associated inventory group.</p>
+</li>
+<li><p class="first"><strong>Status</strong>: Can be any of the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Pending</strong> - The inventory sync has been created, but not queued or started yet. Any job, not just inventory source syncs, will stay in pending until it’s actually ready to be run by the system.  Reasons for inventory source syncs not being ready include dependencies that are currently running (all dependencies must be completed before the next step can execute), or there is not enough capacity to run in the locations it is configured to.</li>
+<li><strong>Waiting</strong> - The inventory sync is in the queue waiting to be executed.</li>
+<li><strong>Running</strong> - The inventory sync is currently in progress.</li>
+<li><strong>Successful</strong> - The inventory sync job succeeded.</li>
+<li><strong>Failed</strong> - The inventory sync job failed.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Explanation</strong>: Describes reason(s) for failure.</p>
+</li>
+<li><p class="first"><strong>License Error</strong>: Only shown for <strong>Inventory Sync</strong> jobs. If this is
+<em>True</em>, the hosts added by the inventory sync caused Tower to exceed
+the licensed number of managed hosts.</p>
+</li>
+<li><p class="first"><strong>Started</strong>: The timestamp of when the job was initiated by Tower.</p>
+</li>
+<li><p class="first"><strong>Finished</strong>: The timestamp of when the job was completed.</p>
+</li>
+<li><p class="first"><strong>Elapsed</strong>: The total time the job took.</p>
+</li>
+<li><p class="first"><strong>Launch Type</strong>: <em>Manual</em>, <em>Scheduled</em>, or <em>Dependency</em></p>
+</li>
+<li><p class="first"><strong>Credential</strong>: The credential used in this inventory sync.</p>
+</li>
+<li><p class="first"><strong>Source</strong>: The type of cloud inventory.</p>
+</li>
+<li><p class="first"><strong>Overwrite</strong>: If <em>True</em>, any hosts and groups that were previously present on the external source but are now removed, are removed from the Tower inventory. Hosts and groups that were not managed by the inventory source are promoted to the next manually created group or if there is no manually created group to promote them into, they are left in the &#8220;all&#8221; default group for the inventory. If <em>False</em>, local child hosts and groups not found on the external source remain untouched by the inventory update process.</p>
+</li>
+<li><p class="first"><strong>Overwrite Vars</strong>: If <em>True</em>, all variables for child groups and hosts are removed and replaced by those found on the external source. If <em>False</em>, a merge was performed, combining local variables with those found on the external source.</p>
+</li>
+</ul>
+<p>By clicking on these items, where appropriate, you can view the corresponding job templates, projects, and other Tower objects.</p>
+</div>
+<div class="section" id="standard-out">
+<h3>20.1.2. Standard Out<a class="headerlink" href="jobs.html#standard-out" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>Standard Out</strong> pane shows the full results of running the Inventory Sync playbook. This shows the same information you would see if you ran it through the Ansible command line, and can be useful for debugging. The icons at the top right corner of the Standard Out pane allow you to toggle the output as a main view (<img alt="toggle" src="toggle.png" />) or to download the output (<img alt="download" src="download.png" />).</p>
+<p>Starting in Ansible Tower 3.3, the <code class="docutils literal"><span class="pre">ANSIBLE_DISPLAY_ARGS_TO_STDOUT</span></code> is set to <code class="docutils literal"><span class="pre">False</span></code> by default for all playbook runs. This matches Ansible&#8217;s default behavior. This causes Tower to no longer display task arguments in task headers in the Job Detail interface to avoid leaking certain sensitive module parameters to stdout.  If you wish to restore the prior behavior (despite the security implications), you can set <code class="docutils literal"><span class="pre">ANSIBLE_DISPLAY_ARGS_TO_STDOUT</span></code> to <code class="docutils literal"><span class="pre">True</span></code> via the <code class="docutils literal"><span class="pre">AWX_TASK_ENV</span></code> configuration setting. For more details, refer to the <a class="reference external" href="http://docs.ansible.com/ansible/latest/reference_appendices/config.html#envvar-ANSIBLE_DISPLAY_ARGS_TO_STDOUT">ANSIBLE_DISPLAY_ARGS_TO_STDOUT</a>.</p>
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<div class="section" id="job-details-scm">
+<h2>20.2. Job Details - SCM<a class="headerlink" href="jobs.html#job-details-scm" title="Permalink to this headline">¶</a></h2>
+<p id="index-3"><img alt="Jobs - show job results for example job, scm" src="jobs-show-job-results-for-scm-job.png" /></p>
+<div class="section" id="id1">
+<h3>20.2.1. Details<a class="headerlink" href="jobs.html#id1" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>Details</strong> pane shows the basic status of the job and its start time. The icons at the top right corner of the <strong>Details</strong> pane allow you to relaunch (<img alt="launch" src="launch-button1.png" />) or delete (<img alt="delete" src="delete-button.png" />) the job.</p>
+<p>The <strong>Details</strong> pane provides details on the job execution:</p>
+<ul>
+<li><p class="first"><strong>Name</strong>: The name of the associated inventory group.</p>
+</li>
+<li><p class="first"><strong>Status</strong>: Can be any of the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Pending</strong> - The SCM job has been created, but not queued or started yet. Any job, not just SCM jobs, will stay in pending until it’s actually ready to be run by the system. Reasons for SCM jobs not being ready include dependencies that are currently running (all dependencies must be completed before the next step can execute), or there is not enough capacity to run in the locations it is configured to.</li>
+<li><strong>Waiting</strong> - The SCM job is in the queue waiting to be executed.</li>
+<li><strong>Running</strong> - The SCM job is currently in progress.</li>
+<li><strong>Successful</strong> - The last SCM job succeeded.</li>
+<li><strong>Failed</strong> - The last SCM job failed.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Started</strong>: The timestamp of when the job was initiated by Tower.</p>
+</li>
+<li><p class="first"><strong>Finished</strong>: The timestamp of when the job was completed.</p>
+</li>
+<li><p class="first"><strong>Elapsed</strong>: The total time the job took.</p>
+</li>
+<li><p class="first"><strong>Launch Type</strong>: <em>Manual</em> or <em>Scheduled</em>.</p>
+</li>
+<li><p class="first"><strong>Project</strong>: The name of the project.</p>
+</li>
+</ul>
+<p>By clicking on these items, where appropriate, you can view the corresponding job templates, projects, and other Tower objects.</p>
+</div>
+<div class="section" id="id2">
+<h3>20.2.2. Standard Out<a class="headerlink" href="jobs.html#id2" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>Standard Out</strong> pane shows the full results of running the SCM Update. This shows the same information you would see if you ran it through the Ansible command line, and can be useful for debugging. The icons at the top right corner of the Standard Out pane allow you to toggle the output as a main view (<img alt="toggle" src="toggle.png" />) or to download the output (<img alt="download" src="download.png" />).</p>
+</div>
+</div>
+<div class="section" id="job-details-playbook-run">
+<h2>20.3. Job Details - Playbook Run<a class="headerlink" href="jobs.html#job-details-playbook-run" title="Permalink to this headline">¶</a></h2>
+<p id="index-4"><img alt="Jobs - show job details pane for example job, playbook" src="jobs-show-job-results-for-example-job.png" /></p>
+<p>The Job Details View for a <strong>Playbook Run</strong> job is also accessible after launching a job from the <strong>Job Templates</strong> page.</p>
+<div class="section" id="id3">
+<h3>20.3.1. Details<a class="headerlink" href="jobs.html#id3" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>Details</strong> pane shows the basic status of the job and its start time. The icons at the top right corner of the <strong>Details</strong> pane allow you to relaunch (<img alt="launch" src="launch-button1.png" />) or delete (<img alt="delete" src="delete-button.png" />) the job.</p>
+<p>The <strong>Details</strong> pane provides details on the job execution:</p>
+<ul>
+<li><p class="first"><strong>Status</strong>: Can be any of the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Pending</strong> - The playbook run has been created, but not queued or started yet. Any job, not just playbook runs, will stay in pending until it’s actually ready to be run by the system. Reasons for playbook runs not being ready include dependencies that are currently running (all dependencies must be completed before the next step can execute), or there is not enough capacity to run in the locations it is configured to.</li>
+<li><strong>Waiting</strong> - The playbook run is in the queue waiting to be executed.</li>
+<li><strong>Running</strong> - The playbook run is currently in progress.</li>
+<li><strong>Successful</strong> - The last playbook run succeeded.</li>
+<li><strong>Failed</strong> - The last playbook run failed.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Template</strong>: The name of the job template from which this job was launched.</p>
+</li>
+<li><p class="first"><strong>Started</strong>: The timestamp of when the job was initiated by Tower.</p>
+</li>
+<li><p class="first"><strong>Finished</strong>: The timestamp of when the job was completed.</p>
+</li>
+<li><p class="first"><strong>Elapsed</strong>: The total time the job took.</p>
+</li>
+<li><p class="first"><strong>Launch By</strong>: The name of the user, job, or scheduled scan job which launched this job.</p>
+</li>
+<li><p class="first"><strong>Inventory</strong>: The inventory selected to run this job against.</p>
+</li>
+<li><p class="first"><strong>Machine Credential</strong>: The name of the credential used in this job.</p>
+</li>
+<li><p class="first"><strong>Verbosity</strong>: The level of verbosity set when creating the job template.</p>
+</li>
+<li><p class="first"><strong>Extra Variables</strong>: Any extra variables passed when creating the job template are displayed here.</p>
+</li>
+</ul>
+<p>By clicking on these items, where appropriate, you can view the corresponding job templates, projects, and other Tower objects.</p>
+</div>
+<div class="section" id="standard-out-pane">
+<h3>20.3.2. Standard Out Pane<a class="headerlink" href="jobs.html#standard-out-pane" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>Standard Out</strong> pane shows the full results of running the Ansible playbook. This shows the same information you would see if you ran it through the Ansible command line, and can be useful for debugging. You can view the event summary, host status, and the host events. The icons at the top right corner of the Standard Out pane allow you to toggle the output as a main view (<img alt="toggle" src="toggle.png" />) or to download the output (<img alt="download" src="download.png" />).</p>
+<div class="section" id="events-summary">
+<h4>20.3.2.1. Events Summary<a class="headerlink" href="jobs.html#events-summary" title="Permalink to this headline">¶</a></h4>
+<p id="index-5">The events summary captures a tally of events that were run as part of this playbook:</p>
+<ul class="simple">
+<li>the number of plays</li>
+<li>the number of tasks</li>
+<li>the number of hosts</li>
+<li>the elapsed time to run the job template</li>
+</ul>
+<img alt="_images/jobs-events-summary.png" src="jobs-events-summary.png" />
+</div>
+<div class="section" id="host-status-bar">
+<h4>20.3.2.2. Host Status Bar<a class="headerlink" href="jobs.html#host-status-bar" title="Permalink to this headline">¶</a></h4>
+<p id="index-6">The host status bar runs across the top of the <strong>Standard Out</strong> pane. Hover over a section of the host status bar and the number of hosts associated with that particular status displays.</p>
+<p><img alt="Job - All Host Events" src="job-all-host-events.png" /></p>
+</div>
+<div class="section" id="search">
+<h4>20.3.2.3. Search<a class="headerlink" href="jobs.html#search" title="Permalink to this headline">¶</a></h4>
+<p>Use the Tower Search to look up specific events, hostnames, and their statuses. To filter only certain hosts with a particular status, specify one of the following valid statuses:</p>
+<ul class="simple">
+<li><strong>Changed</strong>: the playbook task actually executed. Since Ansible tasks should be written to be idempotent, tasks may exit successfully without executing anything on the host. In these cases, the task would return Ok, but not Changed.</li>
+<li><strong>Failed</strong>: the task failed. Further playbook execution was stopped for this host.</li>
+<li><strong>OK</strong>: the playbook task returned &#8220;Ok&#8221;.</li>
+<li><strong>Unreachable</strong>: the host was unreachable from the network or had another fatal error associated with it.</li>
+<li><strong>Skipped</strong>: the playbook task was skipped because no change was necessary for the host to reach the target state.</li>
+</ul>
+<p>The example below shows a search with only failed hosts.</p>
+<img alt="_images/job-std-out-filter-failed.png" src="job-std-out-filter-failed.png" />
+<p>For more details about using the Tower Search, refer to the <a class="reference internal" href="search_sort.html#ug-search"><span class="std std-ref">Search</span></a> chapter.</p>
+</div>
+<div class="section" id="standard-output-view">
+<h4>20.3.2.4. Standard output view<a class="headerlink" href="jobs.html#standard-output-view" title="Permalink to this headline">¶</a></h4>
+<p>The standard output view displays all the events that occur on a particular job. By default, all rows are expanded so that all the details are displayed. Use the collapse-all button (<img alt="collapse-all" src="job-details-view-std-out-collapse-all-icon.png" />) to switch to a view that only contains the headers for plays and tasks. Click the (<img alt="expand-all" src="job-details-view-std-out-expand-all-icon.png" />) button to view all lines of the standard output.</p>
+<p>Alternatively, you can display all the details of a specific play or task by clicking on the arrow icons next to them. Click an arrow from sideways to downward to expand the lines associated with that play or task. Click the arrow back to the sideways position to collapse and hide the lines.</p>
+<img alt="_images/job-details-view-std-out-expand-collapse-icons.png" src="job-details-view-std-out-expand-collapse-icons.png" />
+<p>Things to note when viewing details in the expand/collapse mode:</p>
+<ul class="simple">
+<li>Each displayed line that is not collapsed has a corresponding line number and start time.</li>
+<li>An expand/collapse icon is at the start of any play or task after the play or task has completed.</li>
+<li>If querying for a particular play or task, it will appear collapsed at the end of its completed process.</li>
+<li>In some cases, an error message will appear, stating that the output may be too large to display. This occurs when there are more than 4000 events. Use the search and filter for specific events to bypass the error.</li>
+<li>Hover over an event line in the <strong>Standard Out</strong> view, a tooltip displays above that line, giving the total hosts affected by this task and an option to view further details about the breakdown of their statuses.</li>
+</ul>
+<img alt="_images/jobs-show-job-std-output-hover.png" src="jobs-show-job-std-output-hover.png" />
+<p>Click on a line of an event from the <strong>Standard Out</strong> pane and a <strong>Host Events</strong> dialog displays in a separate window. This window shows the host that was affected by that particular event.</p>
+</div>
+<div class="section" id="host-events">
+<h4>20.3.2.5. Host Events<a class="headerlink" href="jobs.html#host-events" title="Permalink to this headline">¶</a></h4>
+<p id="index-7">The <strong>Host Events</strong> dialog shows information about the host affected by the selected event and its associated play and task:</p>
+<ul class="simple">
+<li>the <strong>Host</strong></li>
+<li>the <strong>Status</strong></li>
+<li>a unique <strong>ID</strong></li>
+<li>a <strong>Created</strong> time stamp</li>
+<li>the name of the <strong>Play</strong></li>
+<li>the name of the <strong>Task</strong></li>
+<li>if applicable, the Ansible <strong>Module</strong> for the task, and any <em>arguments</em> for that module</li>
+<li>the <strong>Standard Out</strong> of the task</li>
+</ul>
+<img alt="_images/job-details-host-hostevent.png" src="job-details-host-hostevent.png" />
+<p>To view the results in JSON format, click on the <strong>JSON</strong> tab.</p>
+</div>
+</div>
+</div>
+<div class="section" id="at-capacity-determination-and-job-impact">
+<span id="ug-job-concurrency"></span><h2>20.4. Ansible Tower Capacity Determination and Job Impact<a class="headerlink" href="jobs.html#at-capacity-determination-and-job-impact" title="Permalink to this headline">¶</a></h2>
+<p id="index-8">The Ansible Tower capacity system determines how many jobs can run on an instance given the amount of resources available to the instance and the size of the jobs that are running (referred to as <em>Impact</em>). The algorithm used to determine this is based entirely on two things:</p>
+<ul class="simple">
+<li>How much memory is available to the system (<code class="docutils literal"><span class="pre">mem_capacity</span></code>)</li>
+<li>How much CPU is available to the system (<code class="docutils literal"><span class="pre">cpu_capacity</span></code>)</li>
+</ul>
+<p>Capacity also impacts Instance Groups. Since Groups are made up of instances, likewise, instances can be assigned to multiple groups. This means that impact to one instance can potentially affect the overall capacity of other Groups.</p>
+<p>Instance Groups (not instances themselves) can be assigned to be used by jobs at various levels (see <a class="reference external" href="http://docs.ansible.com/ansible-tower/3.4.3/html/administration/clustering.html#ag-clustering" title="(in Ansible Tower Administration Guide v3.4.3)"><span class="xref std std-ref">Clustering</span></a>). When the Task Manager is preparing its graph to determine which group a job will run on, it will commit the capacity of an Instance Group to a job that hasn’t or isn’t ready to start yet.</p>
+<p>Finally, in smaller configurations, if only one instance is available for a job to run, the Task Manager will allow that job to run on the instance even if it pushes the instance over capacity. This guarantees that jobs themselves won&#8217;t get stuck as a result of an under-provisioned system.</p>
+<p>Therefore, Capacity and Impact is not a zero-sum system relative to jobs and instances/Instance Groups.</p>
+<p>For information on sliced jobs and their impact to capacity, see <a class="reference internal" href="job_slices.html#ug-job-slice-execution"><span class="std std-ref">Job slice execution behavior</span></a>.</p>
+<div class="section" id="resource-determination-for-capacity-algorithm">
+<h3>20.4.1. Resource determination for capacity algorithm<a class="headerlink" href="jobs.html#resource-determination-for-capacity-algorithm" title="Permalink to this headline">¶</a></h3>
+<p>The capacity algorithms are defined in order to determine how many forks a system is capable of running simultaneously. This controls how many systems Ansible itself will communicate with simultaneously. Increasing the number of forks a Tower system is running will, in general, allow jobs to run faster by performing more work in parallel. The trade-off is that this will increase the load on the system, which could cause work to slow down overall.</p>
+<p>Tower can operate in two modes when determining capacity. <code class="docutils literal"><span class="pre">mem_capacity</span></code> (the default) will allow you to over-commit CPU resources while protecting the system from running out of memory. If most of your work is not CPU-bound, then selecting this mode will maximize the number of forks.</p>
+<div class="section" id="memory-relative-capacity">
+<h4>20.4.1.1. Memory relative capacity<a class="headerlink" href="jobs.html#memory-relative-capacity" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal"><span class="pre">mem_capacity</span></code> is calculated relative to the amount of memory needed per fork. Taking into account the overhead for Tower&#8217;s internal components, this comes out to be about 100MB per fork. When considering the amount of memory available to Ansible jobs, the capacity algorithm will reserve 2GB of memory to account for the presence of other Tower services. The algorithm formula for this is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">mem</span> <span class="o">-</span> <span class="mi">2048</span><span class="p">)</span> <span class="o">/</span> <span class="n">mem_per_fork</span>
+</pre></div>
+</div>
+<p>As an example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">4096</span> <span class="o">-</span> <span class="mi">2048</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">==</span> <span class="o">~</span><span class="mi">20</span>
+</pre></div>
+</div>
+<p>Therefore, a system with 4GB of memory would be capable of running 20 forks. The value <code class="docutils literal"><span class="pre">mem_per_fork</span></code> can be controlled by setting the Tower settings value (or environment variable) <code class="docutils literal"><span class="pre">SYSTEM_TASK_FORKS_MEM</span></code>, which defaults to 100.</p>
+</div>
+<div class="section" id="cpu-relative-capacity">
+<h4>20.4.1.2. CPU relative capacity<a class="headerlink" href="jobs.html#cpu-relative-capacity" title="Permalink to this headline">¶</a></h4>
+<p>Often, Ansible workloads can be fairly CPU-bound. In these cases, sometimes reducing the simultaneous workload allows more tasks to run faster and reduces the average time-to-completion of those jobs.</p>
+<p>Just as the Tower <code class="docutils literal"><span class="pre">mem_capacity</span></code> algorithm uses the amount of memory need per fork, the <code class="docutils literal"><span class="pre">cpu_capacity</span></code> algorithm looks at the amount of CPU resources is needed per fork. The baseline value for this is 4 forks per core. The algorithm formula for this is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cpus</span> <span class="o">*</span> <span class="n">fork_per_cpu</span>
+</pre></div>
+</div>
+<p>For example, a 4-core system:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">16</span>
+</pre></div>
+</div>
+<p>The value <code class="docutils literal"><span class="pre">fork_per_cpu</span></code> can be controlled by setting the Tower settings value (or environment variable) <code class="docutils literal"><span class="pre">SYSTEM_TASK_FORKS_CPU</span></code> which defaults to 4.</p>
+</div>
+</div>
+<div class="section" id="capacity-job-impacts">
+<h3>20.4.2. Capacity job impacts<a class="headerlink" href="jobs.html#capacity-job-impacts" title="Permalink to this headline">¶</a></h3>
+<p>When selecting the capacity, it&#8217;s important to understand how each job type affects capacity.</p>
+<p>It&#8217;s helpful to understand what forks mean to Ansible: <a class="reference external" href="https://www.ansible.com/blog/ansible-performance-tuning">https://www.ansible.com/blog/ansible-performance-tuning</a> (see the section on &#8220;Know Your Forks&#8221;).</p>
+<p>The default forks value for Ansible is 5. However, if Tower knows that you&#8217;re running against fewer systems than that, then the actual concurrency value will be lower.</p>
+<p>When a job is run, Tower will add 1 to the number of forks selected to compensate for the Ansible parent process. So if you are running a playbook against 5 systems with a forks value of 5, then the actual forks value from the perspective of Job Impact will be 6.</p>
+<div class="section" id="impact-of-job-types-in-tower">
+<h4>20.4.2.1. Impact of job types in Tower<a class="headerlink" href="jobs.html#impact-of-job-types-in-tower" title="Permalink to this headline">¶</a></h4>
+<p>Jobs and Ad-hoc jobs follow the above model, forks + 1. If you set a fork value on your job template, your job capacity value will be the minimum of the forks value supplied, and the number of hosts that you have, plus one. The plus one is to account for the parent Ansible process.</p>
+<p>Instance capacity determines which jobs get assigned to any specific instance. Jobs and ad hoc commands use more capacity if they have a higher forks value.</p>
+<p>Other job types have a fixed impact:</p>
+<ul class="simple">
+<li>Inventory Updates: 1</li>
+<li>Project Updates: 1</li>
+<li>System Jobs: 5</li>
+</ul>
+<p>If you don’t set a forks value on your job template, your job will use Ansible’s default forks value of five. Even though Ansible defaults to five forks, it will use fewer if your job has fewer than five hosts. In general, setting a forks value higher than what the system is capable of could cause trouble by running out of memory or over-committing CPU. So, the job template fork values that you use should fit on the system. If you have playbooks using 1000 forks but none of your systems individually has that much capacity, then your systems are undersized and at risk of performance or resource issues.</p>
+</div>
+<div class="section" id="selecting-the-right-capacity">
+<h4>20.4.2.2. Selecting the right capacity<a class="headerlink" href="jobs.html#selecting-the-right-capacity" title="Permalink to this headline">¶</a></h4>
+<p>Selecting a capacity out of the CPU-bound or the memory-bound capacity limits is, in essence, selecting between the minimum or maximum number of forks. In the above examples, the CPU capacity would allow a maximum of 16 forks while the memory capacity would allow 20. For some systems, the disparity between these can be large and often times you may want to have a balance between these two.</p>
+<p>The instance field <code class="docutils literal"><span class="pre">capacity_adjustment</span></code> allows you to select how much of one or the other you want to consider. It is represented as a value between 0.0 and 1.0. If set to a value of 1.0, then the largest value will be used. The above example involves memory capacity, so a value of 20 forks would be selected. If set to a value of 0.0 then the smallest value will be used. A value of 0.5 would be a 50/50 balance between the two algorithms which would be 18:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">16</span> <span class="o">+</span> <span class="p">(</span><span class="mi">20</span> <span class="o">-</span> <span class="mi">16</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">==</span> <span class="mi">18</span>
+</pre></div>
+</div>
+<p>To view or edit the capacity in the Tower user interface, select the <strong>Instances</strong> tab of the Instance Group.</p>
+<img alt="_images/instance-group-instances-capacity-callouts.png" src="instance-group-instances-capacity-callouts.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div id="search-results"><gcse:searchresults-only></gcse:searchresults-only></div>
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+        <a href="notifications.html" class="btn btn-neutral float-right" title="21. Notifications"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="instance_groups.html" class="btn btn-neutral" title="19. Instance Groups"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <p>
+    Copyright © 2019 Red Hat, Inc. 
+    <br>
+  </p>
+
+<p>
+  Red Hat Ansible Tower docs are generated using <A HREF="http://sphinx-doc.org/">Sphinx</A> using a theme provided by <a href="http://readthedocs.org">Read the Docs</a>.
+</p>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+<!-- begin analytics -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+        (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+        n.id=i;n.src = '//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+        e.parentNode.insertBefore(n, e);
+        })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+_satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

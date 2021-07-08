@@ -1,0 +1,745 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <script type="text/javascript" src="https://www.redhat.com/dtm.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta class="swiftype" name="published_at" data-type="date" content="2019-03-26" /> 
+  <meta class="swiftype" name="version" data-type="string" content="3.4.3">
+
+
+   <!-- this ^ ^ is for the original publishing date only, never for minor pushes that aren't actual version bumps of the docs (this helps us keep our search rank weighting in swiftype, our search server, prioritized based on the dates of the releases themselves) -->
+
+  <script>
+  var url = window.location.href;
+  if(url.indexOf("latest") == -1){
+   var version = url.replace("http://docs.ansible.com/ansible-tower/","");
+   version = version.substring(0,url.indexOf("/"));
+   url = url.replace(version,"latest");
+  }
+  var canon = document.createElement('link');
+  canon.rel = "canonical";
+  canon.href = url;
+  document.head.appendChild(canon);
+  </script>
+
+  <!-- Google Tag Manager Data Layer -->
+  <script>
+   dataLayer = [];
+  </script>
+  <!-- End Google Tag Manager Data Layer -->
+
+  
+  <title>11. Tower Logging and Aggregation &mdash; Ansible Tower Administration Guide v3.4.3</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'./',
+        VERSION:'Ansible Tower 3.4.3',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript" src="underscore.js"></script>
+      <script type="text/javascript" src="doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="theme.min.css" type="text/css" />
+    <script type="text/javascript" src="theme.js"></script>
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Ansible Tower Administration Guide v3.4.3" href="index.html"/>
+        <link rel="next" title="12. The awx-manage Utility" href="tower-manage.html"/>
+        <link rel="prev" title="10. Tower Logfiles" href="logfiles.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+  <style>
+    .search-reset-start {
+        color: #463E3F;
+        float: right;
+        position: relative;
+        top: -25px;
+        left: -10px;
+        z-index: 10;
+     }
+     .search-reset-start:hover {
+        cursor: pointer;
+        color: #2980B9;
+     }
+     #search-box-id {
+        padding-right: 25px;
+     }
+  </style>
+
+  <!-- Google Code for Remarketing Tag
+  <script type="text/javascript">
+  /* <![CDATA[ */
+  var google_conversion_id = 972577926;
+  var google_custom_params = window.google_tag_params;
+  var google_remarketing_only = true;
+  /* ]]> */
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+  </script>
+  <noscript>
+    <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt=""
+              src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/972577926/?value=0&amp;guid=ON&amp;script=0"/>
+    </div>
+  </noscript>
+  End of Google Code for Remarketing Tag -->
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300'
+      rel='stylesheet' type='text/css'>
+
+  <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+
+  <script type='text/javascript'>
+    googletag.cmd.push(function() {
+      googletag.defineSlot('/1171614047/towerleft', [300, 250], 'div-gpt-ad-1453398530439-0').addService(googletag.pubads());
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
+  </script>
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+  <div class="DocSite-globalNav ansibleNav">
+        <ul>
+            <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+            <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+            <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+            <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+            <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+        </ul>
+    </div>
+
+<a class="DocSite-nav" href="http://docs.ansible.com/">
+  <img class="DocSiteNav-logo"
+    src="logo_invert.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">
+    Documentation
+  </div>
+</a> 
+
+
+
+
+<div class="wy-grid-for-nav">
+
+  
+ <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+        <a class="DocSiteProduct-header DocSiteProduct-header--tower"
+            href="http://docs.ansible.com/ansible-tower/">
+            <div class="DocSiteProduct-productName">
+                <div class="DocSiteProduct-logoText">
+                    ANSIBLE TOWER 
+                    <div class="DocSiteProduct-CurrentVersion" align="right">
+                      v3.4.3
+                  </div>
+                </div>
+            </div>
+        </a>
+        
+
+        <div class="DocSiteProduct-CheckVersionPara">
+          Are you using the latest and greatest version of Ansible Tower? Find the <a class="DocSiteProduct-versionheader" href="http://docs.ansible.com/ansible-tower/">Ansible Tower documentation</a> set which best matches your version of Tower.
+            </div>
+    </div>
+    <div class="wy-side-nav-search" style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+      <!-- <a href="index.html" class="icon icon-home"> Ansible Tower Administration Guide</a> -->
+      <!-- <form class="wy-form" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form> -->
+
+<!-- 
+<script>
+  (function() {
+    var cx = '004731659079655444432:zgjlf-tkhya';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script> -->
+
+<!-- <gcse:searchresults-only></gcse:searchresults-only> -->
+
+<!-- swiftype search script -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','Vcn_rXrPfye6ziaZJZRt','2.0.0');
+</script>
+
+<!-- <form id="search-form-id" action="">
+  <input type="text" class="st-default-search-input" name="query" placeholder="Search Tower Docs" id="search-box-id" /> 
+  <a class="search-reset-start" id="search-reset"><i class="fa fa-times"></i></a>
+  <a class="search-reset-start" id="search-start"><i class="fa fa-search"></i></a> 
+ </form> -->
+
+          
+
+
+<!-- <script type="text/javascript" src="http://www.google.com/cse/brand?form=search-form-id&inputbox=search-box-id"></script> -->
+
+<!-- 
+<script>
+  function executeQuery() {
+      var input = document.getElementById('search-box-id');
+      var element = google.search.cse.element.getElement('searchresults-only0');
+      element.resultsUrl = '/htmlout/search.html'
+      if (input.value == '') {
+          element.clearAllResults();
+          $('#page-content, .rst-footer-buttons, #search-start').show();
+          $('#search-results, #search-reset').hide();
+      } else {
+          $('#page-content, .rst-footer-buttons, #search-start').hide();
+          $('#search-results, #search-reset').show();
+          element.execute(input.value);
+      }
+      return false;
+      }
+
+  $('#search-reset').hide();
+
+  $('#search-box-id').css('background-position', '1em center');
+
+  $('#search-box-id').on('blur', function() {
+    $('#search-box-id').css('background-position', '1em center');
+  });
+
+  $('#search-start').click(function(e) { executeQuery(); });
+  $('#search-reset').click(function(e) { $('#search-box-id').val(''); executeQuery(); });
+
+  $('#search-form-id').submit(function(e) {
+      console.log('submitting!');
+      executeQuery();
+      e.preventDefault();
+      });
+</script>
+-->
+    </div>
+
+      <div id="menu-id" class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Ansible Tower Administration Guide v3.4.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license-support.html">1. Tower Licensing, Updates, and Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#support">1.1. Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#trial-evaluation">1.2. Trial / Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#subscription-types">1.3. Subscription Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#node-counting-in-licenses">1.4. Node Counting in Licenses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#license-features">1.5. License Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#tower-component-licenses">1.6. Tower Component Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="init_script.html">2. Starting, Stopping, and Restarting Tower</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_inventory_script.html">3. Custom Inventory Scripts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="custom_inventory_script.html#writing-inventory-scripts">3.1. Writing Inventory Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scm-inv-source.html">4. Inventory File Importing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scm-inv-source.html#custom-dynamic-inventory-scripts">4.1. Custom Dynamic Inventory Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scm-inv-source.html#scm-inventory-source-fields">4.2. SCM Inventory Source Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-creds-assignment.html">5. Multi-Credential Assignment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#background">5.1. Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#important-changes">5.2. Important Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#launch-time-considerations">5.3. Launch Time Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#backwards-compatibility-concerns">5.4. Backwards Compatibility Concerns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#multi-vault-credentials">5.5. Multi-Vault Credentials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="management_jobs.html">6. Management Jobs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="management_jobs.html#removing-old-activity-stream-data">6.1. Removing Old Activity Stream Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management_jobs.html#removing-old-fact-system-tracking-data">6.2. Removing Old Fact (System Tracking) Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management_jobs.html#removing-old-job-history">6.3. Removing Old Job History</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">7. Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#setup-considerations">7.1. Setup Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#install-and-configure">7.2. Install and Configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#configuring-instances-and-instance-groups-from-the-api">7.3. Configuring Instances and Instance Groups from the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#instance-group-policies">7.4. Instance group policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#isolated-instance-groups">7.5. Isolated Instance Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#status-and-monitoring-via-browser-api">7.6. Status and Monitoring via Browser API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#instance-services-and-failure-behavior">7.7. Instance Services and Failure Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#job-runtime-behavior">7.8. Job Runtime Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#deprovision-instances-and-instance-groups">7.9. Deprovision Instances and Instance Groups</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="openshift_configuration.html">8. OpenShift Deployment and Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#tower-and-openshift-basics">8.1. Tower and OpenShift Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#configuration-options">8.2. Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#basic-configuration">8.3. Basic Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#resource-requests-and-request-planning">8.4. Resource Requests and Request Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#database-configuration-and-usage">8.5. Database Configuration and Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#backup-and-restore">8.6. Backup and Restore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#upgrading">8.7. Upgrading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#migrating">8.8. Migrating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#build-custom-virtual-environments">8.9. Build custom virtual environments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="proxy-support.html">9. Proxy Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="proxy-support.html#configure-known-proxies">9.1. Configure Known Proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxy-support.html#reverse-proxy">9.2. Reverse Proxy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="logfiles.html">10. Tower Logfiles</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="logging.html#">11. Tower Logging and Aggregation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="logging.html#loggers">11.1. Loggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html#set-up-logging-with-tower">11.2. Set Up Logging with Tower</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tower-manage.html">12. The <em>awx-manage</em> Utility</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#inventory-import">12.1. Inventory Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#cleanup-of-old-data">12.2. Cleanup of old data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#cluster-management">12.3. Cluster management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#token-and-session-management">12.4. Token and session management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configure_tower_in_tower.html">13. Tower Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#authentication">13.1. Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#jobs">13.2. Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#system">13.3. System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#user-interface">13.4. User Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#license">13.5. License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="proot_func_variables.html">14. Bubblewrap functionality and variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oauth2_token_auth.html">15. Token-Based Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#managing-oauth-2-applications-and-tokens">15.1. Managing OAuth 2 Applications and Tokens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#using-oauth-2-token-system-for-personal-access-tokens-pat">15.2. Using OAuth 2 Token System for Personal Access Tokens (PAT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#application-functions">15.3. Application Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#application-token-functions">15.4. Application Token Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="social_auth.html">16. Setting up Social Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="social_auth.html#google-oauth2-settings">16.1. Google OAuth2 Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="social_auth.html#github-oauth2-settings">16.2. GitHub OAuth2 Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="social_auth.html#organization-and-team-mapping">16.3. Organization and Team Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ent_auth.html">17. Setting up Enterprise Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#azure-active-directory-ad">17.1. Azure Active Directory (AD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#saml-authentication-settings">17.2. SAML Authentication Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#radius-authentication-settings">17.3. RADIUS Authentication Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#tacacs-authentication-settings">17.4. TACACS+ Authentication Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ldap_auth.html">18. Setting up LDAP Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ldap_auth.html#referrals">18.1. Referrals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ldap_auth.html#enabling-logging-for-ldap">18.2. Enabling Logging for LDAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ldap_auth.html#ldap-organization-and-team-mapping">18.3. LDAP Organization and Team Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentication_timeout.html">19. Changing the Default Timeout for Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kerberos_auth.html">20. User Authentication with Kerberos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kerberos_auth.html#ad-and-kerberos-credentials">20.1. AD and Kerberos Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kerberos_auth.html#working-with-kerberos-tickets">20.2. Working with Kerberos Tickets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="session_limits.html">21. Working with Session Limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backup_restore.html">22. Backing Up and Restoring Tower</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="backup_restore.html#backup-restore-playbooks">22.1. Backup/Restore Playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup_restore.html#backup-and-restoration-considerations">22.2. Backup and Restoration Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup_restore.html#backup-and-restore-for-clustered-environments">22.3. Backup and Restore for Clustered Environments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="custom_rebranding.html">23. Using Custom Logos in Ansible Tower</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">24. Troubleshooting Tower</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#error-logs">24.1. Error logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problems-connecting-to-your-host">24.2. Problems connecting to your host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#unable-to-login-to-tower-via-http">24.3. Unable to login to Tower via HTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#websockets-port-for-live-events-not-working">24.4. WebSockets port for live events not working</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problems-running-a-playbook">24.5. Problems running a playbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problems-when-running-a-job">24.6. Problems when running a job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#playbooks-aren-t-showing-up-in-the-job-template-drop-down">24.7. Playbooks aren&#8217;t showing up in the &#8220;Job Template&#8221; drop-down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#playbook-stays-in-pending">24.8. Playbook stays in pending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#cancel-a-tower-job">24.9. Cancel a Tower job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#reusing-an-external-database-causes-installations-to-fail">24.10. Reusing an external database causes installations to fail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#private-ec2-vpc-instances-in-tower-inventory">24.11. Private EC2 VPC Instances in Tower Inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#troubleshooting-error-provided-hosts-list-is-empty">24.12. Troubleshooting &#8220;Error: provided hosts list is empty&#8221;</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tipsandtricks.html">25. Tower Tips and Tricks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-the-tower-cli-tool">25.1. Using the Tower CLI Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#launching-a-job-template-via-the-api">25.2. Launching a Job Template via the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#tower-cli-job-template-launching">25.3. <code class="docutils literal"><span class="pre">tower-cli</span></code> Job Template Launching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#changing-the-tower-admin-password">25.4. Changing the Tower Admin Password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#creating-a-tower-admin-from-the-commandline">25.5. Creating a Tower Admin from the commandline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#setting-up-a-jump-host-to-use-with-tower">25.6. Setting up a jump host to use with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#view-ansible-outputs-for-json-commands-when-using-tower">25.7. View Ansible outputs for JSON commands when using Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#locate-and-configure-the-ansible-configuration-file">25.8. Locate and configure the Ansible configuration file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#view-a-listing-of-all-ansible-variables">25.9. View a listing of all ansible_ variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-virtualenv-with-at">25.10. Using virtualenv with Ansible Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#configuring-the-towerhost-hostname-for-notifications">25.11. Configuring the <code class="docutils literal"><span class="pre">towerhost</span></code> hostname for notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#launching-jobs-with-curl">25.12. Launching Jobs with curl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#dynamic-inventory-and-private-ip-addresses">25.13. Dynamic Inventory and private IP addresses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#filtering-instances-returned-by-the-dynamic-inventory-sources-in-tower">25.14. Filtering instances returned by the dynamic inventory sources in Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-an-unreleased-module-from-ansible-source-with-tower">25.15. Using an unreleased module from Ansible source with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-callback-plugins-with-tower">25.16. Using callback plugins with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#connecting-to-windows-with-winrm">25.17. Connecting to Windows with winrm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#importing-existing-inventory-files-and-host-group-vars-into-tower">25.18. Importing existing inventory files and host/group vars into Tower</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="towercli.html">26. Introduction to <strong>tower-cli</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#license">26.1. License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#capabilities">26.2. Capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#installation">26.3. Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#configuration">26.4. Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usability_data_collection.html">27. Usability Analytics and Data Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postface.html">28. Postface</a></li>
+</ul>
+
+        
+
+<div class="DocSite-sideNav ansibleNav">
+    <ul class="">
+    <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+    <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+    <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+    <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    </ul>
+</div>
+
+    <!-- changeable widget -->
+    <div id="sideBanner">
+    <br/>
+    <a href="http://www.ansible.com/tower-docs-left?utm_source=docs">
+<img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-left-rail.png" />
+    </a>
+</div>
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="https://docs.ansible.com/">Ansible Tower Administration Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+
+    <!--        <div class="DocSiteBanner">
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-left.png">
+                </a>
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-right.png">
+                </a>
+            </div> -->
+
+          <ul class="wy-breadcrumbs">
+    <li><a href="http://docs.ansible.com/" <title>Ansible Docs Home</title></a>&raquo;</li>
+    <li><a href="http://docs.ansible.com/ansible-tower/" <title>Ansible Tower Docs</title></a>&raquo;</li>
+    <li><a href="index.html" <title> &mdash; Ansible Tower Administration Guide v3.4.3</title></a> &raquo;</li>
+    <!--  <li><a href="">11. Tower Logging and Aggregation</a></li> -->
+</ul>
+<hr/>
+          <div id="page-content">
+          
+  <div class="section" id="tower-logging-and-aggregation">
+<span id="ag-logging"></span><h1>11. Tower Logging and Aggregation<a class="headerlink" href="logging.html#tower-logging-and-aggregation" title="Permalink to this headline">¶</a></h1>
+<p id="index-0">Logging is a standalone feature introduced in Ansible Tower 3.1.0 that provides the capability to send detailed logs to several kinds of 3rd party external log aggregation services. Services connected to this data feed serve as a useful means in gaining insight into Tower usage or technical trends. The data can be used to analyze events in the infrastructure, monitor for anomalies, and correlate events from one service with events in another. The types of data that are most useful to Tower are job fact data, job events/job runs, activity stream data, and log messages. The data is sent in JSON format over a HTTP connection using minimal service-specific tweaks engineered in a custom handler or via an imported library. Tower discards any uncaptured data if the logging aggregator is down.</p>
+<div class="section" id="loggers">
+<h2>11.1. Loggers<a class="headerlink" href="logging.html#loggers" title="Permalink to this headline">¶</a></h2>
+<p>Below are special loggers (except for <code class="docutils literal"><span class="pre">awx</span></code>, which constitutes generic server logs) that provide large amount of information in a predictable structured or semi-structured format, following the same structure as one would expect if obtaining the data from the API:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">job_events</span></code>: Provides data returned from the Ansible callback module</li>
+<li><code class="docutils literal"><span class="pre">activity_stream</span></code>: Displays the record of changes to the objects within the Ansible Tower application</li>
+<li><code class="docutils literal"><span class="pre">system_tracking</span></code>: Provides data gathered by Ansible scan modules ran by scan job templates</li>
+<li><code class="docutils literal"><span class="pre">awx</span></code>: Provides generic server logs, which include logs that would normally be written to a file. It contains the standard metadata that all logs have, except it only has the message from the log statement.</li>
+</ul>
+<p>These loggers only use log-level of INFO, except for the <code class="docutils literal"><span class="pre">awx</span></code> logger, which may be any given level.</p>
+<p>Additionally, the standard Tower logs are be deliverable through this same mechanism. It is apparent how to enable or disable each of these five sources of data without manipulating a complex dictionary in your local settings file, as well as adjust the log-level consumed from the standard Tower logs.</p>
+<div class="section" id="log-message-schema">
+<h3>11.1.1. Log message schema<a class="headerlink" href="logging.html#log-message-schema" title="Permalink to this headline">¶</a></h3>
+<p>Common schema for all loggers:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">cluster_host_id</span></code>: Unique identifier of the host within the Tower cluster</li>
+<li><code class="docutils literal"><span class="pre">level</span></code>: Standard python log level, roughly reflecting the significance of the event All of the data loggers as a part of this feature use INFO level, but the other Tower logs will use different levels as appropriate</li>
+<li><code class="docutils literal"><span class="pre">logger_name</span></code>: Name of the logger we use in the settings, for example, &#8220;activity_stream&#8221;</li>
+<li><code class="docutils literal"><span class="pre">&#64;timestamp</span></code>: Time of log</li>
+<li><code class="docutils literal"><span class="pre">path</span></code>: File path in code where the log was generated</li>
+</ul>
+</div>
+<div class="section" id="activity-stream-schema">
+<h3>11.1.2. Activity stream schema<a class="headerlink" href="logging.html#activity-stream-schema" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>(common): This uses all the fields common to all loggers listed above</li>
+<li><code class="docutils literal"><span class="pre">actor</span></code>: Username of the user who took the action documented in the log</li>
+<li><code class="docutils literal"><span class="pre">changes</span></code>: JSON summary of what fields changed, and their old/new values.</li>
+<li><code class="docutils literal"><span class="pre">operation</span></code>: The basic category of the changed logged in the activity stream, for instance, &#8220;associate&#8221;.</li>
+<li><code class="docutils literal"><span class="pre">object1</span></code>: Information about the primary object being operated on, consistent with what we show in the activity stream</li>
+<li><code class="docutils literal"><span class="pre">object2</span></code>: If applicable, the second object involved in the action</li>
+</ul>
+</div>
+<div class="section" id="job-event-schema">
+<h3>11.1.3. Job event schema<a class="headerlink" href="logging.html#job-event-schema" title="Permalink to this headline">¶</a></h3>
+<p>This logger reflects the data being saved into job events, except when they would otherwise conflict with expected standard fields from the logger, in which case the fields are nested. Notably, the field host on the <code class="docutils literal"><span class="pre">job_event</span></code> model is given as <code class="docutils literal"><span class="pre">event_host</span></code>. There is also a sub-dictionary field, <code class="docutils literal"><span class="pre">event_data</span></code> within the payload, which contains different fields depending on the specifics of the Ansible event.</p>
+<p>This logger also includes the common fields.</p>
+</div>
+<div class="section" id="scan-fact-system-tracking-data-schema">
+<h3>11.1.4. Scan / fact / system tracking data schema<a class="headerlink" href="logging.html#scan-fact-system-tracking-data-schema" title="Permalink to this headline">¶</a></h3>
+<p>These contain a detailed dictionary-type fields that are either services, packages, or files.</p>
+<ul class="simple">
+<li>(common): This uses all the fields common to all loggers listed above</li>
+<li><code class="docutils literal"><span class="pre">services</span></code>: For services scans, this field is included and has keys based on the name of the service. <strong>NOTE</strong>: Periods are disallowed by elastic search in names, and are replaced with &#8220;_&#8221; by our log formatter</li>
+<li><code class="docutils literal"><span class="pre">package</span></code>: Included for log messages from package scans</li>
+<li><code class="docutils literal"><span class="pre">files</span></code>: Included for log messages from file scans</li>
+<li><code class="docutils literal"><span class="pre">host</span></code>: Name of host scan applies to</li>
+<li><code class="docutils literal"><span class="pre">inventory_id</span></code>: Inventory id host is inside of</li>
+</ul>
+</div>
+<div class="section" id="job-status-changes">
+<h3>11.1.5. Job status changes<a class="headerlink" href="logging.html#job-status-changes" title="Permalink to this headline">¶</a></h3>
+<p>This is a intended to be a lower-volume source of information about changes in job states compared to job events, and also intended to capture changes to types of unified jobs other than job template based jobs.</p>
+<p>In addition to common fields, these logs include fields present on the job model.</p>
+</div>
+<div class="section" id="tower-logs">
+<h3>11.1.6. Tower logs<a class="headerlink" href="logging.html#tower-logs" title="Permalink to this headline">¶</a></h3>
+<p>In addition to the common fields, this contains a <code class="docutils literal"><span class="pre">msg</span></code> field with the log message. Errors contain a separate <code class="docutils literal"><span class="pre">traceback</span></code> field. These logs can be enabled or disabled in the Configure Tower User Interface <code class="docutils literal"><span class="pre">ENABLE</span> <span class="pre">EXTERNAL</span> <span class="pre">LOGGING</span></code> setting.</p>
+</div>
+<div class="section" id="logging-aggregator-services">
+<h3>11.1.7. Logging Aggregator Services<a class="headerlink" href="logging.html#logging-aggregator-services" title="Permalink to this headline">¶</a></h3>
+<p>The logging aggregator service works with the following monitoring and data analysis systems:</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="logging.html#splunk" id="id1">Splunk</a></li>
+<li><a class="reference internal" href="logging.html#loggly" id="id2">Loggly</a></li>
+<li><a class="reference internal" href="logging.html#sumologic" id="id3">Sumologic</a></li>
+<li><a class="reference internal" href="logging.html#elastic-stack-formerly-elk-stack" id="id4">Elastic stack (formerly ELK stack)</a></li>
+</ul>
+</div>
+<div class="section" id="splunk">
+<h4><a class="toc-backref" href="logging.html#id1">11.1.7.1. Splunk</a><a class="headerlink" href="logging.html#splunk" title="Permalink to this headline">¶</a></h4>
+<p>Ansible Tower&#8217;s Splunk logging integration uses the Splunk HTTP Collector. When configuring a SPLUNK logging aggregator, add the full URL to the HTTP Event Collector host, like in the following example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">yourtowerfqdn</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">settings</span><span class="o">/</span><span class="n">logging</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;LOG_AGGREGATOR_HOST&quot;</span><span class="p">:</span> <span class="s2">&quot;https://yoursplunk:8088/services/collector/event&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;LOG_AGGREGATOR_PORT&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;LOG_AGGREGATOR_TYPE&quot;</span><span class="p">:</span> <span class="s2">&quot;splunk&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;LOG_AGGREGATOR_USERNAME&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;LOG_AGGREGATOR_PASSWORD&quot;</span><span class="p">:</span> <span class="s2">&quot;$encrypted$&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;LOG_AGGREGATOR_LOGGERS&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;awx&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;activity_stream&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;job_events&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;system_tracking&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;LOG_AGGREGATOR_INDIVIDUAL_FACTS&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;LOG_AGGREGATOR_ENABLED&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;LOG_AGGREGATOR_TOWER_UUID&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Splunk HTTP Event Collector listens on 8088 by default so it is necessary to provide the full HEC event URL (with port) in order for incoming requests to be processed successfully. These values are entered in the example below:</p>
+<img alt="_images/logging-splunk-tower-example.png" src="logging-splunk-tower-example.png" />
+<p>For further instructions on configuring the HTTP Event Collector, refer to the <a class="reference external" href="http://docs.splunk.com/Documentation/Splunk/latest/Data/UsetheHTTPEventCollector">Splunk documentation</a>.</p>
+<blockquote>
+<div></div></blockquote>
+</div>
+<div class="section" id="loggly">
+<h4><a class="toc-backref" href="logging.html#id2">11.1.7.2. Loggly</a><a class="headerlink" href="logging.html#loggly" title="Permalink to this headline">¶</a></h4>
+<p>To set up the sending of logs through Loggly&#8217;s HTTP endpoint, refer to <a class="reference external" href="https://www.loggly.com/docs/http-endpoint/">https://www.loggly.com/docs/http-endpoint/</a>. Loggly uses the URL convention described at <a class="reference external" href="http://logs-01.loggly.com/inputs/TOKEN/tag/http/">http://logs-01.loggly.com/inputs/TOKEN/tag/http/</a>, which is shown inputted in the <strong>Logging Aggregator</strong> field in the example below:</p>
+<img alt="_images/logging-loggly-tower-example.png" src="logging-loggly-tower-example.png" />
+</div>
+<div class="section" id="sumologic">
+<h4><a class="toc-backref" href="logging.html#id3">11.1.7.3. Sumologic</a><a class="headerlink" href="logging.html#sumologic" title="Permalink to this headline">¶</a></h4>
+<p>In Sumologic, create a search criteria containing the json files that provide the parameters used to collect the data you need.</p>
+<img alt="_images/logging_sumologic_main.png" src="logging_sumologic_main.png" />
+</div>
+<div class="section" id="elastic-stack-formerly-elk-stack">
+<h4><a class="toc-backref" href="logging.html#id4">11.1.7.4. Elastic stack (formerly ELK stack)</a><a class="headerlink" href="logging.html#elastic-stack-formerly-elk-stack" title="Permalink to this headline">¶</a></h4>
+<p>If starting from scratch, standing up your own version the elastic stack, the only change you required is to add the following lines to the logstash <code class="docutils literal"><span class="pre">logstash.conf</span></code> file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">filter</span> <span class="p">{</span>
+  <span class="n">json</span> <span class="p">{</span>
+    <span class="n">source</span> <span class="o">=&gt;</span> <span class="s2">&quot;message&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Backward-incompatible changes were introduced with Elastic 5.0.0, and different configurations may be required depending on what versions you are using.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="set-up-logging-with-tower">
+<span id="ag-ctit-logging"></span><h2>11.2. Set Up Logging with Tower<a class="headerlink" href="logging.html#set-up-logging-with-tower" title="Permalink to this headline">¶</a></h2>
+<p>To set up logging to any of the aggregator types:</p>
+<ol class="arabic simple">
+<li>Click the Settings (<img alt="settings" src="settings-icon.png" />) icon from the left navigation bar.</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>Select the <strong>System</strong> tab.</li>
+<li>Select <strong>Logging</strong> from the Sub Category drop-down menu list.</li>
+<li>Set the configurable options from the fields provided:</li>
+</ol>
+<ul class="simple">
+<li><strong>Enable External Logging</strong>: Click the toggle button to <strong>ON</strong> if you want to send logs to an external log aggregator.</li>
+<li><strong>Logging Aggregator</strong>: Enter the hostname or IP address you want to send logs.</li>
+<li><strong>Logging Aggregator Port</strong>: Specify the port for the aggregator if it requires one.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When the connection type is HTTPS, you can enter the hostname as a URL with a port number and therefore, you are not required to enter the port again. But TCP and UDP connections are determined by the hostname and port number combination, rather than URL. So in the case of TCP/UDP connection, supply the port in the specified field. If instead a URL is entered in host field (<strong>Logging Aggregator</strong> field), its hostname portion will be extracted as the actual hostname.</p>
+</div>
+<ul class="simple">
+<li><strong>Logging Aggregator Type</strong>: Click to select the aggregator service from the drop-down menu:</li>
+</ul>
+<img alt="_images/configure-tower-system-logging-types.png" src="configure-tower-system-logging-types.png" />
+<ul class="simple">
+<li><strong>Logging Aggregator Username</strong>: Enter the username of the logging aggregator if it requires it.</li>
+<li><strong>Logging Aggregator Password/Token</strong>: Enter the password of the logging aggregator if it requires it.</li>
+<li><strong>Loggers to Send Data to the Log Aggregator Form</strong>: All four types of data are pre-populated by default. Click the tooltip <img alt="help" src="help-button.png" /> icon next to the field for additional information on each data type. Delete the data types you do not want.</li>
+</ul>
+<ul class="simple">
+<li><strong>Log System Tracking Facts Individually</strong>: Click the tooltip <img alt="help" src="help-button.png" /> icon for additional information whether or not you want to turn it on, or leave it off by default.</li>
+<li><strong>Logging Aggregator Protocol</strong>: Click to select a connection type (protocol) to communicate with the log aggregator. Subsequent options vary depending on the selected protocol.</li>
+<li><strong>TCP Connection Timeout</strong>: Specify the connection timeout in seconds. This option is only applicable to HTTPS and TCP log aggregator protocols.</li>
+<li><strong>Logging Aggeregator Level Threshold</strong>: Select the level of severity you want the log handler to report.</li>
+<li><strong>Enable/Disable HTTPS Certificate Verification</strong>: Certificate verification is enabled by default for HTTPS log protocol. Click the toggle button to <strong>OFF</strong> if you do not want the log handler to verify the HTTPS certificate sent by the external log aggregator before establishing a connection.</li>
+</ul>
+<ol class="arabic simple" start="5">
+<li>Review your entries for your chosen logging aggregation. Below is an example of one set up for Splunk:</li>
+</ol>
+<img alt="_images/configure-tower-system-logging-splunk-example.png" src="configure-tower-system-logging-splunk-example.png" />
+<ol class="arabic simple" start="6">
+<li>To verify if your configuration is set up correctly, click <strong>Test</strong>. This verifies the logging configuration by sending a test log message and checking the response code is OK.</li>
+<li>When done, click <strong>Save</strong> to apply the settings or <strong>Cancel</strong> to abandon the changes.</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+          <div id="search-results"><gcse:searchresults-only></gcse:searchresults-only></div>
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+        <a href="tower-manage.html" class="btn btn-neutral float-right" title="12. The awx-manage Utility"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="logfiles.html" class="btn btn-neutral" title="10. Tower Logfiles"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <p>
+    Copyright © 2019 Red Hat, Inc. 
+    <br>
+  </p>
+
+<p>
+  Red Hat Ansible Tower docs are generated using <A HREF="http://sphinx-doc.org/">Sphinx</A> using a theme provided by <a href="http://readthedocs.org">Read the Docs</a>.
+</p>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+<!-- begin analytics -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+        (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+        n.id=i;n.src = '//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+        e.parentNode.insertBefore(n, e);
+        })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+_satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

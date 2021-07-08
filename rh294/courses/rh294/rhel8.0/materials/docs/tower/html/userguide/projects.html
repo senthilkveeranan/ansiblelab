@@ -1,0 +1,873 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <script type="text/javascript" src="https://www.redhat.com/dtm.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta class="swiftype" name="published_at" data-type="date" content="2019-03-26" /> 
+  <meta class="swiftype" name="version" data-type="string" content="3.4.3">
+
+
+  <!-- this ^ ^ is for the original publishing date only, never for minor pushes that aren't actual version bumps of the docs (this helps us keep our search rank weighting in swiftype, our search server, prioritized based on the dates of the releases themselves) -->
+
+  <script>
+  var url = window.location.href;
+  if(url.indexOf("latest") == -1){
+   var version = url.replace("http://docs.ansible.com/ansible-tower/","");
+   version = version.substring(0,url.indexOf("/"));
+   url = url.replace(version,"latest");
+  }
+  var canon = document.createElement('link');
+  canon.rel = "canonical";
+  canon.href = url;
+  document.head.appendChild(canon);
+  </script>
+
+  <!-- Google Tag Manager Data Layer -->
+  <script>
+   dataLayer = [];
+  </script>
+  <!-- End Google Tag Manager Data Layer -->
+
+  
+  <title>13. Projects &mdash; Ansible Tower User Guide v3.4.3</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'./',
+        VERSION:'Ansible Tower 3.4.3',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript" src="underscore.js"></script>
+      <script type="text/javascript" src="doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="theme.min.css" type="text/css" />
+    <script type="text/javascript" src="theme.js"></script>
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Ansible Tower User Guide v3.4.3" href="index.html"/>
+        <link rel="next" title="14. Inventories" href="inventories.html"/>
+        <link rel="prev" title="12. Applications" href="applications_auth.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+  <style>
+    .search-reset-start {
+        color: #463E3F;
+        float: right;
+        position: relative;
+        top: -25px;
+        left: -10px;
+        z-index: 10;
+     }
+     .search-reset-start:hover {
+        cursor: pointer;
+        color: #2980B9;
+     }
+     #search-box-id {
+        padding-right: 25px;
+     }
+  </style>
+
+  <!-- Google Code for Remarketing Tag
+  <script type="text/javascript">
+  /* <![CDATA[ */
+  var google_conversion_id = 972577926;
+  var google_custom_params = window.google_tag_params;
+  var google_remarketing_only = true;
+  /* ]]> */
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+  </script>
+  <noscript>
+    <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt=""
+              src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/972577926/?value=0&amp;guid=ON&amp;script=0"/>
+    </div>
+  </noscript>
+  End of Google Code for Remarketing Tag -->
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300'
+      rel='stylesheet' type='text/css'>
+
+  <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+
+  <script type='text/javascript'>
+    googletag.cmd.push(function() {
+      googletag.defineSlot('/1171614047/towerleft', [300, 250], 'div-gpt-ad-1453398530439-0').addService(googletag.pubads());
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
+  </script>
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+  <div class="DocSite-globalNav ansibleNav">
+        <ul>
+            <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+            <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+            <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+            <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+            <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+        </ul>
+    </div>
+
+<a class="DocSite-nav" href="http://docs.ansible.com/">
+  <img class="DocSiteNav-logo"
+    src="logo_invert.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">
+    Documentation
+  </div>
+</a> 
+
+
+
+
+<div class="wy-grid-for-nav">
+
+  
+ <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+        <a class="DocSiteProduct-header DocSiteProduct-header--tower"
+            href="http://docs.ansible.com/ansible-tower/">
+            <div class="DocSiteProduct-productName">
+                <div class="DocSiteProduct-logoText">
+                    ANSIBLE TOWER 
+                    <div class="DocSiteProduct-CurrentVersion" align="right">
+                      v3.4.3
+                  </div>
+                </div>
+            </div>
+        </a>
+        
+
+        <div class="DocSiteProduct-CheckVersionPara">
+          Are you using the latest and greatest version of Ansible Tower? Find the <a class="DocSiteProduct-versionheader" href="http://docs.ansible.com/ansible-tower/">Ansible Tower documentation</a> set which best matches your version of Tower.
+            </div>
+    </div>
+    <div class="wy-side-nav-search" style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+      <!-- <a href="index.html" class="icon icon-home"> Ansible Tower User Guide</a> -->
+      <!-- <form class="wy-form" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form> -->
+
+<!-- 
+<script>
+  (function() {
+    var cx = '004731659079655444432:zgjlf-tkhya';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script> -->
+
+<!-- <gcse:searchresults-only></gcse:searchresults-only> -->
+
+<!-- swiftype search script -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','Vcn_rXrPfye6ziaZJZRt','2.0.0');
+</script>
+
+<!-- <form id="search-form-id" action="">
+  <input type="text" class="st-default-search-input" name="query" placeholder="Search Tower Docs" id="search-box-id" /> 
+  <a class="search-reset-start" id="search-reset"><i class="fa fa-times"></i></a>
+  <a class="search-reset-start" id="search-start"><i class="fa fa-search"></i></a> 
+ </form> -->
+
+          
+
+
+<!-- <script type="text/javascript" src="http://www.google.com/cse/brand?form=search-form-id&inputbox=search-box-id"></script> -->
+
+<!-- 
+<script>
+  function executeQuery() {
+      var input = document.getElementById('search-box-id');
+      var element = google.search.cse.element.getElement('searchresults-only0');
+      element.resultsUrl = '/htmlout/search.html'
+      if (input.value == '') {
+          element.clearAllResults();
+          $('#page-content, .rst-footer-buttons, #search-start').show();
+          $('#search-results, #search-reset').hide();
+      } else {
+          $('#page-content, .rst-footer-buttons, #search-start').hide();
+          $('#search-results, #search-reset').show();
+          element.execute(input.value);
+      }
+      return false;
+      }
+
+  $('#search-reset').hide();
+
+  $('#search-box-id').css('background-position', '1em center');
+
+  $('#search-box-id').on('blur', function() {
+    $('#search-box-id').css('background-position', '1em center');
+  });
+
+  $('#search-start').click(function(e) { executeQuery(); });
+  $('#search-reset').click(function(e) { $('#search-box-id').val(''); executeQuery(); });
+
+  $('#search-form-id').submit(function(e) {
+      console.log('submitting!');
+      executeQuery();
+      e.preventDefault();
+      });
+</script>
+-->
+    </div>
+
+      <div id="menu-id" class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Ansible Tower User Guide v3.4.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">1. Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#real-time-playbook-output-and-exploration">1.1. Real-time Playbook Output and Exploration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#push-button-automation">1.2. &#8220;Push Button&#8221; Automation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#enhanced-and-simplified-role-based-access-control-and-auditing">1.3. Enhanced and Simplified Role-Based Access Control and Auditing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#cloud-autoscaling-flexibility">1.4. Cloud &amp; Autoscaling Flexibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#the-ideal-restful-api">1.5. The Ideal RESTful API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#backup-and-restore">1.6. Backup and Restore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#ansible-galaxy-integration">1.7. Ansible Galaxy Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#inventory-support-for-openstack">1.8. Inventory Support for OpenStack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#remote-command-execution">1.9. Remote Command Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#system-tracking">1.10. System Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#integrated-notifications">1.11. Integrated Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#satellite-and-cloudforms-integration">1.12. Satellite and CloudForms Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#run-time-job-customization">1.13. Run-time Job Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#red-hat-insights-integration">1.14. Red Hat Insights Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#enhanced-tower-user-interface">1.15. Enhanced Tower User Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#custom-virtual-environments">1.16. Custom Virtual Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#authentication-enhancements">1.17. Authentication Enhancements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#cluster-management">1.18. Cluster Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#container-platform-support">1.19. Container Platform Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#workflow-enhancements">1.20. Workflow Enhancements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#job-distribution">1.21. Job Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#support-for-deployment-in-a-fips-enabled-environment">1.22. Support for deployment in a FIPS-enabled environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license-support.html">2. Tower Licensing, Updates, and Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#support">2.1. Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#trial-evaluation">2.2. Trial / Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#subscription-types">2.3. Subscription Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#node-counting-in-licenses">2.4. Node Counting in Licenses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#license-features">2.5. License Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#tower-component-licenses">2.6. Tower Component Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="logging_in.html">3. Logging In</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_license.html">4. Import a License</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="import_license.html#adding-a-tower-license-manually">4.1. Adding a Tower License Manually</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main_menu.html">5. The Tower User Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="main_menu.html#activity-streams">5.1. Activity Streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main_menu.html#views">5.2. Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main_menu.html#resources-and-access">5.3. Resources and Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main_menu.html#tower-administration-menu">5.4. Tower Administration Menu</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="search_sort.html">6. Search</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="search_sort.html#searching-tips">6.1. Searching Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search_sort.html#sort">6.2. Sort</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="organizations.html">7. Organizations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="organizations.html#creating-a-new-organization">7.1. Creating a New Organization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">8. Users</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="users.html#create-a-user">8.1. Create a User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#user-types-quick-view">8.2. User Types - Quick View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#users-organizations">8.3. Users - Organizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#users-teams">8.4. Users - Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#users-permissions">8.5. Users - Permissions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="teams.html">9. Teams</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="teams.html#create-a-team">9.1. Create a Team</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="credentials.html">10. Credentials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="credentials.html#understanding-how-credentials-work">10.1. Understanding How Credentials Work</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credentials.html#getting-started-with-credentials">10.2. Getting Started with Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credentials.html#add-a-new-credential">10.3. Add a New Credential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credentials.html#credential-types">10.4. Credential Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="credential_types.html">11. Custom Credential Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="credential_types.html#backwards-compatible-api-considerations">11.1. Backwards-Compatible API Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential_types.html#getting-started-with-credential-types">11.2. Getting Started with Credential Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential_types.html#create-a-new-credential-type">11.3. Create a New Credential Type</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="applications_auth.html">12. Applications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="applications_auth.html#getting-started-with-applications">12.1. Getting Started with Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="applications_auth.html#create-a-new-application">12.2. Create a new application</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="projects.html#">13. Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#add-a-new-project">13.1. Add a new project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#work-with-permissions">13.2. Work with Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#work-with-notifications">13.3. Work with Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#work-with-job-templates">13.4. Work with Job Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#work-with-schedules">13.5. Work with Schedules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inventories.html">14. Inventories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inventories.html#smart-inventories">14.1. Smart Inventories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inventories.html#add-a-new-inventory">14.2. Add a new inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inventories.html#running-ad-hoc-commands">14.3. Running Ad Hoc Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="job_templates.html">15. Job Templates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#create-a-job-template">15.1. Create a Job Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#add-permissions">15.2. Add Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#work-with-notifications">15.3. Work with Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#view-completed-jobs">15.4. View Completed Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#scheduling">15.5. Scheduling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#surveys">15.6. Surveys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#launch-a-job-template">15.7. Launch a Job Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#copy-a-job-template">15.8. Copy a Job Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#scan-job-templates">15.9. Scan Job Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#fact-caching">15.10. Fact Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#utilizing-cloud-credentials">15.11. Utilizing Cloud Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#provisioning-callbacks">15.12. Provisioning Callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_templates.html#extra-variables">15.13. Extra Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="job_slices.html">16. Job Slicing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="job_slices.html#job-slice-considerations">16.1. Job slice considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_slices.html#job-slice-execution-behavior">16.2. Job slice execution behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_slices.html#search-job-slices">16.3. Search job slices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="workflows.html">17. Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="workflows.html#workflow-scenarios-and-considerations">17.1. Workflow scenarios and considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflows.html#extra-variables">17.2. Extra Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflows.html#workflow-states">17.3. Workflow States</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflows.html#role-based-access-controls">17.4. Role-Based Access Controls</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_templates.html">18. Workflow Job Templates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#create-a-workflow-template">18.1. Create a Workflow Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#work-with-permissions">18.2. Work with Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#work-with-notifications">18.3. Work with Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#view-completed-jobs">18.4. View Completed Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#work-with-schedules">18.5. Work with Schedules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#surveys">18.6. Surveys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#workflow-visualizer">18.7. Workflow Visualizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#launch-a-workflow-template">18.8. Launch a Workflow Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#copy-a-workflow-template">18.9. Copy a Workflow Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workflow_templates.html#extra-variables">18.10. Extra Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="instance_groups.html">19. Instance Groups</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="instance_groups.html#create-an-instance-group">19.1. Create an instance group</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="jobs.html">20. Jobs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html#job-details-inventory-sync">20.1. Job Details - Inventory Sync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html#job-details-scm">20.2. Job Details - SCM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html#job-details-playbook-run">20.3. Job Details - Playbook Run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html#at-capacity-determination-and-job-impact">20.4. Ansible Tower Capacity Determination and Job Impact</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">21. Notifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#notifier-hierarchy">21.1. Notifier Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#workflow">21.2. Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#create-a-notification-template">21.3. Create a Notification Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#notification-types">21.4. Notification Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#configuring-the-towerhost-hostname">21.5. Configuring the <code class="docutils literal"><span class="pre">towerhost</span></code> hostname</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="insights.html">22. Setting up an Insights Project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="insights.html#create-insights-credential">22.1. Create Insights Credential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insights.html#create-an-insights-project">22.2. Create an Insights Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insights.html#create-insights-inventory">22.3. Create Insights Inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insights.html#create-a-scan-project">22.4. Create a Scan Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insights.html#create-a-scan-job-template">22.5. Create a Scan Job Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insights.html#remediate-insights-inventory">22.6. Remediate Insights Inventory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="best_practices.html">23. Best Practices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="best_practices.html#use-source-control">23.1. Use Source Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best_practices.html#ansible-file-and-directory-structure">23.2. Ansible file and directory structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best_practices.html#use-dynamic-inventory-sources">23.3. Use Dynamic Inventory Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best_practices.html#variable-management-for-inventory">23.4. Variable Management for Inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best_practices.html#autoscaling">23.5. Autoscaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best_practices.html#larger-host-counts">23.6. Larger Host Counts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best_practices.html#continuous-integration-continuous-deployment">23.7. Continuous integration / Continuous Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">24. Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security.html#playbook-access-and-information-sharing">24.1. Playbook Access and Information Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#role-based-access-controls">24.2. Role-Based Access Controls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#function-of-roles-editing-and-creating">24.3. Function of roles: editing and creating</a></li>
+</ul>
+</li>
+</ul>
+
+        
+
+<div class="DocSite-sideNav ansibleNav">
+    <ul class="">
+    <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+    <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+    <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+    <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    </ul>
+</div>
+
+    <!-- changeable widget -->
+    <div id="sideBanner">
+    <br/>
+    <a href="http://www.ansible.com/tower-docs-left?utm_source=docs">
+<img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-left-rail.png" />
+    </a>
+</div>
+
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="https://docs.ansible.com/">Ansible Tower User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+
+    <!--        <div class="DocSiteBanner">
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-left.png">
+                </a>
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-right.png">
+                </a>
+            </div> -->
+
+          <ul class="wy-breadcrumbs">
+    <li><a href="http://docs.ansible.com/" <title>Ansible Docs Home</title></a>&raquo;</li>
+    <li><a href="http://docs.ansible.com/ansible-tower/" <title>Ansible Tower Docs</title></a>&raquo;</li>
+    <li><a href="index.html" <title> &mdash; Ansible Tower User Guide v3.4.3</title></a> &raquo;</li>
+    <!--  <li><a href="">13. Projects</a></li> -->
+</ul>
+<hr/>
+
+          <div id="page-content">
+          
+  <div class="section" id="projects">
+<span id="ug-projects"></span><h1>13. Projects<a class="headerlink" href="projects.html#projects" title="Permalink to this headline">¶</a></h1>
+<p id="index-0">A <a class="reference external" href="http://docs.ansible.com/ansible-tower/3.4.3/html/installandreference/glossary.html#term-project" title="(in Ansible Tower Installation and Reference Guide v3.4.3)"><span class="xref std std-term">Project</span></a> is a logical collection of Ansible playbooks, represented in Tower.</p>
+<p>You can manage playbooks and playbook directories by either placing them manually under the Project Base Path on your Tower server, or by placing your playbooks into a source code management (SCM) system supported by Tower, including Git, Subversion, Mercurial, and Red Hat Insights. To create a Red Hat Insights project, refer to <a class="reference internal" href="insights.html#insights"><span class="std std-ref">Setting up an Insights Project</span></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">By default, the Project Base Path is <code class="docutils literal"><span class="pre">/var/lib/awx/projects</span></code>, but this may have been modified by the Tower administrator. It is configured in <code class="docutils literal"><span class="pre">/etc/tower/settings.py</span></code>. Use caution when editing this file, as incorrect settings can disable your installation.</p>
+</div>
+<p>This menu displays a list of the projects that are currently available. The list of projects may be sorted and searched by any of the table headers displayed.</p>
+<p><img alt="Projects - home with example project" src="projects-list-all.png" /></p>
+<p><strong>Status</strong> indicates the state of the project and may be one of the following (note that you can also filter your view by specific status types):</p>
+<ul class="simple">
+<li><strong>Pending</strong> - The source control update has been created, but not queued or started yet. Any job (not just source control updates) will stay in pending until it&#8217;s actually ready to be run by the system. Reasons for it not being ready because it has dependencies that are currently running so it has to wait until they are done, or there is not enough capacity to run in the locations it is configured to.</li>
+<li><strong>Waiting</strong> - The source control update is in the queue waiting to be executed.</li>
+<li><strong>Running</strong> - The source control update is currently in progress.</li>
+<li><strong>Successful</strong> - The last source control update for this project succeeded.</li>
+<li><strong>Failed</strong> - The last source control update for this project failed.</li>
+<li><strong>Error</strong> - The last source control update job failed to run at all. (To be deprecated.)</li>
+<li><strong>Canceled</strong> - The last source control update for the project was canceled.</li>
+<li><strong>Never updated</strong> - The project is configured for source control, but has never been updated.</li>
+<li><strong>OK</strong> - The project is not configured for source control, and is correctly in place. (To be deprecated.)</li>
+<li><strong>Missing</strong> - Projects are absent from the project base path of <code class="docutils literal"><span class="pre">/var/lib/awx/projects</span></code> (applicable for manual or source control managed projects).</li>
+</ul>
+<p>For each project listed, you can edit (<img alt="edit-icon" src="edit-button.png" />) project properties, copy the project attributes (<img alt="copy" src="copy-button.png" />), get the latest SCM revision (<img alt="refresh" src="refresh-gray.png" />), or delete (<img alt="delete-icon" src="delete-button.png" />) the project, using the respective icons under the <strong>Actions</strong> column.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Projects of credential type Manual cannot update or schedule source control-based actions without being reconfigured as an SCM type credential.</p>
+</div>
+<div class="admonition note" id="deletion-warning">
+<p class="first admonition-title">Note</p>
+<p>If deleting items that are used by other work items, a message opens listing the items are affected by the deletion and prompts you to confirm the deletion. Some screens will contain items that are invalid or previously deleted, so they will fail to run. Below is an example of such a message:</p>
+<img alt="_images/warning-deletion-dependencies.png" class="last" src="warning-deletion-dependencies.png" />
+</div>
+<div class="section" id="add-a-new-project">
+<h2>13.1. Add a new project<a class="headerlink" href="projects.html#add-a-new-project" title="Permalink to this headline">¶</a></h2>
+<p id="index-1">To create a new project:</p>
+<ol class="arabic simple">
+<li>Click the <img alt="add" src="add-button.png" /> button, which launches the <strong>Create Project</strong> dialog.</li>
+</ol>
+<p><img alt="Projects - create new project" src="projects-create-new-project.png" /></p>
+<ol class="arabic simple" start="2">
+<li>Enter the appropriate details into the following required fields:</li>
+</ol>
+<ul class="simple">
+<li><strong>Name</strong></li>
+<li><strong>Description</strong> (optional)</li>
+<li><strong>Organization</strong> - A project must have at least one organization. Pick one organization now to create the project, and then after the project is created you can add additional organizations.</li>
+<li><strong>Ansible Environment</strong> (optional) - Select from the drop-down menu list a custom virtual environment on which to run this project.</li>
+<li><strong>SCM Type</strong> - Select from the drop-down menu list an SCM type associated with this project. Refer to <a class="reference internal" href="projects.html#ug-manual"><span class="std std-ref">Manage playbooks manually</span></a> and <a class="reference internal" href="projects.html#ug-sourcecontrols"><span class="std std-ref">Manage playbooks using Source Control</span></a> in the subsequent sections for more detail.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If adding a manual project, each project path inside of the project root folder can only be assigned to one project. If you receive the following message, ensure that you have not already assigned the project path to an existing project:</p>
+<blockquote class="last">
+<div><code class="docutils literal"><span class="pre">All</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">project</span> <span class="pre">paths</span> <span class="pre">have</span> <span class="pre">been</span> <span class="pre">assigned</span> <span class="pre">to</span> <span class="pre">existing</span> <span class="pre">projects,</span> <span class="pre">or</span> <span class="pre">there</span> <span class="pre">are</span> <span class="pre">no</span> <span class="pre">directories</span> <span class="pre">found</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">base</span> <span class="pre">path.</span></code>
+<code class="docutils literal"><span class="pre">You</span> <span class="pre">will</span> <span class="pre">need</span> <span class="pre">to</span> <span class="pre">add</span> <span class="pre">a</span> <span class="pre">project</span> <span class="pre">path</span> <span class="pre">before</span> <span class="pre">creating</span> <span class="pre">a</span> <span class="pre">new</span> <span class="pre">project.</span></code></div></blockquote>
+</div>
+<ol class="arabic simple" start="3">
+<li>Click <strong>Save</strong> when done.</li>
+</ol>
+<div class="section" id="manage-playbooks-manually">
+<span id="ug-manual"></span><h3>13.1.1. Manage playbooks manually<a class="headerlink" href="projects.html#manage-playbooks-manually" title="Permalink to this headline">¶</a></h3>
+<ul class="simple" id="index-2">
+<li>Create one or more directories to store playbooks under the Project Base Path (for example, /var/lib/awx/projects/)</li>
+<li>Create or copy playbook files into the playbook directory.</li>
+<li>Ensure that the playbook directory and files are owned by the same UNIX user and group that the Tower service runs as.</li>
+<li>Ensure that the permissions are appropriate for the playbook directories and files.</li>
+</ul>
+<p>If you have trouble adding a project path, check the permissions and SELinux context settings for the project directory and files.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>If you have not added any Ansible playbook directories to the base project path, you will receive the following message from Tower:</p>
+<p><img alt="Projects - create new warning" src="projects-create-manual-warning.png" /></p>
+<p class="last">Correct this issue by creating the appropriate playbook directories and checking out playbooks from your SCM or otherwise copying playbooks into the appropriate playbook directories.</p>
+</div>
+</div>
+<div class="section" id="manage-playbooks-using-source-control">
+<span id="ug-sourcecontrols"></span><h3>13.1.2. Manage playbooks using Source Control<a class="headerlink" href="projects.html#manage-playbooks-using-source-control" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple" id="index-3">
+<li>Select the appropriate option from the <strong>SCM Type</strong> drop-down menu list.</li>
+<li>Enter the appropriate details into the following fields:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><strong>SCM URL</strong> - See an example in the help <img alt="help" src="help-button.png" /> text.</li>
+</ul>
+<ul class="simple">
+<li><strong>SCM Branch</strong> - Optionally enter the SCM branch for Mercurial, or the SCM branch, tag, or revision for Git</li>
+<li><strong>Revision #</strong> - Optionally enter the Revision # for Subversion</li>
+<li><strong>SCM Credential</strong> - If authentication is required, select the appropriate SCM credential</li>
+<li><strong>SCM Update Options</strong>:</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Clean</strong> - Remove any local modifications prior to performing an update.</li>
+<li><strong>Delete on Update</strong> - Delete the local repository in its entirety prior to performing an update. Depending on the size of the repository this may significantly increase the amount of time required to complete an update.</li>
+<li><strong>Update on Launch</strong> - Each time a job runs using this project, perform an update to the local repository prior to starting the job. To avoid job overflows if jobs are spawned faster than the project can sync, selecting this allows you to configure a Cache Timeout to cache prior project syncs for a certain number of seconds.</li>
+</ul>
+</div></blockquote>
+<p><img alt="Projects - create SCM project" src="projects-create-scm-project.png" /></p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Click <strong>Save</strong> to save your project.</li>
+</ol>
+<blockquote>
+<div><div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>Using a Github link offers an easy way to use a playbook. To help get you started, use the <code class="docutils literal"><span class="pre">helloworld.yml</span></code> file available at: <a class="reference external" href="https://github.com/ansible/tower-example.git">https://github.com/ansible/tower-example.git</a></p>
+<p class="last">This link offers a very similar playbook to the one created manually in the instructions found in the <a class="reference external" href="http://docs.ansible.com/ansible-tower/3.4.3/html/quickstart/index.html#qs-start" title="(in Ansible Tower Quick Setup v3.4.3)"><span class="xref std std-ref">Ansible Tower Quick Start Guide</span></a>. Using it will not alter or harm your system in anyway.</p>
+</div>
+</div></blockquote>
+<div class="section" id="updating-projects-from-source-control">
+<h4>13.1.2.1. Updating projects from source control<a class="headerlink" href="projects.html#updating-projects-from-source-control" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple" id="index-4">
+<li>Update an existing SCM-based project by selecting the project and clicking the <img alt="update" src="update-button.png" /> button.</li>
+</ol>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please note that immediately after adding a project setup to use source control, a &#8220;Sync&#8221; starts that fetches the project details from the configured source control.</p>
+</div>
+</div></blockquote>
+<p><img alt="projects - list all" src="projects-list-all.png" /></p>
+<ol class="arabic simple" start="2">
+<li>Click on the dot under <strong>Status</strong> (far left, beside the name of the Project) to get further details about the update process.</li>
+</ol>
+<p><img alt="Project - update status" src="projects-update-status.png" /></p>
+</div>
+</div>
+</div>
+<div class="section" id="work-with-permissions">
+<h2>13.2. Work with Permissions<a class="headerlink" href="projects.html#work-with-permissions" title="Permalink to this headline">¶</a></h2>
+<p id="index-5">The set of Permissions assigned to this project (role-based access controls) that provide the ability to read, modify, and administer projects, inventories, job templates, and other Tower elements are Privileges.</p>
+<p>You can access the project permissions via the <strong>Permissions</strong> tab next to the <strong>Details</strong> tab. This screen displays a list of users that currently have permissions to this project. The list may be sorted and searched by <strong>User</strong>, <strong>Role</strong>, or <strong>Team Role</strong>.</p>
+<p><img alt="Projects - permissions list for example project" src="projects-permissions-example.png" /></p>
+<div class="section" id="add-permissions">
+<h3>13.2.1. Add Permissions<a class="headerlink" href="projects.html#add-permissions" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div></div></blockquote>
+<p id="ug-permissions">The <strong>Permissions</strong> tab allows you to review, grant, edit, and remove associated permissions for users as well as team members. To assign permissions to a particular user for this resource:</p>
+<ol class="arabic simple">
+<li>Click the <strong>Permissions</strong> tab.</li>
+<li>Click the <img alt="add" src="add-button.png" /> button to open the Add Users/Teams window.</li>
+</ol>
+<blockquote>
+<div><img alt="Add Permissions Form" src="add-permissions-start.png" />
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Specify the users or teams that will have access then assign them specific roles:</li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>Click to select one or multiple checkboxes beside the name(s) of the user(s) or team(s) to select them.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can select multiple users and teams at the same time by navigating between the <strong>Users</strong> and <strong>Teams</strong> tabs without saving.</p>
+</div>
+<p>After selections are made, the window expands to allow you to select a role from the drop-down menu list for each user or team you chose.</p>
+<blockquote>
+<div><img alt="Roles Assignment for Selected Users" src="add-permissions-roles.png" />
+</div></blockquote>
+<p>The example above shows options associated with inventories. Different resources have different options available:</p>
+<ul class="simple">
+<li><strong>Admin</strong> allows read, run, and edit privileges (applies to all resources)</li>
+<li><strong>Use</strong> allows use of a resource in a job template (applies all resources except job templates)</li>
+<li><strong>Update</strong> allows updating of project via the SCM Update (applies to projects and inventories)</li>
+<li><strong>Ad Hoc</strong> allows use of Ad Hoc commands (applies to inventories)</li>
+<li><strong>Execute</strong> allows launching of a job template (applies to job templates)</li>
+</ul>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Use the <strong>Key</strong> button in the roles selection pane to display a description of each of the roles.</p>
+</div>
+<ol class="loweralpha simple" start="2">
+<li>Select the role to apply to the selected user or team.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<blockquote>
+<div>You can assign roles to multiple users and teams by navigating between the <strong>Users</strong> and <strong>Teams</strong> tabs without saving.</div></blockquote>
+<img alt="Add Permissions - Examples of users and teams selected" class="last" src="add-permissions-users-teams-selected.png" />
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Review your role assignments for each user and team.</li>
+</ol>
+<img alt="Add Permissions - Examples of roles applied" src="add-permissions-roles-examples.png" />
+<ol class="arabic" start="5">
+<li><p class="first">Click <strong>Save</strong> when done, and the Add Users/Teams window closes to display the updated roles assigned for each user and team.</p>
+<blockquote>
+<div><img alt="Permissions tab with Role Assignments" src="permissions-tab-roles-assigned.png" />
+</div></blockquote>
+</li>
+</ol>
+<blockquote>
+<div><p>To remove Permissions for a particular user, click the Disassociate (x) button next to its resource.</p>
+<blockquote>
+<div><img alt="_images/permissions-disassociate.png" src="permissions-disassociate.png" />
+</div></blockquote>
+<p>This launches a confirmation dialog, asking you to confirm the disassociation.</p>
+<blockquote>
+<div><img alt="_images/permissions-disassociate-confirm.png" src="permissions-disassociate-confirm.png" />
+</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="work-with-notifications">
+<h2>13.3. Work with Notifications<a class="headerlink" href="projects.html#work-with-notifications" title="Permalink to this headline">¶</a></h2>
+<p>Clicking on <strong>Notifications</strong> allows you to review any notification integrations you have setup.</p>
+<img alt="_images/projects-notifications-example-list.png" src="projects-notifications-example-list.png" />
+<p>To create a new notification, click the <strong>NOTIFICATIONS</strong> link from the upper-right side of the notifications list view. If no notifications have been set up, click the <strong>NOTIFICATIONS</strong> link from above or inside the gray box to add a new notification  to create a notification.</p>
+<p>Refer to <a class="reference internal" href="notifications.html#ug-notifications"><span class="std std-ref">Notifications</span></a> for more information.</p>
+<img alt="_images/job-template-completed-notifications-view.png" src="job-template-completed-notifications-view.png" />
+</div>
+<div class="section" id="work-with-job-templates">
+<h2>13.4. Work with Job Templates<a class="headerlink" href="projects.html#work-with-job-templates" title="Permalink to this headline">¶</a></h2>
+<p>Clicking on <strong>Job Templates</strong> allows you to review any job templates or workflow templates associated with this project.</p>
+<img alt="_images/projects-templates-example-list.png" src="projects-templates-example-list.png" />
+<p>From this view, you can launch or copy the template configuration.</p>
+</div>
+<div class="section" id="work-with-schedules">
+<h2>13.5. Work with Schedules<a class="headerlink" href="projects.html#work-with-schedules" title="Permalink to this headline">¶</a></h2>
+<p>Clicking on <strong>Schedules</strong> allows you to review any schedules set up for this project.</p>
+<img alt="_images/projects-schedules-example-list.png" src="projects-schedules-example-list.png" />
+<p>From this view, you can select schedules to edit, turn on or off, or select multiple schedules to delete.</p>
+<p>This screen displays a list of the schedules that are currently available for the selected <strong>Project</strong>. The schedule list may be sorted and searched by <strong>Name</strong>.</p>
+<p>The list of schedules includes:</p>
+<ul class="simple">
+<li><strong>Name</strong>: Clicking the schedule name opens the <strong>Edit Schedule</strong> dialog</li>
+<li><strong>First Run</strong>: The first scheduled run of this task</li>
+<li><strong>Next Run</strong>: The next scheduled run of this task</li>
+<li><strong>Final Run</strong>: If the task has an end date, this is the last scheduled run of the task</li>
+<li><strong>Last Modified</strong>: The last time this schedule was modified</li>
+</ul>
+<div class="section" id="add-a-new-schedule">
+<h3>13.5.1. Add a new schedule<a class="headerlink" href="projects.html#add-a-new-schedule" title="Permalink to this headline">¶</a></h3>
+<p id="index-6">To create a new schedule:</p>
+<ol class="arabic simple">
+<li>Click the <img alt="add" src="add-button.png" /> button, which opens the <strong>Add Schedule</strong> dialog.</li>
+</ol>
+<p><img alt="Projects - create new schedule" src="projects-create-schedule.png" /></p>
+<ol class="arabic simple" start="2">
+<li>Enter the appropriate details into the following fields:</li>
+</ol>
+<ul class="simple">
+<li><strong>Name</strong> (required)</li>
+<li><strong>Start Date</strong> (required)</li>
+<li><strong>Start Time</strong> (required)</li>
+<li><strong>Local Time Zone</strong> - The entered Start Time should be in this timezone</li>
+<li><strong>UTC Start Time</strong> - Calculated from Start Time + Local Time Zone</li>
+<li><strong>Repeat Frequency</strong> - Appropriate scheduling options are displayed depending on the frequency you select</li>
+</ul>
+<p>The <strong>SCHEDULE DESCRIPTION</strong> allows you to review the set schedule and a list of the scheduled occurrences in the selected Local Time Zone.</p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">Jobs are scheduled in UTC. Repeating jobs that run at a specific time of day may move relative to a local timezone when Daylight Savings Time shifts occur.  Essentially, Tower resolves the local time zone based time to UTC when the schedule is saved.  To ensure your schedules are correctly set, you should set your schedules in UTC time.</p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Once done, click <strong>Save</strong>.</li>
+</ol>
+<p>You can use the <strong>ON/OFF</strong> toggle button to stop an active schedule or activate a stopped schedule.</p>
+<p>The schedules overview screen for the project also shows you when the first, next, and final runs are scheduled.</p>
+<p><img alt="Projects - newly created schedule" src="projects-schedules-with-newly-created-schedule.png" /></p>
+</div>
+<div class="section" id="ansible-galaxy-support">
+<span id="ug-galaxy"></span><h3>13.5.2. Ansible Galaxy Support<a class="headerlink" href="projects.html#ansible-galaxy-support" title="Permalink to this headline">¶</a></h3>
+<p id="index-7">At the end of a Project update, Tower searches for a file called <code class="docutils literal"><span class="pre">requirements.yml</span></code> in the <code class="docutils literal"><span class="pre">roles</span></code> directory, located at``&lt;project-top-level-directory&gt;/roles/requirements.yml``. If this file is found, the following command automatically runs:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ansible</span><span class="o">-</span><span class="n">galaxy</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">roles</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">yml</span> <span class="o">-</span><span class="n">p</span> <span class="o">./</span><span class="n">roles</span><span class="o">/</span> <span class="o">--</span><span class="n">force</span>
+</pre></div>
+</div>
+<p>This file allows you to reference Galaxy roles or roles within other repositories which can be checked out in conjunction with your own project. The addition of this Ansible Galaxy support eliminates the need to create git submodules for achieving this result.</p>
+<p>For more information and examples on the syntax of the <code class="docutils literal"><span class="pre">requirements.yml</span></code> file, refer to <a class="reference external" href="http://docs.ansible.com/galaxy.html#advanced-control-over-role-requirements-files">Advanced Control Over Role Requirements</a> in the Ansible documentation.</p>
+<p>If there are any directories that should specifically be exposed, you can specify those in the Configure Tower screen in the <strong>Paths to Expose to Isolated Jobs</strong> or by updating the following entry in the settings file:</p>
+<p><code class="docutils literal"><span class="pre">AWX_PROOT_SHOW_PATHS</span> <span class="pre">=</span> <span class="pre">['/list/of/',</span> <span class="pre">'/paths']</span></code></p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The primary file you may want to add to <code class="docutils literal"><span class="pre">AWX_PROOT_SHOW_PATHS</span></code> is <code class="docutils literal"><span class="pre">/var/lib/awx/.ssh</span></code>, if your playbooks need to use keys or settings defined there.</p>
+</div>
+</div></blockquote>
+<p>If you made changes in the settings file, be sure to restart services with the <code class="docutils literal"><span class="pre">ansible-tower-service</span> <span class="pre">restart</span></code> command after your changes have been saved.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div id="search-results"><gcse:searchresults-only></gcse:searchresults-only></div>
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+        <a href="inventories.html" class="btn btn-neutral float-right" title="14. Inventories"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="applications_auth.html" class="btn btn-neutral" title="12. Applications"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <p>
+    Copyright © 2019 Red Hat, Inc. 
+    <br>
+  </p>
+
+<p>
+  Red Hat Ansible Tower docs are generated using <A HREF="http://sphinx-doc.org/">Sphinx</A> using a theme provided by <a href="http://readthedocs.org">Read the Docs</a>.
+</p>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+<!-- begin analytics -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+        (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+        n.id=i;n.src = '//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+        e.parentNode.insertBefore(n, e);
+        })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+_satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

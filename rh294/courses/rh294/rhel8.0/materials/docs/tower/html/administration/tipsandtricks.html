@@ -1,0 +1,938 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <script type="text/javascript" src="https://www.redhat.com/dtm.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta class="swiftype" name="published_at" data-type="date" content="2019-03-26" /> 
+  <meta class="swiftype" name="version" data-type="string" content="3.4.3">
+
+
+   <!-- this ^ ^ is for the original publishing date only, never for minor pushes that aren't actual version bumps of the docs (this helps us keep our search rank weighting in swiftype, our search server, prioritized based on the dates of the releases themselves) -->
+
+  <script>
+  var url = window.location.href;
+  if(url.indexOf("latest") == -1){
+   var version = url.replace("http://docs.ansible.com/ansible-tower/","");
+   version = version.substring(0,url.indexOf("/"));
+   url = url.replace(version,"latest");
+  }
+  var canon = document.createElement('link');
+  canon.rel = "canonical";
+  canon.href = url;
+  document.head.appendChild(canon);
+  </script>
+
+  <!-- Google Tag Manager Data Layer -->
+  <script>
+   dataLayer = [];
+  </script>
+  <!-- End Google Tag Manager Data Layer -->
+
+  
+  <title>25. Tower Tips and Tricks &mdash; Ansible Tower Administration Guide v3.4.3</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'./',
+        VERSION:'Ansible Tower 3.4.3',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript" src="underscore.js"></script>
+      <script type="text/javascript" src="doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="theme.min.css" type="text/css" />
+    <script type="text/javascript" src="theme.js"></script>
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Ansible Tower Administration Guide v3.4.3" href="index.html"/>
+        <link rel="next" title="26. Introduction to tower-cli" href="towercli.html"/>
+        <link rel="prev" title="24. Troubleshooting Tower" href="troubleshooting.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+  <style>
+    .search-reset-start {
+        color: #463E3F;
+        float: right;
+        position: relative;
+        top: -25px;
+        left: -10px;
+        z-index: 10;
+     }
+     .search-reset-start:hover {
+        cursor: pointer;
+        color: #2980B9;
+     }
+     #search-box-id {
+        padding-right: 25px;
+     }
+  </style>
+
+  <!-- Google Code for Remarketing Tag
+  <script type="text/javascript">
+  /* <![CDATA[ */
+  var google_conversion_id = 972577926;
+  var google_custom_params = window.google_tag_params;
+  var google_remarketing_only = true;
+  /* ]]> */
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+  </script>
+  <noscript>
+    <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt=""
+              src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/972577926/?value=0&amp;guid=ON&amp;script=0"/>
+    </div>
+  </noscript>
+  End of Google Code for Remarketing Tag -->
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300'
+      rel='stylesheet' type='text/css'>
+
+  <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+
+  <script type='text/javascript'>
+    googletag.cmd.push(function() {
+      googletag.defineSlot('/1171614047/towerleft', [300, 250], 'div-gpt-ad-1453398530439-0').addService(googletag.pubads());
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
+  </script>
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+  <div class="DocSite-globalNav ansibleNav">
+        <ul>
+            <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+            <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+            <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+            <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+            <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+        </ul>
+    </div>
+
+<a class="DocSite-nav" href="http://docs.ansible.com/">
+  <img class="DocSiteNav-logo"
+    src="logo_invert.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">
+    Documentation
+  </div>
+</a> 
+
+
+
+
+<div class="wy-grid-for-nav">
+
+  
+ <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+        <a class="DocSiteProduct-header DocSiteProduct-header--tower"
+            href="http://docs.ansible.com/ansible-tower/">
+            <div class="DocSiteProduct-productName">
+                <div class="DocSiteProduct-logoText">
+                    ANSIBLE TOWER 
+                    <div class="DocSiteProduct-CurrentVersion" align="right">
+                      v3.4.3
+                  </div>
+                </div>
+            </div>
+        </a>
+        
+
+        <div class="DocSiteProduct-CheckVersionPara">
+          Are you using the latest and greatest version of Ansible Tower? Find the <a class="DocSiteProduct-versionheader" href="http://docs.ansible.com/ansible-tower/">Ansible Tower documentation</a> set which best matches your version of Tower.
+            </div>
+    </div>
+    <div class="wy-side-nav-search" style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+      <!-- <a href="index.html" class="icon icon-home"> Ansible Tower Administration Guide</a> -->
+      <!-- <form class="wy-form" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form> -->
+
+<!-- 
+<script>
+  (function() {
+    var cx = '004731659079655444432:zgjlf-tkhya';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script> -->
+
+<!-- <gcse:searchresults-only></gcse:searchresults-only> -->
+
+<!-- swiftype search script -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','Vcn_rXrPfye6ziaZJZRt','2.0.0');
+</script>
+
+<!-- <form id="search-form-id" action="">
+  <input type="text" class="st-default-search-input" name="query" placeholder="Search Tower Docs" id="search-box-id" /> 
+  <a class="search-reset-start" id="search-reset"><i class="fa fa-times"></i></a>
+  <a class="search-reset-start" id="search-start"><i class="fa fa-search"></i></a> 
+ </form> -->
+
+          
+
+
+<!-- <script type="text/javascript" src="http://www.google.com/cse/brand?form=search-form-id&inputbox=search-box-id"></script> -->
+
+<!-- 
+<script>
+  function executeQuery() {
+      var input = document.getElementById('search-box-id');
+      var element = google.search.cse.element.getElement('searchresults-only0');
+      element.resultsUrl = '/htmlout/search.html'
+      if (input.value == '') {
+          element.clearAllResults();
+          $('#page-content, .rst-footer-buttons, #search-start').show();
+          $('#search-results, #search-reset').hide();
+      } else {
+          $('#page-content, .rst-footer-buttons, #search-start').hide();
+          $('#search-results, #search-reset').show();
+          element.execute(input.value);
+      }
+      return false;
+      }
+
+  $('#search-reset').hide();
+
+  $('#search-box-id').css('background-position', '1em center');
+
+  $('#search-box-id').on('blur', function() {
+    $('#search-box-id').css('background-position', '1em center');
+  });
+
+  $('#search-start').click(function(e) { executeQuery(); });
+  $('#search-reset').click(function(e) { $('#search-box-id').val(''); executeQuery(); });
+
+  $('#search-form-id').submit(function(e) {
+      console.log('submitting!');
+      executeQuery();
+      e.preventDefault();
+      });
+</script>
+-->
+    </div>
+
+      <div id="menu-id" class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Ansible Tower Administration Guide v3.4.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license-support.html">1. Tower Licensing, Updates, and Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#support">1.1. Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#trial-evaluation">1.2. Trial / Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#subscription-types">1.3. Subscription Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#node-counting-in-licenses">1.4. Node Counting in Licenses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#license-features">1.5. License Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#tower-component-licenses">1.6. Tower Component Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="init_script.html">2. Starting, Stopping, and Restarting Tower</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_inventory_script.html">3. Custom Inventory Scripts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="custom_inventory_script.html#writing-inventory-scripts">3.1. Writing Inventory Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scm-inv-source.html">4. Inventory File Importing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scm-inv-source.html#custom-dynamic-inventory-scripts">4.1. Custom Dynamic Inventory Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scm-inv-source.html#scm-inventory-source-fields">4.2. SCM Inventory Source Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-creds-assignment.html">5. Multi-Credential Assignment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#background">5.1. Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#important-changes">5.2. Important Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#launch-time-considerations">5.3. Launch Time Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#backwards-compatibility-concerns">5.4. Backwards Compatibility Concerns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#multi-vault-credentials">5.5. Multi-Vault Credentials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="management_jobs.html">6. Management Jobs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="management_jobs.html#removing-old-activity-stream-data">6.1. Removing Old Activity Stream Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management_jobs.html#removing-old-fact-system-tracking-data">6.2. Removing Old Fact (System Tracking) Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management_jobs.html#removing-old-job-history">6.3. Removing Old Job History</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">7. Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#setup-considerations">7.1. Setup Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#install-and-configure">7.2. Install and Configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#configuring-instances-and-instance-groups-from-the-api">7.3. Configuring Instances and Instance Groups from the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#instance-group-policies">7.4. Instance group policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#isolated-instance-groups">7.5. Isolated Instance Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#status-and-monitoring-via-browser-api">7.6. Status and Monitoring via Browser API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#instance-services-and-failure-behavior">7.7. Instance Services and Failure Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#job-runtime-behavior">7.8. Job Runtime Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#deprovision-instances-and-instance-groups">7.9. Deprovision Instances and Instance Groups</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="openshift_configuration.html">8. OpenShift Deployment and Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#tower-and-openshift-basics">8.1. Tower and OpenShift Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#configuration-options">8.2. Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#basic-configuration">8.3. Basic Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#resource-requests-and-request-planning">8.4. Resource Requests and Request Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#database-configuration-and-usage">8.5. Database Configuration and Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#backup-and-restore">8.6. Backup and Restore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#upgrading">8.7. Upgrading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#migrating">8.8. Migrating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#build-custom-virtual-environments">8.9. Build custom virtual environments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="proxy-support.html">9. Proxy Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="proxy-support.html#configure-known-proxies">9.1. Configure Known Proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxy-support.html#reverse-proxy">9.2. Reverse Proxy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="logfiles.html">10. Tower Logfiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">11. Tower Logging and Aggregation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="logging.html#loggers">11.1. Loggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html#set-up-logging-with-tower">11.2. Set Up Logging with Tower</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tower-manage.html">12. The <em>awx-manage</em> Utility</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#inventory-import">12.1. Inventory Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#cleanup-of-old-data">12.2. Cleanup of old data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#cluster-management">12.3. Cluster management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#token-and-session-management">12.4. Token and session management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configure_tower_in_tower.html">13. Tower Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#authentication">13.1. Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#jobs">13.2. Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#system">13.3. System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#user-interface">13.4. User Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#license">13.5. License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="proot_func_variables.html">14. Bubblewrap functionality and variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oauth2_token_auth.html">15. Token-Based Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#managing-oauth-2-applications-and-tokens">15.1. Managing OAuth 2 Applications and Tokens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#using-oauth-2-token-system-for-personal-access-tokens-pat">15.2. Using OAuth 2 Token System for Personal Access Tokens (PAT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#application-functions">15.3. Application Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#application-token-functions">15.4. Application Token Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="social_auth.html">16. Setting up Social Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="social_auth.html#google-oauth2-settings">16.1. Google OAuth2 Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="social_auth.html#github-oauth2-settings">16.2. GitHub OAuth2 Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="social_auth.html#organization-and-team-mapping">16.3. Organization and Team Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ent_auth.html">17. Setting up Enterprise Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#azure-active-directory-ad">17.1. Azure Active Directory (AD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#saml-authentication-settings">17.2. SAML Authentication Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#radius-authentication-settings">17.3. RADIUS Authentication Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#tacacs-authentication-settings">17.4. TACACS+ Authentication Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ldap_auth.html">18. Setting up LDAP Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ldap_auth.html#referrals">18.1. Referrals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ldap_auth.html#enabling-logging-for-ldap">18.2. Enabling Logging for LDAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ldap_auth.html#ldap-organization-and-team-mapping">18.3. LDAP Organization and Team Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentication_timeout.html">19. Changing the Default Timeout for Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kerberos_auth.html">20. User Authentication with Kerberos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kerberos_auth.html#ad-and-kerberos-credentials">20.1. AD and Kerberos Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kerberos_auth.html#working-with-kerberos-tickets">20.2. Working with Kerberos Tickets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="session_limits.html">21. Working with Session Limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backup_restore.html">22. Backing Up and Restoring Tower</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="backup_restore.html#backup-restore-playbooks">22.1. Backup/Restore Playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup_restore.html#backup-and-restoration-considerations">22.2. Backup and Restoration Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup_restore.html#backup-and-restore-for-clustered-environments">22.3. Backup and Restore for Clustered Environments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="custom_rebranding.html">23. Using Custom Logos in Ansible Tower</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">24. Troubleshooting Tower</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#error-logs">24.1. Error logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problems-connecting-to-your-host">24.2. Problems connecting to your host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#unable-to-login-to-tower-via-http">24.3. Unable to login to Tower via HTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#websockets-port-for-live-events-not-working">24.4. WebSockets port for live events not working</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problems-running-a-playbook">24.5. Problems running a playbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problems-when-running-a-job">24.6. Problems when running a job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#playbooks-aren-t-showing-up-in-the-job-template-drop-down">24.7. Playbooks aren&#8217;t showing up in the &#8220;Job Template&#8221; drop-down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#playbook-stays-in-pending">24.8. Playbook stays in pending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#cancel-a-tower-job">24.9. Cancel a Tower job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#reusing-an-external-database-causes-installations-to-fail">24.10. Reusing an external database causes installations to fail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#private-ec2-vpc-instances-in-tower-inventory">24.11. Private EC2 VPC Instances in Tower Inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#troubleshooting-error-provided-hosts-list-is-empty">24.12. Troubleshooting &#8220;Error: provided hosts list is empty&#8221;</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="tipsandtricks.html#">25. Tower Tips and Tricks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-the-tower-cli-tool">25.1. Using the Tower CLI Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#launching-a-job-template-via-the-api">25.2. Launching a Job Template via the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#tower-cli-job-template-launching">25.3. <code class="docutils literal"><span class="pre">tower-cli</span></code> Job Template Launching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#changing-the-tower-admin-password">25.4. Changing the Tower Admin Password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#creating-a-tower-admin-from-the-commandline">25.5. Creating a Tower Admin from the commandline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#setting-up-a-jump-host-to-use-with-tower">25.6. Setting up a jump host to use with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#view-ansible-outputs-for-json-commands-when-using-tower">25.7. View Ansible outputs for JSON commands when using Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#locate-and-configure-the-ansible-configuration-file">25.8. Locate and configure the Ansible configuration file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#view-a-listing-of-all-ansible-variables">25.9. View a listing of all ansible_ variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-virtualenv-with-at">25.10. Using virtualenv with Ansible Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#configuring-the-towerhost-hostname-for-notifications">25.11. Configuring the <code class="docutils literal"><span class="pre">towerhost</span></code> hostname for notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#launching-jobs-with-curl">25.12. Launching Jobs with curl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#dynamic-inventory-and-private-ip-addresses">25.13. Dynamic Inventory and private IP addresses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#filtering-instances-returned-by-the-dynamic-inventory-sources-in-tower">25.14. Filtering instances returned by the dynamic inventory sources in Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-an-unreleased-module-from-ansible-source-with-tower">25.15. Using an unreleased module from Ansible source with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-callback-plugins-with-tower">25.16. Using callback plugins with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#connecting-to-windows-with-winrm">25.17. Connecting to Windows with winrm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#importing-existing-inventory-files-and-host-group-vars-into-tower">25.18. Importing existing inventory files and host/group vars into Tower</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="towercli.html">26. Introduction to <strong>tower-cli</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#license">26.1. License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#capabilities">26.2. Capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#installation">26.3. Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#configuration">26.4. Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usability_data_collection.html">27. Usability Analytics and Data Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postface.html">28. Postface</a></li>
+</ul>
+
+        
+
+<div class="DocSite-sideNav ansibleNav">
+    <ul class="">
+    <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+    <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+    <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+    <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    </ul>
+</div>
+
+    <!-- changeable widget -->
+    <div id="sideBanner">
+    <br/>
+    <a href="http://www.ansible.com/tower-docs-left?utm_source=docs">
+<img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-left-rail.png" />
+    </a>
+</div>
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="https://docs.ansible.com/">Ansible Tower Administration Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+
+    <!--        <div class="DocSiteBanner">
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-left.png">
+                </a>
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-right.png">
+                </a>
+            </div> -->
+
+          <ul class="wy-breadcrumbs">
+    <li><a href="http://docs.ansible.com/" <title>Ansible Docs Home</title></a>&raquo;</li>
+    <li><a href="http://docs.ansible.com/ansible-tower/" <title>Ansible Tower Docs</title></a>&raquo;</li>
+    <li><a href="index.html" <title> &mdash; Ansible Tower Administration Guide v3.4.3</title></a> &raquo;</li>
+    <!--  <li><a href="">25. Tower Tips and Tricks</a></li> -->
+</ul>
+<hr/>
+          <div id="page-content">
+          
+  <div class="section" id="tower-tips-and-tricks">
+<span id="tips-and-tricks"></span><h1>25. Tower Tips and Tricks<a class="headerlink" href="tipsandtricks.html#tower-tips-and-tricks" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="using-the-tower-cli-tool">
+<span id="index-0"></span><h2>25.1. Using the Tower CLI Tool<a class="headerlink" href="tipsandtricks.html#using-the-tower-cli-tool" title="Permalink to this headline">¶</a></h2>
+<p id="index-1">Ansible Tower has a full-featured command line interface. It communicates with Tower via Tower&#8217;s REST API. You can install it from any machine with access to your Tower machine, or on Tower itself.</p>
+<p>Installation can be done using the <code class="docutils literal"><span class="pre">pip</span></code> command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ansible</span><span class="o">-</span><span class="n">tower</span><span class="o">-</span><span class="n">cli</span>
+</pre></div>
+</div>
+<p>Refer to <a class="reference internal" href="towercli.html#intro-towercli"><span class="std std-ref">Introduction to tower-cli</span></a> and <a class="reference external" href="https://github.com/ansible/tower-cli/blob/master/README.rst">https://github.com/ansible/tower-cli/blob/master/README.rst</a> for configuration and usage instructions.</p>
+</div>
+<div class="section" id="launching-a-job-template-via-the-api">
+<h2>25.2. Launching a Job Template via the API<a class="headerlink" href="tipsandtricks.html#launching-a-job-template-via-the-api" title="Permalink to this headline">¶</a></h2>
+<p id="index-2">Ansible Tower makes it simple to launch a job based on a Job Template from Tower&#8217;s API or by using the <code class="docutils literal"><span class="pre">tower-cli</span></code> command line tool.</p>
+<p>Launching a Job Template also:</p>
+<ul class="simple">
+<li>Creates a Job Record</li>
+<li>Gives that Job Record all of the attributes on the Job Template, combined with certain data you can give in this launch endpoint (&#8220;runtime&#8221; data)</li>
+<li>Runs Ansible with the combined data from the JT and runtime data</li>
+</ul>
+<p>Runtime data takes precedence over the Job Template data, contingent on the <code class="docutils literal"><span class="pre">ask_</span></code> <code class="docutils literal"><span class="pre">_on_launch</span></code> field on the job template being set to True. For example, a runtime credential is only accepted if the Job Template has <code class="docutils literal"><span class="pre">ask_credential_on_launch</span></code> set to True.</p>
+<p>Launching from Job Templates via the API follows the following workflow:</p>
+<ul>
+<li><p class="first">GET <code class="docutils literal"><span class="pre">https://your.tower.server/api/v2/job_templates/&lt;your</span> <span class="pre">job</span> <span class="pre">template</span> <span class="pre">id&gt;/launch/</span></code>. The response will contain data such as <code class="docutils literal"><span class="pre">job_template_data</span></code> and <code class="docutils literal"><span class="pre">defaults</span></code> which give information about the job template.</p>
+</li>
+<li><p class="first">Inspect returned data for runtime data that is needed to launch. Inspecting the OPTIONS of the launch endpoint may also help deduce what POST fields are allowed.</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Providing certain runtime credentials could introduce the need for a password not listed in <code class="docutils literal"><span class="pre">passwords_needed_to_start</span></code>.</p>
+</div>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">passwords_needed_to_start</span></code>: List of passwords needed</li>
+<li><code class="docutils literal"><span class="pre">credential_needed_to_start</span></code>: Boolean</li>
+<li><code class="docutils literal"><span class="pre">inventory_needed_to_start</span></code>: Boolean</li>
+<li><code class="docutils literal"><span class="pre">variables_needed_to_start</span></code>: List of fields that need to be passed inside of the <code class="docutils literal"><span class="pre">extra_vars</span></code> dictionary</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Inspect returned data for optionally allowed runtime data that the user should be asked for.</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">ask_variables_on_launch</span></code>: Boolean specifying whether to prompt the user for additional variables to pass to Ansible inside of <cite>extra_vars</cite></li>
+<li><code class="docutils literal"><span class="pre">ask_tags_on_launch</span></code>: Boolean specifying whether to prompt the user for <code class="docutils literal"><span class="pre">job_tags</span></code> on launch (allow allows use of <code class="docutils literal"><span class="pre">skip_tags</span></code> for convienience)</li>
+<li><code class="docutils literal"><span class="pre">ask_job_type_on_launch</span></code>: Boolean specifying whether to prompt the user for <code class="docutils literal"><span class="pre">job_type</span></code> on launch</li>
+<li><code class="docutils literal"><span class="pre">ask_limit_on_launch</span></code>: Boolean specifying whether to prompt the user for <code class="docutils literal"><span class="pre">limit</span></code> on launch</li>
+<li><code class="docutils literal"><span class="pre">ask_inventory_on_launch</span></code>: Boolean specifying whether to prompt the user for the related field <code class="docutils literal"><span class="pre">inventory</span></code> on launch</li>
+<li><code class="docutils literal"><span class="pre">ask_credential_on_launch</span></code>: Boolean specifying whether to prompt the user for the related field <code class="docutils literal"><span class="pre">credential</span></code> on launch</li>
+<li><code class="docutils literal"><span class="pre">survey_enabled</span></code>: Boolean specifying whether to prompt the user for additional <code class="docutils literal"><span class="pre">extra_vars</span></code>, following the job template&#8217;s <code class="docutils literal"><span class="pre">survey_spec</span></code> Q&amp;A format</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">POST <code class="docutils literal"><span class="pre">https://your.tower.server/api/v2/job_templates/&lt;your</span> <span class="pre">job</span> <span class="pre">template</span> <span class="pre">id&gt;/launch/</span></code> with any required data gathered during the previous step(s). The variables that can be passed in the request data for this action include the following.</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">extra_vars</span></code>: A string that represents a JSON or YAML formatted dictionary (with escaped parentheses) which includes variables given by the user, including answers to survey questions</li>
+<li><code class="docutils literal"><span class="pre">job_tags</span></code>: A string that represents a comma-separated list of tags in the playbook to run</li>
+<li><code class="docutils literal"><span class="pre">limit</span></code>: A string that represents a comma-separated list of hosts or groups to operate on</li>
+<li><code class="docutils literal"><span class="pre">inventory</span></code>: A integer value for the foreign key of an inventory to use in this job run</li>
+<li><code class="docutils literal"><span class="pre">credential</span></code>: A integer value for the foreign key of a credential to use in this job run</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>The POST will return data about the job and information about whether the runtime data was accepted. The job id is given in the <code class="docutils literal"><span class="pre">job</span></code> field to maintain compatibility with tools written before 3.0. The response will look similar to:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;ignored_fields&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;credential&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;job_tags&quot;</span><span class="p">:</span> <span class="s2">&quot;setup,teardown&quot;</span>
+  <span class="p">}</span>
+  <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="o">...</span><span class="n">more</span> <span class="n">data</span> <span class="n">about</span> <span class="n">the</span> <span class="n">job</span><span class="o">...</span>
+  <span class="s2">&quot;job&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this example, values for <code class="docutils literal"><span class="pre">credential</span></code> and <code class="docutils literal"><span class="pre">job_tags</span></code> were given while the job template <code class="docutils literal"><span class="pre">ask_credential_on_launch</span></code> and <code class="docutils literal"><span class="pre">ask_tags_on_launch</span></code> were False. These were rejected because the job template author did not allow using runtime values for them.</p>
+<p>You can see details about the job in this response. To get an updated status, you will need to do a GET request to the job page, <code class="docutils literal"><span class="pre">/jobs/4</span></code>, or follow the <code class="docutils literal"><span class="pre">url</span></code> link in the response. You can also find related links to cancel, relaunch, and so fourth.</p>
+<div class="admonition note" id="stdout-missing-note">
+<p class="first admonition-title">Note</p>
+<p class="last">When querying a job on a non-execution node, an error message, <code class="docutils literal"><span class="pre">stdout</span> <span class="pre">capture</span> <span class="pre">is</span> <span class="pre">missing</span></code> displays for the result_stdout field and on the related stdout page. In order to generate the stdout, use the <code class="docutils literal"><span class="pre">format=txt_download</span></code> query parameter for the related stdout page. This generates the stdout file and any refreshes to either the job or the related std will display the job output.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You cannot assign a new inventory at the time of launch to a scan job. Scan jobs must be tied to a fixed inventory.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You cannot change the Job Type at the time of launch to or from the type of &#8220;scan&#8221;. The <code class="docutils literal"><span class="pre">ask_job_type_on_launch</span></code> option only enables you to toggle &#8220;run&#8221; versus &#8220;check&#8221; at launch time.</p>
+</div>
+</div>
+<div class="section" id="tower-cli-job-template-launching">
+<h2>25.3. <code class="docutils literal"><span class="pre">tower-cli</span></code> Job Template Launching<a class="headerlink" href="tipsandtricks.html#tower-cli-job-template-launching" title="Permalink to this headline">¶</a></h2>
+<p>From the Tower command line, you can use <code class="docutils literal"><span class="pre">tower-cli</span></code> as a method of launching your Job Templates.</p>
+<p>For help with <code class="docutils literal"><span class="pre">tower-cli</span></code> launch, use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tower</span><span class="o">-</span><span class="n">cli</span> <span class="n">job</span> <span class="n">launch</span> <span class="o">--</span><span class="n">help</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>For launching from a job template, invoke tower-cli in a way similar to:</p>
+<p>For an example of how to use the API, you can also add the <code class="docutils literal"><span class="pre">-v</span></code>  flag here:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tower</span><span class="o">-</span><span class="n">cli</span> <span class="n">job</span> <span class="n">launch</span> <span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">template</span><span class="o">=</span><span class="mi">4</span> <span class="o">-</span><span class="n">v</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="changing-the-tower-admin-password">
+<h2>25.4. Changing the Tower Admin Password<a class="headerlink" href="tipsandtricks.html#changing-the-tower-admin-password" title="Permalink to this headline">¶</a></h2>
+<p id="index-3">During the installation process, you are prompted to enter an administrator password which is used for the <code class="docutils literal"><span class="pre">admin</span></code> superuser/first user created in Tower. If you log into the instance via SSH, it will tell you the default admin password in the prompt. If you need to change this password at any point, run the following command as root on the Tower server:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">awx</span><span class="o">-</span><span class="n">manage</span> <span class="n">changepassword</span> <span class="n">admin</span>
+</pre></div>
+</div>
+<p>Next, enter a new password. After that, the password you have entered will work as the admin password in the web UI.</p>
+</div>
+<div class="section" id="creating-a-tower-admin-from-the-commandline">
+<h2>25.5. Creating a Tower Admin from the commandline<a class="headerlink" href="tipsandtricks.html#creating-a-tower-admin-from-the-commandline" title="Permalink to this headline">¶</a></h2>
+<p id="index-4">Once in a while you may find it helpful to create an admin (superuser) account from the commandline. To create an admin, run the following command as root on the Tower server and enter in the admin information as prompted:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">awx</span><span class="o">-</span><span class="n">manage</span> <span class="n">createsuperuser</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setting-up-a-jump-host-to-use-with-tower">
+<h2>25.6. Setting up a jump host to use with Tower<a class="headerlink" href="tipsandtricks.html#setting-up-a-jump-host-to-use-with-tower" title="Permalink to this headline">¶</a></h2>
+<p id="index-5">Credentials supplied by Tower will not flow to the jump host via ProxyCommand. They are only used for the end-node once the tunneled connection is set up.</p>
+<p>To make this work, configure a fixed user/keyfile in the AWX user&#8217;s SSH config in the ProxyCommand definition that sets up the connection through the jump host. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Host</span> <span class="n">tampa</span>
+<span class="n">Hostname</span> <span class="mf">10.100</span><span class="o">.</span><span class="mf">100.11</span>
+<span class="n">IdentityFile</span> <span class="p">[</span><span class="n">privatekeyfile</span><span class="p">]</span>
+
+<span class="n">Host</span> <span class="mf">10.100</span><span class="o">..</span>
+<span class="n">Proxycommand</span> <span class="n">ssh</span> <span class="o">-</span><span class="n">W</span> <span class="p">[</span><span class="n">jumphostuser</span><span class="p">]</span><span class="o">@%</span><span class="n">h</span><span class="p">:</span><span class="o">%</span><span class="n">p</span> <span class="n">tampa</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>You must disable PRoot by default if you need to use a jump host. You can disable PRoot through the Configure Tower user interface by setting the <strong>Enable Job Isolation</strong> toggle to <strong>OFF</strong> from the Jobs tab:</p>
+<img alt="_images/configure-tower-jobs-disable-proot-job-isolation.png" class="last" src="configure-tower-jobs-disable-proot-job-isolation.png" />
+</div>
+<p>You can also add a jump host to your Tower instance through Inventory variables. These variables can be set at either the inventory, group, or host level. To add this, navigate to your inventory and in the <code class="docutils literal"><span class="pre">variables</span></code> field of whichever level you choose, add the following variables:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ansible_user</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">user_name</span><span class="o">&gt;</span>
+<span class="n">ansible_connection</span><span class="p">:</span> <span class="n">ssh</span>
+<span class="n">ansible_ssh_common_args</span><span class="p">:</span> <span class="s1">&#39;-o ProxyCommand=&quot;ssh -W %h:%p -q &lt;user_name&gt;@&lt;jump_server_name&gt;&quot;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="view-ansible-outputs-for-json-commands-when-using-tower">
+<h2>25.7. View Ansible outputs for JSON commands when using Tower<a class="headerlink" href="tipsandtricks.html#view-ansible-outputs-for-json-commands-when-using-tower" title="Permalink to this headline">¶</a></h2>
+<p id="index-6">When working with Ansible Tower, you can use the API to obtain the Ansible outputs for commands in JSON format.</p>
+<p>To view the Ansible outputs, browse to:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">tower</span> <span class="n">server</span> <span class="n">name</span><span class="o">&gt;/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">jobs</span><span class="o">/&lt;</span><span class="n">job_id</span><span class="o">&gt;/</span><span class="n">job_events</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="locate-and-configure-the-ansible-configuration-file">
+<h2>25.8. Locate and configure the Ansible configuration file<a class="headerlink" href="tipsandtricks.html#locate-and-configure-the-ansible-configuration-file" title="Permalink to this headline">¶</a></h2>
+<p id="index-7">While Ansible does not require a configuration file, OS packages often include a default one in <code class="docutils literal"><span class="pre">/etc/ansible/ansible.cfg</span></code> for possible customization. In order to use a custom <code class="docutils literal"><span class="pre">ansible.cfg</span></code> file, place it at the root of your project. Ansible Tower runs <code class="docutils literal"><span class="pre">ansible-playbook</span></code> from the root of the project directory, where it will then find the custom <code class="docutils literal"><span class="pre">ansible.cfg</span></code> file. An <code class="docutils literal"><span class="pre">ansible.cfg</span></code> anywhere else in the project will be ignored.</p>
+<p>To learn which values you can use in this file, refer to the <a class="reference external" href="https://github.com/ansible/ansible/blob/devel/examples/ansible.cfg">configuration file on github</a>.</p>
+<p>Using the defaults are acceptable for starting out, but know that you can configure the default module path or connection type here, as well as other things.</p>
+<p>Tower overrides some ansible.cfg options. For example, Tower stores the SSH ControlMaster sockets, the SSH agent socket, and any other per-job run items in a per-job temporary directory, secured by multi-tenancy access control restrictions via PRoot.</p>
+</div>
+<div class="section" id="view-a-listing-of-all-ansible-variables">
+<h2>25.9. View a listing of all ansible_ variables<a class="headerlink" href="tipsandtricks.html#view-a-listing-of-all-ansible-variables" title="Permalink to this headline">¶</a></h2>
+<p id="index-8">Ansible by default gathers “facts” about the machines under its management, accessible in Playbooks and in templates. To view all facts available about a machine, run the <code class="docutils literal"><span class="pre">setup</span></code> module as an ad hoc action:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ansible</span> <span class="o">-</span><span class="n">m</span> <span class="n">setup</span> <span class="n">hostname</span>
+</pre></div>
+</div>
+<p>This prints out a dictionary of all facts available for that particular host. For more information, refer to: <a class="reference external" href="https://docs.ansible.com/ansible/playbooks_variables.html#information-discovered-from-systems-facts">https://docs.ansible.com/ansible/playbooks_variables.html#information-discovered-from-systems-facts</a></p>
+</div>
+<div class="section" id="using-virtualenv-with-at">
+<h2>25.10. Using virtualenv with Ansible Tower<a class="headerlink" href="tipsandtricks.html#using-virtualenv-with-at" title="Permalink to this headline">¶</a></h2>
+<p id="index-9">Ansible Tower 3.0 and later uses <em>virtualenv</em>. Virtualenv creates isolated Python environments to avoid problems caused by conflicting dependencies and differing versions. Virtualenv works by simply creating a folder which contains all of the necessary executables and dependencies for a specific version of Python. Ansible Tower creates two virtualenvs during installation&#8211;one is used to run Tower, while the other is used to run Ansible. This allows Tower to run in a stable environment, while allowing you to add or update modules to your Ansible Python environment as necessary to run your playbooks. For more information on virtualenv, see the Python Guide to <a class="reference external" href="http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtual-environments">Virtual Environments</a> and the <cite>Python virtualenv</cite> project itself.</p>
+<blockquote>
+<div>By default, the virtualenv is located at <code class="docutils literal"><span class="pre">/var/lib/awx/venv/ansible</span></code> on the file system.</div></blockquote>
+<p>Tower also pre-installs a variety of third-party library/SDK support into this virtualenv for its integration points with a variety of cloud providers (such as EC2, OpenStack, Azure, etc.) Periodically, you may want to add additional SDK support into this virtualenv, which is described in further detail below.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>It is highly recommended that you run <code class="docutils literal"><span class="pre">umask</span></code> 0022 before installing any packages to the virtual environment. Failure to properly configure permissions can result in Tower service failures. An example follows:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="c1"># source /var/lib/awx/venv/ansible/bin/activate</span>
+<span class="c1"># umask 0022</span>
+<span class="c1"># pip install --upgrade pywinrm</span>
+<span class="c1"># deactivate</span>
+</pre></div>
+</div>
+</div>
+<p>In addition to adding modules to the virtualenv that Tower uses to run Ansible, you can create new virtualenvs as described below.</p>
+<div class="section" id="preparing-a-new-custom-virtualenv">
+<h3>25.10.1. Preparing a new custom virtualenv<a class="headerlink" href="tipsandtricks.html#preparing-a-new-custom-virtualenv" title="Permalink to this headline">¶</a></h3>
+<p>Tower allows a different virtualenv to be specified and used on Job Template runs. To choose a custom virtualenv, first create one under <code class="docutils literal"><span class="pre">/var/lib/awx/venv/</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo virtualenv /var/lib/awx/venv/my-custom-venv
+</pre></div>
+</div>
+<p>Your newly created virtualenv needs a few base dependencies to properly run playbooks (Tower uses memcached as a placeholder for playbook artifacts):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo /var/lib/awx/venv/my-custom-venv/bin/pip install python-memcached psutil
+</pre></div>
+</div>
+<p>From here, you can install additional Python dependencies that you care about, such as a per-virtualenv version of Ansible itself:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo /var/lib/awx/venv/my-custom-venv/bin/pip install -U &quot;ansible == X.Y.Z&quot;
+</pre></div>
+</div>
+<p>Or you can add an additional third-party SDK that is not included with the base Tower installation:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo /var/lib/awx/venv/my-custom-venv/bin/pip install -U python-digitalocean
+</pre></div>
+</div>
+<p>If you want to copy them, the libraries included in Tower&#8217;s default virtualenv can be found using <code class="docutils literal"><span class="pre">pip</span> <span class="pre">freeze</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo /var/lib/awx/venv/ansible/bin/pip freeze
+</pre></div>
+</div>
+<p>In a clustered Tower installation, you need to ensure that the same custom virtualenv exists on every local file system at <code class="docutils literal"><span class="pre">/var/lib/awx/venv/</span></code>. Custom virtualenvs are supported on isolated instances. If you are using a custom virtual environment, it needs to also be copied or replicated on any isolated node you would be using, not just on the Tower node.</p>
+</div>
+<div class="section" id="assigning-custom-virtualenvs">
+<h3>25.10.2. Assigning custom virtualenvs<a class="headerlink" href="tipsandtricks.html#assigning-custom-virtualenvs" title="Permalink to this headline">¶</a></h3>
+<p>Once you have created a custom virtualenv, you can assign it at the Organization, Project, or Job Template level:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">awx</span><span class="o">-</span><span class="n">host</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">organizations</span><span class="o">/</span><span class="n">N</span><span class="o">/</span>
+<span class="n">PATCH</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">awx</span><span class="o">-</span><span class="n">host</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">N</span><span class="o">/</span>
+<span class="n">PATCH</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">awx</span><span class="o">-</span><span class="n">host</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">job_templates</span><span class="o">/</span><span class="n">N</span><span class="o">/</span>
+
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="p">{</span>
+        <span class="s1">&#39;custom_virtualenv&#39;</span><span class="p">:</span> <span class="s1">&#39;/var/lib/awx/venv/my-custom-venv&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>An HTTP GET request to <code class="docutils literal"><span class="pre">/api/v2/config/</span></code> provides a list of detected installed virtualenvs:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;custom_virtualenvs&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;/var/lib/awx/venv/my-custom-venv&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;/var/lib/awx/venv/my-other-custom-venv&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+<span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can also specify the virtual environment to assign to an Organization, Project, and Job Template from their respective edit screens in the Ansible Tower User Interface. Select the virtualenv from the <strong>Ansible Environment</strong> drop-down menu, as shown in the example below:</p>
+<img alt="_images/organizations-ansible-env-virtualenv-list.png" src="organizations-ansible-env-virtualenv-list.png" />
+</div>
+</div>
+<div class="section" id="configuring-the-towerhost-hostname-for-notifications">
+<h2>25.11. Configuring the <code class="docutils literal"><span class="pre">towerhost</span></code> hostname for notifications<a class="headerlink" href="tipsandtricks.html#configuring-the-towerhost-hostname-for-notifications" title="Permalink to this headline">¶</a></h2>
+<p id="index-10">In <code class="docutils literal"><span class="pre">/etc/tower/settings.py</span></code>, you can modify <code class="docutils literal"><span class="pre">TOWER_URL_BASE='https://tower.example.com'</span></code> to change the notification hostname, replacing <code class="docutils literal"><span class="pre">https://tower.example.com</span></code>  with your preferred hostname.  You must restart Tower services after saving your changes with <code class="docutils literal"><span class="pre">ansible-tower-service</span> <span class="pre">restart</span></code>.</p>
+<p>Refreshing your Tower license also changes the notification hostname. New installations of Ansible Tower 3.0 should not have to set the hostname for notifications.</p>
+</div>
+<div class="section" id="launching-jobs-with-curl">
+<span id="launch-jobs-curl"></span><h2>25.12. Launching Jobs with curl<a class="headerlink" href="tipsandtricks.html#launching-jobs-with-curl" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note" id="index-11">
+<p class="first admonition-title">Note</p>
+<p class="last">Tower now offers a full-featured command line interface called <a class="reference external" href="http://docs.ansible.com/ansible-tower/3.4.3/html/towerapi/tower_cli.html#api-towercli" title="(in Ansible Tower API Guide v3.4.3)"><span class="xref std std-ref">tower-cli</span></a> which may be of interest to you if you are considering using <code class="docutils literal"><span class="pre">curl</span></code>.</p>
+</div>
+<p>This method works with Tower versions 2.1.x and newer.</p>
+<p>Launching jobs with the Tower API is simple. Here are some easy to follow examples using the <code class="docutils literal"><span class="pre">curl</span></code> tool.</p>
+<p>Assuming that your Job Template ID is &#8216;1&#8217;, your Tower IP is 192.168.42.100, and that <code class="docutils literal"><span class="pre">admin</span></code> and <code class="docutils literal"><span class="pre">awxsecret</span></code> are valid login credentials, you can create a new job this way:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">f</span> <span class="o">-</span><span class="n">k</span> <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="o">-</span><span class="n">XPOST</span> \
+    <span class="o">--</span><span class="n">user</span> <span class="n">admin</span><span class="p">:</span><span class="n">awxsecret</span> \
+    <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">42.100</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">job_templates</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">launch</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>This returns a JSON object that you can parse and use to extract the &#8216;id&#8217; field, which is the ID of the newly created job.</p>
+<p>You can also pass extra variables to the Job Template call, such as is shown in the following example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">f</span> <span class="o">-</span><span class="n">k</span> <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="o">-</span><span class="n">XPOST</span> \
+    <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{&quot;extra_vars&quot;: &quot;{</span><span class="se">\&quot;</span><span class="s1">foo</span><span class="se">\&quot;</span><span class="s1">: </span><span class="se">\&quot;</span><span class="s1">bar</span><span class="se">\&quot;</span><span class="s1">}&quot;}&#39;</span> \
+    <span class="o">--</span><span class="n">user</span> <span class="n">admin</span><span class="p">:</span><span class="n">awxsecret</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">42.100</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">job_templates</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="n">launch</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>You can view the live API documentation by logging into <a class="reference external" href="http://192.168.42.100/api/">http://192.168.42.100/api/</a> and browsing around to the various objects available.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">extra_vars</span></code> parameter needs to be a string which contains JSON, not just a JSON dictionary, as you might expect. Use caution when escaping the quotes, etc.</p>
+</div>
+</div>
+<div class="section" id="dynamic-inventory-and-private-ip-addresses">
+<h2>25.13. Dynamic Inventory and private IP addresses<a class="headerlink" href="tipsandtricks.html#dynamic-inventory-and-private-ip-addresses" title="Permalink to this headline">¶</a></h2>
+<p id="index-12">By default, Tower only shows instances in a VPC that have an Elastic IP (EIP) address associated with them. To view all of your VPC instances, perform the following steps:</p>
+<ul class="simple">
+<li>In the Tower interface, select your inventory.</li>
+<li>Click on the group that has the Source set to AWS, and click on the Source tab.</li>
+<li>In the &#8220;Source Variables&#8221; box, enter: <code class="docutils literal"><span class="pre">vpc_destination_variable:</span> <span class="pre">private_ip_address</span></code></li>
+</ul>
+<p>Save and trigger an update of the group. You should now be able to see all of your VPC instances.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Tower must be running inside the VPC with access to those instances in order to usefully configure them.</p>
+</div>
+</div>
+<div class="section" id="filtering-instances-returned-by-the-dynamic-inventory-sources-in-tower">
+<h2>25.14. Filtering instances returned by the dynamic inventory sources in Tower<a class="headerlink" href="tipsandtricks.html#filtering-instances-returned-by-the-dynamic-inventory-sources-in-tower" title="Permalink to this headline">¶</a></h2>
+<p id="index-13">By default, the dynamic inventory sources in Tower (AWS, Rackspace, etc) return all instances available to the cloud credentials being used. They are automatically joined into groups based on various attributes. For example, AWS instances are grouped by region, by tag name and value, by security groups, etc. To target specific instances in your environment, write your playbooks so that they target the generated group names. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">---</span>
+<span class="o">-</span> <span class="n">hosts</span><span class="p">:</span> <span class="n">tag_Name_webserver</span>
+  <span class="n">tasks</span><span class="p">:</span>
+  <span class="o">...</span>
+</pre></div>
+</div>
+<p>You can also use the <code class="docutils literal"><span class="pre">Limit</span></code> field in the Job Template settings to limit a playbook run to a certain group, groups, hosts, or a combination thereof. The syntax is the same as the <code class="docutils literal"><span class="pre">--limit</span> <span class="pre">parameter</span></code> on the ansible-playbook command line.</p>
+<p>You may also create your own groups by copying the auto-generated groups into your custom groups. Make sure that the <code class="docutils literal"><span class="pre">Overwrite</span></code> option is disabled on your dynamic inventory source, otherwise subsequent synchronization operations will delete and replace your custom groups.</p>
+</div>
+<div class="section" id="using-an-unreleased-module-from-ansible-source-with-tower">
+<h2>25.15. Using an unreleased module from Ansible source with Tower<a class="headerlink" href="tipsandtricks.html#using-an-unreleased-module-from-ansible-source-with-tower" title="Permalink to this headline">¶</a></h2>
+<p id="index-14">If there is a feature that is available in the latest Ansible core branch that you would like to leverage with your Tower system, making use of it in Tower is fairly simple.</p>
+<p>First, determine which is the updated module you want to use from the available Ansible Core Modules or Ansible Extra Modules GitHub repositories.</p>
+<p>Next, create a new directory, at the same directory level of your Ansible source playbooks, named <code class="docutils literal"><span class="pre">/library</span></code>.</p>
+<p>Once this is created, copy the module you want to use and drop it into the <code class="docutils literal"><span class="pre">/library</span></code> directory&#8211;it will be consumed first over your system modules and can be removed once you have updated the the stable version via your normal package manager.</p>
+</div>
+<div class="section" id="using-callback-plugins-with-tower">
+<h2>25.16. Using callback plugins with Tower<a class="headerlink" href="tipsandtricks.html#using-callback-plugins-with-tower" title="Permalink to this headline">¶</a></h2>
+<p id="index-15">Ansible has a flexible method of handling actions during playbook runs, called callback plugins. You can use these plugins with Tower to do things like notify services upon playbook runs or failures, send emails after every playbook run, etc. For official documentation on the callback plugin architecture, refer to: <a class="reference external" href="http://docs.ansible.com/developing_plugins.html#callbacks">http://docs.ansible.com/developing_plugins.html#callbacks</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Ansible Tower does not support the <code class="docutils literal"><span class="pre">stdout</span></code> callback plugin because Ansible only allows one, and it is already being used by Ansible Tower for streaming event data.</p>
+</div>
+<p>You may also want to review some example plugins, which should be modified for site-specific purposes, such as those available at:
+<a class="reference external" href="https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins/callback">https://github.com/ansible/ansible/tree/devel/lib/ansible/plugins/callback</a></p>
+<p>To use these plugins, put the callback plugin <code class="docutils literal"><span class="pre">.py</span></code> file into a directory called <code class="docutils literal"><span class="pre">/callback_plugins</span></code> alongside your playbook in your Tower Project.</p>
+<p>To make callbacks apply to every playbook, independent of any projects, put the plugins <code class="docutils literal"><span class="pre">.py</span></code> file in one of the following directories (depending on your particular Linux distribution and method of Ansible installation):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">pymodules</span><span class="o">/</span><span class="n">python2</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">ansible</span><span class="o">/</span><span class="n">callback_plugins</span>
+
+<span class="o">*</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python2</span><span class="o">.</span><span class="mi">7</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">ansible</span><span class="o">/</span><span class="n">callback_plugins</span>
+
+<span class="o">*</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python2</span><span class="o">.</span><span class="mi">6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">ansible</span><span class="o">/</span><span class="n">callback_plugins</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To have most callbacks shipped with Ansible applied globally, you must add them to the <code class="docutils literal"><span class="pre">callback_whitelist</span></code> section of your <code class="docutils literal"><span class="pre">ansible.cfg</span></code>.</p>
+</div>
+</div>
+<div class="section" id="connecting-to-windows-with-winrm">
+<h2>25.17. Connecting to Windows with winrm<a class="headerlink" href="tipsandtricks.html#connecting-to-windows-with-winrm" title="Permalink to this headline">¶</a></h2>
+<p id="index-16">By default Tower attempts to <code class="docutils literal"><span class="pre">ssh</span></code> to hosts. You must add the <code class="docutils literal"><span class="pre">winrm</span></code> connection info to the group variables to which the Windows hosts belong.  To get started, edit the Windows group in which the hosts reside and place the variables in the source/edit screen for the group.</p>
+<p>To add <code class="docutils literal"><span class="pre">winrm</span></code> connection info:</p>
+<p>Edit the properties for the selected group by clicking on the <img alt="edit" src="edit-button.png" /> button to the right of the group name that contains the Windows servers.  In the &#8220;variables&#8221; section, add your connection information as such: <code class="docutils literal"><span class="pre">ansible_connection:</span> <span class="pre">winrm</span></code></p>
+<p>Once done, save your edits. If Ansible was previously attempting an SSH connection and failed, you should re-run the job template.</p>
+</div>
+<div class="section" id="importing-existing-inventory-files-and-host-group-vars-into-tower">
+<h2>25.18. Importing existing inventory files and host/group vars into Tower<a class="headerlink" href="tipsandtricks.html#importing-existing-inventory-files-and-host-group-vars-into-tower" title="Permalink to this headline">¶</a></h2>
+<p id="index-17">To import an existing static inventory and the accompanying host and group vars into Tower, your inventory should be in a structure that looks similar to the following:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>inventory/
+|-- group_vars
+|   `-- mygroup
+|-- host_vars
+|   `-- myhost
+`-- hosts
+</pre></div>
+</div>
+<p>To import these hosts and vars, run the <code class="docutils literal"><span class="pre">awx-manage</span></code> command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">awx</span><span class="o">-</span><span class="n">manage</span> <span class="n">inventory_import</span> <span class="o">--</span><span class="n">source</span><span class="o">=</span><span class="n">inventory</span><span class="o">/</span> \
+  <span class="o">--</span><span class="n">inventory</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;My Tower Inventory&quot;</span>
+</pre></div>
+</div>
+<p>If you only have a single flat file of inventory, a file called ansible-hosts, for example, import it like the following:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">awx</span><span class="o">-</span><span class="n">manage</span> <span class="n">inventory_import</span> <span class="o">--</span><span class="n">source</span><span class="o">=./</span><span class="n">ansible</span><span class="o">-</span><span class="n">hosts</span> \
+  <span class="o">--</span><span class="n">inventory</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;My Tower Inventory&quot;</span>
+</pre></div>
+</div>
+<p>In case of conflicts or to overwrite an inventory named &#8220;My Tower Inventory&#8221;, run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">awx</span><span class="o">-</span><span class="n">manage</span> <span class="n">inventory_import</span> <span class="o">--</span><span class="n">source</span><span class="o">=</span><span class="n">inventory</span><span class="o">/</span> \
+  <span class="o">--</span><span class="n">inventory</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;My Tower Inventory&quot;</span> \
+  <span class="o">--</span><span class="n">overwrite</span> <span class="o">--</span><span class="n">overwrite</span><span class="o">-</span><span class="nb">vars</span>
+</pre></div>
+</div>
+<p>If you receive an error, such as:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ne">ValueError</span><span class="p">:</span> <span class="n">need</span> <span class="n">more</span> <span class="n">than</span> <span class="mi">1</span> <span class="n">value</span> <span class="n">to</span> <span class="n">unpack</span>
+</pre></div>
+</div>
+<p>Create a directory to hold the hosts file, as well as the group_vars:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="n">inventory</span><span class="o">-</span><span class="n">directory</span><span class="o">/</span><span class="n">group_vars</span>
+</pre></div>
+</div>
+<p>Then, for each of the groups that have :vars listed, create a file called <code class="docutils literal"><span class="pre">inventory-directory/group_vars/&lt;groupname&gt;</span></code> and format the variables in YAML format.</p>
+<p>Once broken out, the importer will handle the conversion correctly.</p>
+</div>
+</div>
+
+
+          </div>
+          <div id="search-results"><gcse:searchresults-only></gcse:searchresults-only></div>
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+        <a href="towercli.html" class="btn btn-neutral float-right" title="26. Introduction to tower-cli"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="troubleshooting.html" class="btn btn-neutral" title="24. Troubleshooting Tower"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <p>
+    Copyright © 2019 Red Hat, Inc. 
+    <br>
+  </p>
+
+<p>
+  Red Hat Ansible Tower docs are generated using <A HREF="http://sphinx-doc.org/">Sphinx</A> using a theme provided by <a href="http://readthedocs.org">Read the Docs</a>.
+</p>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+<!-- begin analytics -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+        (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+        n.id=i;n.src = '//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+        e.parentNode.insertBefore(n, e);
+        })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+_satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

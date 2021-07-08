@@ -1,0 +1,36 @@
+---
+- name: ftp server installed
+  hosts: servera.lab.example.com
+  remote_user: devops
+  become: yes
+  become_method: sudo
+  become_user: root
+  tasks:
+  - block:
+    - name: latest vsftpd version installed
+      yum:
+        name: vsftpd
+        state: latest
+    - name: latest firewalld version installed
+      yum:
+        name: firewalld
+        state: latest
+  - block:
+    - name: firewalld permits ftp service
+      firewalld:
+        service: ftp
+        permanent: true
+        state: enabled
+        immediate: yes
+  - block:
+    - name: vsftpd enabled and running
+      service:
+        name: vsftpd
+        enabled: true
+        state: started
+    - name: firewalld enabled and running
+      service:
+        name: firewalld
+        enabled: true
+        state: started
+...

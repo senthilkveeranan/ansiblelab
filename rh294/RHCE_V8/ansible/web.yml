@@ -1,0 +1,24 @@
+---
+- hosts: dev
+  remote_user: admin
+  become: true
+  tasks:
+   - file:
+      path: /webdev
+      state: directory
+      mode: '2775'
+      group: apache
+   - file:
+      src: /webdev
+      dest: /var/www/html/webdev
+      state: link
+      #mode: '2775'
+      #group: apache
+   - sefcontext:
+       target: '/webdev(/.*)?'
+       setype: httpd_sys_content_t
+       state: present
+   - command: restorecon -irv /webdev
+   - copy:
+      content: "Development"
+      dest: /webdev/index.html

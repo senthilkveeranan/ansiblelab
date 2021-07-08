@@ -1,0 +1,6 @@
+[rhel-8-server-extras-rpms]
+baseurl = http://content.example.com/rhel8.0/x86_64/rhel8-additional/rhel-8-server-extras-rpms
+enabled = 1
+gpgcheck = false
+name = Red Hat Enterprise Linux 8 Server Extras
+

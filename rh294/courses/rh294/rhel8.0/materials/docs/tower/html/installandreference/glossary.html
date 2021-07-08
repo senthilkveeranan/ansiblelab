@@ -1,0 +1,533 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <script type="text/javascript" src="https://www.redhat.com/dtm.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta class="swiftype" name="published_at" data-type="date" content="2019-03-26" /> 
+  <meta class="swiftype" name="version" data-type="string" content="3.4.3">
+
+   <!-- this ^ ^ is for the original publishing date only, never for minor pushes that aren't actual version bumps of the docs (this helps us keep our search rank weighting in swiftype, our search server, prioritized based on the dates of the releases themselves) -->
+
+  <script>
+  var url = window.location.href;
+  if(url.indexOf("latest") == -1){
+   var version = url.replace("http://docs.ansible.com/ansible-tower/","");
+   version = version.substring(0,url.indexOf("/"));
+   url = url.replace(version,"latest");
+  }
+  var canon = document.createElement('link');
+  canon.rel = "canonical";
+  canon.href = url;
+  document.head.appendChild(canon);
+  </script>
+
+
+  <!-- Google Tag Manager Data Layer -->
+  <script>
+   dataLayer = [];
+  </script>
+  <!-- End Google Tag Manager Data Layer -->
+
+  
+  <title>9. Glossary &mdash; Ansible Tower Installation and Reference Guide v3.4.3</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'./',
+        VERSION:'Ansible Tower 3.4.3',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript" src="underscore.js"></script>
+      <script type="text/javascript" src="doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="theme.min.css" type="text/css" />
+    <script type="text/javascript" src="theme.js"></script>
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Ansible Tower Installation and Reference Guide v3.4.3" href="index.html"/>
+        <link rel="prev" title="8. Usability Analytics and Data Collection" href="user-data.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+  <style>
+    .search-reset-start {
+        color: #463E3F;
+        float: right;
+        position: relative;
+        top: -25px;
+        left: -10px;
+        z-index: 10;
+     }
+     .search-reset-start:hover {
+        cursor: pointer;
+        color: #2980B9;
+     }
+     #search-box-id {
+        padding-right: 25px;
+     }
+  </style>
+
+  <!-- Google Code for Remarketing Tag
+  <script type="text/javascript">
+  /* <![CDATA[ */
+  var google_conversion_id = 972577926;
+  var google_custom_params = window.google_tag_params;
+  var google_remarketing_only = true;
+  /* ]]> */
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+  </script>
+  <noscript>
+    <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt=""
+              src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/972577926/?value=0&amp;guid=ON&amp;script=0"/>
+    </div>
+  </noscript>
+  End of Google Code for Remarketing Tag -->
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300'
+      rel='stylesheet' type='text/css'>
+
+  <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+
+  <script type='text/javascript'>
+    googletag.cmd.push(function() {
+      googletag.defineSlot('/1171614047/towerleft', [300, 250], 'div-gpt-ad-1453398530439-0').addService(googletag.pubads());
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
+  </script>
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+  <div class="DocSite-globalNav ansibleNav">
+        <ul>
+            <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+            <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+            <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+            <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+            <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+        </ul>
+    </div>
+
+<a class="DocSite-nav" href="http://docs.ansible.com/">
+  <img class="DocSiteNav-logo"
+    src="logo_invert.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">
+    Documentation
+  </div>
+</a> 
+
+
+
+
+<div class="wy-grid-for-nav">
+
+  
+ <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+        <a class="DocSiteProduct-header DocSiteProduct-header--tower"
+            href="http://docs.ansible.com/ansible-tower/">
+            <div class="DocSiteProduct-productName">
+                <div class="DocSiteProduct-logoText">
+                    ANSIBLE TOWER 
+                    <div class="DocSiteProduct-CurrentVersion" align="right">
+                      v3.4.3
+                  </div>
+                </div>
+            </div>
+        </a>
+        
+
+        <div class="DocSiteProduct-CheckVersionPara">
+          Are you using the latest and greatest version of Ansible Tower? Find the <a class="DocSiteProduct-versionheader" href="http://docs.ansible.com/ansible-tower/">Ansible Tower documentation</a> set which best matches your version of Tower.
+            </div>
+    </div>
+    <div class="wy-side-nav-search" style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+      <!-- <a href="index.html" class="icon icon-home"> Ansible Tower Installation and Reference Guide</a> -->
+      <!-- <form class="wy-form" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form> -->
+
+<!-- 
+<script>
+  (function() {
+    var cx = '004731659079655444432:zgjlf-tkhya';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script> -->
+
+<!-- <gcse:searchresults-only></gcse:searchresults-only> -->
+
+<!-- swiftype search script -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','Vcn_rXrPfye6ziaZJZRt','2.0.0');
+</script>
+
+<!-- <form id="search-form-id" action="">
+  <input type="text" class="st-default-search-input" name="query" placeholder="Search Tower Docs" id="search-box-id" /> 
+  <a class="search-reset-start" id="search-reset"><i class="fa fa-times"></i></a>
+  <a class="search-reset-start" id="search-start"><i class="fa fa-search"></i></a> 
+ </form> -->
+
+          
+
+
+<!-- <script type="text/javascript" src="http://www.google.com/cse/brand?form=search-form-id&inputbox=search-box-id"></script> -->
+
+<!-- 
+<script>
+  function executeQuery() {
+      var input = document.getElementById('search-box-id');
+      var element = google.search.cse.element.getElement('searchresults-only0');
+      element.resultsUrl = '/htmlout/search.html'
+      if (input.value == '') {
+          element.clearAllResults();
+          $('#page-content, .rst-footer-buttons, #search-start').show();
+          $('#search-results, #search-reset').hide();
+      } else {
+          $('#page-content, .rst-footer-buttons, #search-start').hide();
+          $('#search-results, #search-reset').show();
+          element.execute(input.value);
+      }
+      return false;
+      }
+
+  $('#search-reset').hide();
+
+  $('#search-box-id').css('background-position', '1em center');
+
+  $('#search-box-id').on('blur', function() {
+    $('#search-box-id').css('background-position', '1em center');
+  });
+
+  $('#search-start').click(function(e) { executeQuery(); });
+  $('#search-reset').click(function(e) { $('#search-box-id').val(''); executeQuery(); });
+
+  $('#search-form-id').submit(function(e) {
+      console.log('submitting!');
+      executeQuery();
+      e.preventDefault();
+      });
+</script>
+-->
+    </div>
+
+      <div id="menu-id" class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Ansible Tower Installation and Reference Guide v3.4.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updates_support.html">1. Tower Licensing, Updates, and Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#support">1.1. Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#trial-evaluation">1.2. Trial / Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#subscription-types">1.3. Subscription Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#node-counting-in-licenses">1.4. Node Counting in Licenses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#license-features">1.5. License Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#tower-component-licenses">1.6. Tower Component Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">2. Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_notes.html#ansible-tower-version-3-4-3">2.1. Ansible Tower Version 3.4.3</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install_notes_reqs.html">3. Installation Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#flags-and-extra-vars-passed-with-tower">3.1. Flags and extra vars passed with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#installing-tower-on-systems-with-fips-mode-enabled">3.2. Installing Tower on Systems with FIPS Mode Enabled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#notes-for-red-hat-enterprise-linux-and-centos-setups">3.3. Notes for Red Hat Enterprise Linux and CentOS setups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#configuration-and-installation-of-ansible-with-red-hat-enterprise-linux-and-centos">3.4. Configuration and Installation of Ansible with Red Hat Enterprise Linux and CentOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#configuration-and-installation-of-ansible-with-ubuntu">3.5. Configuration and Installation of Ansible with Ubuntu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#configuration-and-installation-on-openshift">3.6. Configuration and Installation on OpenShift</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="requirements_refguide.html">4. Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requirements_refguide.html#additional-notes-on-tower-requirements">4.1. Additional Notes on Tower Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements_refguide.html#ansible-software-requirements">4.2. Ansible Software Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tower_installer.html">5. Obtaining the Tower Installation Program</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tower_installer.html#using-the-bundled-tower-installation-program">5.1. Using the Bundled Tower Installation Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower_installer.html#using-vagrant-amazon-ami-images">5.2. Using Vagrant/Amazon AMI Images</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tower_install_wizard.html">6. Installing Ansible Tower</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tower_install_wizard.html#tower-installation-scenarios">6.1. Tower Installation Scenarios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower_install_wizard.html#setting-up-the-inventory-file">6.2. Setting up the Inventory File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower_install_wizard.html#the-setup-playbook">6.3. The Setup Playbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower_install_wizard.html#changing-the-password">6.4. Changing the Password</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="upgrade_tower.html">7. Upgrading an Existing Tower Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_tower.html#requirements">7.1. Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_tower.html#backing-up-your-tower-installation">7.2. Backing Up Your Tower Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_tower.html#get-the-tower-installer">7.3. Get the Tower Installer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_tower.html#the-setup-playbook">7.4. The Setup Playbook</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-data.html">8. Usability Analytics and Data Collection</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="glossary.html#">9. Glossary</a></li>
+</ul>
+
+        
+
+<div class="DocSite-sideNav ansibleNav">
+    <ul class="">
+    <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+    <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+    <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+    <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    </ul>
+</div>
+
+    <!-- changeable widget -->
+    <div id="sideBanner">
+    <br/>
+    <a href="http://www.ansible.com/tower-docs-left?utm_source=docs">
+<img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-left-rail.png" />
+    </a>
+</div>
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="https://docs.ansible.com/">Ansible Tower Installation and Reference Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+
+    <!--        <div class="DocSiteBanner">
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-left.png">
+                </a>
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-right.png">
+                </a>
+            </div> -->
+
+          <ul class="wy-breadcrumbs">
+    <li><a href="http://docs.ansible.com/" <title>Ansible Docs Home</title></a>&raquo;</li>
+    <li><a href="http://docs.ansible.com/ansible-tower/" <title>Ansible Tower Docs</title></a>&raquo;</li>
+    <li><a href="index.html" <title> &mdash; Ansible Tower Installation and Reference Guide v3.4.3</title></a> &raquo;</li>
+    <!--  <li><a href="">9. Glossary</a></li> -->
+</ul>
+<hr/>
+          <div id="page-content">
+          
+  <div class="section" id="glossary">
+<h1>9. Glossary<a class="headerlink" href="glossary.html#glossary" title="Permalink to this headline">¶</a></h1>
+<dl class="glossary docutils">
+<dt id="term-ad-hoc">Ad Hoc</dt>
+<dd>Refers to running Ansible to perform some quick command, using /usr/bin/ansible, rather than the orchestration language, which is /usr/bin/ansible-playbook. An example of an ad hoc command might be rebooting 50 machines in your infrastructure. Anything you can do ad hoc can be accomplished by writing a Playbook, and Playbooks can also glue lots of other operations together.</dd>
+<dt id="term-callback-plugin">Callback Plugin</dt>
+<dd>Refers to some user-written code that can intercept results from Ansible and do something with them. Some supplied examples in the GitHub project perform custom logging, send email, or even play sound effects.</dd>
+<dt id="term-check-mode">Check Mode</dt>
+<dd>Refers to running Ansible with the <code class="docutils literal"><span class="pre">--check</span></code> option, which does not make any changes on the remote systems, but only outputs the changes that might occur if the command ran without this flag. This is analogous to so-called “dry run” modes in other systems, though the user should be warned that this does not take into account unexpected command failures or cascade effects (which is true of similar modes in other systems). Use this to get an idea of what might happen, but it is not a substitute for a good staging environment.</dd>
+<dt id="term-credentials">Credentials</dt>
+<dd>Authentication details that may be utilized by Tower to launch jobs against machines, to synchronize with inventory sources, and to import project content from a version control system.</dd>
+<dt id="term-distributed-job">Distributed Job</dt>
+<dd>A job that consists of a job template, an inventory, and slice size. When executed, a distributed job slices each inventory into a number of “slice size” chunks, which are then used to run smaller job slices.</dd>
+<dt id="term-facts">Facts</dt>
+<dd>Facts are simply things that are discovered about remote nodes. While they can be used in playbooks and templates just like variables, facts are things that are inferred, rather than set. Facts are automatically discovered when running plays by executing the internal setup module on the remote nodes. You never have to call the setup module explicitly, it just runs, but it can be disabled to save time if it is not needed. For the convenience of users who are switching from other configuration management systems, the fact module also pulls in facts from the ‘ohai’ and ‘facter’ tools if they are installed, which are fact libraries from Chef and Puppet, respectively.</dd>
+<dt id="term-forks">Forks</dt>
+<dd>Ansible and Tower talk to remote nodes in parallel and the level of parallelism can be set serveral ways&#8211;during the creation or editing of a Job Template, by passing <code class="docutils literal"><span class="pre">--forks</span></code>, or by editing the default in a configuration file. The default is a very conservative 5 forks, though if you have a lot of RAM, you can easily set this to a value like 50 for increased parallelism.</dd>
+<dt id="term-group">Group</dt>
+<dd>A set of hosts in Ansible that can be addressed as a set, of which many may exist within a single Inventory.</dd>
+<dt id="term-group-vars">Group Vars</dt>
+<dd>The <code class="docutils literal"><span class="pre">group_vars/</span></code> files are files that live in a directory alongside an inventory file, with an optional filename named after each group. This is a convenient place to put variables that will be provided to a given group, especially complex data structures, so that these variables do not have to be embedded in the inventory file or playbook.</dd>
+<dt id="term-handlers">Handlers</dt>
+<dd>Handlers are just like regular tasks in an Ansible playbook (see Tasks), but are only run if the Task contains a “notify” directive and also indicates that it changed something. For example, if a config file is changed then the task referencing the config file templating operation may notify a service restart handler. This means services can be bounced only if they need to be restarted. Handlers can be used for things other than service restarts, but service restarts are the most common usage.</dd>
+<dt id="term-host">Host</dt>
+<dd>A system managed by Tower, which may include a physical, virtual, cloud-based server, or other device. Typically an operating system instance. Hosts are contained in Inventory. Sometimes referred to as a &#8220;node&#8221;.</dd>
+<dt id="term-host-specifier">Host Specifier</dt>
+<dd>Each Play in Ansible maps a series of tasks (which define the role, purpose, or orders of a system) to a set of systems. This “hosts:” directive in each play is often called the hosts specifier. It may select one system, many systems, one or more groups, or even some hosts that are in one group and explicitly not in another.</dd>
+<dt id="term-instance-group">Instance Group</dt>
+<dd>A group that contains instances for use in a clustered environment. An instance group provides the ability to group instances based on policy.</dd>
+<dt id="term-inventory">Inventory</dt>
+<dd>A collection of hosts against which Jobs may be launched.</dd>
+<dt id="term-inventory-script">Inventory Script</dt>
+<dd>A very simple program (or a complicated one) that looks up hosts, group membership for hosts, and variable information from an external resource&#8211;whether that be a SQL database, a CMDB solution, or something like LDAP. This concept was adapted from Puppet (where it is called an “External Nodes Classifier”) and works more or less exactly the same way.</dd>
+<dt id="term-inventory-source">Inventory Source</dt>
+<dd>Information about a cloud or other script that should be merged into the current inventory group, resulting in the automatic population of Groups, Hosts, and variables about those groups and hosts.</dd>
+<dt id="term-job">Job</dt>
+<dd>One of many background tasks launched by Tower, this is usually the instantiation of a Job Template; the launch of an Ansible playbook. Other types of jobs include inventory imports, project synchronizations from source control, or administrative cleanup actions.</dd>
+<dt id="term-job-detail">Job Detail</dt>
+<dd>The history of running a particular job, including its output and success/failure status.</dd>
+<dt id="term-job-slice">Job Slice</dt>
+<dd>See <a class="reference internal" href="glossary.html#term-distributed-job"><span class="xref std std-term">Distributed Job</span></a>.</dd>
+<dt id="term-job-template">Job Template</dt>
+<dd>The combination of an Ansible playbook and the set of parameters required to launch it.</dd>
+<dt id="term-json">JSON</dt>
+<dd>Ansible and Tower use JSON for return data from remote modules. This allows modules to be written in any language, not just Python.</dd>
+<dt id="term-notifier">Notifier</dt>
+<dd>An instance of a notification type (Email, Slack, Webhook, etc.) with a name, description, and a defined configuration.</dd>
+<dt id="term-notification">Notification</dt>
+<dd>A manifestation of the notifier; for example, when a job fails a notification is sent using the configuration defined by the notifier.</dd>
+<dt id="term-notify">Notify</dt>
+<dd>The act of a task registering a change event and informing a handler task that another action needs to be run at the end of the play. If a handler is notified by multiple tasks, it will still be run only once. Handlers are run in the order they are listed, not in the order that they are notified.</dd>
+<dt id="term-organization">Organization</dt>
+<dd>A logical collection of Users, Teams, Projects, and Inventories. The highest level in the Tower object hierarchy is the Organization.</dd>
+<dt id="term-organization-administrator">Organization Administrator</dt>
+<dd>An Tower user with the rights to modify the Organization&#8217;s membership and settings, including making new users and projects within that organization. An organization admin can also grant permissions to other users within the organization.</dd>
+<dt id="term-permissions">Permissions</dt>
+<dd>The set of privileges assigned to Users and Teams that provide the ability to read, modify, and administer Projects, Inventories, and other Tower objects.</dd>
+<dt id="term-plays">Plays</dt>
+<dd>A playbook is a list of plays. A play is minimally a mapping between a set of hosts selected by a host specifier (usually chosen by groups, but sometimes by hostname globs) and the tasks which run on those hosts to define the role that those systems will perform. There can be one or many plays in a playbook.</dd>
+<dt id="term-playbook">Playbook</dt>
+<dd>An Ansible playbook. Refer to <a class="reference external" href="http://docs.ansible.com/">http://docs.ansible.com/</a> for more information.</dd>
+<dt id="term-policy">Policy</dt>
+<dd>Policies dictate how instance groups behave and how jobs are executed.</dd>
+<dt id="term-project">Project</dt>
+<dd>A logical collection of Ansible playbooks, represented in Tower.</dd>
+<dt id="term-roles">Roles</dt>
+<dd>Roles are units of organization in Ansible and Tower. Assigning a role to a group of hosts (or a set of groups, or host patterns, etc.) implies that they should implement a specific behavior. A role may include applying certain variable values, certain tasks, and certain handlers&#8211;or just one or more of these things. Because of the file structure associated with a role, roles become redistributable units that allow you to share behavior among playbooks&#8211;or even with other users.</dd>
+<dt id="term-schedule">Schedule</dt>
+<dd>The calendar of dates and times for which a job should run automatically.</dd>
+<dt id="term-sliced-job">Sliced Job</dt>
+<dd>See <a class="reference internal" href="glossary.html#term-distributed-job"><span class="xref std std-term">Distributed Job</span></a>.</dd>
+<dt id="term-sudo">Sudo</dt>
+<dd>Ansible does not require root logins and, since it is daemonless, does not require root level daemons (which can be a security concern in sensitive environments). Ansible can log in and perform many operations wrapped in a <code class="docutils literal"><span class="pre">sudo</span></code> command, and can work with both password-less and password-based sudo. Some operations that do not normally work with <code class="docutils literal"><span class="pre">sudo</span></code> (like <code class="docutils literal"><span class="pre">scp</span></code> file transfer) can be achieved with Ansible’s <em>copy</em>, <em>template</em>, and <em>fetch</em> modules while running in <code class="docutils literal"><span class="pre">sudo</span></code> mode.</dd>
+<dt id="term-superuser">Superuser</dt>
+<dd>An admin of the Tower server who has permission to edit any object in the system, whether associated to any organization. Superusers can create organizations and other superusers.</dd>
+<dt id="term-survey">Survey</dt>
+<dd>Questions asked by a job template at job launch time, configurable on the job template.</dd>
+<dt id="term-team">Team</dt>
+<dd>A sub-division of an Organization with associated Users, Projects, Credentials, and Permissions. Teams provide a means to implement role-based access control schemes and delegate responsibilities across Organizations.</dd>
+<dt id="term-user">User</dt>
+<dd>An Tower operator with associated permissions and credentials.</dd>
+<dt id="term-workflow-job-template">Workflow Job Template</dt>
+<dd>A set consisting of any combination of job templates, project syncs, and inventory syncs, linked together in order to execute them as a single unit.</dd>
+<dt id="term-yaml">YAML</dt>
+<dd>Ansible and Tower use YAML to define playbook configuration languages and also variable files. YAML has a minimum of syntax, is very clean, and is easy for people to skim. It is a good data format for configuration files and humans, but is also machine readable. YAML is fairly popular in the dynamic language community and the format has libraries available for serialization in many languages (Python, Perl, Ruby, etc.).</dd>
+</dl>
+</div>
+
+
+          </div>
+          <div id="search-results"><gcse:searchresults-only></gcse:searchresults-only></div>
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+      
+        <a href="user-data.html" class="btn btn-neutral" title="8. Usability Analytics and Data Collection"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <p>
+    Copyright © 2019 Red Hat, Inc. 
+    <br>
+  </p>
+
+<p>
+  Red Hat Ansible Tower docs are generated using <A HREF="http://sphinx-doc.org/">Sphinx</A> using a theme provided by <a href="http://readthedocs.org">Read the Docs</a>.
+</p>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+<!-- begin analytics -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+        (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+        n.id=i;n.src = '//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+        e.parentNode.insertBefore(n, e);
+        })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+_satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

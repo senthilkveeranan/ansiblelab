@@ -1,0 +1,9 @@
+---
+- hosts: all
+  remote_user: admin
+  become: true
+  tasks:
+   - template:
+      src: hosts.j2
+      dest: /etc/hosts
+     when: inventory_hostname in groups['dev']

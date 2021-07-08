@@ -1,0 +1,669 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script type="text/javascript" src="https://www.redhat.com/dtm.js"></script>
+  <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> 
+  <meta class="swiftype" name="version" data-type="string" content="3.2.2">
+
+  <!-- Google Tag Manager Data Layer -->
+  <script>
+   dataLayer = [];
+  </script>
+  <!-- End Google Tag Manager Data Layer -->
+
+  
+  <title>Storage modules &mdash; Ansible Documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/modules/list_of_storage_modules.html"/>
+  
+
+  
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'2.8',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript" src="underscore.js"></script>
+      <script type="text/javascript" src="doctools.js"></script>
+
+    
+      <link rel="search" type="application/opensearchdescription+xml"
+            title="Search within Ansible Documentation"
+            href="https://docs.ansible.com/ansible/latest//_static/opensearch.xml"/>
+    
+
+  
+
+  
+    <link rel="stylesheet" href="theme.css" type="text/css" />
+  <link rel="stylesheet" href="pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="https://docs.ansible.com/ansible/latest//genindex.html" />
+    <link rel="search" title="Search" href="https://docs.ansible.com/ansible/latest//search.html" />
+    <link rel="next" title="System modules" href="list_of_system_modules.html" />
+    <link rel="prev" title="Source Control modules" href="list_of_source_control_modules.html" /> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+
+  
+  <script src="modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+  <!-- End Google Tag Manager -->
+
+    <div class="DocSite-globalNav ansibleNav">
+        <ul>
+            <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+            <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+            <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+            <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+            <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+        </ul>
+    </div>
+
+  <a class="DocSite-nav" href="https://docs.ansible.com/" style="padding-bottom: 30px;">
+      
+    <img class="DocSiteNav-logo"
+      src="logo_invert.png"
+      alt="Ansible Logo">
+    <div class="DocSiteNav-title">
+      Documentation
+    </div>
+  </a>
+
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+      <div style="background-color:#5bbdbf;height=80px;margin:'auto auto auto auto'">
+        <a class="DocSiteProduct-header DocSiteProduct-header--core" href="https://docs.ansible.com/">
+            <div class="DocSiteProduct-productName">
+                <div class="DocSiteProduct-logoText">
+                    Ansible  
+                    <div class="DocSiteProduct-CurrentVersion" align="right">
+                      2.8
+                  </div>
+                </div>
+            </div>
+        </a>
+
+          <div class="DocSiteProduct-CheckVersionPara">For previous versions, see the  <a class="DocSiteProduct-versionheader" href="https://docs.ansible.com/#coreversionselect">documentation archive.</a></div>
+      </div>
+
+      <div class="wy-side-nav-search" style="background-color#5bbdbf;height=80px;margin:'auto auto auto auto'">
+      <!-- <a href="../index.html" class="icon icon-home"> Ansible Documentation</a> -->
+      
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://docs.ansible.com/ansible/latest//search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+    </div>
+
+    
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Using Ansible</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/quickstart.html">Ansible Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/intro_getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/command_line_tools.html">Working with Command Line Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/intro_adhoc.html">Introduction To Ad-Hoc Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/intro_inventory.html">Working with Inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/intro_dynamic_inventory.html">Working With Dynamic Inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/playbooks.html">Working With Playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/become.html">Understanding Privilege Escalation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/vault.html">Ansible Vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/intro_patterns.html">Working with Patterns</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/modules.html">Working With Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/modules_intro.html">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/modules_support.html">Module Maintenance &amp; Support</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="modules_by_category.html">Module Index</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="list_of_all_modules.html">All modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_cloud_modules.html">Cloud modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_clustering_modules.html">Clustering modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_commands_modules.html">Commands modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_crypto_modules.html">Crypto modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_database_modules.html">Database modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_files_modules.html">Files modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_identity_modules.html">Identity modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_inventory_modules.html">Inventory modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_messaging_modules.html">Messaging modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_monitoring_modules.html">Monitoring modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_net_tools_modules.html">Net Tools modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_network_modules.html">Network modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_notification_modules.html">Notification modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_packaging_modules.html">Packaging modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_remote_management_modules.html">Remote Management modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_source_control_modules.html">Source Control modules</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="list_of_storage_modules.html#">Storage modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_system_modules.html">System modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_utilities_modules.html">Utilities modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_web_infrastructure_modules.html">Web Infrastructure modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_windows_modules.html">Windows modules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//plugins/plugins.html">Working With Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/intro_bsd.html">BSD Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/windows.html">Windows Guides</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing to Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//community/index.html">Ansible Community Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//scenario_guides/cloud_guides.html">Public Cloud Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//scenario_guides/network_guides.html">Network Technology Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//scenario_guides/virt_guides.html">Virtualization and Containerization Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Ansible for Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//network/index.html">Ansible for Network Automation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules_by_category.html">Module Index</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="list_of_all_modules.html">All modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_cloud_modules.html">Cloud modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_clustering_modules.html">Clustering modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_commands_modules.html">Commands modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_crypto_modules.html">Crypto modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_database_modules.html">Database modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_files_modules.html">Files modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_identity_modules.html">Identity modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_inventory_modules.html">Inventory modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_messaging_modules.html">Messaging modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_monitoring_modules.html">Monitoring modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_net_tools_modules.html">Net Tools modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_network_modules.html">Network modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_notification_modules.html">Notification modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_packaging_modules.html">Packaging modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_remote_management_modules.html">Remote Management modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_source_control_modules.html">Source Control modules</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="list_of_storage_modules.html#">Storage modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="list_of_storage_modules.html#emc">Emc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="list_of_storage_modules.html#glusterfs">Glusterfs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="list_of_storage_modules.html#hpe3par">Hpe3Par</a></li>
+<li class="toctree-l3"><a class="reference internal" href="list_of_storage_modules.html#ibm">Ibm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="list_of_storage_modules.html#infinidat">Infinidat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="list_of_storage_modules.html#netapp">Netapp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="list_of_storage_modules.html#purestorage">Purestorage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="list_of_storage_modules.html#vexata">Vexata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="list_of_storage_modules.html#zfs">Zfs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_system_modules.html">System modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_utilities_modules.html">Utilities modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_web_infrastructure_modules.html">Web Infrastructure modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_windows_modules.html">Windows modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/galaxy.html">Ansible Galaxy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/release_and_maintenance.html">Release and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/tower.html">Ansible Tower</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//roadmap/index.html">Ansible Roadmap</a></li>
+</ul>
+
+            
+          
+        </div>
+            <!-- changeable widget -->
+    <div id="sideBanner">
+    <br/>
+    <a href="https://www.ansible.com/docs-left?utm_source=docs">
+      <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+    </a>
+    </div>
+
+
+      </div>
+      &nbsp;
+    </nav>
+      </div>
+
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://docs.ansible.com/ansible/latest//index.html">Ansible Documentation</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+
+          <!-- Banner ads
+          <div class="DocSiteBanner">
+            <a class="DocSiteBanner-imgWrapper"
+                href="https://www.ansible.com/docs-top?utm_source=docs">
+                <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-top-left.png">
+            </a>
+            <a class="DocSiteBanner-imgWrapper"
+                href="https://www.ansible.com/docs-top?utm_source=docs">
+                <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-top-right.png">
+            </a>
+        </div> -->
+
+          <ul class="wy-breadcrumbs">
+  <li><a href="https://docs.ansible.com/ansible/latest//index.html">Docs</a> &raquo;</li>
+  <li><a href="list_of_storage_modules.html">Storage modules</a></li>
+  
+</ul>
+<hr/>
+
+          <div id="page-content">
+          
+  <div class="section" id="storage-modules">
+<span id="id1"></span><h1>Storage modules<a class="headerlink" href="list_of_storage_modules.html#storage-modules" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="emc">
+<span id="emc-storage-modules"></span><h2>Emc<a class="headerlink" href="list_of_storage_modules.html#emc" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/emc_vnx_sg_member_module.html#emc-vnx-sg-member-module"><span class="std std-ref">emc_vnx_sg_member &#8211; Manage storage group member on EMC VNX</span></a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="glusterfs">
+<span id="glusterfs-storage-modules"></span><h2>Glusterfs<a class="headerlink" href="list_of_storage_modules.html#glusterfs" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/gluster_heal_facts_module.html#gluster-heal-facts-module"><span class="std std-ref">gluster_heal_facts &#8211; Gather facts about self-heal or rebalance status</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/gluster_peer_module.html#gluster-peer-module"><span class="std std-ref">gluster_peer &#8211; Attach/Detach peers to/from the cluster</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/gluster_volume_module.html#gluster-volume-module"><span class="std std-ref">gluster_volume &#8211; Manage GlusterFS volumes</span></a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="hpe3par">
+<span id="hpe3par-storage-modules"></span><h2>Hpe3Par<a class="headerlink" href="list_of_storage_modules.html#hpe3par" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/ss_3par_cpg_module.html#ss-3par-cpg-module"><span class="std std-ref">ss_3par_cpg &#8211; Manage HPE StoreServ 3PAR CPG</span></a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="ibm">
+<span id="ibm-storage-modules"></span><h2>Ibm<a class="headerlink" href="list_of_storage_modules.html#ibm" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/ibm_sa_domain_module.html#ibm-sa-domain-module"><span class="std std-ref">ibm_sa_domain &#8211; Manages domains on IBM Spectrum Accelerate Family storage systems</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/ibm_sa_host_module.html#ibm-sa-host-module"><span class="std std-ref">ibm_sa_host &#8211; Adds hosts to or removes them from IBM Spectrum Accelerate Family storage systems</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/ibm_sa_host_ports_module.html#ibm-sa-host-ports-module"><span class="std std-ref">ibm_sa_host_ports &#8211; Add host ports on IBM Spectrum Accelerate Family storage systems</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/ibm_sa_pool_module.html#ibm-sa-pool-module"><span class="std std-ref">ibm_sa_pool &#8211; Handles pools on IBM Spectrum Accelerate Family storage systems</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/ibm_sa_vol_module.html#ibm-sa-vol-module"><span class="std std-ref">ibm_sa_vol &#8211; Handle volumes on IBM Spectrum Accelerate Family storage systems</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/ibm_sa_vol_map_module.html#ibm-sa-vol-map-module"><span class="std std-ref">ibm_sa_vol_map &#8211; Handles volume mapping on IBM Spectrum Accelerate Family storage systems</span></a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="infinidat">
+<span id="infinidat-storage-modules"></span><h2>Infinidat<a class="headerlink" href="list_of_storage_modules.html#infinidat" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/infini_export_module.html#infini-export-module"><span class="std std-ref">infini_export &#8211; Create, Delete or Modify NFS Exports on Infinibox</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/infini_export_client_module.html#infini-export-client-module"><span class="std std-ref">infini_export_client &#8211; Create, Delete or Modify NFS Client(s) for existing exports on Infinibox</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/infini_fs_module.html#infini-fs-module"><span class="std std-ref">infini_fs &#8211; Create, Delete or Modify filesystems on Infinibox</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/infini_host_module.html#infini-host-module"><span class="std std-ref">infini_host &#8211; Create, Delete and Modify Hosts on Infinibox</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/infini_pool_module.html#infini-pool-module"><span class="std std-ref">infini_pool &#8211; Create, Delete and Modify Pools on Infinibox</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/infini_vol_module.html#infini-vol-module"><span class="std std-ref">infini_vol &#8211; Create, Delete or Modify volumes on Infinibox</span></a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="netapp">
+<span id="netapp-storage-modules"></span><h2>Netapp<a class="headerlink" href="list_of_storage_modules.html#netapp" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_cdot_aggregate_module.html#na-cdot-aggregate-module"><span class="std std-ref">na_cdot_aggregate &#8211; Manage NetApp cDOT aggregates</span></a> <strong>(D)</strong></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_cdot_license_module.html#na-cdot-license-module"><span class="std std-ref">na_cdot_license &#8211; Manage NetApp cDOT protocol and feature licenses</span></a> <strong>(D)</strong></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_cdot_lun_module.html#na-cdot-lun-module"><span class="std std-ref">na_cdot_lun &#8211; Manage  NetApp cDOT luns</span></a> <strong>(D)</strong></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_cdot_qtree_module.html#na-cdot-qtree-module"><span class="std std-ref">na_cdot_qtree &#8211; Manage qtrees</span></a> <strong>(D)</strong></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_cdot_svm_module.html#na-cdot-svm-module"><span class="std std-ref">na_cdot_svm &#8211; Manage NetApp cDOT svm</span></a> <strong>(D)</strong></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_cdot_user_module.html#na-cdot-user-module"><span class="std std-ref">na_cdot_user &#8211; useradmin configuration and management</span></a> <strong>(D)</strong></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_cdot_user_role_module.html#na-cdot-user-role-module"><span class="std std-ref">na_cdot_user_role &#8211; useradmin configuration and management</span></a> <strong>(D)</strong></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_cdot_volume_module.html#na-cdot-volume-module"><span class="std std-ref">na_cdot_volume &#8211; Manage NetApp cDOT volumes</span></a> <strong>(D)</strong></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_access_group_module.html#na-elementsw-access-group-module"><span class="std std-ref">na_elementsw_access_group &#8211; NetApp Element Software Manage Access Groups</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_account_module.html#na-elementsw-account-module"><span class="std std-ref">na_elementsw_account &#8211; NetApp Element Software Manage Accounts</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_admin_users_module.html#na-elementsw-admin-users-module"><span class="std std-ref">na_elementsw_admin_users &#8211; NetApp Element Software Manage Admin Users</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_backup_module.html#na-elementsw-backup-module"><span class="std std-ref">na_elementsw_backup &#8211; NetApp Element Software Create Backups</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_check_connections_module.html#na-elementsw-check-connections-module"><span class="std std-ref">na_elementsw_check_connections &#8211; NetApp Element Software Check connectivity to MVIP and SVIP</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_cluster_module.html#na-elementsw-cluster-module"><span class="std std-ref">na_elementsw_cluster &#8211; NetApp Element Software Create Cluster</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_cluster_config_module.html#na-elementsw-cluster-config-module"><span class="std std-ref">na_elementsw_cluster_config &#8211; Configure Element SW Cluster</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_cluster_pair_module.html#na-elementsw-cluster-pair-module"><span class="std std-ref">na_elementsw_cluster_pair &#8211; NetApp Element Software Manage Cluster Pair</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_cluster_snmp_module.html#na-elementsw-cluster-snmp-module"><span class="std std-ref">na_elementsw_cluster_snmp &#8211; Configure Element SW Cluster SNMP</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_drive_module.html#na-elementsw-drive-module"><span class="std std-ref">na_elementsw_drive &#8211; NetApp Element Software Manage Node Drives</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_initiators_module.html#na-elementsw-initiators-module"><span class="std std-ref">na_elementsw_initiators &#8211; Manage Element SW initiators</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_ldap_module.html#na-elementsw-ldap-module"><span class="std std-ref">na_elementsw_ldap &#8211; NetApp Element Software Manage ldap admin users</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_network_interfaces_module.html#na-elementsw-network-interfaces-module"><span class="std std-ref">na_elementsw_network_interfaces &#8211; NetApp Element Software Configure Node Network Interfaces</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_node_module.html#na-elementsw-node-module"><span class="std std-ref">na_elementsw_node &#8211; NetApp Element Software Node Operation</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_snapshot_module.html#na-elementsw-snapshot-module"><span class="std std-ref">na_elementsw_snapshot &#8211; NetApp Element Software Manage Snapshots</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_snapshot_restore_module.html#na-elementsw-snapshot-restore-module"><span class="std std-ref">na_elementsw_snapshot_restore &#8211; NetApp Element Software Restore Snapshot</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_snapshot_schedule_module.html#na-elementsw-snapshot-schedule-module"><span class="std std-ref">na_elementsw_snapshot_schedule &#8211; NetApp Element Software Snapshot Schedules</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_vlan_module.html#na-elementsw-vlan-module"><span class="std std-ref">na_elementsw_vlan &#8211; NetApp Element Software Manage VLAN</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_volume_module.html#na-elementsw-volume-module"><span class="std std-ref">na_elementsw_volume &#8211; NetApp Element Software Manage Volumes</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_volume_clone_module.html#na-elementsw-volume-clone-module"><span class="std std-ref">na_elementsw_volume_clone &#8211; NetApp Element Software Create Volume Clone</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_elementsw_volume_pair_module.html#na-elementsw-volume-pair-module"><span class="std std-ref">na_elementsw_volume_pair &#8211; NetApp Element Software Volume Pair</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_aggregate_module.html#na-ontap-aggregate-module"><span class="std std-ref">na_ontap_aggregate &#8211; NetApp ONTAP manage aggregates</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_autosupport_module.html#na-ontap-autosupport-module"><span class="std std-ref">na_ontap_autosupport &#8211; NetApp ONTAP Autosupport</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_broadcast_domain_module.html#na-ontap-broadcast-domain-module"><span class="std std-ref">na_ontap_broadcast_domain &#8211; NetApp ONTAP manage broadcast domains</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_broadcast_domain_ports_module.html#na-ontap-broadcast-domain-ports-module"><span class="std std-ref">na_ontap_broadcast_domain_ports &#8211; NetApp ONTAP manage broadcast domain ports</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_cg_snapshot_module.html#na-ontap-cg-snapshot-module"><span class="std std-ref">na_ontap_cg_snapshot &#8211; NetApp ONTAP manage consistency group snapshot</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_cifs_module.html#na-ontap-cifs-module"><span class="std std-ref">na_ontap_cifs &#8211; NetApp ONTAP Manage cifs-share</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_cifs_acl_module.html#na-ontap-cifs-acl-module"><span class="std std-ref">na_ontap_cifs_acl &#8211; NetApp ONTAP manage cifs-share-access-control</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_cifs_server_module.html#na-ontap-cifs-server-module"><span class="std std-ref">na_ontap_cifs_server &#8211; NetApp ONTAP CIFS server configuration</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_cluster_module.html#na-ontap-cluster-module"><span class="std std-ref">na_ontap_cluster &#8211; NetApp ONTAP cluster - create, join, add license</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_cluster_ha_module.html#na-ontap-cluster-ha-module"><span class="std std-ref">na_ontap_cluster_ha &#8211; NetApp ONTAP Manage HA status for cluster</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_cluster_peer_module.html#na-ontap-cluster-peer-module"><span class="std std-ref">na_ontap_cluster_peer &#8211; NetApp ONTAP Manage Cluster peering</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_command_module.html#na-ontap-command-module"><span class="std std-ref">na_ontap_command &#8211; NetApp ONTAP Run any cli command</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_disks_module.html#na-ontap-disks-module"><span class="std std-ref">na_ontap_disks &#8211; NetApp ONTAP Assign disks to nodes</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_dns_module.html#na-ontap-dns-module"><span class="std std-ref">na_ontap_dns &#8211; NetApp ONTAP Create, delete, modify DNS servers</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_export_policy_module.html#na-ontap-export-policy-module"><span class="std std-ref">na_ontap_export_policy &#8211; NetApp ONTAP manage export-policy</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_export_policy_rule_module.html#na-ontap-export-policy-rule-module"><span class="std std-ref">na_ontap_export_policy_rule &#8211; NetApp ONTAP manage export policy rules</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_fcp_module.html#na-ontap-fcp-module"><span class="std std-ref">na_ontap_fcp &#8211; NetApp ONTAP Start, Stop and Enable FCP services</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_firewall_policy_module.html#na-ontap-firewall-policy-module"><span class="std std-ref">na_ontap_firewall_policy &#8211; NetApp ONTAP Manage a firewall policy</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_flexcache_module.html#na-ontap-flexcache-module"><span class="std std-ref">na_ontap_flexcache &#8211; NetApp ONTAP FlexCache - create/delete relationship</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_gather_facts_module.html#na-ontap-gather-facts-module"><span class="std std-ref">na_ontap_gather_facts &#8211; NetApp information gatherer</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_igroup_module.html#na-ontap-igroup-module"><span class="std std-ref">na_ontap_igroup &#8211; NetApp ONTAP iSCSI or FC igroup configuration</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_igroup_initiator_module.html#na-ontap-igroup-initiator-module"><span class="std std-ref">na_ontap_igroup_initiator &#8211; NetApp ONTAP igroup initiator configuration</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_interface_module.html#na-ontap-interface-module"><span class="std std-ref">na_ontap_interface &#8211; NetApp ONTAP LIF configuration</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_iscsi_module.html#na-ontap-iscsi-module"><span class="std std-ref">na_ontap_iscsi &#8211; NetApp ONTAP manage iSCSI service</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_job_schedule_module.html#na-ontap-job-schedule-module"><span class="std std-ref">na_ontap_job_schedule &#8211; NetApp ONTAP Job Schedule</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_license_module.html#na-ontap-license-module"><span class="std std-ref">na_ontap_license &#8211; NetApp ONTAP protocol and feature licenses</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_lun_module.html#na-ontap-lun-module"><span class="std std-ref">na_ontap_lun &#8211; NetApp ONTAP manage LUNs</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_lun_copy_module.html#na-ontap-lun-copy-module"><span class="std std-ref">na_ontap_lun_copy &#8211; NetApp ONTAP copy LUNs</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_lun_map_module.html#na-ontap-lun-map-module"><span class="std std-ref">na_ontap_lun_map &#8211; NetApp ONTAP LUN maps</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_motd_module.html#na-ontap-motd-module"><span class="std std-ref">na_ontap_motd &#8211; Setup motd on cDOT</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_net_ifgrp_module.html#na-ontap-net-ifgrp-module"><span class="std std-ref">na_ontap_net_ifgrp &#8211; NetApp Ontap modify network interface group</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_net_port_module.html#na-ontap-net-port-module"><span class="std std-ref">na_ontap_net_port &#8211; NetApp ONTAP network ports</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_net_routes_module.html#na-ontap-net-routes-module"><span class="std std-ref">na_ontap_net_routes &#8211; NetApp ONTAP network routes</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_net_subnet_module.html#na-ontap-net-subnet-module"><span class="std std-ref">na_ontap_net_subnet &#8211; NetApp ONTAP Create, delete, modify network subnets</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_net_vlan_module.html#na-ontap-net-vlan-module"><span class="std std-ref">na_ontap_net_vlan &#8211; NetApp ONTAP network VLAN</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_nfs_module.html#na-ontap-nfs-module"><span class="std std-ref">na_ontap_nfs &#8211; NetApp ONTAP NFS status</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_node_module.html#na-ontap-node-module"><span class="std std-ref">na_ontap_node &#8211; NetApp ONTAP Rename a node</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_ntp_module.html#na-ontap-ntp-module"><span class="std std-ref">na_ontap_ntp &#8211; NetApp ONTAP NTP server</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_nvme_module.html#na-ontap-nvme-module"><span class="std std-ref">na_ontap_nvme &#8211; NetApp ONTAP Manage NVMe Service</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_nvme_namespace_module.html#na-ontap-nvme-namespace-module"><span class="std std-ref">na_ontap_nvme_namespace &#8211; NetApp ONTAP Manage NVME Namespace</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_nvme_subsystem_module.html#na-ontap-nvme-subsystem-module"><span class="std std-ref">na_ontap_nvme_subsystem &#8211; NetApp ONTAP Manage NVME Subsystem</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_portset_module.html#na-ontap-portset-module"><span class="std std-ref">na_ontap_portset &#8211; NetApp ONTAP Create/Delete portset</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_qos_policy_group_module.html#na-ontap-qos-policy-group-module"><span class="std std-ref">na_ontap_qos_policy_group &#8211; NetApp ONTAP manage policy group in Quality of Service</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_qtree_module.html#na-ontap-qtree-module"><span class="std std-ref">na_ontap_qtree &#8211; NetApp ONTAP manage qtrees</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_quotas_module.html#na-ontap-quotas-module"><span class="std std-ref">na_ontap_quotas &#8211; NetApp ONTAP Quotas</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_security_key_manager_module.html#na-ontap-security-key-manager-module"><span class="std std-ref">na_ontap_security_key_manager &#8211; NetApp ONTAP security key manager</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_service_processor_network_module.html#na-ontap-service-processor-network-module"><span class="std std-ref">na_ontap_service_processor_network &#8211; NetApp ONTAP service processor network</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_snapmirror_module.html#na-ontap-snapmirror-module"><span class="std std-ref">na_ontap_snapmirror &#8211; NetApp ONTAP Manage SnapMirror</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_snapshot_module.html#na-ontap-snapshot-module"><span class="std std-ref">na_ontap_snapshot &#8211; NetApp ONTAP manage Snapshots</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_snapshot_policy_module.html#na-ontap-snapshot-policy-module"><span class="std std-ref">na_ontap_snapshot_policy &#8211; NetApp ONTAP manage Snapshot Policy</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_snmp_module.html#na-ontap-snmp-module"><span class="std std-ref">na_ontap_snmp &#8211; NetApp ONTAP SNMP community</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_software_update_module.html#na-ontap-software-update-module"><span class="std std-ref">na_ontap_software_update &#8211; NetApp ONTAP Update Software</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_svm_module.html#na-ontap-svm-module"><span class="std std-ref">na_ontap_svm &#8211; NetApp ONTAP SVM</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_svm_options_module.html#na-ontap-svm-options-module"><span class="std std-ref">na_ontap_svm_options &#8211; NetApp ONTAP Modify SVM Options</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_ucadapter_module.html#na-ontap-ucadapter-module"><span class="std std-ref">na_ontap_ucadapter &#8211; NetApp ONTAP UC adapter configuration</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_unix_group_module.html#na-ontap-unix-group-module"><span class="std std-ref">na_ontap_unix_group &#8211; NetApp ONTAP UNIX Group</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_unix_user_module.html#na-ontap-unix-user-module"><span class="std std-ref">na_ontap_unix_user &#8211; NetApp ONTAP UNIX users</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_user_module.html#na-ontap-user-module"><span class="std std-ref">na_ontap_user &#8211; NetApp ONTAP user configuration and management</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_user_role_module.html#na-ontap-user-role-module"><span class="std std-ref">na_ontap_user_role &#8211; NetApp ONTAP user role configuration and management</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_volume_module.html#na-ontap-volume-module"><span class="std std-ref">na_ontap_volume &#8211; NetApp ONTAP manage volumes</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_volume_clone_module.html#na-ontap-volume-clone-module"><span class="std std-ref">na_ontap_volume_clone &#8211; NetApp ONTAP manage volume clones</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_vscan_on_access_policy_module.html#na-ontap-vscan-on-access-policy-module"><span class="std std-ref">na_ontap_vscan_on_access_policy &#8211; NetApp ONTAP Vscan on access policy configuration</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_vscan_on_demand_task_module.html#na-ontap-vscan-on-demand-task-module"><span class="std std-ref">na_ontap_vscan_on_demand_task &#8211; NetApp ONTAP Vscan on demand task configuration</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_vscan_scanner_pool_module.html#na-ontap-vscan-scanner-pool-module"><span class="std std-ref">na_ontap_vscan_scanner_pool &#8211; NetApp ONTAP Vscan Scanner Pools Configuration</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/na_ontap_vserver_peer_module.html#na-ontap-vserver-peer-module"><span class="std std-ref">na_ontap_vserver_peer &#8211; NetApp ONTAP Vserver peering</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_alerts_module.html#netapp-e-alerts-module"><span class="std std-ref">netapp_e_alerts &#8211; NetApp E-Series manage email notification settings</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_amg_module.html#netapp-e-amg-module"><span class="std std-ref">netapp_e_amg &#8211; NetApp E-Series create, remove, and update asynchronous mirror groups</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_amg_role_module.html#netapp-e-amg-role-module"><span class="std std-ref">netapp_e_amg_role &#8211; NetApp E-Series update the role of a storage array within an Asynchronous Mirror Group (AMG)</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_amg_sync_module.html#netapp-e-amg-sync-module"><span class="std std-ref">netapp_e_amg_sync &#8211; NetApp E-Series conduct synchronization actions on asynchronous mirror groups</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_asup_module.html#netapp-e-asup-module"><span class="std std-ref">netapp_e_asup &#8211; NetApp E-Series manage auto-support settings</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_auditlog_module.html#netapp-e-auditlog-module"><span class="std std-ref">netapp_e_auditlog &#8211; NetApp E-Series manage audit-log configuration</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_auth_module.html#netapp-e-auth-module"><span class="std std-ref">netapp_e_auth &#8211; NetApp E-Series set or update the password for a storage array</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_facts_module.html#netapp-e-facts-module"><span class="std std-ref">netapp_e_facts &#8211; NetApp E-Series retrieve facts about NetApp E-Series storage arrays</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_flashcache_module.html#netapp-e-flashcache-module"><span class="std std-ref">netapp_e_flashcache &#8211; NetApp E-Series manage SSD caches</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_global_module.html#netapp-e-global-module"><span class="std std-ref">netapp_e_global &#8211; NetApp E-Series manage global settings configuration</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_host_module.html#netapp-e-host-module"><span class="std std-ref">netapp_e_host &#8211; NetApp E-Series manage eseries hosts</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_hostgroup_module.html#netapp-e-hostgroup-module"><span class="std std-ref">netapp_e_hostgroup &#8211; NetApp E-Series manage array host groups</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_iscsi_interface_module.html#netapp-e-iscsi-interface-module"><span class="std std-ref">netapp_e_iscsi_interface &#8211; NetApp E-Series manage iSCSI interface configuration</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_iscsi_target_module.html#netapp-e-iscsi-target-module"><span class="std std-ref">netapp_e_iscsi_target &#8211; NetApp E-Series manage iSCSI target configuration</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_ldap_module.html#netapp-e-ldap-module"><span class="std std-ref">netapp_e_ldap &#8211; NetApp E-Series manage LDAP integration to use for authentication</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_lun_mapping_module.html#netapp-e-lun-mapping-module"><span class="std std-ref">netapp_e_lun_mapping &#8211; NetApp E-Series create, delete, or modify lun mappings</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_mgmt_interface_module.html#netapp-e-mgmt-interface-module"><span class="std std-ref">netapp_e_mgmt_interface &#8211; NetApp E-Series management interface configuration</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_snapshot_group_module.html#netapp-e-snapshot-group-module"><span class="std std-ref">netapp_e_snapshot_group &#8211; NetApp E-Series manage snapshot groups</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_snapshot_images_module.html#netapp-e-snapshot-images-module"><span class="std std-ref">netapp_e_snapshot_images &#8211; NetApp E-Series create and delete snapshot images</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_snapshot_volume_module.html#netapp-e-snapshot-volume-module"><span class="std std-ref">netapp_e_snapshot_volume &#8211; NetApp E-Series manage snapshot volumes</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_storage_system_module.html#netapp-e-storage-system-module"><span class="std std-ref">netapp_e_storage_system &#8211; NetApp E-Series Web Services Proxy manage storage arrays</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_storagepool_module.html#netapp-e-storagepool-module"><span class="std std-ref">netapp_e_storagepool &#8211; NetApp E-Series manage disk groups and disk pools</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_syslog_module.html#netapp-e-syslog-module"><span class="std std-ref">netapp_e_syslog &#8211; NetApp E-Series manage syslog settings</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_volume_module.html#netapp-e-volume-module"><span class="std std-ref">netapp_e_volume &#8211; NetApp E-Series manage storage volumes (standard and thin)</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/netapp_e_volume_copy_module.html#netapp-e-volume-copy-module"><span class="std std-ref">netapp_e_volume_copy &#8211; NetApp E-Series create volume copy pairs</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/sf_account_manager_module.html#sf-account-manager-module"><span class="std std-ref">sf_account_manager &#8211; Manage SolidFire accounts</span></a> <strong>(D)</strong></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/sf_check_connections_module.html#sf-check-connections-module"><span class="std std-ref">sf_check_connections &#8211; Check connectivity to MVIP and SVIP</span></a> <strong>(D)</strong></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/sf_snapshot_schedule_manager_module.html#sf-snapshot-schedule-manager-module"><span class="std std-ref">sf_snapshot_schedule_manager &#8211; Manage SolidFire snapshot schedules</span></a> <strong>(D)</strong></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/sf_volume_access_group_manager_module.html#sf-volume-access-group-manager-module"><span class="std std-ref">sf_volume_access_group_manager &#8211; Manage SolidFire Volume Access Groups</span></a> <strong>(D)</strong></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/sf_volume_manager_module.html#sf-volume-manager-module"><span class="std std-ref">sf_volume_manager &#8211; Manage SolidFire volumes</span></a> <strong>(D)</strong></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="purestorage">
+<span id="purestorage-storage-modules"></span><h2>Purestorage<a class="headerlink" href="list_of_storage_modules.html#purestorage" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefa_dns_module.html#purefa-dns-module"><span class="std std-ref">purefa_dns &#8211; Configure FlashArray DNS settings</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefa_ds_module.html#purefa-ds-module"><span class="std std-ref">purefa_ds &#8211; Configure FlashArray Directory Service</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefa_dsrole_module.html#purefa-dsrole-module"><span class="std std-ref">purefa_dsrole &#8211; Configure FlashArray Directory Service Roles</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefa_facts_module.html#purefa-facts-module"><span class="std std-ref">purefa_facts &#8211; Collect facts from Pure Storage FlashArray</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefa_hg_module.html#purefa-hg-module"><span class="std std-ref">purefa_hg &#8211; Manage hostgroups on Pure Storage FlashArrays</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefa_host_module.html#purefa-host-module"><span class="std std-ref">purefa_host &#8211; Manage hosts on Pure Storage FlashArrays</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefa_ntp_module.html#purefa-ntp-module"><span class="std std-ref">purefa_ntp &#8211; Configure Pure Storage FlashArray NTP settings</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefa_offload_module.html#purefa-offload-module"><span class="std std-ref">purefa_offload &#8211; Create, modify and delete NFS or S3 offload targets</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefa_pg_module.html#purefa-pg-module"><span class="std std-ref">purefa_pg &#8211; Manage protection groups on Pure Storage FlashArrays</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefa_pgsnap_module.html#purefa-pgsnap-module"><span class="std std-ref">purefa_pgsnap &#8211; Manage protection group snapshots on Pure Storage FlashArrays</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefa_ra_module.html#purefa-ra-module"><span class="std std-ref">purefa_ra &#8211; Enable or Disable Pure Storage FlashArray Remote Assist</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefa_snap_module.html#purefa-snap-module"><span class="std std-ref">purefa_snap &#8211; Manage volume snapshots on Pure Storage FlashArrays</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefa_user_module.html#purefa-user-module"><span class="std std-ref">purefa_user &#8211; Create, modify or delete FlashArray local user account</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefa_volume_module.html#purefa-volume-module"><span class="std std-ref">purefa_volume &#8211; Manage volumes on Pure Storage FlashArrays</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefb_bucket_module.html#purefb-bucket-module"><span class="std std-ref">purefb_bucket &#8211; Manage Object Store Buckets on a  Pure Storage FlashBlade</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefb_ds_module.html#purefb-ds-module"><span class="std std-ref">purefb_ds &#8211; Configure FlashBlade Directory Service</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefb_dsrole_module.html#purefb-dsrole-module"><span class="std std-ref">purefb_dsrole &#8211; Configure FlashBlade  Management Directory Service Roles</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefb_facts_module.html#purefb-facts-module"><span class="std std-ref">purefb_facts &#8211; Collect facts from Pure Storage FlashBlade</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefb_fs_module.html#purefb-fs-module"><span class="std std-ref">purefb_fs &#8211; Manage filesystemon Pure Storage FlashBlade`</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefb_network_module.html#purefb-network-module"><span class="std std-ref">purefb_network &#8211; Manage network interfaces in a Pure Storage FlashBlade</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefb_s3acc_module.html#purefb-s3acc-module"><span class="std std-ref">purefb_s3acc &#8211; Create or delete FlashBlade Object Store accounts</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefb_s3user_module.html#purefb-s3user-module"><span class="std std-ref">purefb_s3user &#8211; Create or delete FlashBlade Object Store account users</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefb_snap_module.html#purefb-snap-module"><span class="std std-ref">purefb_snap &#8211; Manage filesystem snapshots on Pure Storage FlashBlades</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/purefb_subnet_module.html#purefb-subnet-module"><span class="std std-ref">purefb_subnet &#8211; Manage network subnets in a Pure Storage FlashBlade</span></a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="vexata">
+<span id="vexata-storage-modules"></span><h2>Vexata<a class="headerlink" href="list_of_storage_modules.html#vexata" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/vexata_volume_module.html#vexata-volume-module"><span class="std std-ref">vexata_volume &#8211; Manage volumes on Vexata VX100 storage arrays</span></a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="zfs">
+<span id="zfs-storage-modules"></span><h2>Zfs<a class="headerlink" href="list_of_storage_modules.html#zfs" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/zfs_module.html#zfs-module"><span class="std std-ref">zfs &#8211; Manage zfs</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/zfs_delegate_admin_module.html#zfs-delegate-admin-module"><span class="std std-ref">zfs_delegate_admin &#8211; Manage ZFS delegated administration (user admin privileges)</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/zfs_facts_module.html#zfs-facts-module"><span class="std std-ref">zfs_facts &#8211; Gather facts about ZFS datasets</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/zpool_facts_module.html#zpool-facts-module"><span class="std std-ref">zpool_facts &#8211; Gather facts about ZFS pools</span></a></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li><strong>(D)</strong>: This marks a module as deprecated, which means a module is kept for backwards compatibility but usage is discouraged.
+The module documentation details page may explain more about this rationale.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div id="search-results"><gcse:searchresults-only></div>
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+        <a href="list_of_system_modules.html" class="btn btn-neutral float-right" title="System modules"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="list_of_source_control_modules.html" class="btn btn-neutral" title="Source Control modules"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+  <p>Last updated on May 17, 2019.<br/>
+  Copyright © 2018 Red Hat, Inc. <br/>
+  </p>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.8',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript" src="underscore.js"></script>
+      <script type="text/javascript" src="doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+<!-- begin analytics -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+        (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+        n.id=i;n.src = '//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+        e.parentNode.insertBefore(n, e);
+        })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+_satellite.pageBottom();
+}
+</script>
+</body>
+</html>

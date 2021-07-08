@@ -1,0 +1,4 @@
+---
+- name: Default path
+  bash_path: "/etc/skel"
+

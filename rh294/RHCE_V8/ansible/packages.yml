@@ -1,0 +1,19 @@
+---
+- hosts: dev,balancers,prod
+  remote_user: admin
+  become: true
+  tasks:
+    - yum: 
+       name: "{{ item }}"
+       state: latest
+      loop:
+        - php
+        - mariadb
+    - yum:
+       name: '@Development Tools'
+       state: latest
+      when: inventory_hostname in groups['dev']
+    - yum:
+       name: '*'
+       state: latest
+      when: inventory_hostname in groups['dev']

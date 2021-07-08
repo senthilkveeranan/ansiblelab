@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script type="text/javascript" src="https://www.redhat.com/dtm.js"></script>
+  <meta class="swiftype" name="published_at" data-type="date" content="2017-12-13" /> 
+  <meta class="swiftype" name="version" data-type="string" content="3.2.2">
+
+  <!-- Google Tag Manager Data Layer -->
+  <script>
+   dataLayer = [];
+  </script>
+  <!-- End Google Tag Manager Data Layer -->
+
+  
+  <title>System modules &mdash; Ansible Documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://docs.ansible.com/ansible/latest/modules/list_of_system_modules.html"/>
+  
+
+  
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'../',
+        VERSION:'2.8',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript" src="underscore.js"></script>
+      <script type="text/javascript" src="doctools.js"></script>
+
+    
+      <link rel="search" type="application/opensearchdescription+xml"
+            title="Search within Ansible Documentation"
+            href="https://docs.ansible.com/ansible/latest//_static/opensearch.xml"/>
+    
+
+  
+
+  
+    <link rel="stylesheet" href="theme.css" type="text/css" />
+  <link rel="stylesheet" href="pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="https://docs.ansible.com/ansible/latest//genindex.html" />
+    <link rel="search" title="Search" href="https://docs.ansible.com/ansible/latest//search.html" />
+    <link rel="next" title="Utilities modules" href="list_of_utilities_modules.html" />
+    <link rel="prev" title="Storage modules" href="list_of_storage_modules.html" /> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+
+  
+  <script src="modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+  <!-- End Google Tag Manager -->
+
+    <div class="DocSite-globalNav ansibleNav">
+        <ul>
+            <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+            <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+            <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+            <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+            <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+        </ul>
+    </div>
+
+  <a class="DocSite-nav" href="https://docs.ansible.com/" style="padding-bottom: 30px;">
+      
+    <img class="DocSiteNav-logo"
+      src="logo_invert.png"
+      alt="Ansible Logo">
+    <div class="DocSiteNav-title">
+      Documentation
+    </div>
+  </a>
+
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+      <div style="background-color:#5bbdbf;height=80px;margin:'auto auto auto auto'">
+        <a class="DocSiteProduct-header DocSiteProduct-header--core" href="https://docs.ansible.com/">
+            <div class="DocSiteProduct-productName">
+                <div class="DocSiteProduct-logoText">
+                    Ansible  
+                    <div class="DocSiteProduct-CurrentVersion" align="right">
+                      2.8
+                  </div>
+                </div>
+            </div>
+        </a>
+
+          <div class="DocSiteProduct-CheckVersionPara">For previous versions, see the  <a class="DocSiteProduct-versionheader" href="https://docs.ansible.com/#coreversionselect">documentation archive.</a></div>
+      </div>
+
+      <div class="wy-side-nav-search" style="background-color#5bbdbf;height=80px;margin:'auto auto auto auto'">
+      <!-- <a href="../index.html" class="icon icon-home"> Ansible Documentation</a> -->
+      
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://docs.ansible.com/ansible/latest//search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+    </div>
+
+    
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation, Upgrade &amp; Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//installation_guide/index.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//porting_guides/porting_guides.html">Ansible Porting Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Using Ansible</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/index.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/quickstart.html">Ansible Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/intro_getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/command_line_tools.html">Working with Command Line Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/intro_adhoc.html">Introduction To Ad-Hoc Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/intro_inventory.html">Working with Inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/intro_dynamic_inventory.html">Working With Dynamic Inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/playbooks.html">Working With Playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/become.html">Understanding Privilege Escalation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/vault.html">Ansible Vault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/intro_patterns.html">Working with Patterns</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/modules.html">Working With Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/modules_intro.html">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/modules_support.html">Module Maintenance &amp; Support</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="modules_by_category.html">Module Index</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="list_of_all_modules.html">All modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_cloud_modules.html">Cloud modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_clustering_modules.html">Clustering modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_commands_modules.html">Commands modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_crypto_modules.html">Crypto modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_database_modules.html">Database modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_files_modules.html">Files modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_identity_modules.html">Identity modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_inventory_modules.html">Inventory modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_messaging_modules.html">Messaging modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_monitoring_modules.html">Monitoring modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_net_tools_modules.html">Net Tools modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_network_modules.html">Network modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_notification_modules.html">Notification modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_packaging_modules.html">Packaging modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_remote_management_modules.html">Remote Management modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_source_control_modules.html">Source Control modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_storage_modules.html">Storage modules</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="list_of_system_modules.html#">System modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_utilities_modules.html">Utilities modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_web_infrastructure_modules.html">Web Infrastructure modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_of_windows_modules.html">Windows modules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//plugins/plugins.html">Working With Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/intro_bsd.html">BSD Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//user_guide/windows.html">Windows Guides</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Contributing to Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//community/index.html">Ansible Community Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Extending Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//dev_guide/index.html">Developer Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common Ansible Scenarios</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//scenario_guides/cloud_guides.html">Public Cloud Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//scenario_guides/network_guides.html">Network Technology Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//scenario_guides/virt_guides.html">Virtualization and Containerization Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Ansible for Network Automation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//network/index.html">Ansible for Network Automation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference &amp; Appendices</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules_by_category.html">Module Index</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="list_of_all_modules.html">All modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_cloud_modules.html">Cloud modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_clustering_modules.html">Clustering modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_commands_modules.html">Commands modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_crypto_modules.html">Crypto modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_database_modules.html">Database modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_files_modules.html">Files modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_identity_modules.html">Identity modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_inventory_modules.html">Inventory modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_messaging_modules.html">Messaging modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_monitoring_modules.html">Monitoring modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_net_tools_modules.html">Net Tools modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_network_modules.html">Network modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_notification_modules.html">Notification modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_packaging_modules.html">Packaging modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_remote_management_modules.html">Remote Management modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_source_control_modules.html">Source Control modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_storage_modules.html">Storage modules</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="list_of_system_modules.html#">System modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_utilities_modules.html">Utilities modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_web_infrastructure_modules.html">Web Infrastructure modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_windows_modules.html">Windows modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/playbooks_keywords.html">Playbook Keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/galaxy.html">Ansible Galaxy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/common_return_values.html">Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/config.html">Ansible Configuration Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/YAMLSyntax.html">YAML Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/python_3_support.html">Python 3 Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/interpreter_discovery.html">Interpreter Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/release_and_maintenance.html">Release and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/test_strategies.html">Testing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//dev_guide/testing/sanity/index.html">Sanity Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/module_utils.html">Ansible Reference: Module Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/special_variables.html">Special Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//reference_appendices/tower.html">Ansible Tower</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Roadmaps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://docs.ansible.com/ansible/latest//roadmap/index.html">Ansible Roadmap</a></li>
+</ul>
+
+            
+          
+        </div>
+            <!-- changeable widget -->
+    <div id="sideBanner">
+    <br/>
+    <a href="https://www.ansible.com/docs-left?utm_source=docs">
+      <img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-left-rail.png" />
+    </a>
+    </div>
+
+
+      </div>
+      &nbsp;
+    </nav>
+      </div>
+
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://docs.ansible.com/ansible/latest//index.html">Ansible Documentation</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+
+          <!-- Banner ads
+          <div class="DocSiteBanner">
+            <a class="DocSiteBanner-imgWrapper"
+                href="https://www.ansible.com/docs-top?utm_source=docs">
+                <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-top-left.png">
+            </a>
+            <a class="DocSiteBanner-imgWrapper"
+                href="https://www.ansible.com/docs-top?utm_source=docs">
+                <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-docs-top-right.png">
+            </a>
+        </div> -->
+
+          <ul class="wy-breadcrumbs">
+  <li><a href="https://docs.ansible.com/ansible/latest//index.html">Docs</a> &raquo;</li>
+  <li><a href="list_of_system_modules.html">System modules</a></li>
+  
+</ul>
+<hr/>
+
+          <div id="page-content">
+          
+  <div class="section" id="system-modules">
+<span id="id1"></span><h1>System modules<a class="headerlink" href="list_of_system_modules.html#system-modules" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/aix_devices_module.html#aix-devices-module"><span class="std std-ref">aix_devices &#8211; Manages AIX devices</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/aix_filesystem_module.html#aix-filesystem-module"><span class="std std-ref">aix_filesystem &#8211; Configure LVM and NFS file systems for AIX</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/aix_inittab_module.html#aix-inittab-module"><span class="std std-ref">aix_inittab &#8211; Manages the inittab on AIX</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/aix_lvg_module.html#aix-lvg-module"><span class="std std-ref">aix_lvg &#8211; Manage LVM volume groups on AIX</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/aix_lvol_module.html#aix-lvol-module"><span class="std std-ref">aix_lvol &#8211; Configure AIX LVM logical volumes</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/alternatives_module.html#alternatives-module"><span class="std std-ref">alternatives &#8211; Manages alternative programs for common commands</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/at_module.html#at-module"><span class="std std-ref">at &#8211; Schedule the execution of a command or script file via the at command</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/authorized_key_module.html#authorized-key-module"><span class="std std-ref">authorized_key &#8211; Adds or removes an SSH authorized key</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/awall_module.html#awall-module"><span class="std std-ref">awall &#8211; Manage awall policies</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/beadm_module.html#beadm-module"><span class="std std-ref">beadm &#8211; Manage ZFS boot environments on FreeBSD/Solaris/illumos systems</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/capabilities_module.html#capabilities-module"><span class="std std-ref">capabilities &#8211; Manage Linux capabilities</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/cron_module.html#cron-module"><span class="std std-ref">cron &#8211; Manage cron.d and crontab entries</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/cronvar_module.html#cronvar-module"><span class="std std-ref">cronvar &#8211; Manage variables in crontabs</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/crypttab_module.html#crypttab-module"><span class="std std-ref">crypttab &#8211; Encrypted Linux block devices</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/dconf_module.html#dconf-module"><span class="std std-ref">dconf &#8211; Modify and read dconf database</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/debconf_module.html#debconf-module"><span class="std std-ref">debconf &#8211; Configure a .deb package</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/facter_module.html#facter-module"><span class="std std-ref">facter &#8211; Runs the discovery program facter on the remote system</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/filesystem_module.html#filesystem-module"><span class="std std-ref">filesystem &#8211; Makes a filesystem</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/firewalld_module.html#firewalld-module"><span class="std std-ref">firewalld &#8211; Manage arbitrary ports/services with firewalld</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/gather_facts_module.html#gather-facts-module"><span class="std std-ref">gather_facts &#8211; Gathers facts about remote hosts</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/gconftool2_module.html#gconftool2-module"><span class="std std-ref">gconftool2 &#8211; Edit GNOME Configurations</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/getent_module.html#getent-module"><span class="std std-ref">getent &#8211; A wrapper to the unix getent utility</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/group_module.html#group-module"><span class="std std-ref">group &#8211; Add or remove groups</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/hostname_module.html#hostname-module"><span class="std std-ref">hostname &#8211; Manage hostname</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/interfaces_file_module.html#interfaces-file-module"><span class="std std-ref">interfaces_file &#8211; Tweak settings in /etc/network/interfaces files</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/iptables_module.html#iptables-module"><span class="std std-ref">iptables &#8211; Modify iptables rules</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/java_cert_module.html#java-cert-module"><span class="std std-ref">java_cert &#8211; Uses keytool to import/remove key from java keystore (cacerts)</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/java_keystore_module.html#java-keystore-module"><span class="std std-ref">java_keystore &#8211; Create or delete a Java keystore in JKS format</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/kernel_blacklist_module.html#kernel-blacklist-module"><span class="std std-ref">kernel_blacklist &#8211; Blacklist kernel modules</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/known_hosts_module.html#known-hosts-module"><span class="std std-ref">known_hosts &#8211; Add or remove a host from the known_hosts file</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/locale_gen_module.html#locale-gen-module"><span class="std std-ref">locale_gen &#8211; Creates or removes locales</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/lvg_module.html#lvg-module"><span class="std std-ref">lvg &#8211; Configure LVM volume groups</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/lvol_module.html#lvol-module"><span class="std std-ref">lvol &#8211; Configure LVM logical volumes</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/make_module.html#make-module"><span class="std std-ref">make &#8211; Run targets in a Makefile</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/mksysb_module.html#mksysb-module"><span class="std std-ref">mksysb &#8211; Generates AIX mksysb rootvg backups</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/modprobe_module.html#modprobe-module"><span class="std std-ref">modprobe &#8211; Load or unload kernel modules</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/mount_module.html#mount-module"><span class="std std-ref">mount &#8211; Control active and configured mount points</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/nosh_module.html#nosh-module"><span class="std std-ref">nosh &#8211; Manage services with nosh</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/ohai_module.html#ohai-module"><span class="std std-ref">ohai &#8211; Returns inventory data from Ohai</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/open_iscsi_module.html#open-iscsi-module"><span class="std std-ref">open_iscsi &#8211; Manage iSCSI targets with Open-iSCSI</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/openwrt_init_module.html#openwrt-init-module"><span class="std std-ref">openwrt_init &#8211; Manage services on OpenWrt</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/osx_defaults_module.html#osx-defaults-module"><span class="std std-ref">osx_defaults &#8211; Manage macOS user defaults</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/pam_limits_module.html#pam-limits-module"><span class="std std-ref">pam_limits &#8211; Modify Linux PAM limits</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/pamd_module.html#pamd-module"><span class="std std-ref">pamd &#8211; Manage PAM Modules</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/parted_module.html#parted-module"><span class="std std-ref">parted &#8211; Configure block device partitions</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/pids_module.html#pids-module"><span class="std std-ref">pids &#8211; Retrieves process IDs list if the process is running otherwise return empty list</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/ping_module.html#ping-module"><span class="std std-ref">ping &#8211; Try to connect to host, verify a usable python and return pong on success</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/puppet_module.html#puppet-module"><span class="std std-ref">puppet &#8211; Runs puppet</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/python_requirements_facts_module.html#python-requirements-facts-module"><span class="std std-ref">python_requirements_facts &#8211; Show python path and assert dependency versions</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/reboot_module.html#reboot-module"><span class="std std-ref">reboot &#8211; Reboot a machine</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/runit_module.html#runit-module"><span class="std std-ref">runit &#8211; Manage runit services</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/seboolean_module.html#seboolean-module"><span class="std std-ref">seboolean &#8211; Toggles SELinux booleans</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/sefcontext_module.html#sefcontext-module"><span class="std std-ref">sefcontext &#8211; Manages SELinux file context mapping definitions</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/selinux_module.html#selinux-module"><span class="std std-ref">selinux &#8211; Change policy and state of SELinux</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/selinux_permissive_module.html#selinux-permissive-module"><span class="std std-ref">selinux_permissive &#8211; Change permissive domain in SELinux policy</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/selogin_module.html#selogin-module"><span class="std std-ref">selogin &#8211; Manages linux user to SELinux user mapping</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/seport_module.html#seport-module"><span class="std std-ref">seport &#8211; Manages SELinux network port type definitions</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/service_module.html#service-module"><span class="std std-ref">service &#8211; Manage services</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/service_facts_module.html#service-facts-module"><span class="std std-ref">service_facts &#8211; Return service state information as fact data</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/setup_module.html#setup-module"><span class="std std-ref">setup &#8211; Gathers facts about remote hosts</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/solaris_zone_module.html#solaris-zone-module"><span class="std std-ref">solaris_zone &#8211; Manage Solaris zones</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/svc_module.html#svc-module"><span class="std std-ref">svc &#8211; Manage daemontools services</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/sysctl_module.html#sysctl-module"><span class="std std-ref">sysctl &#8211; Manage entries in sysctl.conf</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/systemd_module.html#systemd-module"><span class="std std-ref">systemd &#8211; Manage services</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/sysvinit_module.html#sysvinit-module"><span class="std std-ref">sysvinit &#8211; Manage SysV services</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/timezone_module.html#timezone-module"><span class="std std-ref">timezone &#8211; Configure timezone setting</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/ufw_module.html#ufw-module"><span class="std std-ref">ufw &#8211; Manage firewall with UFW</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/user_module.html#user-module"><span class="std std-ref">user &#8211; Manage user accounts</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/vdo_module.html#vdo-module"><span class="std std-ref">vdo &#8211; Module to control VDO</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/xfconf_module.html#xfconf-module"><span class="std std-ref">xfconf &#8211; Edit XFCE4 Configurations</span></a></li>
+<li><a class="reference internal" href="https://docs.ansible.com/ansible/latest//modules/xfs_quota_module.html#xfs-quota-module"><span class="std std-ref">xfs_quota &#8211; Manage quotas on XFS filesystems</span></a></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li><strong>(D)</strong>: This marks a module as deprecated, which means a module is kept for backwards compatibility but usage is discouraged.
+The module documentation details page may explain more about this rationale.</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <div id="search-results"><gcse:searchresults-only></div>
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+        <a href="list_of_utilities_modules.html" class="btn btn-neutral float-right" title="Utilities modules"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="list_of_storage_modules.html" class="btn btn-neutral" title="Storage modules"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','yABGvz2N8PwcwBxyfzUc','2.0.0');
+</script>
+
+  <p>Last updated on May 17, 2019.<br/>
+  Copyright © 2018 Red Hat, Inc. <br/>
+  </p>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.8',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript" src="underscore.js"></script>
+      <script type="text/javascript" src="doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+<!-- begin analytics -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+        (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+        n.id=i;n.src = '//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+        e.parentNode.insertBefore(n, e);
+        })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+_satellite.pageBottom();
+}
+</script>
+</body>
+</html>

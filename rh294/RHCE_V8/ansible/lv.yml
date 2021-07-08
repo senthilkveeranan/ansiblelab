@@ -1,0 +1,21 @@
+---
+- hosts: all
+  remote_user: admin
+  become: true
+  ignore_errors: true
+  tasks:
+   - lvol:
+      lv: data
+      vg: research
+      size: "1500"
+   - debug:
+      msg: "VG Not found"
+     when: ansible_lvm.vgs.research is not defined 
+   - debug:
+      msg: "LV Can not be created with following size"
+     when: ansible_lvm.vgs.research.size_g < "1.5" 
+   - lvol:
+      lv: data
+      vg: research
+      size: "800"
+     when: ansible_lvm.vgs.research.size_g < "1.5"

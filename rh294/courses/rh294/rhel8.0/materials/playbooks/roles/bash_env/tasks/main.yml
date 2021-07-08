@@ -1,0 +1,14 @@
+---
+- name: Add something to the prompt
+  lineinfile:
+    dest: "{{ bash_path }}/.bashrc"
+    state: present
+    line:
+    regexp:
+
+- name: Asdd sensible LESS var
+  lineinfile:
+    dest: "{{ bash_path}}/.bash_profile"
+    state: present
+    line: "LESS='-FXi'"
+    regexp: '^LESS='

@@ -1,0 +1,11 @@
+- project: My Webservers DEV
+  success_nodes:
+  - job_template: DEV webservers setup
+    success_nodes:
+    - project: My Webservers TEST
+      success_nodes:
+      - job_template: TEST webservers setup
+- project: My Webservers DEV
+  success_nodes:
+  - job_template: DEV webservers setup
+

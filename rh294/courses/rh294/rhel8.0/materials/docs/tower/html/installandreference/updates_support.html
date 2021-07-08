@@ -1,0 +1,552 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <script type="text/javascript" src="https://www.redhat.com/dtm.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta class="swiftype" name="published_at" data-type="date" content="2019-03-26" /> 
+  <meta class="swiftype" name="version" data-type="string" content="3.4.3">
+
+   <!-- this ^ ^ is for the original publishing date only, never for minor pushes that aren't actual version bumps of the docs (this helps us keep our search rank weighting in swiftype, our search server, prioritized based on the dates of the releases themselves) -->
+
+  <script>
+  var url = window.location.href;
+  if(url.indexOf("latest") == -1){
+   var version = url.replace("http://docs.ansible.com/ansible-tower/","");
+   version = version.substring(0,url.indexOf("/"));
+   url = url.replace(version,"latest");
+  }
+  var canon = document.createElement('link');
+  canon.rel = "canonical";
+  canon.href = url;
+  document.head.appendChild(canon);
+  </script>
+
+
+  <!-- Google Tag Manager Data Layer -->
+  <script>
+   dataLayer = [];
+  </script>
+  <!-- End Google Tag Manager Data Layer -->
+
+  
+  <title>1. Tower Licensing, Updates, and Support &mdash; Ansible Tower Installation and Reference Guide v3.4.3</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'./',
+        VERSION:'Ansible Tower 3.4.3',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript" src="underscore.js"></script>
+      <script type="text/javascript" src="doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="theme.min.css" type="text/css" />
+    <script type="text/javascript" src="theme.js"></script>
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Ansible Tower Installation and Reference Guide v3.4.3" href="index.html"/>
+        <link rel="next" title="2. Release Notes" href="release_notes.html"/>
+        <link rel="prev" title="Ansible Tower Installation and Reference Guide v3.4.3" href="index.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+  <style>
+    .search-reset-start {
+        color: #463E3F;
+        float: right;
+        position: relative;
+        top: -25px;
+        left: -10px;
+        z-index: 10;
+     }
+     .search-reset-start:hover {
+        cursor: pointer;
+        color: #2980B9;
+     }
+     #search-box-id {
+        padding-right: 25px;
+     }
+  </style>
+
+  <!-- Google Code for Remarketing Tag
+  <script type="text/javascript">
+  /* <![CDATA[ */
+  var google_conversion_id = 972577926;
+  var google_custom_params = window.google_tag_params;
+  var google_remarketing_only = true;
+  /* ]]> */
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+  </script>
+  <noscript>
+    <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt=""
+              src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/972577926/?value=0&amp;guid=ON&amp;script=0"/>
+    </div>
+  </noscript>
+  End of Google Code for Remarketing Tag -->
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300'
+      rel='stylesheet' type='text/css'>
+
+  <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+
+  <script type='text/javascript'>
+    googletag.cmd.push(function() {
+      googletag.defineSlot('/1171614047/towerleft', [300, 250], 'div-gpt-ad-1453398530439-0').addService(googletag.pubads());
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
+  </script>
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+  <div class="DocSite-globalNav ansibleNav">
+        <ul>
+            <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+            <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+            <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+            <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+            <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+        </ul>
+    </div>
+
+<a class="DocSite-nav" href="http://docs.ansible.com/">
+  <img class="DocSiteNav-logo"
+    src="logo_invert.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">
+    Documentation
+  </div>
+</a> 
+
+
+
+
+<div class="wy-grid-for-nav">
+
+  
+ <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+        <a class="DocSiteProduct-header DocSiteProduct-header--tower"
+            href="http://docs.ansible.com/ansible-tower/">
+            <div class="DocSiteProduct-productName">
+                <div class="DocSiteProduct-logoText">
+                    ANSIBLE TOWER 
+                    <div class="DocSiteProduct-CurrentVersion" align="right">
+                      v3.4.3
+                  </div>
+                </div>
+            </div>
+        </a>
+        
+
+        <div class="DocSiteProduct-CheckVersionPara">
+          Are you using the latest and greatest version of Ansible Tower? Find the <a class="DocSiteProduct-versionheader" href="http://docs.ansible.com/ansible-tower/">Ansible Tower documentation</a> set which best matches your version of Tower.
+            </div>
+    </div>
+    <div class="wy-side-nav-search" style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+      <!-- <a href="index.html" class="icon icon-home"> Ansible Tower Installation and Reference Guide</a> -->
+      <!-- <form class="wy-form" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form> -->
+
+<!-- 
+<script>
+  (function() {
+    var cx = '004731659079655444432:zgjlf-tkhya';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script> -->
+
+<!-- <gcse:searchresults-only></gcse:searchresults-only> -->
+
+<!-- swiftype search script -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','Vcn_rXrPfye6ziaZJZRt','2.0.0');
+</script>
+
+<!-- <form id="search-form-id" action="">
+  <input type="text" class="st-default-search-input" name="query" placeholder="Search Tower Docs" id="search-box-id" /> 
+  <a class="search-reset-start" id="search-reset"><i class="fa fa-times"></i></a>
+  <a class="search-reset-start" id="search-start"><i class="fa fa-search"></i></a> 
+ </form> -->
+
+          
+
+
+<!-- <script type="text/javascript" src="http://www.google.com/cse/brand?form=search-form-id&inputbox=search-box-id"></script> -->
+
+<!-- 
+<script>
+  function executeQuery() {
+      var input = document.getElementById('search-box-id');
+      var element = google.search.cse.element.getElement('searchresults-only0');
+      element.resultsUrl = '/htmlout/search.html'
+      if (input.value == '') {
+          element.clearAllResults();
+          $('#page-content, .rst-footer-buttons, #search-start').show();
+          $('#search-results, #search-reset').hide();
+      } else {
+          $('#page-content, .rst-footer-buttons, #search-start').hide();
+          $('#search-results, #search-reset').show();
+          element.execute(input.value);
+      }
+      return false;
+      }
+
+  $('#search-reset').hide();
+
+  $('#search-box-id').css('background-position', '1em center');
+
+  $('#search-box-id').on('blur', function() {
+    $('#search-box-id').css('background-position', '1em center');
+  });
+
+  $('#search-start').click(function(e) { executeQuery(); });
+  $('#search-reset').click(function(e) { $('#search-box-id').val(''); executeQuery(); });
+
+  $('#search-form-id').submit(function(e) {
+      console.log('submitting!');
+      executeQuery();
+      e.preventDefault();
+      });
+</script>
+-->
+    </div>
+
+      <div id="menu-id" class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Ansible Tower Installation and Reference Guide v3.4.3</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="updates_support.html#">1. Tower Licensing, Updates, and Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#support">1.1. Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#trial-evaluation">1.2. Trial / Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#subscription-types">1.3. Subscription Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#node-counting-in-licenses">1.4. Node Counting in Licenses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#license-features">1.5. License Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#tower-component-licenses">1.6. Tower Component Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">2. Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_notes.html#ansible-tower-version-3-4-3">2.1. Ansible Tower Version 3.4.3</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install_notes_reqs.html">3. Installation Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#flags-and-extra-vars-passed-with-tower">3.1. Flags and extra vars passed with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#installing-tower-on-systems-with-fips-mode-enabled">3.2. Installing Tower on Systems with FIPS Mode Enabled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#notes-for-red-hat-enterprise-linux-and-centos-setups">3.3. Notes for Red Hat Enterprise Linux and CentOS setups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#configuration-and-installation-of-ansible-with-red-hat-enterprise-linux-and-centos">3.4. Configuration and Installation of Ansible with Red Hat Enterprise Linux and CentOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#configuration-and-installation-of-ansible-with-ubuntu">3.5. Configuration and Installation of Ansible with Ubuntu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#configuration-and-installation-on-openshift">3.6. Configuration and Installation on OpenShift</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="requirements_refguide.html">4. Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requirements_refguide.html#additional-notes-on-tower-requirements">4.1. Additional Notes on Tower Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements_refguide.html#ansible-software-requirements">4.2. Ansible Software Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tower_installer.html">5. Obtaining the Tower Installation Program</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tower_installer.html#using-the-bundled-tower-installation-program">5.1. Using the Bundled Tower Installation Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower_installer.html#using-vagrant-amazon-ami-images">5.2. Using Vagrant/Amazon AMI Images</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tower_install_wizard.html">6. Installing Ansible Tower</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tower_install_wizard.html#tower-installation-scenarios">6.1. Tower Installation Scenarios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower_install_wizard.html#setting-up-the-inventory-file">6.2. Setting up the Inventory File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower_install_wizard.html#the-setup-playbook">6.3. The Setup Playbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower_install_wizard.html#changing-the-password">6.4. Changing the Password</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="upgrade_tower.html">7. Upgrading an Existing Tower Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_tower.html#requirements">7.1. Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_tower.html#backing-up-your-tower-installation">7.2. Backing Up Your Tower Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_tower.html#get-the-tower-installer">7.3. Get the Tower Installer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_tower.html#the-setup-playbook">7.4. The Setup Playbook</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-data.html">8. Usability Analytics and Data Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">9. Glossary</a></li>
+</ul>
+
+        
+
+<div class="DocSite-sideNav ansibleNav">
+    <ul class="">
+    <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+    <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+    <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+    <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    </ul>
+</div>
+
+    <!-- changeable widget -->
+    <div id="sideBanner">
+    <br/>
+    <a href="http://www.ansible.com/tower-docs-left?utm_source=docs">
+<img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-left-rail.png" />
+    </a>
+</div>
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="https://docs.ansible.com/">Ansible Tower Installation and Reference Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+
+    <!--        <div class="DocSiteBanner">
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-left.png">
+                </a>
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-right.png">
+                </a>
+            </div> -->
+
+          <ul class="wy-breadcrumbs">
+    <li><a href="http://docs.ansible.com/" <title>Ansible Docs Home</title></a>&raquo;</li>
+    <li><a href="http://docs.ansible.com/ansible-tower/" <title>Ansible Tower Docs</title></a>&raquo;</li>
+    <li><a href="index.html" <title> &mdash; Ansible Tower Installation and Reference Guide v3.4.3</title></a> &raquo;</li>
+    <!--  <li><a href="">1. Tower Licensing, Updates, and Support</a></li> -->
+</ul>
+<hr/>
+          <div id="page-content">
+          
+  <span class="target" id="ir-license-support"></span><div class="section" id="tower-licensing-updates-and-support">
+<span id="index-0"></span><h1>1. Tower Licensing, Updates, and Support<a class="headerlink" href="updates_support.html#tower-licensing-updates-and-support" title="Permalink to this headline">¶</a></h1>
+<p id="index-1">Ansible Tower by Red Hat (&#8220;<strong>Ansible Tower</strong>&#8221;) is a proprietary software product provided via an annual subscription entered into between you and Red Hat, Inc. (&#8220;<strong>Red Hat</strong>&#8221;).</p>
+<p>Ansible is an open source software project and is licensed under the GNU General Public License version 3, as detailed in the Ansible source code: <a class="reference external" href="https://github.com/ansible/ansible/blob/devel/COPYING">https://github.com/ansible/ansible/blob/devel/COPYING</a></p>
+<div class="section" id="support">
+<h2>1.1. Support<a class="headerlink" href="updates_support.html#support" title="Permalink to this headline">¶</a></h2>
+<p id="index-2">Red Hat offers support for paid <strong>Enterprise: Standard</strong> and <strong>Enterprise: Premium</strong> Subscription customers seeking help with the Ansible Tower product.</p>
+<p>If you or your company has paid for Ansible Tower, you can contact the support team at <a class="reference external" href="https://access.redhat.com">https://access.redhat.com</a>. To better understand the levels of support which match your Ansible Tower Subscription, refer to <a class="reference internal" href="updates_support.html#subscription-types"><span class="std std-ref">Subscription Types</span></a>.</p>
+<p>If you are experiencing Ansible software issues, you should reach out to the &#8220;ansible-devel&#8221; mailing list or file an issue on the Github project page at <a class="reference external" href="https://github.com/ansible/ansible/issues/">https://github.com/ansible/ansible/issues/</a>.</p>
+<p>All of Ansible’s community and OSS info can be found here: <a class="reference external" href="https://docs.ansible.com/ansible/community.html">https://docs.ansible.com/ansible/community.html</a></p>
+<div class="section" id="ansible-playbook-support">
+<h3>1.1.1. Ansible Playbook Support<a class="headerlink" href="updates_support.html#ansible-playbook-support" title="Permalink to this headline">¶</a></h3>
+<p>For customers with a paid Enterprise: Standard or Enterprise: Premium Ansible Tower Subscription, Red Hat offers Ansible Playbook support <a class="footnote-reference" href="updates_support.html#f1" id="id1">[1]</a>. Playbook support consists of support for:</p>
+<ul class="simple">
+<li>Runtime execution problems for Playbooks run via Tower</li>
+<li>Assistance with Playbook errors and tracebacks</li>
+<li>Limited best practice guidance in Ansible use from the Ansible Experts</li>
+</ul>
+<p>Playbook support does not consist of:</p>
+<ul class="simple">
+<li>Enhancements and fixes for Ansible modules and the Ansible engine</li>
+<li>Assistance with the creation of Playbooks from anew</li>
+<li>Long-term maintenance of a specific Ansible or Ansible Tower version</li>
+</ul>
+<p class="rubric">Notes:</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="updates_support.html#id1">[1]</a></td><td>Playbook support is available for customers using the current or previous minor release of Ansible. For example, if the current version of Ansible is 2.2, Red Hat provides Ansible Playbook support for versions 2.2 and 2.1. In the event an Ansible Playbook workaround is not available, and an Ansible software correction is required, a version update will be required.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="trial-evaluation">
+<span id="trial-licenses"></span><h2>1.2. Trial / Evaluation<a class="headerlink" href="updates_support.html#trial-evaluation" title="Permalink to this headline">¶</a></h2>
+<p id="index-3">While a license is required for Ansible Tower to run, there is no fee for managing up to 10 hosts. Additionally, trial licenses are available for exploring Ansible Tower with a larger number of hosts.</p>
+<ul class="simple">
+<li>Trial licenses for Ansible Tower are available at: <a class="reference external" href="http://ansible.com/license">http://ansible.com/license</a></li>
+<li>To acquire a license for additional Managed Nodes, visit: <a class="reference external" href="http://www.ansible.com/pricing/">http://www.ansible.com/pricing/</a></li>
+<li>Ansible Playbook Support is not included in a trial license or during an evaluation of the Tower Software.</li>
+</ul>
+</div>
+<div class="section" id="subscription-types">
+<span id="id2"></span><h2>1.3. Subscription Types<a class="headerlink" href="updates_support.html#subscription-types" title="Permalink to this headline">¶</a></h2>
+<p id="index-4">Ansible Tower is provided at various levels of support and number of machines as an annual Subscription.</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Enterprise: Standard (F.K.A. “Enterprise”)</dt>
+<dd><ul class="first last">
+<li>Manage any size environment</li>
+<li>Enterprise 8x5 support and SLA</li>
+<li>Maintenance and upgrades included</li>
+<li>Review the SLA at: <a class="reference external" href="https://access.redhat.com/support/offerings/production/sla">https://access.redhat.com/support/offerings/production/sla</a></li>
+<li>Review the Red Hat Support Severity Level Definitions at: <a class="reference external" href="https://access.redhat.com/support/policy/severity">https://access.redhat.com/support/policy/severity</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Enterprise: Premium (F.K.A. “Premium Enterprise”)</dt>
+<dd><ul class="first last">
+<li>Manage any size environment, including mission-critical environments</li>
+<li>Premium 24x7 support and SLA</li>
+<li>Maintenance and upgrades included</li>
+<li>Review the SLA at: <a class="reference external" href="https://access.redhat.com/support/offerings/production/sla">https://access.redhat.com/support/offerings/production/sla</a></li>
+<li>Review the Red Hat Support Severity Level Definitions at: <a class="reference external" href="https://access.redhat.com/support/policy/severity">https://access.redhat.com/support/policy/severity</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>All Subscription levels include regular updates and releases of Ansible Tower.</p>
+<p>For more information, contact Ansible via the Red Hat Customer portal at <a class="reference external" href="https://access.redhat.com/">https://access.redhat.com/</a> or at <a class="reference external" href="http://www.ansible.com/pricing/">http://www.ansible.com/pricing/</a>.</p>
+</div>
+<div class="section" id="node-counting-in-licenses">
+<h2>1.4. Node Counting in Licenses<a class="headerlink" href="updates_support.html#node-counting-in-licenses" title="Permalink to this headline">¶</a></h2>
+<p id="index-5">The Tower license defines the number of Managed Nodes that can be managed by Ansible Tower. A typical license will say ‘License Count: 500’, which sets the maximum number of Managed Nodes at 500.</p>
+<p>Ansible Tower counts Managed Nodes by the number of hosts in inventory. If more Managed Nodes are in the Ansible Tower inventory than are supported by the license, you will be unable to start any Jobs in Ansible Tower. If a dynamic inventory sync causes Ansible Tower to exceed the Managed Node count specified in the license, the dynamic inventory sync will fail.</p>
+<p>If you have multiple hosts in inventory that have the same name, such as &#8220;webserver1&#8221;, they will be counted for licensing purposes as a single node. Note that this differs from the ‘Hosts’ count in Tower’s dashboard, which counts hosts in separate inventories separately.</p>
+</div>
+<div class="section" id="license-features">
+<h2>1.5. License Features<a class="headerlink" href="updates_support.html#license-features" title="Permalink to this headline">¶</a></h2>
+<p id="index-6">The following list of features are available for all new Enterprise: Standard or Enterprise: Premium Subscriptions:</p>
+<ul class="simple">
+<li>Workflows (<em>added in |at| 3.1.0</em>)</li>
+<li>Clustering in Tower (<em>added in |at| 3.1.0</em>)</li>
+<li>Custom re-branding for login (<em>added in Ansible Tower 2.4.0</em>)</li>
+<li>SAML and RADIUS Authentication Support (<em>added in Ansible Tower 2.4.0</em>)</li>
+<li>Multi-Organization Support</li>
+<li>Activity Streams</li>
+<li>Surveys</li>
+<li>LDAP Support</li>
+<li>Active/Passive Redundancy</li>
+<li>System Tracking (<em>added in Ansible Tower 2.2.0</em>)</li>
+</ul>
+<p>Enterprise: Standard or Enterprise: Premium license users with versions of Ansible Tower prior to 2.2 must import a new license file to enable System Tracking.</p>
+</div>
+<div class="section" id="tower-component-licenses">
+<h2>1.6. Tower Component Licenses<a class="headerlink" href="updates_support.html#tower-component-licenses" title="Permalink to this headline">¶</a></h2>
+<p id="index-7">To view the license information for the components included within Ansible Tower, refer to <code class="docutils literal"><span class="pre">/usr/share/doc/ansible-tower-&lt;version&gt;/README</span></code> where <code class="docutils literal"><span class="pre">&lt;version&gt;</span></code> refers to the version of Ansible Tower you have installed.</p>
+<p>To view a specific license, refer to <code class="docutils literal"><span class="pre">/usr/share/doc/ansible-tower-&lt;version&gt;/*.txt</span></code>, where <code class="docutils literal"><span class="pre">*</span></code> is replaced by the license file name to which you are referring.</p>
+</div>
+</div>
+
+
+          </div>
+          <div id="search-results"><gcse:searchresults-only></gcse:searchresults-only></div>
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+        <a href="release_notes.html" class="btn btn-neutral float-right" title="2. Release Notes"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Ansible Tower Installation and Reference Guide v3.4.3"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <p>
+    Copyright © 2019 Red Hat, Inc. 
+    <br>
+  </p>
+
+<p>
+  Red Hat Ansible Tower docs are generated using <A HREF="http://sphinx-doc.org/">Sphinx</A> using a theme provided by <a href="http://readthedocs.org">Read the Docs</a>.
+</p>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+<!-- begin analytics -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+        (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+        n.id=i;n.src = '//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+        e.parentNode.insertBefore(n, e);
+        })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+_satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

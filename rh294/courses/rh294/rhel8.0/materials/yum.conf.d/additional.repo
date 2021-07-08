@@ -1,0 +1,18 @@
+[rhel-8.0-for-x86_64-baseos-rpms-additional]
+baseurl = http://content.example.com/rhel8.0/x86_64/rhel8-additional/rhel-8-for-x86_64-baseos-rpms
+enabled = 1
+gpgcheck = false
+name = Red Hat Enterprise Linux 8.0 BaseOS (CDN)
+
+[rhel-8.0-for-x86_64-appstream-rpms-additional]
+baseurl = http://content.example.com/rhel8.0/x86_64/rhel8-additional/rhel-8-for-x86_64-appstream-rpms
+enabled = 1
+gpgcheck = false
+name = Red Hat Enterprise Linux 8.0 AppStream (CDN)
+
+[rhel-8-server-ansible-2.8-rpms]
+baseurl = http://content.example.com/rhel8.0/x86_64/rhel8-additional/ansible-2.8-for-rhel-8-x86_64-rpms
+enabled = 1
+gpgcheck = false
+name = Ansible 2.8
+

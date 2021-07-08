@@ -1,0 +1,30 @@
+---
+- hosts: all
+  remote_user: admin
+  become: true
+  vars_files:
+    - user_list.yml
+    - valut.yml
+
+  tasks:
+   - group:
+      name: "{{ item }}"
+      state: present
+     loop:
+      - devops
+      - opsmgr
+   - user:
+      name: "{{ item.name }}"
+      state: present
+      groups: devops
+      password: "{{ dev_pass|password_hash ('sha512') }}"
+     loop: "{{ user }}"
+     when: (inventory_hostname in groups['dev'] or inventory_hostname in groups['balancers']) and item.job == "developer"
+     
+   - user:
+      name: "{{ item.name }}"
+      state: present
+      groups: opsmgr
+      password: "{{ mgr_pass|password_hash ('sha512') }}"
+     loop: "{{ user }}"
+     when: inventory_hostname in groups['prod'] and item.job == "manager"

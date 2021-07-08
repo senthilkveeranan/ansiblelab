@@ -1,0 +1,5 @@
+[epel]
+baseurl = http://content.example.com/ansible-tower3.3/x86_64/dvd/repos/epel/packages
+enabled = true
+gpgcheck = false
+name = Remote classroom copy of required EPEL packages

@@ -1,0 +1,24 @@
+---
+- hosts: all
+  remote_user: admin
+  become: true
+  tasks:
+    - get_url:
+        url: http://content.example.com/rh294/hwreport.empty
+        dest: /root/hwreport.txt 
+    - replace: 
+        regexp: "{{ item.src }}"
+        replace: "{{ item.dest }}"
+        dest: /root/hwreport.txt 
+      loop:
+        - src: "hostname"
+          dest: "{{ ansible_hostname }}"
+        - src: "biosversion"
+          dest: "{{ ansible_bios_version }}"
+        - src: "memory"
+          dest: "{{ ansible_memtotal_mb }}"
+        - src: "vdasize"
+          dest: "{{ ansible_devices.vda.size }}"
+        - src: "vdbsize"
+          dest: "{{ ansible_devices.vdb.size }}"
+

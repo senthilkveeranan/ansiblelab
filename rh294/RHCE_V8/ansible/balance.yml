@@ -1,0 +1,11 @@
+---
+- hosts: webservers
+  remote_user: admin
+  become: true
+  roles:
+    - phphello
+- hosts: balancers
+  remote_user: admin
+  become: true
+  roles:
+    - balancer

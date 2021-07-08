@@ -1,0 +1,5 @@
+[rhel_updates]
+baseurl = http://content.example.com/ansible-tower3.3/x86_64/dvd/repos/rhel-7-server-rpms/packages
+enabled = true
+gpgcheck = false
+name = Remote classroom copy of required tower-cli dependencies

@@ -1,0 +1,790 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <script type="text/javascript" src="https://www.redhat.com/dtm.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta class="swiftype" name="published_at" data-type="date" content="2019-03-26" /> 
+  <meta class="swiftype" name="version" data-type="string" content="3.4.3">
+
+
+   <!-- this ^ ^ is for the original publishing date only, never for minor pushes that aren't actual version bumps of the docs (this helps us keep our search rank weighting in swiftype, our search server, prioritized based on the dates of the releases themselves) -->
+
+  <script>
+  var url = window.location.href;
+  if(url.indexOf("latest") == -1){
+   var version = url.replace("http://docs.ansible.com/ansible-tower/","");
+   version = version.substring(0,url.indexOf("/"));
+   url = url.replace(version,"latest");
+  }
+  var canon = document.createElement('link');
+  canon.rel = "canonical";
+  canon.href = url;
+  document.head.appendChild(canon);
+  </script>
+
+  <!-- Google Tag Manager Data Layer -->
+  <script>
+   dataLayer = [];
+  </script>
+  <!-- End Google Tag Manager Data Layer -->
+
+  
+  <title>26. Introduction to tower-cli &mdash; Ansible Tower Administration Guide v3.4.3</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'./',
+        VERSION:'Ansible Tower 3.4.3',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript" src="underscore.js"></script>
+      <script type="text/javascript" src="doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="theme.min.css" type="text/css" />
+    <script type="text/javascript" src="theme.js"></script>
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Ansible Tower Administration Guide v3.4.3" href="index.html"/>
+        <link rel="next" title="27. Usability Analytics and Data Collection" href="usability_data_collection.html"/>
+        <link rel="prev" title="25. Tower Tips and Tricks" href="tipsandtricks.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+  <style>
+    .search-reset-start {
+        color: #463E3F;
+        float: right;
+        position: relative;
+        top: -25px;
+        left: -10px;
+        z-index: 10;
+     }
+     .search-reset-start:hover {
+        cursor: pointer;
+        color: #2980B9;
+     }
+     #search-box-id {
+        padding-right: 25px;
+     }
+  </style>
+
+  <!-- Google Code for Remarketing Tag
+  <script type="text/javascript">
+  /* <![CDATA[ */
+  var google_conversion_id = 972577926;
+  var google_custom_params = window.google_tag_params;
+  var google_remarketing_only = true;
+  /* ]]> */
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+  </script>
+  <noscript>
+    <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt=""
+              src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/972577926/?value=0&amp;guid=ON&amp;script=0"/>
+    </div>
+  </noscript>
+  End of Google Code for Remarketing Tag -->
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300'
+      rel='stylesheet' type='text/css'>
+
+  <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+
+  <script type='text/javascript'>
+    googletag.cmd.push(function() {
+      googletag.defineSlot('/1171614047/towerleft', [300, 250], 'div-gpt-ad-1453398530439-0').addService(googletag.pubads());
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
+  </script>
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+  <div class="DocSite-globalNav ansibleNav">
+        <ul>
+            <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+            <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+            <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+            <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+            <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+        </ul>
+    </div>
+
+<a class="DocSite-nav" href="http://docs.ansible.com/">
+  <img class="DocSiteNav-logo"
+    src="logo_invert.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">
+    Documentation
+  </div>
+</a> 
+
+
+
+
+<div class="wy-grid-for-nav">
+
+  
+ <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+        <a class="DocSiteProduct-header DocSiteProduct-header--tower"
+            href="http://docs.ansible.com/ansible-tower/">
+            <div class="DocSiteProduct-productName">
+                <div class="DocSiteProduct-logoText">
+                    ANSIBLE TOWER 
+                    <div class="DocSiteProduct-CurrentVersion" align="right">
+                      v3.4.3
+                  </div>
+                </div>
+            </div>
+        </a>
+        
+
+        <div class="DocSiteProduct-CheckVersionPara">
+          Are you using the latest and greatest version of Ansible Tower? Find the <a class="DocSiteProduct-versionheader" href="http://docs.ansible.com/ansible-tower/">Ansible Tower documentation</a> set which best matches your version of Tower.
+            </div>
+    </div>
+    <div class="wy-side-nav-search" style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+      <!-- <a href="index.html" class="icon icon-home"> Ansible Tower Administration Guide</a> -->
+      <!-- <form class="wy-form" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form> -->
+
+<!-- 
+<script>
+  (function() {
+    var cx = '004731659079655444432:zgjlf-tkhya';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script> -->
+
+<!-- <gcse:searchresults-only></gcse:searchresults-only> -->
+
+<!-- swiftype search script -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','Vcn_rXrPfye6ziaZJZRt','2.0.0');
+</script>
+
+<!-- <form id="search-form-id" action="">
+  <input type="text" class="st-default-search-input" name="query" placeholder="Search Tower Docs" id="search-box-id" /> 
+  <a class="search-reset-start" id="search-reset"><i class="fa fa-times"></i></a>
+  <a class="search-reset-start" id="search-start"><i class="fa fa-search"></i></a> 
+ </form> -->
+
+          
+
+
+<!-- <script type="text/javascript" src="http://www.google.com/cse/brand?form=search-form-id&inputbox=search-box-id"></script> -->
+
+<!-- 
+<script>
+  function executeQuery() {
+      var input = document.getElementById('search-box-id');
+      var element = google.search.cse.element.getElement('searchresults-only0');
+      element.resultsUrl = '/htmlout/search.html'
+      if (input.value == '') {
+          element.clearAllResults();
+          $('#page-content, .rst-footer-buttons, #search-start').show();
+          $('#search-results, #search-reset').hide();
+      } else {
+          $('#page-content, .rst-footer-buttons, #search-start').hide();
+          $('#search-results, #search-reset').show();
+          element.execute(input.value);
+      }
+      return false;
+      }
+
+  $('#search-reset').hide();
+
+  $('#search-box-id').css('background-position', '1em center');
+
+  $('#search-box-id').on('blur', function() {
+    $('#search-box-id').css('background-position', '1em center');
+  });
+
+  $('#search-start').click(function(e) { executeQuery(); });
+  $('#search-reset').click(function(e) { $('#search-box-id').val(''); executeQuery(); });
+
+  $('#search-form-id').submit(function(e) {
+      console.log('submitting!');
+      executeQuery();
+      e.preventDefault();
+      });
+</script>
+-->
+    </div>
+
+      <div id="menu-id" class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Ansible Tower Administration Guide v3.4.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license-support.html">1. Tower Licensing, Updates, and Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#support">1.1. Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#trial-evaluation">1.2. Trial / Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#subscription-types">1.3. Subscription Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#node-counting-in-licenses">1.4. Node Counting in Licenses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#license-features">1.5. License Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#tower-component-licenses">1.6. Tower Component Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="init_script.html">2. Starting, Stopping, and Restarting Tower</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_inventory_script.html">3. Custom Inventory Scripts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="custom_inventory_script.html#writing-inventory-scripts">3.1. Writing Inventory Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scm-inv-source.html">4. Inventory File Importing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scm-inv-source.html#custom-dynamic-inventory-scripts">4.1. Custom Dynamic Inventory Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scm-inv-source.html#scm-inventory-source-fields">4.2. SCM Inventory Source Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-creds-assignment.html">5. Multi-Credential Assignment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#background">5.1. Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#important-changes">5.2. Important Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#launch-time-considerations">5.3. Launch Time Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#backwards-compatibility-concerns">5.4. Backwards Compatibility Concerns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#multi-vault-credentials">5.5. Multi-Vault Credentials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="management_jobs.html">6. Management Jobs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="management_jobs.html#removing-old-activity-stream-data">6.1. Removing Old Activity Stream Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management_jobs.html#removing-old-fact-system-tracking-data">6.2. Removing Old Fact (System Tracking) Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management_jobs.html#removing-old-job-history">6.3. Removing Old Job History</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">7. Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#setup-considerations">7.1. Setup Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#install-and-configure">7.2. Install and Configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#configuring-instances-and-instance-groups-from-the-api">7.3. Configuring Instances and Instance Groups from the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#instance-group-policies">7.4. Instance group policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#isolated-instance-groups">7.5. Isolated Instance Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#status-and-monitoring-via-browser-api">7.6. Status and Monitoring via Browser API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#instance-services-and-failure-behavior">7.7. Instance Services and Failure Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#job-runtime-behavior">7.8. Job Runtime Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#deprovision-instances-and-instance-groups">7.9. Deprovision Instances and Instance Groups</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="openshift_configuration.html">8. OpenShift Deployment and Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#tower-and-openshift-basics">8.1. Tower and OpenShift Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#configuration-options">8.2. Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#basic-configuration">8.3. Basic Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#resource-requests-and-request-planning">8.4. Resource Requests and Request Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#database-configuration-and-usage">8.5. Database Configuration and Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#backup-and-restore">8.6. Backup and Restore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#upgrading">8.7. Upgrading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#migrating">8.8. Migrating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#build-custom-virtual-environments">8.9. Build custom virtual environments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="proxy-support.html">9. Proxy Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="proxy-support.html#configure-known-proxies">9.1. Configure Known Proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxy-support.html#reverse-proxy">9.2. Reverse Proxy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="logfiles.html">10. Tower Logfiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">11. Tower Logging and Aggregation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="logging.html#loggers">11.1. Loggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html#set-up-logging-with-tower">11.2. Set Up Logging with Tower</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tower-manage.html">12. The <em>awx-manage</em> Utility</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#inventory-import">12.1. Inventory Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#cleanup-of-old-data">12.2. Cleanup of old data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#cluster-management">12.3. Cluster management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#token-and-session-management">12.4. Token and session management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configure_tower_in_tower.html">13. Tower Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#authentication">13.1. Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#jobs">13.2. Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#system">13.3. System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#user-interface">13.4. User Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#license">13.5. License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="proot_func_variables.html">14. Bubblewrap functionality and variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oauth2_token_auth.html">15. Token-Based Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#managing-oauth-2-applications-and-tokens">15.1. Managing OAuth 2 Applications and Tokens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#using-oauth-2-token-system-for-personal-access-tokens-pat">15.2. Using OAuth 2 Token System for Personal Access Tokens (PAT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#application-functions">15.3. Application Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#application-token-functions">15.4. Application Token Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="social_auth.html">16. Setting up Social Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="social_auth.html#google-oauth2-settings">16.1. Google OAuth2 Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="social_auth.html#github-oauth2-settings">16.2. GitHub OAuth2 Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="social_auth.html#organization-and-team-mapping">16.3. Organization and Team Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ent_auth.html">17. Setting up Enterprise Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#azure-active-directory-ad">17.1. Azure Active Directory (AD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#saml-authentication-settings">17.2. SAML Authentication Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#radius-authentication-settings">17.3. RADIUS Authentication Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#tacacs-authentication-settings">17.4. TACACS+ Authentication Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ldap_auth.html">18. Setting up LDAP Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ldap_auth.html#referrals">18.1. Referrals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ldap_auth.html#enabling-logging-for-ldap">18.2. Enabling Logging for LDAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ldap_auth.html#ldap-organization-and-team-mapping">18.3. LDAP Organization and Team Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentication_timeout.html">19. Changing the Default Timeout for Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kerberos_auth.html">20. User Authentication with Kerberos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kerberos_auth.html#ad-and-kerberos-credentials">20.1. AD and Kerberos Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kerberos_auth.html#working-with-kerberos-tickets">20.2. Working with Kerberos Tickets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="session_limits.html">21. Working with Session Limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backup_restore.html">22. Backing Up and Restoring Tower</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="backup_restore.html#backup-restore-playbooks">22.1. Backup/Restore Playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup_restore.html#backup-and-restoration-considerations">22.2. Backup and Restoration Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup_restore.html#backup-and-restore-for-clustered-environments">22.3. Backup and Restore for Clustered Environments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="custom_rebranding.html">23. Using Custom Logos in Ansible Tower</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">24. Troubleshooting Tower</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#error-logs">24.1. Error logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problems-connecting-to-your-host">24.2. Problems connecting to your host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#unable-to-login-to-tower-via-http">24.3. Unable to login to Tower via HTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#websockets-port-for-live-events-not-working">24.4. WebSockets port for live events not working</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problems-running-a-playbook">24.5. Problems running a playbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problems-when-running-a-job">24.6. Problems when running a job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#playbooks-aren-t-showing-up-in-the-job-template-drop-down">24.7. Playbooks aren&#8217;t showing up in the &#8220;Job Template&#8221; drop-down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#playbook-stays-in-pending">24.8. Playbook stays in pending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#cancel-a-tower-job">24.9. Cancel a Tower job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#reusing-an-external-database-causes-installations-to-fail">24.10. Reusing an external database causes installations to fail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#private-ec2-vpc-instances-in-tower-inventory">24.11. Private EC2 VPC Instances in Tower Inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#troubleshooting-error-provided-hosts-list-is-empty">24.12. Troubleshooting &#8220;Error: provided hosts list is empty&#8221;</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tipsandtricks.html">25. Tower Tips and Tricks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-the-tower-cli-tool">25.1. Using the Tower CLI Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#launching-a-job-template-via-the-api">25.2. Launching a Job Template via the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#tower-cli-job-template-launching">25.3. <code class="docutils literal"><span class="pre">tower-cli</span></code> Job Template Launching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#changing-the-tower-admin-password">25.4. Changing the Tower Admin Password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#creating-a-tower-admin-from-the-commandline">25.5. Creating a Tower Admin from the commandline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#setting-up-a-jump-host-to-use-with-tower">25.6. Setting up a jump host to use with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#view-ansible-outputs-for-json-commands-when-using-tower">25.7. View Ansible outputs for JSON commands when using Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#locate-and-configure-the-ansible-configuration-file">25.8. Locate and configure the Ansible configuration file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#view-a-listing-of-all-ansible-variables">25.9. View a listing of all ansible_ variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-virtualenv-with-at">25.10. Using virtualenv with Ansible Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#configuring-the-towerhost-hostname-for-notifications">25.11. Configuring the <code class="docutils literal"><span class="pre">towerhost</span></code> hostname for notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#launching-jobs-with-curl">25.12. Launching Jobs with curl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#dynamic-inventory-and-private-ip-addresses">25.13. Dynamic Inventory and private IP addresses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#filtering-instances-returned-by-the-dynamic-inventory-sources-in-tower">25.14. Filtering instances returned by the dynamic inventory sources in Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-an-unreleased-module-from-ansible-source-with-tower">25.15. Using an unreleased module from Ansible source with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-callback-plugins-with-tower">25.16. Using callback plugins with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#connecting-to-windows-with-winrm">25.17. Connecting to Windows with winrm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#importing-existing-inventory-files-and-host-group-vars-into-tower">25.18. Importing existing inventory files and host/group vars into Tower</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="towercli.html#">26. Introduction to <strong>tower-cli</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#license">26.1. License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#capabilities">26.2. Capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#installation">26.3. Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#configuration">26.4. Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usability_data_collection.html">27. Usability Analytics and Data Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postface.html">28. Postface</a></li>
+</ul>
+
+        
+
+<div class="DocSite-sideNav ansibleNav">
+    <ul class="">
+    <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+    <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+    <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+    <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    </ul>
+</div>
+
+    <!-- changeable widget -->
+    <div id="sideBanner">
+    <br/>
+    <a href="http://www.ansible.com/tower-docs-left?utm_source=docs">
+<img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-left-rail.png" />
+    </a>
+</div>
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="https://docs.ansible.com/">Ansible Tower Administration Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+
+    <!--        <div class="DocSiteBanner">
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-left.png">
+                </a>
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-right.png">
+                </a>
+            </div> -->
+
+          <ul class="wy-breadcrumbs">
+    <li><a href="http://docs.ansible.com/" <title>Ansible Docs Home</title></a>&raquo;</li>
+    <li><a href="http://docs.ansible.com/ansible-tower/" <title>Ansible Tower Docs</title></a>&raquo;</li>
+    <li><a href="index.html" <title> &mdash; Ansible Tower Administration Guide v3.4.3</title></a> &raquo;</li>
+    <!--  <li><a href="">26. Introduction to <strong>tower-cli</strong></a></li> -->
+</ul>
+<hr/>
+          <div id="page-content">
+          
+  <div class="section" id="introduction-to-tower-cli">
+<span id="intro-towercli"></span><h1>26. Introduction to <strong>tower-cli</strong><a class="headerlink" href="towercli.html#introduction-to-tower-cli" title="Permalink to this headline">¶</a></h1>
+<p id="index-0"><strong>tower-cli</strong> is a command line tool for Ansible Tower. It allows Tower commands to be easily run from the UNIX command line. It can also be
+used as a client library for other python apps, or as a reference for others developing API interactions with Tower&#8217;s REST API.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">tower-cli</span></code> software is an open source project currently under development and, until a complete implementation occurs, only implements a subset of Tower&#8217;s features.</p>
+</div>
+<div class="section" id="license">
+<h2>26.1. License<a class="headerlink" href="towercli.html#license" title="Permalink to this headline">¶</a></h2>
+<p>While Tower is commercially licensed software, tower-cli is an open source project. Specifically, this project is licensed under the Apache 2.0 license. Pull requests, contributions, and tickets filed in GitHub are warmly welcomed.</p>
+</div>
+<div class="section" id="capabilities">
+<h2>26.2. Capabilities<a class="headerlink" href="towercli.html#capabilities" title="Permalink to this headline">¶</a></h2>
+<p id="index-1"><code class="docutils literal"><span class="pre">tower-cli</span></code> sends commands to the Tower API. It is capable of retrieving,
+creating, modifying, and deleting most objects within Tower.</p>
+<p>A few potential uses include:</p>
+<ul class="simple">
+<li>Launching playbook runs (for instance, from Jenkins, TeamCity,
+Bamboo, etc)</li>
+<li>Checking on job statuses</li>
+<li>Rapidly creating objects like organizations, users, teams, and more</li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h2>26.3. Installation<a class="headerlink" href="towercli.html#installation" title="Permalink to this headline">¶</a></h2>
+<p id="index-2"><code class="docutils literal"><span class="pre">tower-cli</span></code> is available as a package on <a class="reference external" href="https://pypi.python.org/pypi/ansible-tower-cli">PyPI</a>.</p>
+<p>The preferred way to install is through <code class="docutils literal"><span class="pre">pip</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pip install ansible-tower-cli
+</pre></div>
+</div>
+<p>The main branch of this project may also be consumed directly from source.</p>
+<p>For more information on <code class="docutils literal"><span class="pre">tower-cli</span></code>, refer to the project page at: <a class="reference external" href="https://github.com/ansible/tower-cli/">https://github.com/ansible/tower-cli/</a></p>
+</div>
+<div class="section" id="configuration">
+<h2>26.4. Configuration<a class="headerlink" href="towercli.html#configuration" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">tower-cli</span></code> can edit its own configuration or users can directly edit the configuration file, allowing configuration to be set in multiple ways.</p>
+<div class="section" id="set-configuration-with-tower-cli-config">
+<h3>26.4.1. Set configuration with tower-cli config<a class="headerlink" href="towercli.html#set-configuration-with-tower-cli-config" title="Permalink to this headline">¶</a></h3>
+<p>The preferred way to set configuration is with the <code class="docutils literal"><span class="pre">tower-cli</span> <span class="pre">config</span></code> command.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ tower-cli config key value
+</pre></div>
+</div>
+<p>By issuing the <code class="docutils literal"><span class="pre">tower-cli</span> <span class="pre">config</span></code> command without arguments, you can view a full list of configuration options and where they are set. The default behavior allows environment variables to override your tower-cli.cfg settings, but they will not override configuration values that are passed in on the command line at runtime. The available environment variables and their corresponding Tower configuration keys are as follows:</p>
+<ul class="simple">
+<li>TOWER_COLOR: color</li>
+<li>TOWER_FORMAT: format</li>
+<li>TOWER_HOST: host</li>
+<li>TOWER_PASSWORD: password</li>
+<li>TOWER_USERNAME: username</li>
+<li>TOWER_VERIFY_SSL: verify_ssl</li>
+<li>TOWER_VERBOSE: verbose</li>
+<li>TOWER_DESCRIPTION_ON: description_on</li>
+<li>TOWER_CERTIFICATE: certificate</li>
+</ul>
+<p>You will generally need to set at least three configuration options&#8211;host, username, and password&#8211;which correspond to the location of your Ansible Tower instance and your credentials to authenticate to Tower.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ tower-cli config host tower.example.com
+$ tower-cli config username leeroyjenkins
+$ tower-cli config password myPassw0rd
+</pre></div>
+</div>
+</div>
+<div class="section" id="write-to-the-config-files-directly">
+<h3>26.4.2. Write to the config files directly<a class="headerlink" href="towercli.html#write-to-the-config-files-directly" title="Permalink to this headline">¶</a></h3>
+<p>The configuration file can also be edited directly. A configuration file is a simple file with keys and values, separated by <code class="docutils literal"><span class="pre">:</span></code> or <code class="docutils literal"><span class="pre">=</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">host</span><span class="p">:</span> <span class="n">tower</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+<span class="n">username</span><span class="p">:</span> <span class="n">admin</span>
+<span class="n">password</span><span class="p">:</span> <span class="n">p4ssw0rd</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="file-locations">
+<h3>26.4.3. File Locations<a class="headerlink" href="towercli.html#file-locations" title="Permalink to this headline">¶</a></h3>
+<p>The order of precedence for configuration file locations is as follows, from least to greatest:</p>
+<ul class="simple">
+<li>internal defaults</li>
+<li><code class="docutils literal"><span class="pre">/etc/tower/tower_cli.cfg</span></code> (written using <code class="docutils literal"><span class="pre">tower-cli</span> <span class="pre">config</span> <span class="pre">--global</span></code>)</li>
+<li><code class="docutils literal"><span class="pre">~/.tower_cli.cfg</span></code> (written using <code class="docutils literal"><span class="pre">tower-cli</span> <span class="pre">config</span></code>)</li>
+<li>run-time parameters</li>
+</ul>
+</div>
+<div class="section" id="usage">
+<h3>26.4.4. Usage<a class="headerlink" href="towercli.html#usage" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">tower-cli</span></code> invocation generally follows this format:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ tower-cli {resource} {action} ...
+</pre></div>
+</div>
+<p>The <strong>resource</strong> is a type of object within Tower (a noun), such as <code class="docutils literal"><span class="pre">user</span></code>, <code class="docutils literal"><span class="pre">organization</span></code>, <code class="docutils literal"><span class="pre">job_template</span></code>, etc.; resource names are always singular in Tower CLI (use <code class="docutils literal"><span class="pre">tower-cli</span> <span class="pre">user</span></code>, never <code class="docutils literal"><span class="pre">tower-cli</span> <span class="pre">users</span></code>).</p>
+<p>The <strong>action</strong> is the thing you want to do (a verb). Most <code class="docutils literal"><span class="pre">tower-cli</span></code> resources have the following actions&#8211;<code class="docutils literal"><span class="pre">get</span></code>, <code class="docutils literal"><span class="pre">list</span></code>, <code class="docutils literal"><span class="pre">create</span></code>, <code class="docutils literal"><span class="pre">modify</span></code>, and <code class="docutils literal"><span class="pre">delete</span></code>&#8211;and have options corresponding to fields on the object in Tower.</p>
+<p>Examples of actions and resources include (but are not limited to):</p>
+<div class="section" id="user-actions">
+<h4>26.4.4.1. User Actions<a class="headerlink" href="towercli.html#user-actions" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span># List all users.
+$ tower-cli user list
+
+# List all non-superusers
+$ tower-cli user list --is-superuser=false
+
+# Get the user with the ID of 42.
+$ tower-cli user get 42
+
+# Get the user with the given username.
+$ tower-cli user get --username=guido
+
+# Create a new user.
+$ tower-cli user create --username=guido --first-name=Guido \
+                        --last-name=&quot;Van Rossum&quot; <a href="https://docs.ansible.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1934347c74787075247e6c707d765969606d71767737766b7e">[email&#160;protected]</a>
+
+# Modify an existing user.
+# This would modify the first name of the user with the ID of &quot;42&quot; to &quot;Guido&quot;.
+$ tower-cli user modify 42 --first-name=Guido
+
+# Modify an existing user, lookup by username.
+# This would use &quot;username&quot; as the lookup, and modify the first name.
+# Which fields are used as lookups vary by resource, but are generally
+# the resource&#39;s name.
+$ tower-cli user modify --username=guido --first-name=Guido
+
+# Delete a user.
+$ tower-cli user delete 42
+</pre></div>
+</div>
+</div>
+<div class="section" id="job-actions">
+<h4>26.4.4.2. Job Actions<a class="headerlink" href="towercli.html#job-actions" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span># Launch a job.
+$ tower-cli job launch --job-template=144
+
+# Monitor a job.
+$ tower-cli job monitor 95
+</pre></div>
+</div>
+</div>
+<div class="section" id="group-actions">
+<h4>26.4.4.3. Group Actions<a class="headerlink" href="towercli.html#group-actions" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span># Get a list of groups.
+$ tower-cli group list
+
+# Sync a group by the groupID.
+$ tower-cli group sync $groupID
+</pre></div>
+</div>
+<p>When in doubt, check the help for more options:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ tower-cli # help
+$ tower-cli user --help # resource specific help
+$ tower-cli user create --help # command specific help
+</pre></div>
+</div>
+</div>
+<div class="section" id="workflow-actions">
+<h4>26.4.4.4. Workflow Actions<a class="headerlink" href="towercli.html#workflow-actions" title="Permalink to this headline">¶</a></h4>
+<p>Starting with Tower 3.1.0 and Tower-CLI 3.1.0, workflow networks can be
+managed from Tower-CLI either by normal CRUD actions or by using a YAML
+file that defines the workflow network.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span># Print out the schema for a workflow
+$ tower-cli workflow schema workflow_name
+
+# Create the network defined in file &quot;schema.yml&quot;
+$ tower-cli workflow schema workflow_name @schema.yml
+</pre></div>
+</div>
+<p>The following is an example of what a schema might look like.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">job_template</span><span class="p">:</span> <span class="n">Hello</span> <span class="n">world</span>
+  <span class="n">failure</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">inventory_source</span><span class="p">:</span> <span class="n">AWS</span> <span class="n">servers</span> <span class="p">(</span><span class="n">AWS</span> <span class="n">servers</span> <span class="o">-</span> <span class="mi">42</span><span class="p">)</span>
+  <span class="n">success</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">project</span><span class="p">:</span> <span class="n">Ansible</span> <span class="n">Examples</span>
+    <span class="n">always</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">job_template</span><span class="p">:</span> <span class="n">Echo</span> <span class="n">variable</span>
+      <span class="n">success</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">job_template</span><span class="p">:</span> <span class="n">Scan</span> <span class="n">localhost</span>
+</pre></div>
+</div>
+<p>For more details, see the tower-cli workflow doc at <a class="reference external" href="https://github.com/ansible/tower-cli/blob/master/docs/WORKFLOWS.md">https://github.com/ansible/tower-cli/blob/master/docs/WORKFLOWS.md</a></p>
+</div>
+</div>
+<div class="section" id="specify-extra-variables">
+<h3>26.4.5. Specify extra variables<a class="headerlink" href="towercli.html#specify-extra-variables" title="Permalink to this headline">¶</a></h3>
+<p>There are a number of ways to pass extra variables to the Tower server when launching a job:</p>
+<ul class="simple">
+<li>Pass data in a file using the flag <code class="docutils literal"><span class="pre">--extra-vars=&quot;&#64;filename.yml&quot;</span></code></li>
+<li>Include yaml data at runtime with the flag <code class="docutils literal"><span class="pre">--extra-vars=&quot;var:</span> <span class="pre">value&quot;</span></code></li>
+<li>A command line editor automatically pops up when the job template is marked to prompt on launch</li>
+<li>If the job template has extra variables, these are not over-ridden</li>
+</ul>
+<p>These methods can also be combined. For instance, if you give the flag multiple times on the command line, specifying a file in addition to manually giving extra variables, these two sources are combined and sent to the Tower server.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span># Launch a job with extra variables from filename.yml, and also a=5
+$ tower-cli job launch --job-template=1 --extra-vars=&quot;a=5 b=3&quot; \
+                                        --extra-vars=&quot;@filename.yml&quot;
+
+# Create a job template with that same set of extra variables
+$ tower-cli job_template create --name=test_job_template --project=1 \
+                                --inventory=1 --playbook=helloworld.yml \
+                                --machine-credential=1 --extra-vars=&quot;a=5 b=3&quot; \
+                                --extra-vars=&quot;@filename.yml&quot;
+</pre></div>
+</div>
+<p>You may not combine multiple sources when modifying a job template. Whitespace can be used in strings like <code class="docutils literal"><span class="pre">--extra-vars=&quot;a='white</span> <span class="pre">space'&quot;</span></code>, and list-valued parameters can be sent as JSON or YAML, but not <code class="docutils literal"><span class="pre">key=value</span></code> pairs. For instance, <code class="docutils literal"><span class="pre">--extra-vars=&quot;a:</span> <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5]&quot;</span></code> sends the parameter <code class="docutils literal"><span class="pre">&quot;a&quot;</span></code> with that list as its value.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Additional strict <code class="docutils literal"><span class="pre">extra_vars</span></code> validation was added in Ansible Tower 3.0.0. <code class="docutils literal"><span class="pre">extra_vars</span></code> passed to the job launch API are only honored if one of the following is true:</p>
+<ul class="last simple">
+<li>They correspond to variables in an enabled survey</li>
+<li><code class="docutils literal"><span class="pre">ask_variables_on_launch</span></code> is set to True</li>
+</ul>
+</div>
+</div>
+<div class="section" id="ssl-warnings">
+<h3>26.4.6. SSL warnings<a class="headerlink" href="towercli.html#ssl-warnings" title="Permalink to this headline">¶</a></h3>
+<p>By default, tower-cli raises an error if the SSL certificate of the Tower server cannot be verified. To allow unverified SSL connections, set the config variable, <code class="docutils literal"><span class="pre">verify_ssl</span> <span class="pre">=</span> <span class="pre">false</span></code>. To allow it for a single command to override <code class="docutils literal"><span class="pre">verify_ssl</span></code> if set to <code class="docutils literal"><span class="pre">true</span></code>, add the <code class="docutils literal"><span class="pre">--insecure</span></code> flag:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span># Disable insecure connection warnings permanently
+$ tower-cli config verify_ssl false
+
+# Disable insecure connection warnings for just this command
+$ tower-cli job_template list --insecure
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div id="search-results"><gcse:searchresults-only></gcse:searchresults-only></div>
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+        <a href="usability_data_collection.html" class="btn btn-neutral float-right" title="27. Usability Analytics and Data Collection"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="tipsandtricks.html" class="btn btn-neutral" title="25. Tower Tips and Tricks"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <p>
+    Copyright © 2019 Red Hat, Inc. 
+    <br>
+  </p>
+
+<p>
+  Red Hat Ansible Tower docs are generated using <A HREF="http://sphinx-doc.org/">Sphinx</A> using a theme provided by <a href="http://readthedocs.org">Read the Docs</a>.
+</p>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+<!-- begin analytics -->
+<script data-cfasync="false" src="email-decode.min.js"></script><script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+        (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+        n.id=i;n.src = '//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+        e.parentNode.insertBefore(n, e);
+        })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+_satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

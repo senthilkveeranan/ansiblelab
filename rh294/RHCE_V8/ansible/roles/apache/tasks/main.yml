@@ -1,0 +1,17 @@
+---
+# tasks file for roles/apache
+- yum:
+    name: httpd
+    state: latest
+- service:
+    name: httpd
+    state: started
+    enabled: true
+- firewalld:
+    service: http
+    state: enabled
+    immediate: true
+    permanent: true
+- template:
+    src: index.html.j2
+    dest: /var/www/html/index.html

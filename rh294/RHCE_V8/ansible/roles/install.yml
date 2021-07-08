@@ -1,0 +1,5 @@
+---
+- src: http://content.example.com/rh294/role1.tar.gz
+  name: balancer
+- src: http://content.example.com/rh294/role2.tar.gz
+  name: phphello

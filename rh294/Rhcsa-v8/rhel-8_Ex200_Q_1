@@ -1,0 +1,144 @@
+RHCSA_v8
+========================================================================================================
+	*Important_Instructions:		Please read carefully.
+
+         hostname: servera.lab.example.com (172.25.250.10)
+         hostname: serverb.lab.example.com (172.25.250.11)
+
+	* You will be given by 2 VMs 
+	* Total number of Questions will be arround 20
+	* In one system root password is already set ( no need to reset ) 
+          but in second system password need to be recovered.
+        * In your both system root passwd is "trootent"
+	* In one system Network configuration is required but in another one networking is already done
+	* NTP need to be configured in only one system ( not in both )
+	* YUM Repo need to configured in both systems.
+	* Their is not any Q to configure LDAP Client ( it is already configured ). 
+          You just need to configure automounting for LDAP user's Home DIR in one system. 
+              ( follow same steps as RHEL-7 )
+	* Firewall and SELinux both will be pre-enabled.
+========================================================================================================
+Server-a:
+`````````
+#Q1.	Configure network and set the static hostname.
+        IP ADDRESS      = 172.25.250.10
+        NETMASK         = 255.255.255.0     
+        GATEWAY         = 172.25.250.254      
+        DNS             = 172.25.250.254     
+        ( Domain name     = lab.example.com )
+        hostname        = servera.lab.examle.com 
+========================================================================================================
+#Q2.	Configure YUM repos with the given link ( 2 repos:  1st is Base  and 2nd is AppStream )
+    base_url=  http://content.example.com/rhel8.0/x86_64/dvd/BaseOS
+    AppSterm_url= http://content.example.com/rhel8.0/x86_64/dvd/AppStream
+========================================================================================================
+#Q3.	Debug SELinux:
+		- A web server running on non standard port 82 is having issues serving content. 
+      Debug and fix the issues.
+
+		- The web server on your system can server all the existing HTML files from /var/www/html 
+        ( NOTE: Do not make any changes
+		 	  	to these files )
+			* Web service should automatically start at boot time.
+========================================================================================================
+#Q4.	Create User accounts with supplementry group.
+
+		- create the group a named "sysadms".
+		- create users as named "natasha" and "harry", will be the supplementry group "sysadms".
+		- cerate a user as named "sarah", should have non-interactive shell and 
+      it should be not the member of "sysadms".
+		- password for all users should be "trootent"
+
+========================================================================================================
+#Q5.	Configure a cron job that runs every 1 minutes and executes:
+		
+		logger "EX200 in progress"  as the user natasha.
+========================================================================================================
+#Q6.	Create a collaborative Directory.
+  
+    - Create the Directory "/home/manager" with the following characteristics. 
+    - Group ownership of "/home/manager" should go to "sysadms" group. 
+    - The directory should have full permission for all members of "sysadms" group 
+      but not to the other users except "root". 
+    - Files created in future under "/home/manager" should get the same group ownership .
+========================================================================================================
+#Q7.	Configure NTP
+    - Synchronize time of your system with the server classroom.example.com.
+========================================================================================================
+#Q8.	Configure AutoFS 
+
+    - All ldapuserX home directory is exported via NFS, which is available on classroom.example.com
+      (172.25.254.254) and your NFS-exports directory is  /home/guests for ldapuserX,
+    - ldapuserX's home directory is classroom.example.com:/home/guests/ldapuserX, 
+      where X is your station number
+    - ldapuserX's home directory should be automounted autofs service.
+    - home directories must be writable by their users.
+    - while you are able to log in as any of the user ldapuser1 through ldapuser20, 
+      the only home directory that is accessible from your system is ldapsuserX
+========================================================================================================
+#Q9. ACL.
+
+    - Copy the file /etc/fstab to /var/tmp/ and configure the "ACL" as mention following.
+    - The file /var/tmp/fstab should owned by the "root".
+    - The file /var/tmp/fstab should belongs to the group "root".
+    - The file /var/tmp/fstab should not be executable by any one.
+    - The user "sarah" should able to read and write to the file.
+    - The user "harry" can neither read nor write to the file.
+    - Other users (future and current) shuold be able to read /var/tmp/fstab.
+========================================================================================================
+#Q10.	Create user 'bob' with 2112 uid and set the password 'trootent'
+========================================================================================================
+#Q11.	Locate all files owned by user "harry" and copy it under /root/harry-files
+========================================================================================================
+#Q12.	Find a string 'ich' from "/usr/share/dict/words"  and put it into /root/lines  file.
+========================================================================================================
+#Q13.	create an archive '/root/backup.tar.bz2'  of /usr/local directory and compress it with bzip2.
+========================================================================================================
+========================================================================================================
+Server-2:
+`````````
+	NOTE: In this Server  3 Disks will be given.
+
+		1.  /dev/vda	:	for ROOT filesystem ( don't do anything under this Disk )
+
+		2.  /dev/vdb	:	You need to use for Swap and LVM Partition.
+
+		3.  /dev/vdc	:	Will be used for Stratis.
+========================================================================================================
+#Q14.	Reset root user password and make it 'trootent'
+========================================================================================================
+#Q15.	Configure YUM Repos 
+      base_url=  "http://content.example.com/rhel8.0/x86_64/dvd/BaseOS"
+      AppStrem_url= "http://content.example.com/rhel8.0/x86_64/dvd/AppStream"
+========================================================================================================
+#Q16.	Resize a logical Volume
+
+      - Resize the logical volume "mylv" so that after reboot size should be in between 200MB to 300MB.
+========================================================================================================
+#Q17.	Add a swap partition of 512MB and mount it permanently.
+========================================================================================================
+#Q18. 	Create a logical Volume and mount it permanently.
+
+      - Create the logical volume with the name "wshare" by using 50PE's from the volume group "wgroup". 
+      - Consider each  PE size of volume group as "8 MB". 
+      - Mount it on /mnt/wshare with file system vfat.
+========================================================================================================
+#Q19.	Create a new STRATIS volume according to following requirements:
+
+		- Use the unpartitioned disk
+		- The volume is named 'stratisfs' belongs to 'stratispool' 
+		- The volume must be mounted permanent under '/stratisvolume'
+		- Place a copy of the file "http://content.example.com/file.txt" under '/stratisvolume'
+		- Take a snapshot of stratisfs named stratissnap.
+                                         (OR)
+         Create a new VDO partition using to following requirements:
+                - Use the unpartitioned disk
+                - Vdo name "Vdo1" and logical size should be 50GB 
+                - Mount it on  /vdomount permanently with file system xfs.
+========================================================================================================
+#Q20.	Configure System Tuning:
+		
+		- Choose the recommended 'tuned' profile for your system and set it as the default.
+================================================================================================================================================================================================================
+
+

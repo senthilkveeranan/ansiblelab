@@ -1,0 +1,907 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <script type="text/javascript" src="https://www.redhat.com/dtm.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta class="swiftype" name="published_at" data-type="date" content="2019-03-26" /> 
+  <meta class="swiftype" name="version" data-type="string" content="3.4.3">
+
+
+   <!-- this ^ ^ is for the original publishing date only, never for minor pushes that aren't actual version bumps of the docs (this helps us keep our search rank weighting in swiftype, our search server, prioritized based on the dates of the releases themselves) -->
+
+  <script>
+  var url = window.location.href;
+  if(url.indexOf("latest") == -1){
+   var version = url.replace("http://docs.ansible.com/ansible-tower/","");
+   version = version.substring(0,url.indexOf("/"));
+   url = url.replace(version,"latest");
+  }
+  var canon = document.createElement('link');
+  canon.rel = "canonical";
+  canon.href = url;
+  document.head.appendChild(canon);
+  </script>
+
+  <!-- Google Tag Manager Data Layer -->
+  <script>
+   dataLayer = [];
+  </script>
+  <!-- End Google Tag Manager Data Layer -->
+
+  
+  <title>7. Clustering &mdash; Ansible Tower Administration Guide v3.4.3</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'./',
+        VERSION:'Ansible Tower 3.4.3',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript" src="underscore.js"></script>
+      <script type="text/javascript" src="doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="theme.min.css" type="text/css" />
+    <script type="text/javascript" src="theme.js"></script>
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Ansible Tower Administration Guide v3.4.3" href="index.html"/>
+        <link rel="next" title="8. OpenShift Deployment and Configuration" href="openshift_configuration.html"/>
+        <link rel="prev" title="6. Management Jobs" href="management_jobs.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+  <style>
+    .search-reset-start {
+        color: #463E3F;
+        float: right;
+        position: relative;
+        top: -25px;
+        left: -10px;
+        z-index: 10;
+     }
+     .search-reset-start:hover {
+        cursor: pointer;
+        color: #2980B9;
+     }
+     #search-box-id {
+        padding-right: 25px;
+     }
+  </style>
+
+  <!-- Google Code for Remarketing Tag
+  <script type="text/javascript">
+  /* <![CDATA[ */
+  var google_conversion_id = 972577926;
+  var google_custom_params = window.google_tag_params;
+  var google_remarketing_only = true;
+  /* ]]> */
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+  </script>
+  <noscript>
+    <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt=""
+              src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/972577926/?value=0&amp;guid=ON&amp;script=0"/>
+    </div>
+  </noscript>
+  End of Google Code for Remarketing Tag -->
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300'
+      rel='stylesheet' type='text/css'>
+
+  <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+
+  <script type='text/javascript'>
+    googletag.cmd.push(function() {
+      googletag.defineSlot('/1171614047/towerleft', [300, 250], 'div-gpt-ad-1453398530439-0').addService(googletag.pubads());
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
+  </script>
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+  <div class="DocSite-globalNav ansibleNav">
+        <ul>
+            <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+            <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+            <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+            <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+            <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+        </ul>
+    </div>
+
+<a class="DocSite-nav" href="http://docs.ansible.com/">
+  <img class="DocSiteNav-logo"
+    src="logo_invert.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">
+    Documentation
+  </div>
+</a> 
+
+
+
+
+<div class="wy-grid-for-nav">
+
+  
+ <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+        <a class="DocSiteProduct-header DocSiteProduct-header--tower"
+            href="http://docs.ansible.com/ansible-tower/">
+            <div class="DocSiteProduct-productName">
+                <div class="DocSiteProduct-logoText">
+                    ANSIBLE TOWER 
+                    <div class="DocSiteProduct-CurrentVersion" align="right">
+                      v3.4.3
+                  </div>
+                </div>
+            </div>
+        </a>
+        
+
+        <div class="DocSiteProduct-CheckVersionPara">
+          Are you using the latest and greatest version of Ansible Tower? Find the <a class="DocSiteProduct-versionheader" href="http://docs.ansible.com/ansible-tower/">Ansible Tower documentation</a> set which best matches your version of Tower.
+            </div>
+    </div>
+    <div class="wy-side-nav-search" style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+      <!-- <a href="index.html" class="icon icon-home"> Ansible Tower Administration Guide</a> -->
+      <!-- <form class="wy-form" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form> -->
+
+<!-- 
+<script>
+  (function() {
+    var cx = '004731659079655444432:zgjlf-tkhya';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script> -->
+
+<!-- <gcse:searchresults-only></gcse:searchresults-only> -->
+
+<!-- swiftype search script -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','Vcn_rXrPfye6ziaZJZRt','2.0.0');
+</script>
+
+<!-- <form id="search-form-id" action="">
+  <input type="text" class="st-default-search-input" name="query" placeholder="Search Tower Docs" id="search-box-id" /> 
+  <a class="search-reset-start" id="search-reset"><i class="fa fa-times"></i></a>
+  <a class="search-reset-start" id="search-start"><i class="fa fa-search"></i></a> 
+ </form> -->
+
+          
+
+
+<!-- <script type="text/javascript" src="http://www.google.com/cse/brand?form=search-form-id&inputbox=search-box-id"></script> -->
+
+<!-- 
+<script>
+  function executeQuery() {
+      var input = document.getElementById('search-box-id');
+      var element = google.search.cse.element.getElement('searchresults-only0');
+      element.resultsUrl = '/htmlout/search.html'
+      if (input.value == '') {
+          element.clearAllResults();
+          $('#page-content, .rst-footer-buttons, #search-start').show();
+          $('#search-results, #search-reset').hide();
+      } else {
+          $('#page-content, .rst-footer-buttons, #search-start').hide();
+          $('#search-results, #search-reset').show();
+          element.execute(input.value);
+      }
+      return false;
+      }
+
+  $('#search-reset').hide();
+
+  $('#search-box-id').css('background-position', '1em center');
+
+  $('#search-box-id').on('blur', function() {
+    $('#search-box-id').css('background-position', '1em center');
+  });
+
+  $('#search-start').click(function(e) { executeQuery(); });
+  $('#search-reset').click(function(e) { $('#search-box-id').val(''); executeQuery(); });
+
+  $('#search-form-id').submit(function(e) {
+      console.log('submitting!');
+      executeQuery();
+      e.preventDefault();
+      });
+</script>
+-->
+    </div>
+
+      <div id="menu-id" class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Ansible Tower Administration Guide v3.4.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license-support.html">1. Tower Licensing, Updates, and Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#support">1.1. Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#trial-evaluation">1.2. Trial / Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#subscription-types">1.3. Subscription Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#node-counting-in-licenses">1.4. Node Counting in Licenses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#license-features">1.5. License Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license-support.html#tower-component-licenses">1.6. Tower Component Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="init_script.html">2. Starting, Stopping, and Restarting Tower</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_inventory_script.html">3. Custom Inventory Scripts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="custom_inventory_script.html#writing-inventory-scripts">3.1. Writing Inventory Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scm-inv-source.html">4. Inventory File Importing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scm-inv-source.html#custom-dynamic-inventory-scripts">4.1. Custom Dynamic Inventory Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scm-inv-source.html#scm-inventory-source-fields">4.2. SCM Inventory Source Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multi-creds-assignment.html">5. Multi-Credential Assignment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#background">5.1. Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#important-changes">5.2. Important Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#launch-time-considerations">5.3. Launch Time Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#backwards-compatibility-concerns">5.4. Backwards Compatibility Concerns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-creds-assignment.html#multi-vault-credentials">5.5. Multi-Vault Credentials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="management_jobs.html">6. Management Jobs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="management_jobs.html#removing-old-activity-stream-data">6.1. Removing Old Activity Stream Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management_jobs.html#removing-old-fact-system-tracking-data">6.2. Removing Old Fact (System Tracking) Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="management_jobs.html#removing-old-job-history">6.3. Removing Old Job History</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="clustering.html#">7. Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#setup-considerations">7.1. Setup Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#install-and-configure">7.2. Install and Configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#configuring-instances-and-instance-groups-from-the-api">7.3. Configuring Instances and Instance Groups from the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#instance-group-policies">7.4. Instance group policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#isolated-instance-groups">7.5. Isolated Instance Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#status-and-monitoring-via-browser-api">7.6. Status and Monitoring via Browser API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#instance-services-and-failure-behavior">7.7. Instance Services and Failure Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#job-runtime-behavior">7.8. Job Runtime Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering.html#deprovision-instances-and-instance-groups">7.9. Deprovision Instances and Instance Groups</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="openshift_configuration.html">8. OpenShift Deployment and Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#tower-and-openshift-basics">8.1. Tower and OpenShift Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#configuration-options">8.2. Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#basic-configuration">8.3. Basic Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#resource-requests-and-request-planning">8.4. Resource Requests and Request Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#database-configuration-and-usage">8.5. Database Configuration and Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#backup-and-restore">8.6. Backup and Restore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#upgrading">8.7. Upgrading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#migrating">8.8. Migrating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift_configuration.html#build-custom-virtual-environments">8.9. Build custom virtual environments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="proxy-support.html">9. Proxy Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="proxy-support.html#configure-known-proxies">9.1. Configure Known Proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxy-support.html#reverse-proxy">9.2. Reverse Proxy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="logfiles.html">10. Tower Logfiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">11. Tower Logging and Aggregation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="logging.html#loggers">11.1. Loggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html#set-up-logging-with-tower">11.2. Set Up Logging with Tower</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tower-manage.html">12. The <em>awx-manage</em> Utility</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#inventory-import">12.1. Inventory Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#cleanup-of-old-data">12.2. Cleanup of old data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#cluster-management">12.3. Cluster management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower-manage.html#token-and-session-management">12.4. Token and session management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configure_tower_in_tower.html">13. Tower Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#authentication">13.1. Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#jobs">13.2. Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#system">13.3. System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#user-interface">13.4. User Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configure_tower_in_tower.html#license">13.5. License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="proot_func_variables.html">14. Bubblewrap functionality and variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oauth2_token_auth.html">15. Token-Based Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#managing-oauth-2-applications-and-tokens">15.1. Managing OAuth 2 Applications and Tokens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#using-oauth-2-token-system-for-personal-access-tokens-pat">15.2. Using OAuth 2 Token System for Personal Access Tokens (PAT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#application-functions">15.3. Application Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2_token_auth.html#application-token-functions">15.4. Application Token Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="social_auth.html">16. Setting up Social Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="social_auth.html#google-oauth2-settings">16.1. Google OAuth2 Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="social_auth.html#github-oauth2-settings">16.2. GitHub OAuth2 Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="social_auth.html#organization-and-team-mapping">16.3. Organization and Team Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ent_auth.html">17. Setting up Enterprise Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#azure-active-directory-ad">17.1. Azure Active Directory (AD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#saml-authentication-settings">17.2. SAML Authentication Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#radius-authentication-settings">17.3. RADIUS Authentication Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ent_auth.html#tacacs-authentication-settings">17.4. TACACS+ Authentication Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ldap_auth.html">18. Setting up LDAP Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ldap_auth.html#referrals">18.1. Referrals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ldap_auth.html#enabling-logging-for-ldap">18.2. Enabling Logging for LDAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ldap_auth.html#ldap-organization-and-team-mapping">18.3. LDAP Organization and Team Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentication_timeout.html">19. Changing the Default Timeout for Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kerberos_auth.html">20. User Authentication with Kerberos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kerberos_auth.html#ad-and-kerberos-credentials">20.1. AD and Kerberos Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kerberos_auth.html#working-with-kerberos-tickets">20.2. Working with Kerberos Tickets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="session_limits.html">21. Working with Session Limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backup_restore.html">22. Backing Up and Restoring Tower</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="backup_restore.html#backup-restore-playbooks">22.1. Backup/Restore Playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup_restore.html#backup-and-restoration-considerations">22.2. Backup and Restoration Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup_restore.html#backup-and-restore-for-clustered-environments">22.3. Backup and Restore for Clustered Environments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="custom_rebranding.html">23. Using Custom Logos in Ansible Tower</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">24. Troubleshooting Tower</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#error-logs">24.1. Error logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problems-connecting-to-your-host">24.2. Problems connecting to your host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#unable-to-login-to-tower-via-http">24.3. Unable to login to Tower via HTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#websockets-port-for-live-events-not-working">24.4. WebSockets port for live events not working</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problems-running-a-playbook">24.5. Problems running a playbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problems-when-running-a-job">24.6. Problems when running a job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#playbooks-aren-t-showing-up-in-the-job-template-drop-down">24.7. Playbooks aren&#8217;t showing up in the &#8220;Job Template&#8221; drop-down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#playbook-stays-in-pending">24.8. Playbook stays in pending</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#cancel-a-tower-job">24.9. Cancel a Tower job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#reusing-an-external-database-causes-installations-to-fail">24.10. Reusing an external database causes installations to fail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#private-ec2-vpc-instances-in-tower-inventory">24.11. Private EC2 VPC Instances in Tower Inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#troubleshooting-error-provided-hosts-list-is-empty">24.12. Troubleshooting &#8220;Error: provided hosts list is empty&#8221;</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tipsandtricks.html">25. Tower Tips and Tricks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-the-tower-cli-tool">25.1. Using the Tower CLI Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#launching-a-job-template-via-the-api">25.2. Launching a Job Template via the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#tower-cli-job-template-launching">25.3. <code class="docutils literal"><span class="pre">tower-cli</span></code> Job Template Launching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#changing-the-tower-admin-password">25.4. Changing the Tower Admin Password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#creating-a-tower-admin-from-the-commandline">25.5. Creating a Tower Admin from the commandline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#setting-up-a-jump-host-to-use-with-tower">25.6. Setting up a jump host to use with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#view-ansible-outputs-for-json-commands-when-using-tower">25.7. View Ansible outputs for JSON commands when using Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#locate-and-configure-the-ansible-configuration-file">25.8. Locate and configure the Ansible configuration file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#view-a-listing-of-all-ansible-variables">25.9. View a listing of all ansible_ variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-virtualenv-with-at">25.10. Using virtualenv with Ansible Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#configuring-the-towerhost-hostname-for-notifications">25.11. Configuring the <code class="docutils literal"><span class="pre">towerhost</span></code> hostname for notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#launching-jobs-with-curl">25.12. Launching Jobs with curl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#dynamic-inventory-and-private-ip-addresses">25.13. Dynamic Inventory and private IP addresses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#filtering-instances-returned-by-the-dynamic-inventory-sources-in-tower">25.14. Filtering instances returned by the dynamic inventory sources in Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-an-unreleased-module-from-ansible-source-with-tower">25.15. Using an unreleased module from Ansible source with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#using-callback-plugins-with-tower">25.16. Using callback plugins with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#connecting-to-windows-with-winrm">25.17. Connecting to Windows with winrm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipsandtricks.html#importing-existing-inventory-files-and-host-group-vars-into-tower">25.18. Importing existing inventory files and host/group vars into Tower</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="towercli.html">26. Introduction to <strong>tower-cli</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#license">26.1. License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#capabilities">26.2. Capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#installation">26.3. Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="towercli.html#configuration">26.4. Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usability_data_collection.html">27. Usability Analytics and Data Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postface.html">28. Postface</a></li>
+</ul>
+
+        
+
+<div class="DocSite-sideNav ansibleNav">
+    <ul class="">
+    <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+    <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+    <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+    <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    </ul>
+</div>
+
+    <!-- changeable widget -->
+    <div id="sideBanner">
+    <br/>
+    <a href="http://www.ansible.com/tower-docs-left?utm_source=docs">
+<img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-left-rail.png" />
+    </a>
+</div>
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="https://docs.ansible.com/">Ansible Tower Administration Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+
+    <!--        <div class="DocSiteBanner">
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-left.png">
+                </a>
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-right.png">
+                </a>
+            </div> -->
+
+          <ul class="wy-breadcrumbs">
+    <li><a href="http://docs.ansible.com/" <title>Ansible Docs Home</title></a>&raquo;</li>
+    <li><a href="http://docs.ansible.com/ansible-tower/" <title>Ansible Tower Docs</title></a>&raquo;</li>
+    <li><a href="index.html" <title> &mdash; Ansible Tower Administration Guide v3.4.3</title></a> &raquo;</li>
+    <!--  <li><a href="">7. Clustering</a></li> -->
+</ul>
+<hr/>
+          <div id="page-content">
+          
+  <div class="section" id="clustering">
+<span id="ag-clustering"></span><h1>7. Clustering<a class="headerlink" href="clustering.html#clustering" title="Permalink to this headline">¶</a></h1>
+<p id="index-0">Ansible Tower 3.1 introduces Clustering as an alternate approach to redundancy, replacing the redundancy solution configured with the active-passive nodes that involves primary and secondary instances. For versions older than 3.1, refer to the older versions of this chapter of the <em>Ansible Tower Administration Guide</em>.</p>
+<p>Clustering is sharing load between hosts. Each instance should be able to act as an entry point for UI and API access. This should enable Tower administrators to use load balancers in front of as many instances as they wish and maintain good data visibility.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Load balancing is optional and is entirely possible to have ingress on one or all instances as needed.</p>
+</div>
+<p>Each instance should be able to join the Tower cluster and expand its ability to execute jobs. This is a simple system where jobs can and will run anywhere rather than be directed on where to run. Ansible Tower 3.2 introduced the ability for clustered instances to be grouped into different pools/queues.</p>
+<p>Instances can be grouped into one or more Instance Groups. Instance groups can be assigned to one or more of the resources listed below.</p>
+<ul class="simple">
+<li>Organizations</li>
+<li>Inventories</li>
+<li>Job Templates</li>
+</ul>
+<p>When a job associated with one of the resources executes, it will be assigned to the instance group associated with the resource. During the execution process, instance groups associated with Job Templates are checked before those associated with Inventories. Similarly, instance groups associated with Inventories are checked before those associated with Organizations. Thus, Instance Group assignments for the three resources form a hierarchy: Job Template <strong>&gt;</strong> Inventory <strong>&gt;</strong> Organization.</p>
+<p>Ansible Tower 3.3 adds support for container-based clusters using OpenShift or Kubernetes, meaning new Tower instances can be installed on these platforms without any variation or diversion in functionality. However, the OpenShift Tower configuration has some differences that must be considered. For more detail about Tower OpenShift, see the <a class="reference internal" href="openshift_configuration.html#ag-openshift-configuration"><span class="std std-ref">OpenShift Deployment and Configuration</span></a> section of this <em>Ansible Tower Administration Guide</em>.</p>
+<p><strong>Supported Operating Systems</strong></p>
+<p id="index-1">The following operating systems are supported for establishing a clustered environment:</p>
+<ul class="simple">
+<li>RHEL-7 (can be either RHEL-7 or Centos-7 instances)</li>
+<li>Ubuntu 16</li>
+<li>Isolated instances can be installed only on RHEL-7 at this time</li>
+</ul>
+<div class="section" id="setup-considerations">
+<h2>7.1. Setup Considerations<a class="headerlink" href="clustering.html#setup-considerations" title="Permalink to this headline">¶</a></h2>
+<p id="index-2">This section covers initial setup of clusters only. For upgrading an existing cluster, refer to <a class="reference external" href="http://docs.ansible.com/ansible-tower/3.4.3/html/upgrade-migration-guide/upgrade_considerations.html#upgrade-planning" title="(in Ansible Tower Upgrade and Migration Guide v3.4.3)"><span class="xref std std-ref">Upgrade Planning</span></a> of the <em>Ansible Tower Upgrade and Migration Guide</em>.</p>
+<p>Important considerations to note in the new clustering environment:</p>
+<ul class="simple">
+<li>PostgreSQL is still a standalone instance and is not clustered. Tower does not manage replica configuration or database failover (if the user configures standby replicas).</li>
+<li>The number of instances in a cluster should always be an odd number and it is <strong>strongly recommended</strong> that a minimum of three Tower instances be in a cluster and the supported maximum is 20. When it gets that high, the requirement for odd number of nodes becomes less important.</li>
+<li>All instances should be reachable from all other instances and they should be able to reach the database. It is also important for the hosts to have a stable address and/or hostname (depending on how the Tower host is configured).</li>
+<li>All instances must be geographically collocated, with reliable low-latency connections between instances.</li>
+<li>RabbitMQ is the cornerstone of Tower&#8217;s clustering system. A lot of the configuration requirements and behavior is dictated by its needs. Therefore, customization beyond Tower&#8217;s setup playbook is limited. Each Tower instance has a deployment of RabbitMQ that will cluster with the other instances&#8217; RabbitMQ instances.</li>
+<li>For purposes of upgrading to a clustered environment, your primary instance must be part of the <code class="docutils literal"><span class="pre">tower</span></code> group in the inventory <em>AND</em> it needs to be the first host listed in the <code class="docutils literal"><span class="pre">tower</span></code> group.</li>
+<li>Manual projects must be manually synced to all instances by the customer, and updated on all instances at once.</li>
+<li>There is no concept of primary/secondary in the new Tower system. All systems are primary.</li>
+<li>Setup playbook changes to configure RabbitMQ and provide the type of network the hosts are on.</li>
+<li>The <code class="docutils literal"><span class="pre">inventory</span></code> file for Tower deployments should be saved/persisted. If new instances are to be provisioned, the passwords and configuration options, as well as host names, must be made available to the installer.</li>
+<li>Do not create a group named <code class="docutils literal"><span class="pre">instance_group_tower</span></code>.</li>
+<li>Do not name any instance the same as a group name.</li>
+</ul>
+</div>
+<div class="section" id="install-and-configure">
+<h2>7.2. Install and Configure<a class="headerlink" href="clustering.html#install-and-configure" title="Permalink to this headline">¶</a></h2>
+<p>Provisioning new instances involves updating the <code class="docutils literal"><span class="pre">inventory</span></code> file and re-running the setup playbook. It is important that the <code class="docutils literal"><span class="pre">inventory</span></code> file contains all passwords and information used when installing the cluster or other instances may be reconfigured. The current standalone instance configuration does not change for a 3.1 or later deployment. The <code class="docutils literal"><span class="pre">inventory</span></code> file does change in some important ways:</p>
+<ul class="simple">
+<li>Since there is no primary/secondary configuration, those inventory groups go away and are replaced with a single inventory group, <code class="docutils literal"><span class="pre">tower</span></code>.</li>
+<li>You may optionally define other groups and group instances in those groups. These groups should be prefixed with <code class="docutils literal"><span class="pre">instance_group_</span></code>. Instances are not required to be in the tower group alongside other <code class="docutils literal"><span class="pre">instance_group_</span></code> groups, but one instance <strong>must</strong> be present in the <code class="docutils literal"><span class="pre">tower</span></code> group. Technically, <code class="docutils literal"><span class="pre">tower</span></code> is a group like any other <code class="docutils literal"><span class="pre">instance_group_</span></code> group, but it must always be present, and if a specific group is not associated with a specific resource, then job execution will always fall back to the <code class="docutils literal"><span class="pre">tower</span></code> group. In 3.3, the <code class="docutils literal"><span class="pre">tower</span></code> instance group always exists (it cannot be deleted nor renamed).</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All instances are responsible for various housekeeping tasks related to task scheduling, like determining where jobs are supposed to be launched and processing playbook events, as well as periodic cleanup.</p>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">tower</span><span class="p">]</span>
+<span class="n">hostA</span>
+<span class="n">hostB</span>
+<span class="n">hostC</span>
+
+<span class="p">[</span><span class="n">instance_group_east</span><span class="p">]</span>
+<span class="n">hostB</span>
+<span class="n">hostC</span>
+
+<span class="p">[</span><span class="n">instance_group_west</span><span class="p">]</span>
+<span class="n">hostC</span>
+<span class="n">hostD</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If no groups are selected for a resource then the <code class="docutils literal"><span class="pre">tower</span></code> group is used, but if any other group is selected, then the <code class="docutils literal"><span class="pre">tower</span></code> group will not be used in any way.</p>
+</div>
+<p>The <code class="docutils literal"><span class="pre">database</span></code> group remains for specifying an external Postgres. If the database host is provisioned separately, this group should be empty:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">tower</span><span class="p">]</span>
+<span class="n">hostA</span>
+<span class="n">hostB</span>
+<span class="n">hostC</span>
+
+<span class="p">[</span><span class="n">database</span><span class="p">]</span>
+<span class="n">hostDB</span>
+</pre></div>
+</div>
+<p>It is common to provision Tower instances externally, but it is best to reference them by internal addressing. This is most significant for RabbitMQ clustering where the service is not available at all on an external interface. For this purpose, it is necessary to assign the internal address for RabbitMQ links as such:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">tower</span><span class="p">]</span>
+<span class="n">hostA</span> <span class="n">rabbitmq_host</span><span class="o">=</span><span class="mf">10.1</span><span class="o">.</span><span class="mf">0.2</span>
+<span class="n">hostB</span> <span class="n">rabbitmq_host</span><span class="o">=</span><span class="mf">10.1</span><span class="o">.</span><span class="mf">0.3</span>
+<span class="n">hostC</span> <span class="n">rabbitmq_host</span><span class="o">=</span><span class="mf">10.1</span><span class="o">.</span><span class="mf">0.4</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The number of instances in a cluster should always be an odd number and it is <strong>strongly recommended</strong> that a minimum of three Tower instances be in a cluster and the supported maximum is 20. When it gets that high, the requirement for odd number of nodes becomes less important.</p>
+</div>
+<ul>
+<li><p class="first">The <code class="docutils literal"><span class="pre">redis_password</span></code> field is removed from <code class="docutils literal"><span class="pre">[all:vars]</span></code></p>
+</li>
+<li><p class="first">Fields for RabbitMQ are as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">rabbitmq_port=5672</span></code>: RabbitMQ is installed on each instance and is not optional, it is also not possible to externalize it. This setting configures what port it listens on.</li>
+<li><code class="docutils literal"><span class="pre">rabbitmq_vhost=tower</span></code>: Controls the setting for which Tower configures a RabbitMQ virtualhost to isolate itself.</li>
+<li><code class="docutils literal"><span class="pre">rabbitmq_username=tower</span></code> and <code class="docutils literal"><span class="pre">rabbitmq_password=tower</span></code>: Each instance and each instance&#8217;s Tower instance are configured with these values. This is similar to Tower&#8217;s other uses of usernames/passwords.</li>
+<li><code class="docutils literal"><span class="pre">rabbitmq_cookie=&lt;somevalue&gt;</span></code>: This value is unused in a standalone deployment but is critical for clustered deployments. This acts as the secret key that allows RabbitMQ cluster members to identify each other.</li>
+<li><code class="docutils literal"><span class="pre">rabbitmq_enable_manager</span></code>: Set this to <code class="docutils literal"><span class="pre">true</span></code> to expose the RabbitMQ Management Web Console on each instance.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="section" id="rabbitmq-default-settings">
+<h3>7.2.1. RabbitMQ Default Settings<a class="headerlink" href="clustering.html#rabbitmq-default-settings" title="Permalink to this headline">¶</a></h3>
+<p>The following configuration shows the default settings for RabbitMQ:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">rabbitmq_port</span><span class="o">=</span><span class="mi">5672</span>
+<span class="n">rabbitmq_vhost</span><span class="o">=</span><span class="n">tower</span>
+<span class="n">rabbitmq_username</span><span class="o">=</span><span class="n">tower</span>
+<span class="n">rabbitmq_password</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+<span class="n">rabbitmq_cookie</span><span class="o">=</span><span class="n">cookiemonster</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal"><span class="pre">rabbitmq_cookie</span></code> is a sensitive value, it should be treated like the <code class="docutils literal"><span class="pre">secret</span> <span class="pre">key</span></code> in Tower.</p>
+</div>
+</div>
+<div class="section" id="instances-and-ports-used-by-tower">
+<h3>7.2.2. Instances and Ports Used by Tower<a class="headerlink" href="clustering.html#instances-and-ports-used-by-tower" title="Permalink to this headline">¶</a></h3>
+<p>Ports and instances used by Tower are as follows:</p>
+<ul class="simple">
+<li>80, 443 (normal Tower ports)</li>
+<li>22 (ssh)</li>
+<li>5432 (database instance - if the database is installed on an external instance, needs to be opened to the tower instances)</li>
+</ul>
+<p>Clustering/RabbitMQ ports:</p>
+<ul class="simple">
+<li>4369, 25672 (ports specifically used by RabbitMQ to maintain a cluster, needs to be open between each instance)</li>
+<li>15672 (if the RabbitMQ Management Interface is enabled, this port needs to be opened (optional))</li>
+</ul>
+</div>
+</div>
+<div class="section" id="configuring-instances-and-instance-groups-from-the-api">
+<h2>7.3. Configuring Instances and Instance Groups from the API<a class="headerlink" href="clustering.html#configuring-instances-and-instance-groups-from-the-api" title="Permalink to this headline">¶</a></h2>
+<p id="index-3">Instance groups can be created by POSTing to <code class="docutils literal"><span class="pre">/api/v2/instance_groups</span></code> as a system administrator.</p>
+<p>Once created, instances can be associated with an instance group with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>HTTP POST /api/v2/instance_groups/x/instances/ {&#39;id&#39;: y}`
+</pre></div>
+</div>
+<p>An instance that is added to an instance group will automatically reconfigure itself to listen on the group&#8217;s work queue. See the following section, <a class="reference internal" href="clustering.html#ag-instance-group-policies"><span class="std std-ref">Instance group policies</span></a>, for more details.</p>
+</div>
+<div class="section" id="instance-group-policies">
+<span id="ag-instance-group-policies"></span><h2>7.4. Instance group policies<a class="headerlink" href="clustering.html#instance-group-policies" title="Permalink to this headline">¶</a></h2>
+<p id="index-4">Starting with Ansible Tower 3.3, users have the ability to configure Tower instances to automatically join Instance Groups when they come online by defining a <a class="reference external" href="http://docs.ansible.com/ansible-tower/3.4.3/html/installandreference/glossary.html#term-policy" title="(in Ansible Tower Installation and Reference Guide v3.4.3)"><span class="xref std std-term">policy</span></a>. These policies are evaluated for every new instance that comes online.</p>
+<p>Instance Group Policies are controlled by three optional fields on an <code class="docutils literal"><span class="pre">Instance</span> <span class="pre">Group</span></code>:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">policy_instance_percentage</span></code>: This is a number between 0 - 100. It guarantees that this percentage of active Tower instances will be added to this Instance Group. As new instances come online, if the number of Instances in this group relative to the total number of instances is less than the given percentage, then new ones will be added until the percentage condition is satisfied.</li>
+<li><code class="docutils literal"><span class="pre">policy_instance_minimum</span></code>: This policy attempts to keep at least this many instances in the Instance Group. If the number of available instances is lower than this minimum, then all instances will be placed in this Instance Group.</li>
+<li><code class="docutils literal"><span class="pre">policy_instance_list</span></code>: This is a fixed list of instance names to always include in this Instance Group.</li>
+</ul>
+<p>The Instance Groups list view from the Ansible Tower User Interface provides a summary of the capacity levels for each instance group according to instance group policies:</p>
+<p><img alt="Instance Group policy example" src="instance-groups_list_view.png" /></p>
+<div class="section" id="notable-policy-considerations">
+<h3>7.4.1. Notable policy considerations<a class="headerlink" href="clustering.html#notable-policy-considerations" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">policy_instance_percentage</span></code> and <code class="docutils literal"><span class="pre">policy_instance_minimum</span></code> both set minimum allocations. The rule that results in more instances assigned to the group will take effect. For example, if you have a <code class="docutils literal"><span class="pre">policy_instance_percentage</span></code> of 50% and a <code class="docutils literal"><span class="pre">policy_instance_minimum</span></code> of 2 and you start 6 instances, 3 of them would be assigned to the Instance Group. If you reduce the number of total instances in the cluster to 2, then both of them would be assigned to the Instance Group to satisfy <code class="docutils literal"><span class="pre">policy_instance_minimum</span></code>. This way, you can set a lower bound on the amount of available resources.</li>
+<li>Policies do not actively prevent instances from being associated with multiple Instance Groups, but this can effectively be achieved by making the percentages add up to 100. If you have 4 instance groups, assign each a percentage value of 25 and the instances will be distributed among them with no overlap.</li>
+</ul>
+</div>
+<div class="section" id="manually-pinning-instances-to-specific-groups">
+<h3>7.4.2. Manually pinning instances to specific groups<a class="headerlink" href="clustering.html#manually-pinning-instances-to-specific-groups" title="Permalink to this headline">¶</a></h3>
+<p id="index-5">If you have a special instance which needs to be exclusively assigned to a specific Instance Group but don&#8217;t want it to automatically join other groups via &#8220;percentage&#8221; or &#8220;minimum&#8221; policies:</p>
+<ol class="arabic simple">
+<li>Add the instance to one or more Instance Groups&#8217; <code class="docutils literal"><span class="pre">policy_instance_list</span></code></li>
+<li>Update the instance&#8217;s <code class="docutils literal"><span class="pre">managed_by_policy</span></code> property to be <code class="docutils literal"><span class="pre">False</span></code>.</li>
+</ol>
+<p>This will prevent the Instance from being automatically added to other groups based on percentage and minimum policy; it will only belong to the groups you&#8217;ve manually assigned it to:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTTP</span> <span class="n">PATCH</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">instance_groups</span><span class="o">/</span><span class="n">N</span><span class="o">/</span>
+<span class="p">{</span>
+<span class="s2">&quot;policy_instance_list&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;special-instance&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">HTTP</span> <span class="n">PATCH</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">instances</span><span class="o">/</span><span class="n">X</span><span class="o">/</span>
+<span class="p">{</span>
+<span class="s2">&quot;managed_by_policy&quot;</span><span class="p">:</span> <span class="kc">False</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="isolated-instance-groups">
+<h2>7.5. Isolated Instance Groups<a class="headerlink" href="clustering.html#isolated-instance-groups" title="Permalink to this headline">¶</a></h2>
+<p id="index-6">Ansible Tower versions 3.2 and later added the ability to optionally define isolated groups inside security-restricted networking zones from which to run jobs and ad hoc commands. Instances in these groups will not have a full installation of Tower, but will have a minimal set of utilities used to run jobs. Isolated groups must be specified in the inventory file prefixed with <code class="docutils literal"><span class="pre">isolated_group_</span></code>. Below is an example of an inventory file for an isolated instance group.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">tower</span><span class="p">]</span>
+<span class="n">towerA</span>
+<span class="n">towerB</span>
+<span class="n">towerC</span>
+
+<span class="p">[</span><span class="n">instance_group_security</span><span class="p">]</span>
+<span class="n">towerB</span>
+<span class="n">towerC</span>
+
+<span class="p">[</span><span class="n">isolated_group_govcloud</span><span class="p">]</span>
+<span class="n">isolatedA</span>
+<span class="n">isolatedB</span>
+
+<span class="p">[</span><span class="n">isolated_group_govcloud</span><span class="p">:</span><span class="nb">vars</span><span class="p">]</span>
+<span class="n">controller</span><span class="o">=</span><span class="n">security</span>
+</pre></div>
+</div>
+<p>In the isolated instance group model, &#8220;controller&#8221; instances interact with &#8220;isolated&#8221; instances via a series of Ansible playbooks over SSH. At installation time, by default, a randomized RSA key is generated and distributed as an authorized key to all &#8220;isolated&#8221; instances. The private half of the key is encrypted and stored within the Tower database, and is used to authenticate from &#8220;controller&#8221; instances to &#8220;isolated&#8221; instances when jobs are run.</p>
+<p>When a job is scheduled to run on an &#8220;isolated&#8221; instance:</p>
+<ul class="simple">
+<li>The &#8220;controller&#8221; instance compiles metadata required to run the job and copies it to the &#8220;isolated&#8221; instance.</li>
+<li>Once the metadata has been synchronized to the isolated host, the &#8220;controller&#8221; instance starts a process on the &#8220;isolated&#8221; instance, which consumes the metadata and starts running <code class="docutils literal"><span class="pre">ansible/ansible-playbook</span></code>. As the playbook runs, job artifacts (such as stdout and job events) are written to disk on the &#8220;isolated&#8221; instance.</li>
+<li>While the job runs on the &#8220;isolated&#8221; instance, the &#8220;controller&#8221; instance periodically copies job artifacts (stdout and job events) from the &#8220;isolated&#8221; instance. It consumes these until the job finishes running on the &#8220;isolated&#8221; instance.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Controller nodes fail if they go offline in the middle of an isolated run. If a Tower node restarts, or the dispatcher stops during playbook runs, jobs running on that node fails and won&#8217;t start again when the dispatcher comes online.</p>
+</div>
+<p>Isolated groups (nodes) may be created in a way that allow them to exist inside of a VPC with security rules that only permit the instances in its controller group to access them; only ingress SSH traffic from &#8220;controller&#8221; instances to &#8220;isolated&#8221; instances is required. When provisioning isolated nodes, your install machine needs to be able to have connectivity to the isolated nodes. In cases where an isolated node is not directly accessible but can be reached indirectly through other hosts, you can designate a &#8220;jump host&#8221; by using ProxyCommand in your SSH configuration to specify the jump host and then run the installer.</p>
+<p><img alt="Isolated nodes daisy chain example" src="isolated_nodes_access.png" /></p>
+<p><img alt="Jump Host example" src="isolated_nodes_jump_host.png" /></p>
+<p>The recommended system configurations with isolated groups are as follows:</p>
+<ul class="simple">
+<li>Do not create a group named <code class="docutils literal"><span class="pre">isolated_group_tower</span></code>.</li>
+<li>Do not put any isolated instances inside the tower group or other ordinary instance groups.</li>
+<li>Define the controller variable as either a group variable or as a host variable on all the instances in the isolated group. Do not allow isolated instances in the same group to have a different value for this variable - the behavior in this case cannot be predicted.</li>
+<li>Do not put an isolated instance in more than one isolated group.</li>
+<li>Do not put an instance in both ordinary groups and isolated groups.</li>
+<li>Do not use fact caching with isolated instances.</li>
+</ul>
+<div class="section" id="optional-ssh-authentication">
+<h3>7.5.1. Optional SSH Authentication<a class="headerlink" href="clustering.html#optional-ssh-authentication" title="Permalink to this headline">¶</a></h3>
+<p id="index-7">For users who wish to manage SSH authentication from &#8220;controller&#8221; nodes to
+&#8220;isolated&#8221; nodes via some system outside of Tower (such as externally-managed
+passwordless SSH keys), this behavior can be disabled by unsetting two Tower API settings values:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTTP</span> <span class="n">PATCH</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">settings</span><span class="o">/</span><span class="n">jobs</span><span class="o">/</span> <span class="p">{</span><span class="s1">&#39;AWX_ISOLATED_PRIVATE_KEY&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;AWX_ISOLATED_PUBLIC_KEY&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="status-and-monitoring-via-browser-api">
+<h2>7.6. Status and Monitoring via Browser API<a class="headerlink" href="clustering.html#status-and-monitoring-via-browser-api" title="Permalink to this headline">¶</a></h2>
+<p>Tower itself reports as much status as it can via the Browsable API at <code class="docutils literal"><span class="pre">/api/v2/ping</span></code> in order to provide validation of the health of the cluster, including:</p>
+<ul class="simple">
+<li>The instance servicing the HTTP request</li>
+<li>The timestamps of the last heartbeat of all other instances in the cluster</li>
+<li>Instance Groups and Instance membership in those groups</li>
+</ul>
+<p>View more details about Instances and Instance Groups, including running jobs and membership information at <code class="docutils literal"><span class="pre">/api/v2/instances/</span></code> and <code class="docutils literal"><span class="pre">/api/v2/instance_groups/</span></code>.</p>
+</div>
+<div class="section" id="instance-services-and-failure-behavior">
+<h2>7.7. Instance Services and Failure Behavior<a class="headerlink" href="clustering.html#instance-services-and-failure-behavior" title="Permalink to this headline">¶</a></h2>
+<p>Each Tower instance is made up of several different services working collaboratively:</p>
+<ul class="simple">
+<li>HTTP Services - This includes the Tower application itself as well as external web services.</li>
+<li>Callback Receiver - Receives job events from running Ansible jobs.</li>
+<li>Dispatcher - The worker queue that processes and runs all jobs.</li>
+<li>RabbitMQ - This message broker is used as a signaling mechanism for the dispatcher as well as any event data propagated to the application.</li>
+<li>Memcached - local caching service for the instance it lives on.</li>
+</ul>
+<p>Tower is configured in such a way that if any of these services or their components fail, then all services are restarted. If these fail sufficiently often in a short span of time, then the entire instance will be placed offline in an automated fashion in order to allow remediation without causing unexpected behavior.</p>
+<p>For backing up and restoring a clustered environment, refer to <a class="reference internal" href="backup_restore.html#ag-clustering-backup-restore"><span class="std std-ref">Backup and Restore for Clustered Environments</span></a> section.</p>
+</div>
+<div class="section" id="job-runtime-behavior">
+<h2>7.8. Job Runtime Behavior<a class="headerlink" href="clustering.html#job-runtime-behavior" title="Permalink to this headline">¶</a></h2>
+<p>The way jobs are run and reported to a &#8216;normal&#8217; user of Tower does not change. On the system side, some differences are worth noting:</p>
+<ul class="simple">
+<li>When a job is submitted from the API interface it gets pushed into the dispatcher queue on RabbitMQ. A single RabbitMQ instance is the responsible master for individual queues but each Tower instance will connect to and receive jobs from that queue using a particular scheduling algorithm. Any instance in the cluster is just as likely to receive the work and execute the task. If a instance fails while executing jobs, then the work is marked as permanently failed.</li>
+</ul>
+<p><img alt="Tower Cluster example" src="tower-clustering-visual.png" /></p>
+<ul>
+<li><p class="first">If a cluster is divided into separate instance groups, then the behavior is similar to the cluster as a whole. If two instances are assigned to a group then either one is just as likely to receive a job as any other in the same group.</p>
+</li>
+<li><p class="first">As Tower instances are brought online, it effectively expands the work capacity of the Tower system. If those instances are also placed into instance groups, then they also expand that group&#8217;s capacity. If an instance is performing work and it is a member of multiple groups, then capacity will be reduced from all groups for which it is a member. De-provisioning an instance will remove capacity from the cluster wherever that instance was assigned. See <a class="reference internal" href="clustering.html#ag-cluster-deprovision"><span class="std std-ref">Deprovision Instances and Instance Groups</span></a> in the next section for more details.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Not all instances are required to be provisioned with an equal capacity.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Project updates behave differently than they did before. Previously, they were ordinary jobs that ran on a single instance. It is now important that they run successfully on any instance that could potentially run a job. Projects will now sync themselves to the correct version on the instance immediately prior to running the job.</p>
+</li>
+<li><p class="first">If an instance group is configured but all instances in that group are offline or unavailable, any jobs that are launched targeting only that group will be stuck in a waiting state until instances become available. Fallback or backup resources should be provisioned to handle any work that might encounter this scenario.</p>
+</li>
+</ul>
+<div class="section" id="control-where-a-job-runs">
+<h3>7.8.1. Control Where a Job Runs<a class="headerlink" href="clustering.html#control-where-a-job-runs" title="Permalink to this headline">¶</a></h3>
+<p>By default, when a job is submitted to the tower queue, it can be picked up by any of the workers. However, you can control where a particular job runs, such as restricting the instances from which a job runs on. If any of the job template, inventory, or organization has instance groups associated with them, a job ran from that job template will not be eligible for the default behavior. That means that if all of the instances inside of the instance groups associated with these 3 resources are out of capacity, the job will remain in the pending state until capacity becomes available.</p>
+<p>The order of preference in determining which instance group to submit the job to is as follows:</p>
+<ol class="arabic simple">
+<li>job template</li>
+<li>inventory</li>
+<li>organization (by way of project)</li>
+</ol>
+<p>If instance groups are associated with the job template, and all of these are at capacity, then the job will be submitted to instance groups specified on inventory, and then organization. Jobs should execute in those groups in preferential order as resources are available.</p>
+<p>The global <code class="docutils literal"><span class="pre">tower</span></code> group can still be associated with a resource, just like any of the custom instance groups defined in the playbook. This can be used to specify a preferred instance group on the job template or inventory, but still allow the job to be submitted to any instance if those are out of capacity.</p>
+<p>In order to support temporarily taking an instance offline, there is a property enabled defined on each instance. When this property is disabled, no jobs will be assigned to that instance. Existing jobs will finish, but no new work will be assigned.</p>
+<div class="section" id="job-run-examples">
+<h4>7.8.1.1. Job Run Examples<a class="headerlink" href="clustering.html#job-run-examples" title="Permalink to this headline">¶</a></h4>
+<p>As an example, by associating <code class="docutils literal"><span class="pre">group_a</span></code> with a Job Template and also associating the <code class="docutils literal"><span class="pre">tower</span></code> group with its inventory, you allow the <code class="docutils literal"><span class="pre">tower</span></code> group to be used as a fallback in case <code class="docutils literal"><span class="pre">group_a</span></code> gets out of capacity.</p>
+<p>In addition, it is possible to not associate an instance group with one resource but designate another resource as the fallback. For example, not associating an instance group with a job template and have it fall back to the inventory and/or the organization&#8217;s instance group.</p>
+<p>This presents two other great use cases:</p>
+<ol class="arabic simple">
+<li>Associating instance groups with an inventory (omitting assigning the job template to an instance group) will allow the user to ensure that any playbook run against a specific inventory will run only on the group associated with it. This can be super useful in the situation where only those instances have a direct link to the managed nodes.</li>
+<li>An administrator can assign instance groups to organizations. This effectively allows the administrator to segment out the entire infrastructure and guarantee that each organization has capacity to run jobs without interfering with any other organization&#8217;s ability to run jobs.</li>
+</ol>
+<p>Likewise, an administrator could assign multiple groups to each organization as desired, as in the following scenario:</p>
+<blockquote>
+<div><ul class="simple">
+<li>There are three instance groups: A, B, and C. There are two organizations: Org1 and Org2.</li>
+<li>The administrator assigns group A to Org1, group B to Org2 and then assign group C to both Org1 and Org2 as an overflow for any extra capacity that may be needed.</li>
+<li>The organization administrators are then free to assign inventory or job templates to whichever group they want (or just let them inherit the default order from the organization).</li>
+</ul>
+<p><img alt="Instance Group example" src="instance-groups-scenarios.png" /></p>
+</div></blockquote>
+<p>Arranging resources in this way offers a lot of flexibility. Also, you can create instance groups with only one instance, thus allowing you to direct work towards a very specific Host in the Tower cluster.</p>
+</div>
+</div>
+</div>
+<div class="section" id="deprovision-instances-and-instance-groups">
+<span id="ag-cluster-deprovision"></span><h2>7.9. Deprovision Instances and Instance Groups<a class="headerlink" href="clustering.html#deprovision-instances-and-instance-groups" title="Permalink to this headline">¶</a></h2>
+<p id="index-8">Re-running the setup playbook does not automatically deprovision instances since clusters do not currently distinguish between an instance that was taken offline intentionally or due to failure. Instead, shut down all services on the Tower instance and then run the deprovisioning tool from any other instance:</p>
+<ol class="arabic">
+<li><p class="first">Shut down the instance or stop the service with the command, <code class="docutils literal"><span class="pre">ansible-tower-service</span> <span class="pre">stop</span></code>.</p>
+</li>
+<li><p class="first">Run the deprovision command <code class="docutils literal"><span class="pre">$</span> <span class="pre">awx-manage</span> <span class="pre">deprovision_instance</span> <span class="pre">--hostname=&lt;name</span> <span class="pre">used</span> <span class="pre">in</span> <span class="pre">inventory</span> <span class="pre">file&gt;</span></code> from another instance to remove it from the Tower cluster registry AND the RabbitMQ cluster registry.</p>
+<blockquote>
+<div><p>Example: <code class="docutils literal"><span class="pre">awx-manage</span> <span class="pre">deprovision_instance</span> <span class="pre">--hostname=hostB</span></code></p>
+</div></blockquote>
+</li>
+</ol>
+<p>Similarly, deprovisioning instance groups in Tower does not automatically deprovision or remove instance groups, even though re-provisioning will often cause these to be unused. They may still show up in API endpoints and stats monitoring. These groups can be removed with the following command:</p>
+<blockquote>
+<div>Example: <code class="docutils literal"><span class="pre">awx-manage</span> <span class="pre">unregister_queue</span> <span class="pre">--queuename=&lt;name&gt;</span></code></div></blockquote>
+<p>Removing an instance&#8217;s membership from an instance group in the inventory file and re-running the setup playbook does not ensure the instance won&#8217;t be added back to a group. To be sure that an instance will not be added back to a group, remove via the API and also remove it in your inventory file, or you can stop defining instance groups in the inventory file altogether. You can also manage instance group topology through the Ansible Tower User Interface. For more information on managing instance groups in the UI, refer to <a class="reference external" href="http://docs.ansible.com/ansible-tower/3.4.3/html/userguide/instance_groups.html#ug-instance-groups" title="(in Ansible Tower User Guide v3.4.3)"><span class="xref std std-ref">Instance Groups</span></a> in the <em>Ansible Tower User Guide</em>.</p>
+</div>
+</div>
+
+
+          </div>
+          <div id="search-results"><gcse:searchresults-only></gcse:searchresults-only></div>
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+        <a href="openshift_configuration.html" class="btn btn-neutral float-right" title="8. OpenShift Deployment and Configuration"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="management_jobs.html" class="btn btn-neutral" title="6. Management Jobs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <p>
+    Copyright © 2019 Red Hat, Inc. 
+    <br>
+  </p>
+
+<p>
+  Red Hat Ansible Tower docs are generated using <A HREF="http://sphinx-doc.org/">Sphinx</A> using a theme provided by <a href="http://readthedocs.org">Read the Docs</a>.
+</p>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+<!-- begin analytics -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+        (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+        n.id=i;n.src = '//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+        e.parentNode.insertBefore(n, e);
+        })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+_satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>

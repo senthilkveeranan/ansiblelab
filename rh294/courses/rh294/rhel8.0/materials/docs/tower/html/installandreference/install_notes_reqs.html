@@ -1,0 +1,616 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <script type="text/javascript" src="https://www.redhat.com/dtm.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta class="swiftype" name="published_at" data-type="date" content="2019-03-26" /> 
+  <meta class="swiftype" name="version" data-type="string" content="3.4.3">
+
+   <!-- this ^ ^ is for the original publishing date only, never for minor pushes that aren't actual version bumps of the docs (this helps us keep our search rank weighting in swiftype, our search server, prioritized based on the dates of the releases themselves) -->
+
+  <script>
+  var url = window.location.href;
+  if(url.indexOf("latest") == -1){
+   var version = url.replace("http://docs.ansible.com/ansible-tower/","");
+   version = version.substring(0,url.indexOf("/"));
+   url = url.replace(version,"latest");
+  }
+  var canon = document.createElement('link');
+  canon.rel = "canonical";
+  canon.href = url;
+  document.head.appendChild(canon);
+  </script>
+
+
+  <!-- Google Tag Manager Data Layer -->
+  <script>
+   dataLayer = [];
+  </script>
+  <!-- End Google Tag Manager Data Layer -->
+
+  
+  <title>3. Installation Notes &mdash; Ansible Tower Installation and Reference Guide v3.4.3</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
+  
+  
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'./',
+        VERSION:'Ansible Tower 3.4.3',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript" src="underscore.js"></script>
+      <script type="text/javascript" src="doctools.js"></script>
+
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="theme.min.css" type="text/css" />
+    <script type="text/javascript" src="theme.js"></script>
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Ansible Tower Installation and Reference Guide v3.4.3" href="index.html"/>
+        <link rel="next" title="4. Requirements" href="requirements_refguide.html"/>
+        <link rel="prev" title="2. Release Notes" href="release_notes.html"/> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+  <style>
+    .search-reset-start {
+        color: #463E3F;
+        float: right;
+        position: relative;
+        top: -25px;
+        left: -10px;
+        z-index: 10;
+     }
+     .search-reset-start:hover {
+        cursor: pointer;
+        color: #2980B9;
+     }
+     #search-box-id {
+        padding-right: 25px;
+     }
+  </style>
+
+  <!-- Google Code for Remarketing Tag
+  <script type="text/javascript">
+  /* <![CDATA[ */
+  var google_conversion_id = 972577926;
+  var google_custom_params = window.google_tag_params;
+  var google_remarketing_only = true;
+  /* ]]> */
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+  </script>
+  <noscript>
+    <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt=""
+              src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/972577926/?value=0&amp;guid=ON&amp;script=0"/>
+    </div>
+  </noscript>
+  End of Google Code for Remarketing Tag -->
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300'
+      rel='stylesheet' type='text/css'>
+
+  <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+
+  <script type='text/javascript'>
+    googletag.cmd.push(function() {
+      googletag.defineSlot('/1171614047/towerleft', [300, 250], 'div-gpt-ad-1453398530439-0').addService(googletag.pubads());
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
+  </script>
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSB293" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-PSB293');</script>
+<!-- End Google Tag Manager -->
+
+  <div class="DocSite-globalNav ansibleNav">
+        <ul>
+            <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+            <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+            <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+            <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+            <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+        </ul>
+    </div>
+
+<a class="DocSite-nav" href="http://docs.ansible.com/">
+  <img class="DocSiteNav-logo"
+    src="logo_invert.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">
+    Documentation
+  </div>
+</a> 
+
+
+
+
+<div class="wy-grid-for-nav">
+
+  
+ <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+    <div style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+        <a class="DocSiteProduct-header DocSiteProduct-header--tower"
+            href="http://docs.ansible.com/ansible-tower/">
+            <div class="DocSiteProduct-productName">
+                <div class="DocSiteProduct-logoText">
+                    ANSIBLE TOWER 
+                    <div class="DocSiteProduct-CurrentVersion" align="right">
+                      v3.4.3
+                  </div>
+                </div>
+            </div>
+        </a>
+        
+
+        <div class="DocSiteProduct-CheckVersionPara">
+          Are you using the latest and greatest version of Ansible Tower? Find the <a class="DocSiteProduct-versionheader" href="http://docs.ansible.com/ansible-tower/">Ansible Tower documentation</a> set which best matches your version of Tower.
+            </div>
+    </div>
+    <div class="wy-side-nav-search" style="background-color:#ff5850;height=80px;margin:'auto auto auto auto'">
+      <!-- <a href="index.html" class="icon icon-home"> Ansible Tower Installation and Reference Guide</a> -->
+      <!-- <form class="wy-form" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search docs" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form> -->
+
+<!-- 
+<script>
+  (function() {
+    var cx = '004731659079655444432:zgjlf-tkhya';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script> -->
+
+<!-- <gcse:searchresults-only></gcse:searchresults-only> -->
+
+<!-- swiftype search script -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','Vcn_rXrPfye6ziaZJZRt','2.0.0');
+</script>
+
+<!-- <form id="search-form-id" action="">
+  <input type="text" class="st-default-search-input" name="query" placeholder="Search Tower Docs" id="search-box-id" /> 
+  <a class="search-reset-start" id="search-reset"><i class="fa fa-times"></i></a>
+  <a class="search-reset-start" id="search-start"><i class="fa fa-search"></i></a> 
+ </form> -->
+
+          
+
+
+<!-- <script type="text/javascript" src="http://www.google.com/cse/brand?form=search-form-id&inputbox=search-box-id"></script> -->
+
+<!-- 
+<script>
+  function executeQuery() {
+      var input = document.getElementById('search-box-id');
+      var element = google.search.cse.element.getElement('searchresults-only0');
+      element.resultsUrl = '/htmlout/search.html'
+      if (input.value == '') {
+          element.clearAllResults();
+          $('#page-content, .rst-footer-buttons, #search-start').show();
+          $('#search-results, #search-reset').hide();
+      } else {
+          $('#page-content, .rst-footer-buttons, #search-start').hide();
+          $('#search-results, #search-reset').show();
+          element.execute(input.value);
+      }
+      return false;
+      }
+
+  $('#search-reset').hide();
+
+  $('#search-box-id').css('background-position', '1em center');
+
+  $('#search-box-id').on('blur', function() {
+    $('#search-box-id').css('background-position', '1em center');
+  });
+
+  $('#search-start').click(function(e) { executeQuery(); });
+  $('#search-reset').click(function(e) { $('#search-box-id').val(''); executeQuery(); });
+
+  $('#search-form-id').submit(function(e) {
+      console.log('submitting!');
+      executeQuery();
+      e.preventDefault();
+      });
+</script>
+-->
+    </div>
+
+      <div id="menu-id" class="wy-menu wy-menu-vertical" data-spy="affix">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Ansible Tower Installation and Reference Guide v3.4.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updates_support.html">1. Tower Licensing, Updates, and Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#support">1.1. Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#trial-evaluation">1.2. Trial / Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#subscription-types">1.3. Subscription Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#node-counting-in-licenses">1.4. Node Counting in Licenses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#license-features">1.5. License Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updates_support.html#tower-component-licenses">1.6. Tower Component Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">2. Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_notes.html#ansible-tower-version-3-4-3">2.1. Ansible Tower Version 3.4.3</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="install_notes_reqs.html#">3. Installation Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#flags-and-extra-vars-passed-with-tower">3.1. Flags and extra vars passed with Tower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#installing-tower-on-systems-with-fips-mode-enabled">3.2. Installing Tower on Systems with FIPS Mode Enabled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#notes-for-red-hat-enterprise-linux-and-centos-setups">3.3. Notes for Red Hat Enterprise Linux and CentOS setups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#configuration-and-installation-of-ansible-with-red-hat-enterprise-linux-and-centos">3.4. Configuration and Installation of Ansible with Red Hat Enterprise Linux and CentOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#configuration-and-installation-of-ansible-with-ubuntu">3.5. Configuration and Installation of Ansible with Ubuntu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_notes_reqs.html#configuration-and-installation-on-openshift">3.6. Configuration and Installation on OpenShift</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="requirements_refguide.html">4. Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requirements_refguide.html#additional-notes-on-tower-requirements">4.1. Additional Notes on Tower Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements_refguide.html#ansible-software-requirements">4.2. Ansible Software Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tower_installer.html">5. Obtaining the Tower Installation Program</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tower_installer.html#using-the-bundled-tower-installation-program">5.1. Using the Bundled Tower Installation Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower_installer.html#using-vagrant-amazon-ami-images">5.2. Using Vagrant/Amazon AMI Images</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tower_install_wizard.html">6. Installing Ansible Tower</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tower_install_wizard.html#tower-installation-scenarios">6.1. Tower Installation Scenarios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower_install_wizard.html#setting-up-the-inventory-file">6.2. Setting up the Inventory File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower_install_wizard.html#the-setup-playbook">6.3. The Setup Playbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tower_install_wizard.html#changing-the-password">6.4. Changing the Password</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="upgrade_tower.html">7. Upgrading an Existing Tower Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_tower.html#requirements">7.1. Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_tower.html#backing-up-your-tower-installation">7.2. Backing Up Your Tower Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_tower.html#get-the-tower-installer">7.3. Get the Tower Installer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_tower.html#the-setup-playbook">7.4. The Setup Playbook</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user-data.html">8. Usability Analytics and Data Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">9. Glossary</a></li>
+</ul>
+
+        
+
+<div class="DocSite-sideNav ansibleNav">
+    <ul class="">
+    <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+    <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+    <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+    <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+    </ul>
+</div>
+
+    <!-- changeable widget -->
+    <div id="sideBanner">
+    <br/>
+    <a href="http://www.ansible.com/tower-docs-left?utm_source=docs">
+<img style="border-width:0px;" src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-left-rail.png" />
+    </a>
+</div>
+
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href="https://docs.ansible.com/">Ansible Tower Installation and Reference Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+
+    <!--        <div class="DocSiteBanner">
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-left.png">
+                </a>
+                <a class="DocSiteBanner-imgWrapper"
+                    href="http://www.ansible.com/tower-docs-top?utm_source=tower-docs">
+                    <img src="https://cdn2.hubspot.net/hubfs/330046/docs-graphics/ASB-tower-docs-top-right.png">
+                </a>
+            </div> -->
+
+          <ul class="wy-breadcrumbs">
+    <li><a href="http://docs.ansible.com/" <title>Ansible Docs Home</title></a>&raquo;</li>
+    <li><a href="http://docs.ansible.com/ansible-tower/" <title>Ansible Tower Docs</title></a>&raquo;</li>
+    <li><a href="index.html" <title> &mdash; Ansible Tower Installation and Reference Guide v3.4.3</title></a> &raquo;</li>
+    <!--  <li><a href="">3. Installation Notes</a></li> -->
+</ul>
+<hr/>
+          <div id="page-content">
+          
+  <div class="section" id="installation-notes">
+<span id="ir-install-notes-reqs"></span><h1>3. Installation Notes<a class="headerlink" href="install_notes_reqs.html#installation-notes" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="ir-general-install-notes"></span><ul class="simple" id="index-0">
+<li>If you need to access a HTTP proxy to install software from your OS vendor, ensure that the environment variable &#8220;HTTP_PROXY&#8221; is set accordingly before running <code class="docutils literal"><span class="pre">setup.sh</span></code>.</li>
+<li>The Tower installer creates a self-signed SSL certificate and keyfile at <code class="docutils literal"><span class="pre">/etc/tower/tower.cert</span></code> and <code class="docutils literal"><span class="pre">/etc/tower/tower.key</span></code> for HTTPS communication. These can be replaced after install with your own custom SSL certificates if you desire, but the filenames are required to be the same.</li>
+<li>If using Ansible version 1.8 or later, ensure that fact caching using Redis is not enabled in <code class="docutils literal"><span class="pre">ansible.cfg</span></code> on the Tower machine.</li>
+<li>Note that the Tower installation must be run from an internet connected machine that can install software from trusted 3rd-party places such as Ansible&#8217;s software repository, and your OS vendor&#8217;s software repositories. In some cases, access to the Python Package Index (PyPI) is necessary as well. If you need to be able to install in a disconnected environment and the bundled installation program is not a solution for you (refer to <a class="reference internal" href="tower_installer.html#bundled-install"><span class="std std-ref">Using the Bundled Tower Installation Program</span></a>), please contact Ansible via the Red Hat Customer portal at <a class="reference external" href="https://access.redhat.com/">https://access.redhat.com/</a>.</li>
+<li>If installing Tower on OpenShift, refer to <a class="reference external" href="http://docs.ansible.com/ansible-tower/3.4.3/html/administration/openshift_configuration.html#ag-openshift-configuration" title="(in Ansible Tower Administration Guide v3.4.3)"><span class="xref std std-ref">OpenShift Deployment and Configuration</span></a>.</li>
+</ul>
+<div class="section" id="flags-and-extra-vars-passed-with-tower">
+<h2>3.1. Flags and extra vars passed with Tower<a class="headerlink" href="install_notes_reqs.html#flags-and-extra-vars-passed-with-tower" title="Permalink to this headline">¶</a></h2>
+<p id="index-1">Flags and/or extra variables that you can use with the Ansible Tower installer include (but are not limited to) the following:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>Usage: setup.sh [Options] [-- Ansible Options]
+Options:
+        -i INVENTORY_FILE     Path to ansible inventory file (default: ${INVENTORY_FILE})
+        -e EXTRA_VARS         Set additional ansible variables as key=value or YAML/JSON
+                                i.e. -e bundle_install=false will force an online install
+        -b                    Perform a database backup in lieu of installing.
+        -r                    Perform a database restore in lieu of installing.
+        -h                    Show this help message and exit
+Ansible Options:
+        Additional options to be passed to ansible-playbook can be added following the -- separator.
+</pre></div>
+</div>
+<p>Use the <code class="docutils literal"><span class="pre">--</span></code> separator to add any Ansible arguments you wish to apply. For example: <code class="docutils literal"><span class="pre">./setup.sh</span> <span class="pre">-i</span> <span class="pre">my_awesome_inventory.yml</span> <span class="pre">-e</span> <span class="pre">matburt_is_awesome=True</span> <span class="pre">--</span> <span class="pre">-K</span></code></p>
+<div class="section" id="examples">
+<h3>3.1.1. Examples<a class="headerlink" href="install_notes_reqs.html#examples" title="Permalink to this headline">¶</a></h3>
+<p>The following are examples of common scenarios - be sure to supply your own values appropriate to your specific case.</p>
+<ul>
+<li><p class="first"><strong>To upgrade core</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">setup</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">e</span> <span class="n">upgrade_ansible_with_tower</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>To disable https handling at nginx</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">setup</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">e</span> <span class="n">nginx_disable_https</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>To specify a non-default path when restoring from a backup file</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">setup</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;restore_backup_file=/path/to/nondefault/location&#39;</span> <span class="o">-</span><span class="n">r</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>To override an inventory file used by passing it as an argument to the setup script</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setup</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">inventory</span> <span class="n">file</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<span class="target" id="ir-platform-specific-notes"></span></div>
+</div>
+<div class="section" id="installing-tower-on-systems-with-fips-mode-enabled">
+<span id="index-2"></span><h2>3.2. Installing Tower on Systems with FIPS Mode Enabled<a class="headerlink" href="install_notes_reqs.html#installing-tower-on-systems-with-fips-mode-enabled" title="Permalink to this headline">¶</a></h2>
+<p>Tower can run on systems where FIPS mode is enabled, though there are a few limitations to keep in mind:</p>
+<ul>
+<li><p class="first">Only Enterprise Linux 7+ is supported. The standard python that ships with RHEL must be used for Ansible Tower to work in FIPS mode. Using any non-standard, non-system python for Tower is therefore, unsupported.</p>
+</li>
+<li><p class="first">By default, Tower configures PostgreSQL using password-based authentication, and this process relies on the usage of <code class="docutils literal"><span class="pre">md5</span></code> when <code class="docutils literal"><span class="pre">CREATE</span> <span class="pre">USER</span></code> is run at install time.  If you intend to run the Tower installer from a FIPS-enabled system, you&#8217;ll need to pre-compute an <code class="docutils literal"><span class="pre">md5</span></code> hash yourself at install time and add its value to the inventory file described in <a class="reference internal" href="tower_install_wizard.html#setup-inventory-file"><span class="std std-ref">Setting up the Inventory File</span></a>.</p>
+<p>Specifically, you must pre-compute the hashed value on a system <em>without</em> FIPS enabled:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python -c &#39;from hashlib import md5; print(&quot;md5&quot; + md5(&quot;choose-a-password&quot; + &quot;awx&quot;).hexdigest())&#39;
+md57d08dde7e95e862eaadfff09565e92e6
+</pre></div>
+</div>
+<p>...and specify <strong>both</strong> <code class="docutils literal"><span class="pre">pg_password</span></code> and <code class="docutils literal"><span class="pre">pg_hashed_password</span></code> in your inventory file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pg_password</span><span class="o">=</span><span class="s1">&#39;choose-a-password&#39;</span>
+<span class="n">pg_hashed_password</span><span class="o">=</span><span class="s1">&#39;md57d08dde7e95e862eaadfff09565e92e6&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">The <code class="docutils literal"><span class="pre">ssh-keygen</span></code> command generates keys in a format (RFC4716) which uses the <code class="docutils literal"><span class="pre">md5</span></code> digest algorithm at some point in the process (as part of a transformation performed on the input passphrase).  On a FIPS-enforcing system, <code class="docutils literal"><span class="pre">md5</span></code> is completely disabled, so these types of encrypted SSH keys (RFC4716 private keys protected by a passphrase) will not be usable.  When FIPS mode is enabled, any encrypted SSH key you import into Ansible Tower <strong>must</strong> be a <code class="docutils literal"><span class="pre">PKCS8</span></code>-formatted key.  Existing <code class="docutils literal"><span class="pre">AES128</span></code> keys can be converted to <code class="docutils literal"><span class="pre">PKCS8</span></code> by running the following <code class="docutils literal"><span class="pre">openssl</span></code> command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ openssl pkcs8 -topk8 -v2 aes128 -in &lt;INPUT_KEY&gt; -out &lt;NEW_OUTPUT_KEY&gt;
+</pre></div>
+</div>
+</li>
+</ul>
+<blockquote>
+<div>For more details, see: <a class="reference external" href="https://access.redhat.com/solutions/1519083">https://access.redhat.com/solutions/1519083</a></div></blockquote>
+<ul class="simple">
+<li>Use of Ansible features that use the <code class="docutils literal"><span class="pre">paramiko</span></code> library will not be FIPS compliant. This includes setting <code class="docutils literal"><span class="pre">ansible_connection=paramiko</span></code> as a transport and using network modules that utilize the <code class="docutils literal"><span class="pre">ncclient</span></code> NETCONF library.</li>
+<li>The TACACS+ protocol uses <code class="docutils literal"><span class="pre">md5</span></code> to obfuscate the content of authorization packets; <a class="reference external" href="http://docs.ansible.com/ansible-tower/3.4.3/html/administration/ent_auth.html#tacacs-plus" title="(in Ansible Tower Administration Guide v3.4.3)"><span class="xref std std-ref">TACACS+ Authentication</span></a> is not supported for systems where FIPS mode is enabled.</li>
+<li>The RADIUS protocol uses <code class="docutils literal"><span class="pre">md5</span></code> to encrypt passwords in <code class="docutils literal"><span class="pre">Access-Request</span></code> queries; <a class="reference external" href="http://docs.ansible.com/ansible-tower/3.4.3/html/administration/ent_auth.html#radius" title="(in Ansible Tower Administration Guide v3.4.3)"><span class="xref std std-ref">RADIUS Authentication</span></a> is not supported for systems where FIPS mode is enabled.</li>
+</ul>
+</div>
+<div class="section" id="notes-for-red-hat-enterprise-linux-and-centos-setups">
+<h2>3.3. Notes for Red Hat Enterprise Linux and CentOS setups<a class="headerlink" href="install_notes_reqs.html#notes-for-red-hat-enterprise-linux-and-centos-setups" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>PackageKit can frequently interfere with the installation/update mechanism. Consider disabling or removing PackageKit if installed prior to running the setup process.</li>
+<li>Only the &#8220;targeted&#8221; SELinux policy is supported. The targeted policy can be set to disabled, permissive, or enforcing.</li>
+<li>When performing a bundled install (refer to <a class="reference internal" href="tower_installer.html#bundled-install"><span class="std std-ref">Using the Bundled Tower Installation Program</span></a> for more information), Red Hat Enterprise Linux customers must enable the following repositories which are disabled by default:<ul>
+<li>Red Hat Enterprise Linux 7 users must enable the <code class="docutils literal"><span class="pre">extras</span></code> repositories.</li>
+</ul>
+</li>
+</ul>
+<span class="target" id="ir-prerequisites"></span></div>
+<div class="section" id="configuration-and-installation-of-ansible-with-red-hat-enterprise-linux-and-centos">
+<span id="index-3"></span><h2>3.4. Configuration and Installation of Ansible with Red Hat Enterprise Linux and CentOS<a class="headerlink" href="install_notes_reqs.html#configuration-and-installation-of-ansible-with-red-hat-enterprise-linux-and-centos" title="Permalink to this headline">¶</a></h2>
+<p>The following steps help you configure access to the repository as well as install Ansible on older versions of Tower.</p>
+<div class="section" id="configure-repository-access">
+<h3>3.4.1. Configure Repository Access<a class="headerlink" href="install_notes_reqs.html#configure-repository-access" title="Permalink to this headline">¶</a></h3>
+<p id="index-4">Configure the EPEL repository and any others needed.</p>
+<p>As the root user, for Red Hat Enterprise Linux 7 and CentOS 7</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><a href="https://docs.ansible.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="35475a5a4175595a5654595d5a4641">[email&#160;protected]</a>:~$ yum install http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>You may also need to enable the <code class="docutils literal"><span class="pre">extras</span></code> repository specific for your environment:</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal"><span class="pre">extras</span></code> on CentOS 7</li>
+<li><code class="docutils literal"><span class="pre">rhel-7-server-extras-rpms</span></code> on Red Hat Enterprise Linux 7</li>
+<li><code class="docutils literal"><span class="pre">rhui-REGION-rhel-server-extras</span></code> when running in EC2.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>When using the official Red Hat Enterprise Linux 7 marketplace AMI, ensure that the latest <code class="docutils literal"><span class="pre">rh-amazon-rhui-client</span></code> package that allows enabling the optional repository (named <code class="docutils literal"><span class="pre">rhui-REGION-rhel-server-optional</span></code> in EC2) is installed.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="install-ansible">
+<h3>3.4.2. Install Ansible<a class="headerlink" href="install_notes_reqs.html#install-ansible" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note" id="index-5">
+<p class="first admonition-title">Note</p>
+<p>Tower is installed using Ansible playbooks; therefore, Ansible is required to complete the installation of Tower.</p>
+<p>Beginning with Ansible Tower version 2.3.0, Ansible is installed automatically during the setup process.</p>
+<p>If you are using an older version of Tower, prior to version 2.3.0, Ansible can be installed as detailed in the Ansible documentation at: <a class="reference external" href="http://docs.ansible.com/intro_installation.html">http://docs.ansible.com/intro_installation.html</a></p>
+<p class="last">For convenience, those installation instructions are summarized below.</p>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><a href="https://docs.ansible.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="05776a6a7145696a6664696d6a7671">[email&#160;protected]</a>:~$ yum install ansible
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="configuration-and-installation-of-ansible-with-ubuntu">
+<h2>3.5. Configuration and Installation of Ansible with Ubuntu<a class="headerlink" href="install_notes_reqs.html#configuration-and-installation-of-ansible-with-ubuntu" title="Permalink to this headline">¶</a></h2>
+<p>The following steps help you configure access to the repository as well as install Ansible on older versions of Tower.</p>
+<div class="section" id="id1">
+<h3>3.5.1. Configure Repository Access<a class="headerlink" href="install_notes_reqs.html#id1" title="Permalink to this headline">¶</a></h3>
+<p id="index-6">As the root user, configure Ansible PPA:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><a href="https://docs.ansible.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ec9e838398ac80838f8d8084839f98">[email&#160;protected]</a>:~$ apt-get install software-properties-common
+<a href="https://docs.ansible.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="50223f3f24103c3f33313c383f2324">[email&#160;protected]</a>:~$ apt-add-repository ppa:ansible/ansible
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>3.5.2. Install Ansible<a class="headerlink" href="install_notes_reqs.html#id2" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note" id="index-7">
+<p class="first admonition-title">Note</p>
+<p>Tower is installed using Ansible playbooks; therefore, Ansible is required to complete the installation of Tower.</p>
+<p>Beginning with Ansible Tower version 2.3.0, Ansible is installed automatically during the setup process.</p>
+<p>If you are using an older version of Tower, prior to version 2.3.0, Ansible can be installed as detailed in the Ansible documentation at: <a class="reference external" href="http://docs.ansible.com/intro_installation.html">http://docs.ansible.com/intro_installation.html</a></p>
+<p class="last">For convenience, those installation instructions are summarized below.</p>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><a href="https://docs.ansible.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cbb9a4a4bf8ba7a4a8aaa7a3a4b8bf">[email&#160;protected]</a>:~$ apt-get update
+<a href="https://docs.ansible.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c8baa7a7bc88a4a7aba9a4a0a7bbbc">[email&#160;protected]</a>:~$ apt-get install ansible
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="configuration-and-installation-on-openshift">
+<h2>3.6. Configuration and Installation on OpenShift<a class="headerlink" href="install_notes_reqs.html#configuration-and-installation-on-openshift" title="Permalink to this headline">¶</a></h2>
+<p>For OpenShift-based deployments, refer to <a class="reference external" href="http://docs.ansible.com/ansible-tower/3.4.3/html/administration/openshift_configuration.html#ag-openshift-configuration" title="(in Ansible Tower Administration Guide v3.4.3)"><span class="xref std std-ref">OpenShift Deployment and Configuration</span></a>.</p>
+</div>
+</div>
+
+
+          </div>
+          <div id="search-results"><gcse:searchresults-only></gcse:searchresults-only></div>
+          <footer>
+  
+    <div class="rst-footer-buttons">
+      
+        <a href="requirements_refguide.html" class="btn btn-neutral float-right" title="4. Requirements"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="release_notes.html" class="btn btn-neutral" title="2. Release Notes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <p>
+    Copyright © 2019 Red Hat, Inc. 
+    <br>
+  </p>
+
+<p>
+  Red Hat Ansible Tower docs are generated using <A HREF="http://sphinx-doc.org/">Sphinx</A> using a theme provided by <a href="http://readthedocs.org">Read the Docs</a>.
+</p>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+<!-- begin analytics -->
+<script data-cfasync="false" src="email-decode.min.js"></script><script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "standard-page"]);
+        (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
+        n.id=i;n.src = '//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/330046.js';
+        e.parentNode.insertBefore(n, e);
+        })(document, "script", "hs-analytics",300000);
+</script>
+<!-- end analytics -->
+
+<script type="text/javascript">
+if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+_satellite.pageBottom();
+}
+</script>
+
+</body>
+</html>
