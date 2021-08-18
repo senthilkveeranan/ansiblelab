@@ -2,17 +2,8 @@
  - hosts: all
    become: True
    tasks:
-	   - name: Installing packages
-	     yum:
-			 name: httpd
-			 state: present
-
-	   - name: Start the services
-	     services:
-			 name: httpd
-			 state: reloaded
-         notify: reload http
-
-   handlers:
-	   name: reload httpd
-state: restarted
+     - name: Installing packages
+       yum:
+         name: git
+         status: latest  
+     

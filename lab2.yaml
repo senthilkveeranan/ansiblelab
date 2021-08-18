@@ -1,0 +1,14 @@
+---
+ - hosts: all
+   become: True
+   tasks:
+     vars:
+       users:
+         - name: senthil
+           age : 40
+         - name: bhuvana
+           age: 26
+   tasks:
+     - name: Displaying variable
+       debug:
+         msg: "{{ users }}"
