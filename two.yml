@@ -1,0 +1,6 @@
+---
+ - hosts: all
+   become: True
+   tasks:
+      - name: test2
+        command: df
