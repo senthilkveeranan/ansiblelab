@@ -1,6 +1,0 @@
----
- - hosts: all
-   become: True
-   tasks:
-      - name: test2 git cache hihi
-        command: df
