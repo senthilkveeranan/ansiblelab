@@ -1,6 +1,0 @@
----
- - hosts: all
-   become: True
-   tasks:
-      - name: Hi
-        command: hostname -f 

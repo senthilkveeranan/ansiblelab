@@ -1,6 +1,0 @@
----
- - hosts: all
-   become: True
-   taks: 
-     - name: just for testing
-       command: hostname -f 
