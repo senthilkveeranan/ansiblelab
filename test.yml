@@ -1,0 +1,6 @@
+---
+ - hosts: all
+   become: True
+   tasks:
+       - name: this is just for testing
+         command: uname -r 
