@@ -1,0 +1,8 @@
+--- 
+ - hosts: all
+   become: True
+   vars: 
+      key: value1
+   tasks:
+     debug:
+         msg: "{{ key }}"
